@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 6b86dfb4e66816043ac97d395a54defc
+guid: dffb97b325b86f640b79c70ef70b82e8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -997521509372851107
-    second: shell_down_0
+      213: 8091547490586517895
+    second: brick_top_right_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,12 +113,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shell_down_0
+      name: brick_top_right_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 3
+        width: 4
         height: 4
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d5c050ae8771822f0800000000000000
-      internalID: -997521509372851107
+      spriteID: 781ec936293fa4070800000000000000
+      internalID: 8091547490586517895
       vertices: []
       indices: 
       edges: []

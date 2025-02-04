@@ -22,7 +22,7 @@ public class Shell : MonoBehaviour
         if (transform.position.x < (-horizontalBounds + 1) || transform.position.x > horizontalBounds ||
             transform.position.y < (-verticalBounds + 1) || transform.position.y > verticalBounds)
         {
-            Destroy(gameObject);//sdfsdf
+            Destroy(gameObject);
         }
     }
 
