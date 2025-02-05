@@ -24,10 +24,23 @@ public class Shell : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
     }
 
     private void FlyForward()
     {
         transform.position += transform.up * speed * Time.deltaTime;
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Brick") || 
+            other.gameObject.CompareTag("Concrete") || 
+            other.gameObject.CompareTag("Base"))
+        {
+            Destroy(gameObject);
+        }
+    }
+
+
 }

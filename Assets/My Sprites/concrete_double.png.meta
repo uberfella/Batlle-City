@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 89af1d68639153e4480745c056c881a5
+guid: 711b062a070e92040b33199a69dbee0a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7836336718560014743
-    second: brick_intact_0
+      213: 2844344408112847552
+    second: concrete_double_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: brick_intact_0
+      name: concrete_double_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 16
-        height: 16
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 96e41ede54dbf3390800000000000000
-      internalID: -7836336718560014743
+      spriteID: 0ca5f605b24297720800000000000000
+      internalID: 2844344408112847552
       vertices: []
       indices: 
       edges: []

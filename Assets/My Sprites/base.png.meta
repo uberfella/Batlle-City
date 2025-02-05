@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 5476e5fb0bd954949a041d741bd2f137
+guid: 04c3bd6f824f59449ae4124580a1053a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4179489031832746871
-    second: NES - Battle City JPN - General Sprites_0
+      213: -3966044189379602213
+    second: base_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: NES - Battle City JPN - General Sprites_0
+      name: base_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 400
-        height: 256
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 77b380d6127800a30800000000000000
-      internalID: 4179489031832746871
+      spriteID: bd8d680a2d7c5f8c0800000000000000
+      internalID: -3966044189379602213
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      NES - Battle City JPN - General Sprites_0: 4179489031832746871
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

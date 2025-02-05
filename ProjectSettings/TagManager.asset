@@ -6,8 +6,10 @@ TagManager:
   tags:
   - ShellPlayer
   - ShellEnemy
-  - Shell
   - Brick
+  - Concrete
+  - Base
+  - EnemyLvl1
   layers:
   - Default
   - TransparentFX
