@@ -1,23 +1,38 @@
+using UnityEditor;
 using UnityEngine;
 
-public class EnemyLvl1 : Enemy
+//The logic in this script has been copied from learn.unity.com with adjustments
+
+public class PlayerController2D : Tank
 {
+
     public GameObject shellPrefab;
 
-    private Rigidbody2D rb;
-    private Vector2 movement;
+    private Rigidbody2D rb; // Reference to the Rigidbody2D component attached to the player
+    private Vector2 movement; // Stores the direction of player movement
     private bool isMovingHorizontally = true; // Flag to track if the player is moving horizontally
+    private float shootCooldown = 1f;
 
     void Start()
     {
+
         health = 1;
         speed = 5f;
+
+        rb = GetComponent<Rigidbody2D>();
+        
+
+        //rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        PlayerMove();
+
+        if (Input.GetKeyDown(KeyCode.Space)) 
+        {
+            ShootTheGun();
+        }
     }
 
     void FixedUpdate()
@@ -26,23 +41,19 @@ public class EnemyLvl1 : Enemy
         rb.linearVelocity = movement * speed;
     }
 
-    void ShootTheGun()
-    {
-        Instantiate(shellPrefab, transform.position, transform.rotation);
-    }
-    public void RotateEnemy(float x, float y)
+    void RotatePlayer(float x, float y)
     {
         // If there is no input, do not rotate the player
         if (x == 0 && y == 0) return;
 
         // Calculate the rotation angle based on input direction
         float angle = Mathf.Atan2(y, x) * Mathf.Rad2Deg;
-
+        
         // Apply the rotation to the player
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
-    private void EnemyMove()
+    private void PlayerMove()
     {
         // Get player input from keyboard or controller
         float horizontalInput = Input.GetAxisRaw("Horizontal");
@@ -63,16 +74,16 @@ public class EnemyLvl1 : Enemy
             if (isMovingHorizontally)
             {
                 movement = new Vector2(horizontalInput, 0);
-
+                
 
                 //make the tank sprite face left or right depending on direction 
                 if (horizontalInput == 1)
                 {
-                    RotateEnemy(horizontalInput, -90);
+                    RotatePlayer(horizontalInput, -90);
                 }
                 else if (horizontalInput == -1)
                 {
-                    RotateEnemy(horizontalInput, 90);
+                    RotatePlayer(horizontalInput, 90);
                 }
             }
             else
@@ -82,14 +93,19 @@ public class EnemyLvl1 : Enemy
                 //make the tank sprite face up or down depending on direction 
                 if (verticalInput == 1)
                 {
-                    RotateEnemy(90, verticalInput);
+                    RotatePlayer(90, verticalInput);
                 }
                 else if (verticalInput == -1)
                 {
-                    RotateEnemy(-90, verticalInput);
+                    RotatePlayer(-90, verticalInput);
                 }
 
             }
-        }
+        }   
+    }
+
+    void ShootTheGun() 
+    {
+        Instantiate(shellPrefab, transform.position, transform.rotation);
     }
 }

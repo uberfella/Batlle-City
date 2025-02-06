@@ -1,34 +1,23 @@
-using UnityEditor;
 using UnityEngine;
 
-//The logic in this script has been copied from learn.unity.com with adjustments
-
-public class PlayerController2D : MonoBehaviour
+public class Enemy : Tank
 {
-    public float speed = 5f;
     public GameObject shellPrefab;
+    public int scoreOnDestroy;
 
-    private Rigidbody2D rb; // Reference to the Rigidbody2D component attached to the player
-    private Vector2 movement; // Stores the direction of player movement
-    private bool isMovingHorizontally = true; // Flag to track if the player is moving horizontally
-    private float shootCooldown = 1f;
+    private bool isMovingHorizontally = true;
+    private Vector2 movement;
+    private Rigidbody2D rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        
-
-        //rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
+    // Update is called once per frame
     void Update()
     {
-        PlayerMove();
-
-        if (Input.GetKeyDown(KeyCode.Space)) 
-        {
-            ShootTheGun();
-        }
+        
     }
 
     void FixedUpdate()
@@ -37,23 +26,27 @@ public class PlayerController2D : MonoBehaviour
         rb.linearVelocity = movement * speed;
     }
 
-    void RotatePlayer(float x, float y)
+    protected void ShootTheGun()
+    {
+        Instantiate(shellPrefab, transform.position, transform.rotation);
+    }
+    protected void RotateEnemy(float x, float y)
     {
         // If there is no input, do not rotate the player
         if (x == 0 && y == 0) return;
 
         // Calculate the rotation angle based on input direction
         float angle = Mathf.Atan2(y, x) * Mathf.Rad2Deg;
-        
+
         // Apply the rotation to the player
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
-    private void PlayerMove()
+    public void EnemyMove(float horizontalInput, float verticalInput)
     {
-        // Get player input from keyboard or controller
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
-        float verticalInput = Input.GetAxisRaw("Vertical");
+        //possible values for both inputs are -1, 0, 1
+        //float horizontalInput = Input.GetAxisRaw("Horizontal");
+        //float verticalInput = Input.GetAxisRaw("Vertical");
 
         {
             // Determine the priority of movement based on input
@@ -70,16 +63,16 @@ public class PlayerController2D : MonoBehaviour
             if (isMovingHorizontally)
             {
                 movement = new Vector2(horizontalInput, 0);
-                
+
 
                 //make the tank sprite face left or right depending on direction 
                 if (horizontalInput == 1)
                 {
-                    RotatePlayer(horizontalInput, -90);
+                    RotateEnemy(horizontalInput, -90);
                 }
                 else if (horizontalInput == -1)
                 {
-                    RotatePlayer(horizontalInput, 90);
+                    RotateEnemy(horizontalInput, 90);
                 }
             }
             else
@@ -89,19 +82,15 @@ public class PlayerController2D : MonoBehaviour
                 //make the tank sprite face up or down depending on direction 
                 if (verticalInput == 1)
                 {
-                    RotatePlayer(90, verticalInput);
+                    RotateEnemy(90, verticalInput);
                 }
                 else if (verticalInput == -1)
                 {
-                    RotatePlayer(-90, verticalInput);
+                    RotateEnemy(-90, verticalInput);
                 }
 
             }
-        }   
+        }
     }
 
-    void ShootTheGun() 
-    {
-        Instantiate(shellPrefab, transform.position, transform.rotation);
-    }
 }
