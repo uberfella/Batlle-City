@@ -6,24 +6,27 @@ public class Enemy : Tank
     public int scoreOnDestroy;
 
     private bool isMovingHorizontally = true;
-    private Vector2 movement;
-    private Rigidbody2D rb;
+    public Vector2 movement;
+    public Rigidbody2D rb;
+    public AiController aiController;
+
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        
+        //rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void FixedUpdate()
     {
         // Apply movement to the player in FixedUpdate for physics consistency
-        rb.linearVelocity = movement * speed;
+        //rb.linearVelocity = movement * speed;
     }
 
     protected void ShootTheGun()

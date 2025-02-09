@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 //The logic in this script has been copied from learn.unity.com with adjustments
 
@@ -11,7 +12,9 @@ public class PlayerController2D : Tank
     private Rigidbody2D rb; // Reference to the Rigidbody2D component attached to the player
     private Vector2 movement; // Stores the direction of player movement
     private bool isMovingHorizontally = true; // Flag to track if the player is moving horizontally
+    private float timerForShooting;
     private float shootCooldown = 1f;
+    private bool cooldownHasPassed = true;
 
     void Start()
     {
@@ -29,9 +32,17 @@ public class PlayerController2D : Tank
     {
         PlayerMove();
 
-        if (Input.GetKeyDown(KeyCode.Space)) 
+        if (Input.GetKeyDown(KeyCode.Space) && cooldownHasPassed) 
         {
             ShootTheGun();
+            cooldownHasPassed = false;
+        }
+
+        timerForShooting += Time.deltaTime;
+        if (timerForShooting >= shootCooldown)
+        {
+            timerForShooting = 0;
+            cooldownHasPassed = true;
         }
     }
 
@@ -39,6 +50,20 @@ public class PlayerController2D : Tank
     {
         // Apply movement to the player in FixedUpdate for physics consistency
         rb.linearVelocity = movement * speed;
+
+        // Clamp position to keep object inside the boundaries
+        float clampedX = Mathf.Clamp(rb.position.x, minBounds.x, maxBounds.x);
+        float clampedY = Mathf.Clamp(rb.position.y, minBounds.y, maxBounds.y);
+
+        // Apply clamped position to Rigidbody2D
+        rb.position = new Vector2(clampedX, clampedY);
+
+        // If the position was clamped, prevent further movement in that direction
+        if (rb.position.x != clampedX)
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y); // Stop horizontal movement
+
+        if (rb.position.y != clampedY)
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0); // Stop vertical movement
     }
 
     void RotatePlayer(float x, float y)
@@ -104,7 +129,7 @@ public class PlayerController2D : Tank
         }   
     }
 
-    void ShootTheGun() 
+    private void ShootTheGun() 
     {
         Instantiate(shellPrefab, transform.position, transform.rotation);
     }
