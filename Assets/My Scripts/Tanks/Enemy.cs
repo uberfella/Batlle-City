@@ -4,36 +4,16 @@ public class Enemy : Tank
 {
     public GameObject shellPrefab;
     public int scoreOnDestroy;
-
-    private bool isMovingHorizontally = true;
     public Vector2 movement;
-    public Rigidbody2D rb;
     public AiController aiController;
 
-
-    void Start()
-    {
-        
-        //rb = GetComponent<Rigidbody2D>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    void FixedUpdate()
-    {
-        // Apply movement to the player in FixedUpdate for physics consistency
-        //rb.linearVelocity = movement * speed;
-    }
+    private bool isMovingHorizontally = true;
 
     protected void ShootTheGun()
     {
         Instantiate(shellPrefab, transform.position, transform.rotation);
     }
-    protected void RotateEnemy(float x, float y)
+    private void RotateEnemy(float x, float y)
     {
         // If there is no input, do not rotate the player
         if (x == 0 && y == 0) return;
@@ -48,8 +28,6 @@ public class Enemy : Tank
     public void EnemyMove(float horizontalInput, float verticalInput)
     {
         //possible values for both inputs are -1, 0, 1
-        //float horizontalInput = Input.GetAxisRaw("Horizontal");
-        //float verticalInput = Input.GetAxisRaw("Vertical");
 
         {
             // Determine the priority of movement based on input
@@ -95,5 +73,7 @@ public class Enemy : Tank
             }
         }
     }
+
+
 
 }

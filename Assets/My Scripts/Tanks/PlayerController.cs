@@ -9,7 +9,7 @@ public class PlayerController2D : Tank
 
     public GameObject shellPrefab;
 
-    private Rigidbody2D rb; // Reference to the Rigidbody2D component attached to the player
+    //private Rigidbody2D rb; // Reference to the Rigidbody2D component attached to the player
     private Vector2 movement; // Stores the direction of player movement
     private bool isMovingHorizontally = true; // Flag to track if the player is moving horizontally
     private float timerForShooting;
@@ -23,9 +23,7 @@ public class PlayerController2D : Tank
         speed = 5f;
 
         rb = GetComponent<Rigidbody2D>();
-        
 
-        //rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     void Update()
@@ -51,22 +49,10 @@ public class PlayerController2D : Tank
         // Apply movement to the player in FixedUpdate for physics consistency
         rb.linearVelocity = movement * speed;
 
-        // Clamp position to keep object inside the boundaries
-        float clampedX = Mathf.Clamp(rb.position.x, minBounds.x, maxBounds.x);
-        float clampedY = Mathf.Clamp(rb.position.y, minBounds.y, maxBounds.y);
-
-        // Apply clamped position to Rigidbody2D
-        rb.position = new Vector2(clampedX, clampedY);
-
-        // If the position was clamped, prevent further movement in that direction
-        if (rb.position.x != clampedX)
-            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y); // Stop horizontal movement
-
-        if (rb.position.y != clampedY)
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0); // Stop vertical movement
+        ConstrainMovements();
     }
 
-    void RotatePlayer(float x, float y)
+    private void RotatePlayer(float x, float y)
     {
         // If there is no input, do not rotate the player
         if (x == 0 && y == 0) return;

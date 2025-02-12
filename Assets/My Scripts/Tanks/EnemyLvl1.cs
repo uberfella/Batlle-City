@@ -3,11 +3,7 @@ using UnityEngine.InputSystem.XR;
 
 public class EnemyLvl1 : Enemy
 {
-    //public GameObject shellPrefab;
 
-    //private Rigidbody2D rb;
-    //private Vector2 movement;
-    //private bool isMovingHorizontally = true; // Flag to track if the player is moving horizontally
     private readonly float changeDirectionTime = 2f; // Change direction every 2 seconds 
     private float timerForShooting;
     private int shotCooldown = 1;
@@ -56,8 +52,10 @@ public class EnemyLvl1 : Enemy
 
     void FixedUpdate()
     {
-        // Apply movement to the player in FixedUpdate for physics consistency
+        // Apply movement to the enemy in FixedUpdate for physics consistency
         rb.linearVelocity = movement * speed;
+
+        ConstrainMovements();
     }
 
     
