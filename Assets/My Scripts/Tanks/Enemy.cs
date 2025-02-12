@@ -7,13 +7,13 @@ public class Enemy : Tank
     public Vector2 movement;
     public AiController aiController;
 
-    private bool isMovingHorizontally = true;
+    protected bool isMovingHorizontally = true;
 
     protected void ShootTheGun()
     {
         Instantiate(shellPrefab, transform.position, transform.rotation);
     }
-    private void RotateEnemy(float x, float y)
+    protected void RotateEnemy(float x, float y)
     {
         // If there is no input, do not rotate the player
         if (x == 0 && y == 0) return;
@@ -25,54 +25,60 @@ public class Enemy : Tank
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
-    public void EnemyMove(float horizontalInput, float verticalInput)
-    {
-        //possible values for both inputs are -1, 0, 1
+    //public void EnemyMove(Vector2 moveDir)
+    //{
+    //    //possible values for both inputs are -1, 0, 1
+    //    Vector2 targetPosition = rb.position + moveDir * speed * Time.fixedDeltaTime;
 
-        {
-            // Determine the priority of movement based on input
-            if (horizontalInput != 0)
-            {
-                isMovingHorizontally = true;
-            }
-            else if (verticalInput != 0)
-            {
-                isMovingHorizontally = false;
-            }
+    //    if (!IsBlocked(targetPosition, moveDir) && MovementIsWithinLevelsRange(targetPosition))
+    //    {
+    //        rb.MovePosition(targetPosition);
+    //    }
 
-            // Set movement direction and optionally rotate the player
-            if (isMovingHorizontally)
-            {
-                movement = new Vector2(horizontalInput, 0);
+    //    {
+    //        // Determine the priority of movement based on input
+    //        if (horizontalInput != 0)
+    //        {
+    //            isMovingHorizontally = true;
+    //        }
+    //        else if (verticalInput != 0)
+    //        {
+    //            isMovingHorizontally = false;
+    //        }
+
+    //        // Set movement direction and optionally rotate the player 
+    //        if (isMovingHorizontally)
+    //        {
+    //            movement = new Vector2(horizontalInput, 0);
 
 
-                //make the tank sprite face left or right depending on direction 
-                if (horizontalInput == 1)
-                {
-                    RotateEnemy(horizontalInput, -90);
-                }
-                else if (horizontalInput == -1)
-                {
-                    RotateEnemy(horizontalInput, 90);
-                }
-            }
-            else
-            {
-                movement = new Vector2(0, verticalInput);
+    //            //make the tank sprite face left or right depending on direction 
+    //            if (horizontalInput == 1)
+    //            {
+    //                RotateEnemy(horizontalInput, -90);
+    //            }
+    //            else if (horizontalInput == -1)
+    //            {
+    //                RotateEnemy(horizontalInput, 90);
+    //            }
+    //        }
+    //        else
+    //        {
+    //            movement = new Vector2(0, verticalInput);
 
-                //make the tank sprite face up or down depending on direction 
-                if (verticalInput == 1)
-                {
-                    RotateEnemy(90, verticalInput);
-                }
-                else if (verticalInput == -1)
-                {
-                    RotateEnemy(-90, verticalInput);
-                }
+    //            //make the tank sprite face up or down depending on direction 
+    //            if (verticalInput == 1)
+    //            {
+    //                RotateEnemy(90, verticalInput);
+    //            }
+    //            else if (verticalInput == -1)
+    //            {
+    //                RotateEnemy(-90, verticalInput);
+    //            }
 
-            }
-        }
-    }
+    //        }
+    //    }
+    //}
 
 
 
