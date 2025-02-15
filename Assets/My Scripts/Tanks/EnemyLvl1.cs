@@ -9,6 +9,7 @@ public class EnemyLvl1 : Enemy
     private int shotCooldown = 1;
     private float timerForDirection = 1.8f;
     private bool requestNewCooldown = true;
+    private bool requestNewDirection = true;
 
     void Start()
     {
@@ -17,6 +18,7 @@ public class EnemyLvl1 : Enemy
         scoreOnDestroy = 1;
         aiController = GetComponent<AiController>();
         rb = GetComponent<Rigidbody2D>();
+
     }
 
     // Update is called once per frame
@@ -24,24 +26,41 @@ public class EnemyLvl1 : Enemy
     {
         //---------------
         //MOVING
+
+        //Vector2 moveDirection = new Vector2(aiController.GetHorizontalRandom(), aiController.GetVerticalRandom()).normalized;
+        //Debug.Log("requesting ai values horizontal of which = " + aiController.GetHorizontalRandom());
+        //EnemyMove(moveDirection);
+
+
+
+
+        //EnemyMove(aiController.GetVerticalRandom(), aiController.GetHorizontalRandom());
+        //Vector2 moveDirection = new Vector2(aiController.GetHorizontalRandom(), aiController.GetVerticalRandom()).normalized;
+        //Debug.Log("requesting ai values horizontal of which = " + aiController.GetHorizontalRandom());
+
+        //EnemyMove(moveDirection);
+
         timerForDirection += Time.deltaTime;
         if (timerForDirection >= changeDirectionTime)
         {
             timerForDirection = 0;
-            //EnemyMove(aiController.GetVerticalRandom(), aiController.GetHorizontalRandom());
             Vector2 moveDirection = new Vector2(aiController.GetHorizontalRandom(), aiController.GetVerticalRandom()).normalized;
-            if (moveDirection != Vector2.zero)
-            {
-                //EnemyMove(moveDirection);
-            }
-                
+            Debug.Log("requesting ai values horizontal of which = " + aiController.GetHorizontalRandom());
+            EnemyMove(moveDirection);
+            //requestNewDirection = true;
         }
+
+
+        //that works w/o stutters
+        //Vector2 moveDirection = new Vector2(1, 1);
+        //EnemyMove(moveDirection);
+
         //---------------
 
         //---------------
         //SHOOTING
         //getting new value with each call after each shot
-        if (requestNewCooldown) 
+        if (requestNewCooldown)
         {
             shotCooldown = aiController.GetShootCooldown();
             requestNewCooldown = false;
@@ -58,67 +77,66 @@ public class EnemyLvl1 : Enemy
 
     void FixedUpdate()
     {
-        // Apply movement to the enemy in FixedUpdate for physics consistency
-        rb.linearVelocity = movement * speed;
+
 
         //ConstrainMovements();
-        
+
     }
 
-    public void EnemyMove(Vector2 moveDir)
-    {
-        //possible values for both inputs are -1, 0, 1
-        Vector2 targetPosition = rb.position + moveDir * speed * Time.fixedDeltaTime;
+    //public void EnemyMove(Vector2 moveDir)
+    //{
+    //    //possible values for both inputs are -1, 0, 1
+    //    Vector2 targetPosition = rb.position + moveDir * speed * Time.fixedDeltaTime;
 
-        if (!IsBlocked(targetPosition, moveDir) && MovementIsWithinLevelsRange(targetPosition))
-        {
-            rb.MovePosition(targetPosition);
-        }
-
-        {
-            // Determine the priority of movement based on input
-            if (horizontalInput != 0)
-            {
-                isMovingHorizontally = true;
-            }
-            else if (verticalInput != 0)
-            {
-                isMovingHorizontally = false;
-            }
-
-            // Set movement direction and optionally rotate the player 
-            if (isMovingHorizontally)
-            {
-                movement = new Vector2(horizontalInput, 0);
+    //    if (!IsBlocked(targetPosition, moveDir) && MovementIsWithinLevelsRange(targetPosition))
+    //    {
+    //        rb.MovePosition(targetPosition);
+    //    }
 
 
-                //make the tank sprite face left or right depending on direction 
-                if (horizontalInput == 1)
-                {
-                    RotateEnemy(horizontalInput, -90);
-                }
-                else if (horizontalInput == -1)
-                {
-                    RotateEnemy(horizontalInput, 90);
-                }
-            }
-            else
-            {
-                movement = new Vector2(0, verticalInput);
 
-                //make the tank sprite face up or down depending on direction 
-                if (verticalInput == 1)
-                {
-                    RotateEnemy(90, verticalInput);
-                }
-                else if (verticalInput == -1)
-                {
-                    RotateEnemy(-90, verticalInput);
-                }
+    //    //make the tank sprite face left or right depending on direction 
+    //    if (horizontalInput == 1)
+    //    {
+    //        RotatePlayer(horizontalInput, -90);
+    //    }
+    //    else if (horizontalInput == -1)
+    //    {
+    //        RotatePlayer(horizontalInput, 90);
+    //    }
 
-            }
-        }
-    }
 
+    //    //make the tank sprite face up or down depending on direction 
+    //    if (verticalInput == 1)
+    //    {
+    //        RotatePlayer(90, verticalInput);
+    //    }
+    //    else if (verticalInput == -1)
+    //    {
+    //        RotatePlayer(-90, verticalInput);
+    //    }
+
+
+
+    //}
+    //private bool IsBlocked(Vector2 targetPos, Vector2 moveDir)
+    //{
+    //    // Cast a box to detect collisions ahead
+    //    RaycastHit2D hit = Physics2D.BoxCast(
+    //        boxCollider.bounds.center,  // Cast from collider center
+    //        boxCollider.bounds.size,    // Use actual collider size
+    //        0f,                         // No rotation
+    //        moveDir,                    // Move direction
+    //        0.1f,                        // Distance to check
+    //        obstacleLayer                // Check against obstacles
+    //    );
+
+    //    if (hit.collider != null)
+    //    {
+    //        //Debug.Log("Blocked by: " + hit.collider.gameObject.name);
+    //        return true;
+    //    }
+    //    return false;
+    //}
 
 }

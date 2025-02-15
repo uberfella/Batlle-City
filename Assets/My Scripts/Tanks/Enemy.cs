@@ -6,80 +6,69 @@ public class Enemy : Tank
     public int scoreOnDestroy;
     public Vector2 movement;
     public AiController aiController;
+    public LayerMask obstacleLayer;
 
-    protected bool isMovingHorizontally = true;
 
     protected void ShootTheGun()
     {
         Instantiate(shellPrefab, transform.position, transform.rotation);
     }
-    protected void RotateEnemy(float x, float y)
+
+    protected void EnemyMove(Vector2 moveDir)
     {
-        // If there is no input, do not rotate the player
-        if (x == 0 && y == 0) return;
+        //possible values for both inputs are -1, 0, 1
+        Vector2 targetPosition = rb.position + moveDir * speed * Time.fixedDeltaTime;
 
-        // Calculate the rotation angle based on input direction
-        float angle = Mathf.Atan2(y, x) * Mathf.Rad2Deg;
+        if (/*!IsBlocked(targetPosition, moveDir) && */MovementIsWithinLevelsRange(targetPosition))
+        {
+            rb.MovePosition(targetPosition);
+        }
 
-        // Apply the rotation to the player
-        transform.rotation = Quaternion.Euler(0, 0, angle);
+
+
+        //make the tank sprite face left or right depending on direction 
+        if (horizontalInput == 1)
+        {
+            RotatePlayer(horizontalInput, -90);
+        }
+        else if (horizontalInput == -1)
+        {
+            RotatePlayer(horizontalInput, 90);
+        }
+
+
+        //make the tank sprite face up or down depending on direction 
+        if (verticalInput == 1)
+        {
+            RotatePlayer(90, verticalInput);
+        }
+        else if (verticalInput == -1)
+        {
+            RotatePlayer(-90, verticalInput);
+        }
+
+
+
     }
+    protected bool IsBlocked(Vector2 targetPos, Vector2 moveDir)
+    {
+        // Cast a box to detect collisions ahead
+        RaycastHit2D hit = Physics2D.BoxCast(
+            boxCollider.bounds.center,  // Cast from collider center
+            boxCollider.bounds.size,    // Use actual collider size
+            0f,                         // No rotation
+            moveDir,                    // Move direction
+            0.1f,                        // Distance to check
+            obstacleLayer                // Check against obstacles
+        );
 
-    //public void EnemyMove(Vector2 moveDir)
-    //{
-    //    //possible values for both inputs are -1, 0, 1
-    //    Vector2 targetPosition = rb.position + moveDir * speed * Time.fixedDeltaTime;
-
-    //    if (!IsBlocked(targetPosition, moveDir) && MovementIsWithinLevelsRange(targetPosition))
-    //    {
-    //        rb.MovePosition(targetPosition);
-    //    }
-
-    //    {
-    //        // Determine the priority of movement based on input
-    //        if (horizontalInput != 0)
-    //        {
-    //            isMovingHorizontally = true;
-    //        }
-    //        else if (verticalInput != 0)
-    //        {
-    //            isMovingHorizontally = false;
-    //        }
-
-    //        // Set movement direction and optionally rotate the player 
-    //        if (isMovingHorizontally)
-    //        {
-    //            movement = new Vector2(horizontalInput, 0);
-
-
-    //            //make the tank sprite face left or right depending on direction 
-    //            if (horizontalInput == 1)
-    //            {
-    //                RotateEnemy(horizontalInput, -90);
-    //            }
-    //            else if (horizontalInput == -1)
-    //            {
-    //                RotateEnemy(horizontalInput, 90);
-    //            }
-    //        }
-    //        else
-    //        {
-    //            movement = new Vector2(0, verticalInput);
-
-    //            //make the tank sprite face up or down depending on direction 
-    //            if (verticalInput == 1)
-    //            {
-    //                RotateEnemy(90, verticalInput);
-    //            }
-    //            else if (verticalInput == -1)
-    //            {
-    //                RotateEnemy(-90, verticalInput);
-    //            }
-
-    //        }
-    //    }
-    //}
-
+        if (hit.collider != null)
+        {
+            Debug.Log("Blocked by: " + hit.collider.gameObject.name);
+            return true;
+        }
+        return false;
+    }
 
 
 }

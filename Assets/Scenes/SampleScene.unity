@@ -181,13 +181,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ca54e543e05ff44ca28eb5a647c7202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 0
   shellPrefab: {fileID: 2980163820454248444, guid: 6a67cec6e0e33094497926bcb66ea13f, type: 3}
   scoreOnDestroy: 0
   movement: {x: 0, y: 0}
   aiController: {fileID: 0}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!4 &486619445
 Transform:
   m_ObjectHideFlags: 0
@@ -798,7 +798,7 @@ Transform:
   m_GameObject: {fileID: 1762930695}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.24, y: -3.88, z: 0}
+  m_LocalPosition: {x: -5.26, y: -3.87, z: 0}
   m_LocalScale: {x: 6.1, y: 6.1, z: 0}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -816,13 +816,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 230d8a6ec76ee6f41ba244b0063dd0c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 64
   shellPrefab: {fileID: 2980163820454248444, guid: 6a67cec6e0e33094497926bcb66ea13f, type: 3}
   scoreOnDestroy: 0
   movement: {x: 0, y: 0}
   aiController: {fileID: 0}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 320
 --- !u!50 &1762930699
 Rigidbody2D:
   serializedVersion: 5
@@ -923,7 +923,7 @@ GameObject:
   - component: {fileID: 2097129972}
   - component: {fileID: 2097129971}
   - component: {fileID: 2097129975}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1087,7 +1087,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 200
   shellPrefab: {fileID: 2980163820454248444, guid: 39024b584b2d6c64893fc21a1d676504, type: 3}
 --- !u!1 &2119128273
 GameObject:
