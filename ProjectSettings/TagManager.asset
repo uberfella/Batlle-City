@@ -10,6 +10,7 @@ TagManager:
   - Concrete
   - Base
   - EnemyLvl1
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Obstacle
   - Enemy
   - Player
-  - 
+  - Wall
   - 
   - 
   - 

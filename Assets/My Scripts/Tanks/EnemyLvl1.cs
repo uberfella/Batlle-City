@@ -1,15 +1,18 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 
 public class EnemyLvl1 : Enemy
 {
 
-    private readonly float changeDirectionTime = 2f; // Change direction every 2 seconds 
+    private readonly float changeDirectionTime = 0.5f; // Change direction every x milliseconds 
     private float timerForShooting;
     private int shotCooldown = 1;
-    private float timerForDirection = 1.8f;
+    public float timePassedSinceBlocked = 0f;
     private bool requestNewCooldown = true;
     private bool requestNewDirection = true;
+    private Vector2 currentMoveDirection = Vector2.zero;
 
     void Start()
     {
@@ -18,8 +21,11 @@ public class EnemyLvl1 : Enemy
         scoreOnDestroy = 1;
         aiController = GetComponent<AiController>();
         rb = GetComponent<Rigidbody2D>();
-
+        boxCollider = GetComponent<BoxCollider2D>();
+        currentMoveDirection = getDirection();
     }
+
+
 
     // Update is called once per frame
     void Update()
@@ -27,33 +33,36 @@ public class EnemyLvl1 : Enemy
         //---------------
         //MOVING
 
-        //Vector2 moveDirection = new Vector2(aiController.GetHorizontalRandom(), aiController.GetVerticalRandom()).normalized;
-        //Debug.Log("requesting ai values horizontal of which = " + aiController.GetHorizontalRandom());
-        //EnemyMove(moveDirection);
+        EnemyMove(currentMoveDirection);
+        //Debug.Log("timePassedSinceBlocked = " + timePassedSinceBlocked);
 
-
-
-
-        //EnemyMove(aiController.GetVerticalRandom(), aiController.GetHorizontalRandom());
-        //Vector2 moveDirection = new Vector2(aiController.GetHorizontalRandom(), aiController.GetVerticalRandom()).normalized;
-        //Debug.Log("requesting ai values horizontal of which = " + aiController.GetHorizontalRandom());
-
-        //EnemyMove(moveDirection);
-
-        timerForDirection += Time.deltaTime;
-        if (timerForDirection >= changeDirectionTime)
+        if (objectIsCurrentlyBeingBlocked)
         {
-            timerForDirection = 0;
-            Vector2 moveDirection = new Vector2(aiController.GetHorizontalRandom(), aiController.GetVerticalRandom()).normalized;
-            Debug.Log("requesting ai values horizontal of which = " + aiController.GetHorizontalRandom());
-            EnemyMove(moveDirection);
-            //requestNewDirection = true;
+            timePassedSinceBlocked += Time.deltaTime;
+            //Debug.Log("timePassedSinceBlocked: " + timePassedSinceBlocked);
+            requestNewDirection = true;
+        }
+        else
+        {
+            //Debug
+            timePassedSinceBlocked = 0;
         }
 
+        if (requestNewDirection && timePassedSinceBlocked >= changeDirectionTime)
+        {
+            //Debug.Log("Requesting new direction");
+            //Debug.Log("--------------");
+            //Debug.Log("--------------");
+            //Debug.Log("--------------");
+            timePassedSinceBlocked = 0;
+            //Vector2 moveDirection = new Vector2(aiController.GetHorizontalRandom(), aiController.GetVerticalRandom()).normalized;
 
-        //that works w/o stutters
-        //Vector2 moveDirection = new Vector2(1, 1);
-        //EnemyMove(moveDirection);
+            //
+            SetMoveDirection(getDirection());
+            //Debug.Log("getDirection() = " + getDirection());
+            requestNewDirection = false;
+        }
+
 
         //---------------
 
@@ -69,7 +78,7 @@ public class EnemyLvl1 : Enemy
         if (timerForShooting >= shotCooldown)
         {
             timerForShooting = 0;
-            ShootTheGun();
+            //ShootTheGun();
             requestNewCooldown = true;
         }
         //-------------
@@ -79,64 +88,31 @@ public class EnemyLvl1 : Enemy
     {
 
 
-        //ConstrainMovements();
-
     }
 
-    //public void EnemyMove(Vector2 moveDir)
-    //{
-    //    //possible values for both inputs are -1, 0, 1
-    //    Vector2 targetPosition = rb.position + moveDir * speed * Time.fixedDeltaTime;
+    private Vector2 getDirection()
+    {
+        //-1, 1, -1, 1
+        //
 
-    //    if (!IsBlocked(targetPosition, moveDir) && MovementIsWithinLevelsRange(targetPosition))
-    //    {
-    //        rb.MovePosition(targetPosition);
-    //    }
+        //this takes a toll on CPU no cap
+        do
+        {
+            horizontalInput = aiController.GetHorizontalRandom();
+            verticalInput = aiController.GetVerticalRandom();
+        }
+        while (horizontalInput == verticalInput);
 
+        //does it work?
+        RestrictDiagonalMovements();
 
+        return new Vector2(horizontalInput, verticalInput).normalized;
+    }
 
-    //    //make the tank sprite face left or right depending on direction 
-    //    if (horizontalInput == 1)
-    //    {
-    //        RotatePlayer(horizontalInput, -90);
-    //    }
-    //    else if (horizontalInput == -1)
-    //    {
-    //        RotatePlayer(horizontalInput, 90);
-    //    }
+    private void SetMoveDirection(Vector2 newDirection)
+    {
+        currentMoveDirection = newDirection;
+    }
 
-
-    //    //make the tank sprite face up or down depending on direction 
-    //    if (verticalInput == 1)
-    //    {
-    //        RotatePlayer(90, verticalInput);
-    //    }
-    //    else if (verticalInput == -1)
-    //    {
-    //        RotatePlayer(-90, verticalInput);
-    //    }
-
-
-
-    //}
-    //private bool IsBlocked(Vector2 targetPos, Vector2 moveDir)
-    //{
-    //    // Cast a box to detect collisions ahead
-    //    RaycastHit2D hit = Physics2D.BoxCast(
-    //        boxCollider.bounds.center,  // Cast from collider center
-    //        boxCollider.bounds.size,    // Use actual collider size
-    //        0f,                         // No rotation
-    //        moveDir,                    // Move direction
-    //        0.1f,                        // Distance to check
-    //        obstacleLayer                // Check against obstacles
-    //    );
-
-    //    if (hit.collider != null)
-    //    {
-    //        //Debug.Log("Blocked by: " + hit.collider.gameObject.name);
-    //        return true;
-    //    }
-    //    return false;
-    //}
 
 }

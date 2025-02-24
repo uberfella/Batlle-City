@@ -60,12 +60,14 @@ public class PlayerController2D : Tank
         }
     }
 
+
+
     private void PlayerMove(Vector2 moveDir)
     {
 
         Vector2 targetPosition = rb.position + moveDir * speed * Time.fixedDeltaTime;
 
-        if (!IsBlocked(targetPosition, moveDir) && MovementIsWithinLevelsRange(targetPosition))
+        if (!IsBlocked(targetPosition, moveDir))
         {
             rb.MovePosition(targetPosition);
         }

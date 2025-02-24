@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7193295580205779433}
   - component: {fileID: 7122904808614987316}
   - component: {fileID: 4037227265175001318}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: brick_bottom_left
   m_TagString: Brick
   m_Icon: {fileID: 0}
@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 1288651933642595106}
   - component: {fileID: 8185841713898971449}
   - component: {fileID: 1790003676556979439}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: brick_bottom_right
   m_TagString: Brick
   m_Icon: {fileID: 0}
@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: 6464611390052773706}
   - component: {fileID: 9213392051751885381}
   - component: {fileID: 5441034103422482933}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: brick_top_left
   m_TagString: Brick
   m_Icon: {fileID: 0}
@@ -538,7 +538,7 @@ GameObject:
   - component: {fileID: 7592963744619633892}
   - component: {fileID: 7274346383932562303}
   - component: {fileID: 3439388516206481037}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: brick_top_left
   m_TagString: Brick
   m_Icon: {fileID: 0}
@@ -713,7 +713,7 @@ GameObject:
   - component: {fileID: 110088771126386386}
   - component: {fileID: 6145037199405481985}
   - component: {fileID: 6014353101785713461}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: brick_bottom_left
   m_TagString: Brick
   m_Icon: {fileID: 0}
@@ -888,7 +888,7 @@ GameObject:
   - component: {fileID: 4124200758295995233}
   - component: {fileID: 3321249587466633472}
   - component: {fileID: 8569399719367999539}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: brick_bottom_left
   m_TagString: Brick
   m_Icon: {fileID: 0}
@@ -1059,7 +1059,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6466760584753291018}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: brick_quad (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1094,7 +1094,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2260839379469572705}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: brick_quad (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1133,7 +1133,7 @@ GameObject:
   - component: {fileID: 1619654050660288732}
   - component: {fileID: 7822282040494269611}
   - component: {fileID: 1404860216835313079}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: brick_bottom_right
   m_TagString: Brick
   m_Icon: {fileID: 0}
@@ -1308,7 +1308,7 @@ GameObject:
   - component: {fileID: 1786063687362311196}
   - component: {fileID: 7153466656913248888}
   - component: {fileID: 8335877199223138373}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: brick_top_right
   m_TagString: Brick
   m_Icon: {fileID: 0}
@@ -1483,7 +1483,7 @@ GameObject:
   - component: {fileID: 7254745783452382569}
   - component: {fileID: 4980056450378185280}
   - component: {fileID: 5932105507711926233}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: brick_top_left
   m_TagString: Brick
   m_Icon: {fileID: 0}
@@ -1654,7 +1654,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6468948427424707200}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: brick_quad (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1693,7 +1693,7 @@ GameObject:
   - component: {fileID: 2606077623658324277}
   - component: {fileID: 5184974900791072856}
   - component: {fileID: 4826482350674027124}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: brick_top_right
   m_TagString: Brick
   m_Icon: {fileID: 0}
@@ -1864,7 +1864,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2148160428099460961}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Brick_square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1903,7 +1903,7 @@ GameObject:
   - component: {fileID: 1986966367793166030}
   - component: {fileID: 6275381789335039651}
   - component: {fileID: 3219594511136382139}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: brick_bottom_right
   m_TagString: Brick
   m_Icon: {fileID: 0}
@@ -2078,7 +2078,7 @@ GameObject:
   - component: {fileID: 2826172583421442980}
   - component: {fileID: 7207849800024655757}
   - component: {fileID: 2758793121496222010}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: brick_top_right
   m_TagString: Brick
   m_Icon: {fileID: 0}

@@ -7,7 +7,7 @@ public class Enemy : Tank
     public Vector2 movement;
     public AiController aiController;
     public LayerMask obstacleLayer;
-
+    protected bool objectIsCurrentlyBeingBlocked;
 
     protected void ShootTheGun()
     {
@@ -19,12 +19,22 @@ public class Enemy : Tank
         //possible values for both inputs are -1, 0, 1
         Vector2 targetPosition = rb.position + moveDir * speed * Time.fixedDeltaTime;
 
-        if (/*!IsBlocked(targetPosition, moveDir) && */MovementIsWithinLevelsRange(targetPosition))
+        //Debug.Log("horizontalInput = " + horizontalInput);
+        //Debug.Log("verticalInput = " + verticalInput);  
+
+        if (!IsBlocked(targetPosition, moveDir))
         {
             rb.MovePosition(targetPosition);
         }
 
-
+        if (IsBlocked(targetPosition, moveDir))
+        {
+            objectIsCurrentlyBeingBlocked = true;
+        }
+        else 
+        {
+            objectIsCurrentlyBeingBlocked = false;
+        }
 
         //make the tank sprite face left or right depending on direction 
         if (horizontalInput == 1)
@@ -64,7 +74,7 @@ public class Enemy : Tank
 
         if (hit.collider != null)
         {
-            Debug.Log("Blocked by: " + hit.collider.gameObject.name);
+            //Debug.Log("Blocked by: " + hit.collider.gameObject.name);
             return true;
         }
         return false;

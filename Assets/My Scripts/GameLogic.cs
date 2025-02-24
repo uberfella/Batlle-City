@@ -3,6 +3,8 @@ using UnityEngine;
 
 /*
  TODO
+17x17
+17x15
 enemy spawning process and spawn points
 enemies and the player get destroyed on hit, destroyed enemies give score
 Friendly and enemy projectiles will cancel each other out when they collide in the air.
