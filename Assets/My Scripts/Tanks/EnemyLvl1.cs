@@ -5,24 +5,27 @@ using UnityEngine.InputSystem.XR;
 
 public class EnemyLvl1 : Enemy
 {
-
+    public float timePassedSinceBlocked = 0f;
+    
     private readonly float changeDirectionTime = 0.5f; // Change direction every x milliseconds 
     private float timerForShooting;
     private int shotCooldown = 1;
-    public float timePassedSinceBlocked = 0f;
     private bool requestNewCooldown = true;
     private bool requestNewDirection = true;
     private Vector2 currentMoveDirection = Vector2.zero;
+    private Spawner spawner;
 
     void Start()
     {
         health = 1;
-        speed = 5f;
+        speed = 4.2f;
         scoreOnDestroy = 1;
         aiController = GetComponent<AiController>();
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
+        spawner = FindFirstObjectByType<Spawner>();
         currentMoveDirection = getDirection();
+        enemyIsAlive = true;
     }
 
 
@@ -78,16 +81,10 @@ public class EnemyLvl1 : Enemy
         if (timerForShooting >= shotCooldown)
         {
             timerForShooting = 0;
-            //ShootTheGun();
+            ShootTheGun();
             requestNewCooldown = true;
         }
         //-------------
-    }
-
-    void FixedUpdate()
-    {
-
-
     }
 
     private Vector2 getDirection()
@@ -133,72 +130,63 @@ public class EnemyLvl1 : Enemy
         currentMoveDirection = newDirection;
     }
 
-    protected void EnemyMove(Vector2 moveDir)
+    //if (gameObject.CompareTag("enemy0"))
+    //enemyIsAlive
+    private int GetEnemyIndex(string tag) 
     {
-        //possible values for both inputs are -1, 0, 1
-        //Vector2 targetPosition = rb.position + moveDir * speed * Time.fixedDeltaTime;
-        Vector2 targetPosition = (Vector2)transform.position + moveDir * speed * Time.deltaTime;
-
-        //Debug.Log("horizontalInput = " + horizontalInput);
-        //Debug.Log("verticalInput = " + verticalInput);  
-
-        if (!IsBlocked(targetPosition, moveDir))
+        GameObject[] taggedObjects = GameObject.FindGameObjectsWithTag(tag);
+        switch (tag) 
         {
-            //rb.MovePosition(targetPosition);
-            transform.position = targetPosition;
+            case "enemy0":
+                return 0;
         }
-
-        if (IsBlocked(targetPosition, moveDir))
-        {
-            objectIsCurrentlyBeingBlocked = true;
-        }
-        else
-        {
-            objectIsCurrentlyBeingBlocked = false;
-        }
-
-        //make the tank sprite face left or right depending on direction 
-        if (horizontalInput == 1)
-        {
-            RotatePlayer(horizontalInput, -90);
-        }
-        else if (horizontalInput == -1)
-        {
-            RotatePlayer(horizontalInput, 90);
-        }
-
-
-        //make the tank sprite face up or down depending on direction 
-        if (verticalInput == 1)
-        {
-            RotatePlayer(90, verticalInput);
-        }
-        else if (verticalInput == -1)
-        {
-            RotatePlayer(-90, verticalInput);
-        }
-
+        return 1;
     }
 
-    protected bool IsBlocked(Vector2 targetPos, Vector2 moveDir)
+    public override void TakeDamage(int amount)
     {
-        // Cast a box to detect collisions ahead
-        RaycastHit2D hit = Physics2D.BoxCast(
-            boxCollider.bounds.center,  // Cast from collider center
-            boxCollider.bounds.size,    // Use actual collider size
-            0f,                         // No rotation
-            moveDir,                    // Move direction
-            0.1f,                        // Distance to check
-            obstacleLayer                // Check against obstacles
-        );
+        ChangeEnemyStatus();
 
-        if (/*hit.collider != null && */hit.collider.gameObject != gameObject)
+        base.TakeDamage(amount);
+    }
+
+    public void ChangeEnemyStatus()
+    {
+        switch (gameObject.layer)
         {
-
-            Debug.Log("Blocked by: " + hit.collider.gameObject.name);
-            return true;
+            case 7:
+                Debug.Log("7 is false");
+                spawner.enemyAlive[0] = false;
+                break;
+            case 10:
+                Debug.Log("10 is false");
+                spawner.enemyAlive[1] = false;
+                break;
+            case 11:
+                Debug.Log("11 is false");
+                spawner.enemyAlive[2] = false;
+                break;
+            case 12:
+                Debug.Log("12 is false");
+                spawner.enemyAlive[3] = false;
+                break;
         }
-        return false;
+    }
+
+    public int GetEnemyLayer() 
+    {
+        switch (gameObject.layer)
+        {
+            case 7:
+                return 7;
+            case 10:
+                return 10;
+            case 11:
+                return 11;
+            case 12:
+                return 12;
+        }
+        return 0;
     }
 
 }

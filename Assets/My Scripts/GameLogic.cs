@@ -1,17 +1,21 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 
 /*
  TODO
-17x17
-17x15
-enemy spawning process and spawn points
-enemies and the player get destroyed on hit, destroyed enemies give score
-Friendly and enemy projectiles will cancel each other out when they collide in the air.
-player powerup, chanign sprite and damage (?)
-Ai - enemy changes direction if facing the obstacle for more than 0.5 sec
-sprites - use sprite atlas to avoid visible lines between sprites
-remove physics from tanks so you can't bump into them and move their bodies
+13x13
+
+enemy spawning process and spawn points ✓
+enemies and the player get destroyed on hit, destroyed enemies give score ✓
+how many spawns are there?
+player spawns and lives count
+tanks are invincible when spawning
+friendly and enemy projectiles will cancel each other out when they collide in midair ✓
+player powerup, changing sprite and damage (?)
+Ai - enemy changes direction if facing the obstacle for more than 0.5 sec ✓
+sprites - use sprite atlas to avoid visible breaks between individual sprites 
+remove physics from tanks so you can't bump into them and move their bodies ✓
+get rid of objectIsCurrentlyBeingBlocked bool
  * 
  * 
  * 

@@ -10,31 +10,10 @@ public class Tank : MonoBehaviour
     protected Vector2 maxBounds = new Vector2(6.5f, 6.5f);
     protected float horizontalInput;
     protected float verticalInput;
-
-    protected virtual void TakeDamage(int damage)
-    {
-        health -= damage;
-        if (health <= 0)
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    //protected bool MovementIsWithinLevelsRange(Vector2 targetPosition)
-    //{
-    //    if (targetPosition.x > minBounds.x &&
-    //        targetPosition.x < maxBounds.x &&
-    //        targetPosition.y > minBounds.y &&
-    //        targetPosition.y < maxBounds.y)
-    //    {
-    //        return true;
-    //    }
-    //    return false;
-    //}
+    public bool enemyIsAlive = false;
 
     //so in the google play ripoff there is obviously no diagonal movement just like in the NES original
     //but in the said ripoff if you hold vertical you can not change the direction to the horizontal, and if you hold horizontal you can change it to the vertical immediately
-    //I'm too lazy to check if that's the case in the original but anyways here's my take on that logic
     //let's declare it in the superclass so the everyone can use it
     protected void RestrictDiagonalMovements()
     {
@@ -60,6 +39,9 @@ public class Tank : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
-    
+    //public int GetLayerNumber() 
+    //{
+
+    //}
 
 }
