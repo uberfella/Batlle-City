@@ -5,6 +5,7 @@ public class Spawner : MonoBehaviour
     public GameObject[] enemyPrefabLvl1;
     public Transform[] spawnPoints;
     public int enemiesToSpawn = 10;
+    //TODO get rid of enemiesOnTheField
     public int enemiesOnTheField = 4;
     public bool[] enemyAlive = new bool[4] { false, false, false, false }; //7, 10, 11, 12
     public LayerMask obstructionMask;
@@ -14,10 +15,10 @@ public class Spawner : MonoBehaviour
 
     void Start()
     {
-        for (int i = 0; i < enemiesOnTheField; i++)
-        {
-            SpawnEnemy(i);
-        }
+        //for (int i = 0; i < enemiesOnTheField; i++)
+        //{
+        //    SpawnEnemy(i);
+        //}
 
     }
 
@@ -47,8 +48,13 @@ public class Spawner : MonoBehaviour
         float checkRadius = 1.0f;
 
         Transform spawnPoint = spawnPoints[index];
-        //GameObject newEnemy = Instantiate(enemyPrefabLvl1[index], spawnPoint.position, Quaternion.identity);
-        //enemyAlive[index] = true;
+
+        //dynamic spawnPoint
+        if (index == 3)
+        {
+            int randomSpawnPoint = Random.Range(0, 3);
+            spawnPoint = spawnPoints[randomSpawnPoint];
+        }
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(spawnPoint.position, checkRadius, obstructionMask);
 
@@ -63,10 +69,13 @@ public class Spawner : MonoBehaviour
         }
     }
 
+    //int random = Random.Range(minValForInput, maxValForInput);
+    //spawnPoint[3]
+
 }
 
 /*
-4 spawn points
+3 static spawn points, extra dynamic one
 each point belongs to a separate enemy, enemy index
 if the enemy with corresponding index dies the new one gets to spawn
 

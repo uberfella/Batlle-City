@@ -49,7 +49,9 @@ public class Shell : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                //Destroy(other.gameObject);
+                PlayerController2D playerController2D = other.gameObject.GetComponent<PlayerController2D>();
+                playerController2D.TakeDamage(1);
+                Destroy(other.gameObject);
                 Destroy(gameObject);
             }
             //else if (other.gameObject.CompareTag("ShellPlayer")) 

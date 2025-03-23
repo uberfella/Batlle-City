@@ -7,9 +7,11 @@
 
 enemy spawning process and spawn points ✓
 enemies and the player get destroyed on hit, destroyed enemies give score ✓
-how many spawns are there?
-player spawns and lives count
-tanks are invincible when spawning
+how many spawns are there? 3 spawns but 4 concurrent enemies. the fourth enemy spawns on random spawn 1-3 ✓
+are the enemies layers consistent? ✓
+player spawns and lives count ✓
+ui for lives and enemy count
+tanks are invincible and frozen when spawning
 friendly and enemy projectiles will cancel each other out when they collide in midair ✓
 player powerup, changing sprite and damage (?)
 Ai - enemy changes direction if facing the obstacle for more than 0.5 sec ✓

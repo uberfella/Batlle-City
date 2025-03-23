@@ -87,7 +87,7 @@ public class Enemy : Tank
 
         if (hit.collider != null)
         {
-            Debug.Log("Blocked by: " + hit.collider.gameObject.name);
+            //Debug.Log("Blocked by: " + hit.collider.gameObject.name);
             return true;
         }
         return false;

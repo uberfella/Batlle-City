@@ -8,11 +8,13 @@ public class PlayerController2D : Tank
 {
     public LayerMask obstacleLayer;
     public GameObject shellPrefab;
+    
+    public bool playerIsAlive;
 
     private float timerForShooting;
     private float shootCooldown = 1f;
     private bool cooldownHasPassed = true;
-
+    private PlayerSpawner playerSpawner;
 
     void Start()
     {
@@ -22,7 +24,8 @@ public class PlayerController2D : Tank
 
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
-
+        //playerSpawner = GetComponent<PlayerSpawner>();
+        playerIsAlive = true;
     }
 
     void Update()
@@ -40,6 +43,8 @@ public class PlayerController2D : Tank
             timerForShooting = 0;
             cooldownHasPassed = true;
         }
+
+
     }
 
     void FixedUpdate()
@@ -60,7 +65,17 @@ public class PlayerController2D : Tank
         }
     }
 
-
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+            playerIsAlive = false;
+            PlayerSpawner.playerLives--;
+            Debug.Log("playerLives = " + PlayerSpawner.playerLives);
+        }
+    }
 
     private void PlayerMove(Vector2 moveDir)
     {

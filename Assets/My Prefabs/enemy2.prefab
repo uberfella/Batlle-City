@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 230d8a6ec76ee6f41ba244b0063dd0c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyIsAlive: 0
   shellPrefab: {fileID: 2980163820454248444, guid: 6a67cec6e0e33094497926bcb66ea13f, type: 3}
   scoreOnDestroy: 0
   movement: {x: 0, y: 0}
