@@ -24,7 +24,7 @@ public class PlayerController2D : Tank
 
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
-        //playerSpawner = GetComponent<PlayerSpawner>();
+        //playerSpawner = GetComponent<PlayerSpawner>(); hi
         playerIsAlive = true;
     }
 
