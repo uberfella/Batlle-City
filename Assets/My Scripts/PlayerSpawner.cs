@@ -1,16 +1,14 @@
 using System;
 using System.Collections;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class PlayerSpawner : MonoBehaviour
 {
     public PlayerController2D playerController2D;
     public Transform spawnPoint;
     public GameObject playerPrefab;
     public static int playerLives = 2;
-    /*
-         
-    */
+    public Text playerLivesUI;
 
     void Start()
     {
@@ -19,7 +17,7 @@ public class PlayerSpawner : MonoBehaviour
 
     void Update()
     {
-        if (!playerController2D.playerIsAlive && playerLives >= 0) 
+        if (!playerController2D.playerIsAlive && playerLives >= 0)
         {
             StartCoroutine(RespawnPlayer());
         }
@@ -28,6 +26,9 @@ public class PlayerSpawner : MonoBehaviour
         {
             Debug.Log("GAME OVER, out of lives");
         }
+
+        playerLivesUI.text = playerLives.ToString();
+
     }
 
     private IEnumerator RespawnPlayer()
