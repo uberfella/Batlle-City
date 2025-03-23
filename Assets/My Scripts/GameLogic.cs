@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
-
+using UnityEngine.UI;
+using TMPro;
+using System.Collections;
 
 /*
  TODO
@@ -10,7 +12,8 @@ enemies and the player get destroyed on hit, destroyed enemies give score ✓
 how many spawns are there? 3 spawns but 4 concurrent enemies. the fourth enemy spawns on random spawn 1-3 ✓
 are the enemies layers consistent? ✓
 player spawns and lives count ✓
-ui for lives and enemy count
+ui for lives and enemy count ✓
+base sprite turns into flag of surrender when destroyed
 tanks are invincible and frozen when spawning
 friendly and enemy projectiles will cancel each other out when they collide in midair ✓
 player powerup, changing sprite and damage (?)
@@ -33,15 +36,51 @@ Enemy tanks that flash red provide power-ups whenever hit. The power up will app
 public class GameLogic : MonoBehaviour
 {
     public static bool GameOver;
+    public static int levelNum = 1;
+    public static int currentScore = 0;
+    public static int highScore = 0;
+    public Text levelNumText;
+    public Text currentScoreText;
+    public Text highScoreText;
+    public RectTransform gameOverText;
+    public float moveDuration = 1.5f;
+    public Vector2 targetPosition;
+    private Vector2 startPosition;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        startPosition = gameOverText.anchoredPosition;
+        gameOverText.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        levelNumText.text = levelNum.ToString();
+        currentScoreText.text = currentScore.ToString("D6");
+        highScoreText.text = highScore.ToString("D6");
 
+        if(GameOver) 
+        {
+            ShowGameOver();
+        }
+    }
+
+    public void ShowGameOver()
+    {
+        gameOverText.gameObject.SetActive(true);
+        StartCoroutine(MoveText(startPosition, targetPosition, moveDuration));
+    }
+
+    IEnumerator MoveText(Vector2 from, Vector2 to, float duration)
+    {
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            gameOverText.anchoredPosition = Vector2.Lerp(from, to, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        gameOverText.anchoredPosition = to; // Ensure it reaches the final position
     }
 }

@@ -31,7 +31,7 @@ public class PlayerController2D : Tank
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Space) && cooldownHasPassed)
+        if (Input.GetKeyDown(KeyCode.Space) && cooldownHasPassed && !GameLogic.GameOver)
         {
             ShootTheGun();
             cooldownHasPassed = false;
@@ -59,7 +59,7 @@ public class PlayerController2D : Tank
         //Debug.Log("horizontalInput = " + horizontalInput);
         //Debug.Log("verticalInput = " + verticalInput);
 
-        //if (moveDirection != Vector2.zero)
+        if (!GameLogic.GameOver)
         {
             PlayerMove(moveDirection);
         }

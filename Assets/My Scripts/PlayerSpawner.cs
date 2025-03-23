@@ -27,8 +27,10 @@ public class PlayerSpawner : MonoBehaviour
             Debug.Log("GAME OVER, out of lives");
         }
 
-        playerLivesUI.text = playerLives.ToString();
-
+        if (playerLives >= 0)
+        {
+            playerLivesUI.text = playerLives.ToString();
+        }
     }
 
     private IEnumerator RespawnPlayer()

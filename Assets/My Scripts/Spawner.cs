@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour
 {
     public GameObject[] enemyPrefabLvl1;
     public Transform[] spawnPoints;
     public int enemiesToSpawn = 10;
+    public Text enemiesToSpawnText;
     //TODO get rid of enemiesOnTheField
     public int enemiesOnTheField = 4;
     public bool[] enemyAlive = new bool[4] { false, false, false, false }; //7, 10, 11, 12
@@ -24,6 +26,9 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
+        
+        enemiesToSpawnText.text = enemiesToSpawn.ToString();
+
         for (int i = 0; i < enemyAlive.Length; i++)
         {
             if (!enemyAlive[i] && enemiesToSpawn > 0)
