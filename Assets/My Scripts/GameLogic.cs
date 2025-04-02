@@ -13,8 +13,13 @@ how many spawns are there? 3 spawns but 4 concurrent enemies. the fourth enemy s
 are the enemies layers consistent? ✓
 player spawns and lives count ✓
 ui for lives and enemy count ✓
-base sprite turns into flag of surrender when destroyed
-tanks are invincible and frozen when spawning
+base sprite turns into flag of surrender when destroyed ✓
+player is invincible for 3 seconds when spawning.✓
+enemy and player animations
+spawning animations before enemy spawn
+score counting 
+sounds
+main menu and levels system
 friendly and enemy projectiles will cancel each other out when they collide in midair ✓
 player powerup, changing sprite and damage (?)
 Ai - enemy changes direction if facing the obstacle for more than 0.5 sec ✓
@@ -37,11 +42,9 @@ public class GameLogic : MonoBehaviour
 {
     public static bool GameOver;
     public static int levelNum = 1;
-    public static int currentScore = 0;
-    public static int highScore = 0;
+
     public Text levelNumText;
-    public Text currentScoreText;
-    public Text highScoreText;
+
     public RectTransform gameOverText;
     public float moveDuration = 1.5f;
     public Vector2 targetPosition;
@@ -57,8 +60,7 @@ public class GameLogic : MonoBehaviour
     void Update()
     {
         levelNumText.text = levelNum.ToString();
-        currentScoreText.text = currentScore.ToString("D6");
-        highScoreText.text = highScore.ToString("D6");
+
 
         if(GameOver) 
         {

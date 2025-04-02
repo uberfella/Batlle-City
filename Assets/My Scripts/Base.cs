@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Base : MonoBehaviour
 {
+    public GameObject surrenderFlagSprite;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,9 +19,9 @@ public class Base : MonoBehaviour
     {
         if (other.gameObject.CompareTag("ShellPlayer")|| other.gameObject.CompareTag("ShellEnemy"))
         {
+            surrenderFlagSprite.GetComponent<SpriteRenderer>().enabled = true;
             Destroy(gameObject);
             GameLogic.GameOver = true;
-            Debug.Log("GAME OVER");
         }
     }
 }

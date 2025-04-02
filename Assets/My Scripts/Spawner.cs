@@ -38,7 +38,7 @@ public class Spawner : MonoBehaviour
                 {
                     SpawnEnemy(i);
                     enemiesToSpawn--;
-                    Debug.Log("enemies to spawn: " + enemiesToSpawn);
+                    //Debug.Log("enemies to spawn: " + enemiesToSpawn);
                     timer = 0f;
                 }
 

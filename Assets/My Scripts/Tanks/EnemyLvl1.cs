@@ -19,7 +19,7 @@ public class EnemyLvl1 : Enemy
     {
         health = 1;
         speed = 4.2f;
-        scoreOnDestroy = 1;
+        scoreOnDestroy = 100;
         aiController = GetComponent<AiController>();
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
@@ -33,6 +33,10 @@ public class EnemyLvl1 : Enemy
     // Update is called once per frame
     void Update()
     {
+        if (!spawnFreezeIsOver)
+        {
+            FreezeOnSpawn();
+        }
         //---------------
         //MOVING
 

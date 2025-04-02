@@ -10,7 +10,10 @@ public class Tank : MonoBehaviour
     protected Vector2 maxBounds = new Vector2(6.5f, 6.5f);
     protected float horizontalInput;
     protected float verticalInput;
+    protected bool spawnFreezeIsOver = false;
     public bool enemyIsAlive = false;
+    private float timerForFreezing;
+    private float timeToBeFrozen = 5f;
 
     //so in the google play ripoff there is obviously no diagonal movement just like in the NES original
     //but in the said ripoff if you hold vertical you can not change the direction to the horizontal, and if you hold horizontal you can change it to the vertical immediately
@@ -39,9 +42,18 @@ public class Tank : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
-    //public int GetLayerNumber() 
-    //{
-
-    //}
+    public void FreezeOnSpawn()
+    {
+        timerForFreezing += Time.deltaTime;
+        if (!spawnFreezeIsOver)
+        {
+            //Debug.Log("timerForFreezing = " + timerForFreezing);
+        }
+        if (timerForFreezing >= timeToBeFrozen) 
+        {
+            //Debug.Log("spawnFreezeIsOver = " + spawnFreezeIsOver);
+            spawnFreezeIsOver = true;
+        }
+    }
 
 }

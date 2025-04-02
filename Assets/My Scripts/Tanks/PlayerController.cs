@@ -2,17 +2,18 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 
-//The logic in this script has been copied from learn.unity.com lesson project with adjustments
+//The RotatePlayer logic in this script has been copied from learn.unity.com lesson project with adjustments
 
 public class PlayerController2D : Tank
 {
     public LayerMask obstacleLayer;
     public GameObject shellPrefab;
-    
     public bool playerIsAlive;
+    public bool playerIsInvincible;
 
     private float timerForShooting;
     private float shootCooldown = 1f;
+    private float timeToBeInvincible = 3.0f;
     private bool cooldownHasPassed = true;
     private PlayerSpawner playerSpawner;
 
@@ -25,13 +26,22 @@ public class PlayerController2D : Tank
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         //playerSpawner = GetComponent<PlayerSpawner>();
+        
         playerIsAlive = true;
+        playerIsInvincible = true;
+        Debug.Log("playerIsInvincible = true;");
+
+        spawnFreezeIsOver = true;
     }
 
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.Space) && cooldownHasPassed && !GameLogic.GameOver)
+        //if (!spawnFreezeIsOver)
+        //{
+        //    FreezeOnSpawn();
+        //}
+        
+        if (Input.GetKeyDown(KeyCode.Space) && spawnFreezeIsOver && cooldownHasPassed && !GameLogic.GameOver)
         {
             ShootTheGun();
             cooldownHasPassed = false;
@@ -44,7 +54,12 @@ public class PlayerController2D : Tank
             cooldownHasPassed = true;
         }
 
-
+        timeToBeInvincible -= Time.deltaTime;
+        if (timeToBeInvincible <= 0)
+        {
+            Debug.Log("playerIsInvincible = false;");
+            playerIsInvincible = false;
+        }
     }
 
     void FixedUpdate()
@@ -56,10 +71,8 @@ public class PlayerController2D : Tank
         RestrictDiagonalMovements();
 
         Vector2 moveDirection = new Vector2(horizontalInput, verticalInput).normalized;
-        //Debug.Log("horizontalInput = " + horizontalInput);
-        //Debug.Log("verticalInput = " + verticalInput);
 
-        if (!GameLogic.GameOver)
+        if (!GameLogic.GameOver && spawnFreezeIsOver)
         {
             PlayerMove(moveDirection);
         }

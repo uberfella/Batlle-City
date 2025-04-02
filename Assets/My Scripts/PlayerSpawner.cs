@@ -12,6 +12,7 @@ public class PlayerSpawner : MonoBehaviour
 
     void Start()
     {
+
         playerController2D = FindFirstObjectByType<PlayerController2D>();
     }
 

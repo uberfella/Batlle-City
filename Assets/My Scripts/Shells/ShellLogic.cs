@@ -3,12 +3,14 @@ using UnityEngine;
 public class Shell : MonoBehaviour
 {
     public float speed = 0.1f;
+    public PlayerController2D playerController2D;
     //public GameObject myPrefab;
     //private EnemyLvl1 enemyLvl1;
 
     void Start()
     {
         //enemyLvl1 = GetComponent<EnemyLvl1>();
+        playerController2D = FindFirstObjectByType<PlayerController2D>();
     }
     void Update()
     {
@@ -37,7 +39,7 @@ public class Shell : MonoBehaviour
                     Destroy(gameObject);
                 }
             }
-            //destroy both shells if they collide w each other
+            //destroy both shells if they collide w each other in mid-air
             else if (other.gameObject.CompareTag("ShellEnemy"))
             {
                 Destroy(other.gameObject);
@@ -47,12 +49,20 @@ public class Shell : MonoBehaviour
         //the shell is enemy's
         else if (gameObject.CompareTag("ShellEnemy"))
         {
+            //the enemy shell hits a player
             if (other.gameObject.CompareTag("Player"))
             {
-                PlayerController2D playerController2D = other.gameObject.GetComponent<PlayerController2D>();
-                playerController2D.TakeDamage(1);
-                Destroy(other.gameObject);
-                Destroy(gameObject);
+                if (!playerController2D.playerIsInvincible)
+                {
+                    PlayerController2D playerController2D = other.gameObject.GetComponent<PlayerController2D>();
+                    playerController2D.TakeDamage(1);
+                    Destroy(other.gameObject);
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
             }
             //else if (other.gameObject.CompareTag("ShellPlayer")) 
             //{
