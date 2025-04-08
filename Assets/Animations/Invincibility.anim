@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: New Animation
+  m_Name: Invincibility
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -20,10 +20,12 @@ AnimationClip:
   m_PPtrCurves:
   - serializedVersion: 2
     curve:
-    - time: 0.15
-      value: {fileID: -2295598453352507679, guid: 1319ccec3a2870b4984212425767821e, type: 3}
-    - time: 1
-      value: {fileID: 4334783836991956000, guid: a59f121c0279518468416f541d1a41cd, type: 3}
+    - time: 0
+      value: {fileID: -6198253189815110959, guid: b48343022b318d144af083d8435fa0b8, type: 3}
+    - time: 0.28333333
+      value: {fileID: 6765067242465591899, guid: 6c17eb2bf34fe4a4bbf8db45fdb6dd3a, type: 3}
+    - time: 0.55
+      value: {fileID: -6198253189815110959, guid: b48343022b318d144af083d8435fa0b8, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,14 +48,15 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -2295598453352507679, guid: 1319ccec3a2870b4984212425767821e, type: 3}
-    - {fileID: 4334783836991956000, guid: a59f121c0279518468416f541d1a41cd, type: 3}
+    - {fileID: -6198253189815110959, guid: b48343022b318d144af083d8435fa0b8, type: 3}
+    - {fileID: 6765067242465591899, guid: 6c17eb2bf34fe4a4bbf8db45fdb6dd3a, type: 3}
+    - {fileID: -6198253189815110959, guid: b48343022b318d144af083d8435fa0b8, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.0166667
+    m_StopTime: 0.56666666
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

@@ -16,6 +16,8 @@ public class PlayerController2D : Tank
     private float timeToBeInvincible = 3.0f;
     private bool cooldownHasPassed = true;
     private PlayerSpawner playerSpawner;
+    private GameObject invincibilityAnim;
+    private Renderer invincibilityAnimationRenderer;
 
     void Start()
     {
@@ -32,6 +34,13 @@ public class PlayerController2D : Tank
         Debug.Log("playerIsInvincible = true;");
 
         spawnFreezeIsOver = true;
+
+        // Find the child by name or reference it directly
+        invincibilityAnim = transform.Find("InvincibilityAnim").gameObject;
+
+        // Get the Renderer (could be SpriteRenderer, MeshRenderer, etc.)
+        invincibilityAnimationRenderer = invincibilityAnim.GetComponent<Renderer>();
+        invincibilityAnimationRenderer.enabled = true;
     }
 
     void Update()
@@ -59,6 +68,7 @@ public class PlayerController2D : Tank
         {
             Debug.Log("playerIsInvincible = false;");
             playerIsInvincible = false;
+            invincibilityAnimationRenderer.enabled = false;
         }
     }
 
