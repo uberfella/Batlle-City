@@ -10,20 +10,30 @@ public class PlayerController2D : Tank
     public GameObject shellPrefab;
     public bool playerIsAlive;
     public bool playerIsInvincible;
+    public Sprite[] tankLevelOneSprites;
+    public Sprite[] tankLevelTwoSprites;
+    public Sprite[] tankLevelThreeSprites;
+    public Sprite[] tankLevelFourSprites;
+    public float animationSpeed = 0.2f; // Time between frames
+    public SpriteRenderer spriteRenderer;
+    public int playerLevel;
 
     private float timerForShooting;
     private float shootCooldown = 1f;
     private float timeToBeInvincible = 3.0f;
     private bool cooldownHasPassed = true;
-    private PlayerSpawner playerSpawner;
+    //private PlayerSpawner playerSpawner;
     private GameObject invincibilityAnim;
     private Renderer invincibilityAnimationRenderer;
+    private int currentFrame = 0;
+    private float timer = 0f;
 
     void Start()
     {
 
         health = 1;
         speed = 5f;
+        projectileSpeed = 0.1f;
 
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
@@ -45,10 +55,6 @@ public class PlayerController2D : Tank
 
     void Update()
     {
-        //if (!spawnFreezeIsOver)
-        //{
-        //    FreezeOnSpawn();
-        //}
         
         if (Input.GetKeyDown(KeyCode.Space) && spawnFreezeIsOver && cooldownHasPassed && !GameLogic.GameOver)
         {
@@ -70,6 +76,11 @@ public class PlayerController2D : Tank
             playerIsInvincible = false;
             invincibilityAnimationRenderer.enabled = false;
         }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            PlayerLevelUp(); 
+        }
     }
 
     void FixedUpdate()
@@ -77,6 +88,17 @@ public class PlayerController2D : Tank
 
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
+
+        if (horizontalInput != 0 || verticalInput != 0)
+        {
+            timer += Time.deltaTime;
+            if (timer >= animationSpeed)
+            {
+                timer = 0f;
+                currentFrame = (currentFrame + 1) % GetSpriteBasedOnPlayerLevel(playerLevel).Length; //0 
+                spriteRenderer.sprite = GetSpriteBasedOnPlayerLevel(playerLevel)[currentFrame];
+            }
+        }
 
         RestrictDiagonalMovements();
 
@@ -129,7 +151,6 @@ public class PlayerController2D : Tank
         }
     }
 
-
     private bool IsBlocked(Vector2 targetPos, Vector2 moveDir)
     {
         // Cast a box to detect collisions ahead
@@ -153,5 +174,29 @@ public class PlayerController2D : Tank
     private void ShootTheGun()
     {
         Instantiate(shellPrefab, transform.position, transform.rotation);
+    }
+
+    private void PlayerLevelUp() 
+    {
+        if(playerLevel < 4)
+        playerLevel++;
+        Debug.Log("playerLevel = " + playerLevel);
+    }
+
+    private Sprite[] GetSpriteBasedOnPlayerLevel(int playerLevel)
+    {
+        switch (playerLevel)
+        {
+            case 0:
+                return tankLevelOneSprites;
+            case 1:
+                return tankLevelTwoSprites;
+            case 2:
+                return tankLevelThreeSprites;
+            case 3:
+                return tankLevelFourSprites;
+            default:
+                return tankLevelOneSprites;
+        }
     }
 }

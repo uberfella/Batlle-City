@@ -4,8 +4,8 @@ using TMPro;
 using System.Collections;
 
 /*
- TODO
-13x13
+TODO
+Game Plane is 13x13 in size
 
 enemy spawning process and spawn points ✓
 enemies and the player get destroyed on hit, destroyed enemies give score ✓
@@ -15,6 +15,7 @@ player spawns and lives count ✓
 ui for lives and enemy count ✓
 base sprite turns into flag of surrender when destroyed ✓
 player is invincible for 3 seconds when spawning.✓
+do enemies have different projectile speeds ? 
 enemy and player animations
 spawning animations before enemy spawn
 score counting 

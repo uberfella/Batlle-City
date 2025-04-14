@@ -5,11 +5,11 @@ public class Shell : MonoBehaviour
     public float speed = 0.1f;
     public PlayerController2D playerController2D;
     //public GameObject myPrefab;
-    //private EnemyLvl1 enemyLvl1;
+    private EnemyLvl1 enemyLvl1;
 
     void Start()
     {
-        //enemyLvl1 = GetComponent<EnemyLvl1>();
+        enemyLvl1 = GetComponent<EnemyLvl1>();
         playerController2D = FindFirstObjectByType<PlayerController2D>();
     }
     void Update()
