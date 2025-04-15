@@ -27,21 +27,21 @@ public class PlayerController2D : Tank
     private Renderer invincibilityAnimationRenderer;
     private int currentFrame = 0;
     private float timer = 0f;
+    private Shell shell;
 
     void Start()
     {
 
         health = 1;
         speed = 5f;
-        projectileSpeed = 0.1f;
+        projectileSpeed = 10f;
 
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
-        //playerSpawner = GetComponent<PlayerSpawner>();
+        shell = GetComponent<Shell>();
         
         playerIsAlive = true;
         playerIsInvincible = true;
-        Debug.Log("playerIsInvincible = true;");
 
         spawnFreezeIsOver = true;
 
@@ -72,7 +72,6 @@ public class PlayerController2D : Tank
         timeToBeInvincible -= Time.deltaTime;
         if (timeToBeInvincible <= 0)
         {
-            Debug.Log("playerIsInvincible = false;");
             playerIsInvincible = false;
             invincibilityAnimationRenderer.enabled = false;
         }
@@ -95,8 +94,12 @@ public class PlayerController2D : Tank
             if (timer >= animationSpeed)
             {
                 timer = 0f;
-                currentFrame = (currentFrame + 1) % GetSpriteBasedOnPlayerLevel(playerLevel).Length; //0 
-                spriteRenderer.sprite = GetSpriteBasedOnPlayerLevel(playerLevel)[currentFrame];
+                var sprites = GetSpriteBasedOnPlayerLevel(playerLevel);
+                if (sprites.Length > 0)
+                {
+                    currentFrame = (currentFrame + 1) % GetSpriteBasedOnPlayerLevel(playerLevel).Length; //0 
+                    spriteRenderer.sprite = GetSpriteBasedOnPlayerLevel(playerLevel)[currentFrame];
+                }
             }
         }
 
@@ -118,7 +121,6 @@ public class PlayerController2D : Tank
             Destroy(gameObject);
             playerIsAlive = false;
             PlayerSpawner.playerLives--;
-            Debug.Log("playerLives = " + PlayerSpawner.playerLives);
         }
     }
 
@@ -173,14 +175,18 @@ public class PlayerController2D : Tank
 
     private void ShootTheGun()
     {
-        Instantiate(shellPrefab, transform.position, transform.rotation);
+        GameObject shell = Instantiate(shellPrefab, transform.position, transform.rotation);
+        shell.GetComponent<Shell>().SetSpeed(projectileSpeed);
     }
 
     private void PlayerLevelUp() 
     {
-        if(playerLevel < 4)
-        playerLevel++;
-        Debug.Log("playerLevel = " + playerLevel);
+        if (playerLevel <= 4)
+        {
+            playerLevel++;
+            projectileSpeed += 2.5f;
+            Debug.Log("playerLevel = " + playerLevel);
+        }
     }
 
     private Sprite[] GetSpriteBasedOnPlayerLevel(int playerLevel)

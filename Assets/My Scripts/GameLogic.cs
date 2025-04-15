@@ -23,7 +23,8 @@ sounds
 main menu and levels system
 friendly and enemy projectiles will cancel each other out when they collide in midair ✓
 player powerup, changing sprite and damage (?)
-Ai - enemy changes direction if facing the obstacle for more than 0.5 sec ✓
+AI - enemy changes direction if facing the obstacle for more than 0.5 sec ✓
+AI - enemy changes direction if a random time value between 1 and 9 seconds has passed
 sprites - use sprite atlas to avoid visible breaks between individual sprites 
 remove physics from tanks so you can't bump into them and move their bodies ✓
 get rid of objectIsCurrentlyBeingBlocked bool

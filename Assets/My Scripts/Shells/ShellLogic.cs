@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Shell : MonoBehaviour
 {
-    public float speed = 0.1f;
+    public float speed = 10f;
     public PlayerController2D playerController2D;
     //public GameObject myPrefab;
     private EnemyLvl1 enemyLvl1;
@@ -24,9 +24,7 @@ public class Shell : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-
-
-
+        
         //the shell is player's
         if (gameObject.CompareTag("ShellPlayer"))
         {
@@ -123,5 +121,10 @@ public class Shell : MonoBehaviour
         Vector2 explosionSize = new Vector2(1.0f, 0.25f);
         Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
         Gizmos.DrawWireCube(Vector3.zero, explosionSize);
+    }
+
+    public void SetSpeed(float newSpeed) 
+    {
+        speed = newSpeed;
     }
 }
