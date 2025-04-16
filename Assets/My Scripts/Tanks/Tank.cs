@@ -43,18 +43,4 @@ public class Tank : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
-    public void FreezeOnSpawn()
-    {
-        timerForFreezing += Time.deltaTime;
-        if (!spawnFreezeIsOver)
-        {
-            //Debug.Log("timerForFreezing = " + timerForFreezing);
-        }
-        if (timerForFreezing >= timeToBeFrozen) 
-        {
-            //Debug.Log("spawnFreezeIsOver = " + spawnFreezeIsOver);
-            spawnFreezeIsOver = true;
-        }
-    }
-
 }

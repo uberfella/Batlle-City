@@ -5,8 +5,6 @@ using System.Collections;
 
 /*
 TODO
-Game Plane is 13x13 in size
-
 enemy spawning process and spawn points ✓
 enemies and the player get destroyed on hit, destroyed enemies give score ✓
 how many spawns are there? 3 spawns but 4 concurrent enemies. the fourth enemy spawns on random spawn 1-3 ✓
@@ -15,8 +13,8 @@ player spawns and lives count ✓
 ui for lives and enemy count ✓
 base sprite turns into flag of surrender when destroyed ✓
 player is invincible for 3 seconds when spawning.✓
-do enemies have different projectile speeds ? 
-enemy and player animations
+enemy and player animations ✓
+different types of enemies and enemy type presets for each level
 spawning animations before enemy spawn
 score counting 
 sounds
@@ -28,11 +26,16 @@ AI - enemy changes direction if a random time value between 1 and 9 seconds has 
 sprites - use sprite atlas to avoid visible breaks between individual sprites 
 remove physics from tanks so you can't bump into them and move their bodies ✓
 get rid of objectIsCurrentlyBeingBlocked bool
+
+QUESTIONS
+do enemies have different projectile speeds ? 
+does player collider changes when leveling up?
  * 
  * 
  * 
  * 
 GAME SPEC
+Game Plane is 13x13 in size
 You start out at the bottom of the screen next to your base. Enemy tanks will appear from one of three positions at the top of the screen.
 In each stage, there are 20 tanks in total you must defeat in order to advance to the next stage.
 You can fire in four directions. Most tanks only require one hit to destroy them. One type of tank requires four hits.

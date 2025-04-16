@@ -14,13 +14,9 @@ public class Spawner : MonoBehaviour
 
     private float timer = 0f;
     private float cooldownToSpawn = 5f;
-
     void Start()
     {
-        //for (int i = 0; i < enemiesOnTheField; i++)
-        //{
-        //    SpawnEnemy(i);
-        //}
+        
 
     }
 

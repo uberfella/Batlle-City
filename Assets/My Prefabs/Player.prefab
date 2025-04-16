@@ -190,7 +190,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 8997581697008285278, guid: 5c36a72110562314eb83e7844a0a5ef5, type: 3}
+  m_Sprite: {fileID: 5814629126671592647, guid: 5c36a72110562314eb83e7844a0a5ef5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -239,13 +239,13 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.13, y: 0.16}
+    oldSize: {x: 0.13, y: 0.13}
     newSize: {x: 0.13, y: 0.13}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.13, y: 0.13}
+  m_Size: {x: 0.13, y: 0.14}
   m_EdgeRadius: 0
 --- !u!50 &5113439375438094263
 Rigidbody2D:
@@ -294,13 +294,17 @@ MonoBehaviour:
   playerIsAlive: 0
   playerIsInvincible: 0
   tankLevelOneSprites:
-  - {fileID: 8997581697008285278, guid: 5c36a72110562314eb83e7844a0a5ef5, type: 3}
+  - {fileID: 5814629126671592647, guid: 5c36a72110562314eb83e7844a0a5ef5, type: 3}
   - {fileID: 9212205326544522359, guid: 6f909e2734fb0ac48b205de00bea1c51, type: 3}
   tankLevelTwoSprites:
   - {fileID: 1257759610470292944, guid: 07a8ad41d8d29e1438b8bf45c864c413, type: 3}
   - {fileID: 8402740981194439819, guid: fa4942f620ff27b4e97e1e6aebb9a28a, type: 3}
-  tankLevelThreeSprites: []
-  tankLevelFourSprites: []
+  tankLevelThreeSprites:
+  - {fileID: 168270753402729990, guid: a24b016834d69b54ab38737223dae226, type: 3}
+  - {fileID: 3807388394789710392, guid: da780fe5d71d4dc499e12f55a95cd401, type: 3}
+  tankLevelFourSprites:
+  - {fileID: 274528827089458335, guid: 696c15469398c774387affd9be002b10, type: 3}
+  - {fileID: -7819337433466014027, guid: 3d65e5df298c9b344a2969dfb8f2bef7, type: 3}
   animationSpeed: 0.2
   spriteRenderer: {fileID: 6505327073920512807}
   playerLevel: 0

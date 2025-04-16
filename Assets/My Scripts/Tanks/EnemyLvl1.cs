@@ -6,7 +6,10 @@ using UnityEngine.InputSystem.XR;
 public class EnemyLvl1 : Enemy
 {
     public float timePassedSinceBlocked = 0f;
-    
+    public Sprite[] trackSprites;
+    public float animationSpeed = 0.2f;
+    public SpriteRenderer spriteRenderer;
+
     private readonly float changeDirectionTime = 0.5f; // Change direction every x milliseconds 
     private float timerForShooting;
     private int shotCooldown = 1;
@@ -14,11 +17,13 @@ public class EnemyLvl1 : Enemy
     private bool requestNewDirection = true;
     private Vector2 currentMoveDirection = Vector2.zero;
     private Spawner spawner;
+    private int currentFrame = 0;
+    private float timer = 0f;
 
     void Start()
     {
         health = 1;
-        speed = 4.2f;
+        speed = 2.5f;
         scoreOnDestroy = 100;
         projectileSpeed = 10f;
         aiController = GetComponent<AiController>();
@@ -30,18 +35,22 @@ public class EnemyLvl1 : Enemy
     }
 
 
-
-    // Update is called once per frame
     void Update()
     {
-        if (!spawnFreezeIsOver)
-        {
-            FreezeOnSpawn();
-        }
         //---------------
         //MOVING
+        if (horizontalInput != 0 || verticalInput != 0)
+        {
+            timer += Time.deltaTime;
+            if (timer >= animationSpeed)
+            {
+                timer = 0f;
+                currentFrame = (currentFrame + 1) % trackSprites.Length;
+                spriteRenderer.sprite = trackSprites[currentFrame];
+            }
+        }
 
-        EnemyMove(currentMoveDirection);
+            EnemyMove(currentMoveDirection);
         //Debug.Log("timePassedSinceBlocked = " + timePassedSinceBlocked);
 
         if (objectIsCurrentlyBeingBlocked)
