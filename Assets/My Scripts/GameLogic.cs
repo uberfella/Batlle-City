@@ -46,7 +46,7 @@ Enemy tanks that flash red provide power-ups whenever hit. The power up will app
 public class GameLogic : MonoBehaviour
 {
     public static bool GameOver;
-    public static int levelNum = 1;
+    public static int levelNum = 0;
 
     public Text levelNumText;
 

@@ -119,6 +119,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &4200055
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4200057}
+  - component: {fileID: 4200056}
+  m_Layer: 0
+  m_Name: EnemiesList
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &4200056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4200055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ed6914a0829b449b292ec0b47fae1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foo: 0
+--- !u!4 &4200057
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4200055}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.8128038, y: -4.536778, z: -0.00866617}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &22870035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8470,7 +8515,7 @@ Transform:
   m_GameObject: {fileID: 950759007}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.473, y: 5.468, z: -0.023132252}
+  m_LocalPosition: {x: 0.511, y: 5.436, z: -0.023132252}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16994,6 +17039,11 @@ MonoBehaviour:
   - {fileID: 305027945755723789, guid: bdcb5898f384a2c4e9c00134f70c053c, type: 3}
   - {fileID: 3514732270670225797, guid: 6c285e20bb75c21428500b23ff7b0f5f, type: 3}
   - {fileID: 1910039378561231126, guid: 0b2aaa54c7e867a40adca1d32cd0d790, type: 3}
+  enemyPrefabLvl2:
+  - {fileID: 8144844828339306946, guid: 5ebffdfebe0ca5d43b2805d05f2e55b2, type: 3}
+  - {fileID: 8144844828339306946, guid: a52464e6d8f10c449b4535ca6fbc9b25, type: 3}
+  - {fileID: 8144844828339306946, guid: 8e250ca6f11b55943a76b10287f1572e, type: 3}
+  - {fileID: 8144844828339306946, guid: a79d9252648efd846a747fc4f5a9a6b7, type: 3}
   spawnPoints:
   - {fileID: 805236123}
   - {fileID: 950759008}
@@ -17006,6 +17056,7 @@ MonoBehaviour:
   obstructionMask:
     serializedVersion: 2
     m_Bits: 7552
+  enemiesList: {fileID: 4200056}
 --- !u!1001 &947184564205218707
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17364,3 +17415,4 @@ SceneRoots:
   - {fileID: 1562476875}
   - {fileID: 361857994}
   - {fileID: 31332788}
+  - {fileID: 4200057}

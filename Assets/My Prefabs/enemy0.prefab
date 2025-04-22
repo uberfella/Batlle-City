@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1865884208980975761}
+  - component: {fileID: 2232847671605260776}
   - component: {fileID: 8883251326943187666}
   - component: {fileID: 1023361214474492453}
   - component: {fileID: 548281998233321585}
-  - component: {fileID: 2232847671605260776}
   - component: {fileID: 6325610221376218555}
   m_Layer: 7
   m_Name: enemy0
@@ -36,6 +36,32 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!114 &2232847671605260776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5246130481656688830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 230d8a6ec76ee6f41ba244b0063dd0c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyIsAlive: 0
+  shellPrefab: {fileID: 2980163820454248444, guid: 6a67cec6e0e33094497926bcb66ea13f, type: 3}
+  scoreOnDestroy: 0
+  movement: {x: 0, y: 0}
+  aiController: {fileID: 0}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8000
+  timePassedSinceBlocked: 1.8
+  trackSprites:
+  - {fileID: -936549676407480981, guid: 179eec459c3c6cd41aea37eff020e70c, type: 3}
+  - {fileID: -3344446844354859876, guid: 72ed9fa154398ce41a4c41980cb70f5d, type: 3}
+  animationSpeed: 0.2
+  spriteRenderer: {fileID: 8883251326943187666}
 --- !u!212 &8883251326943187666
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -164,32 +190,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &2232847671605260776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5246130481656688830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 230d8a6ec76ee6f41ba244b0063dd0c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyIsAlive: 0
-  shellPrefab: {fileID: 2980163820454248444, guid: 6a67cec6e0e33094497926bcb66ea13f, type: 3}
-  scoreOnDestroy: 0
-  movement: {x: 0, y: 0}
-  aiController: {fileID: 0}
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 8000
-  timePassedSinceBlocked: 1.8
-  trackSprites:
-  - {fileID: -936549676407480981, guid: 179eec459c3c6cd41aea37eff020e70c, type: 3}
-  - {fileID: -3344446844354859876, guid: 72ed9fa154398ce41a4c41980cb70f5d, type: 3}
-  animationSpeed: 0.2
-  spriteRenderer: {fileID: 8883251326943187666}
 --- !u!114 &6325610221376218555
 MonoBehaviour:
   m_ObjectHideFlags: 0
