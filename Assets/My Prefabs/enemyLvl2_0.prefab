@@ -9,14 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1253235995767084093}
-  - component: {fileID: 4475221692869912300}
   - component: {fileID: 4052273824527208134}
   - component: {fileID: -368125537421118697}
   - component: {fileID: -1506999913179715171}
   - component: {fileID: 1637047093583612567}
+  - component: {fileID: 4475221692869912300}
   m_Layer: 7
   m_Name: enemyLvl2_0
-  m_TagString: Untagged
+  m_TagString: EnemyLvl2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,32 +36,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4475221692869912300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8144844828339306946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66f0457401b5d8046a5c7b91bc493403, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyIsAlive: 0
-  shellPrefab: {fileID: 2980163820454248444, guid: 6a67cec6e0e33094497926bcb66ea13f, type: 3}
-  scoreOnDestroy: 0
-  movement: {x: 0, y: 0}
-  aiController: {fileID: 0}
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 8000
-  timePassedSinceBlocked: 1.8
-  trackSprites:
-  - {fileID: -2968746264868559177, guid: bdf9df120b94744419736e09a6715db9, type: 3}
-  - {fileID: -1118770404515667921, guid: 404842703316e8c4b989d201c767a1de, type: 3}
-  animationSpeed: 0.2
-  spriteRenderer: {fileID: 4052273824527208134}
 --- !u!212 &4052273824527208134
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -161,7 +135,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.13, y: 0.13}
+  m_Size: {x: 0.12, y: 0.12}
   m_EdgeRadius: 0
 --- !u!50 &-1506999913179715171
 Rigidbody2D:
@@ -204,3 +178,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalInput: 0
   verticalInput: 0
+--- !u!114 &4475221692869912300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8144844828339306946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f0457401b5d8046a5c7b91bc493403, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyIsAlive: 0
+  shellPrefab: {fileID: 2980163820454248444, guid: 6a67cec6e0e33094497926bcb66ea13f, type: 3}
+  scoreOnDestroy: 0
+  movement: {x: 0, y: 0}
+  aiController: {fileID: 0}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 8000
+  timePassedSinceBlocked: 1.8
+  trackSprites:
+  - {fileID: -2968746264868559177, guid: bdf9df120b94744419736e09a6715db9, type: 3}
+  - {fileID: -1118770404515667921, guid: 404842703316e8c4b989d201c767a1de, type: 3}
+  animationSpeed: 0.2
+  spriteRenderer: {fileID: 4052273824527208134}

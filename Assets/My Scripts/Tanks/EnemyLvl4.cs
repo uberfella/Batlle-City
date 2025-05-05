@@ -3,10 +3,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 
-public class EnemyLvl1 : Enemy
+public class EnemyLvl4 : Enemy
 {
     public float timePassedSinceBlocked = 0f;
-    public Sprite[] trackSprites;
+    public Sprite[] trackSpritesHealth4;
+    public Sprite[] trackSpritesHealth3;
+    public Sprite[] trackSpritesHealth2;
+    public Sprite[] trackSpritesHealth1;
     public float animationSpeed = 0.2f;
     public SpriteRenderer spriteRenderer;
 
@@ -22,7 +25,7 @@ public class EnemyLvl1 : Enemy
 
     void Start()
     {
-        health = 1;
+        health = 4;
         speed = 2.5f;
         scoreOnDestroy = 100;
         projectileSpeed = 10f;
@@ -33,10 +36,11 @@ public class EnemyLvl1 : Enemy
         currentMoveDirection = getDirection();
         enemyIsAlive = true;
     }
-
+    //green, yellowish, green, white
 
     void Update()
     {
+        Debug.Log("health = " + health);
         //---------------
         //MOVING
         if (horizontalInput != 0 || verticalInput != 0)
@@ -45,19 +49,17 @@ public class EnemyLvl1 : Enemy
             if (timer >= animationSpeed)
             {
                 timer = 0f;
-                currentFrame = (currentFrame + 1) % trackSprites.Length;
-                spriteRenderer.sprite = trackSprites[currentFrame];
+                
+                currentFrame = (currentFrame + 1) % GetSpriteColor().Length;
+                spriteRenderer.sprite = GetSpriteColor()[currentFrame];
             }
         }
 
-        EnemyMove(currentMoveDirection);
-
-        //Debug.Log("timePassedSinceBlocked = " + timePassedSinceBlocked);
+        //EnemyMove(currentMoveDirection);
 
         if (objectIsCurrentlyBeingBlocked)
         {
             timePassedSinceBlocked += Time.deltaTime;
-            //Debug.Log("timePassedSinceBlocked: " + timePassedSinceBlocked);
             requestNewDirection = true;
         }
         else
@@ -67,20 +69,11 @@ public class EnemyLvl1 : Enemy
 
         if (requestNewDirection && timePassedSinceBlocked >= changeDirectionTime)
         {
-            //Debug.Log("Requesting new direction");
-            //Debug.Log("--------------");
-            //Debug.Log("--------------");
-            //Debug.Log("--------------");
             timePassedSinceBlocked = 0;
-            //Vector2 moveDirection = new Vector2(aiController.GetHorizontalRandom(), aiController.GetVerticalRandom()).normalized;
 
-            //
             SetMoveDirection(getDirection());
-            //Debug.Log("getDirection() = " + getDirection());
             requestNewDirection = false;
         }
-
-
         //---------------
 
         //---------------
@@ -95,7 +88,7 @@ public class EnemyLvl1 : Enemy
         if (timerForShooting >= shotCooldown)
         {
             timerForShooting = 0;
-            ShootTheGun();
+            //ShootTheGun();
             requestNewCooldown = true;
         }
         //-------------
@@ -103,9 +96,6 @@ public class EnemyLvl1 : Enemy
 
     private Vector2 getDirection()
     {
-        //-1, 1, -1, 1
-        //1,0 -1,0 0,1 0,-1
-        //0    1   2   3
 
         switch (aiController.GetHorizontalVerticalInput())
         {
@@ -127,26 +117,12 @@ public class EnemyLvl1 : Enemy
                 break;
         }
 
-
         return new Vector2(horizontalInput, verticalInput).normalized;
     }
 
     private void SetMoveDirection(Vector2 newDirection)
     {
         currentMoveDirection = newDirection;
-    }
-
-    //if (gameObject.CompareTag("enemy0"))
-    //enemyIsAlive
-    private int GetEnemyIndex(string tag) 
-    {
-        GameObject[] taggedObjects = GameObject.FindGameObjectsWithTag(tag);
-        switch (tag) 
-        {
-            case "enemy0":
-                return 0;
-        }
-        return 1;
     }
 
     public override void TakeDamage(int amount)
@@ -179,20 +155,24 @@ public class EnemyLvl1 : Enemy
         }
     }
 
-    public int GetEnemyLayer() 
+    //0 1, 2 3, 4 5, 6 7
+    //currentFrame = (currentFrame + 1) % trackSprites.Length;
+    private Sprite[] GetSpriteColor() 
     {
-        switch (gameObject.layer)
+        switch (health) 
         {
-            case 7:
-                return 7;
-            case 10:
-                return 10;
-            case 11:
-                return 11;
-            case 12:
-                return 12;
+            case 1:
+                return trackSpritesHealth1;
+            case 2:
+                return trackSpritesHealth2;
+            case 3:
+                return trackSpritesHealth3;
+            case 4:
+                return trackSpritesHealth4;
+            default:
+                return trackSpritesHealth4;
         }
-        return 0;
     }
 
 }
+

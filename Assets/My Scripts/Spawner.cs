@@ -5,8 +5,11 @@ public class Spawner : MonoBehaviour
 {
     public GameObject[] enemyPrefabLvl1;
     public GameObject[] enemyPrefabLvl2;
+    public GameObject[] enemyPrefabLvl3;
+    public GameObject[] enemyPrefabLvl4;
     public Transform[] spawnPoints;
-    public int enemiesToSpawn = 10;
+    public GameObject[] spawnPointsObjects;
+    public int enemiesToSpawn = 0;
     public Text enemiesToSpawnText;
     //TODO get rid of enemiesOnTheField
     public int enemiesOnTheField = 4;
@@ -19,11 +22,19 @@ public class Spawner : MonoBehaviour
     private int iterateOverSpawnList = 0;
     private int enemyIdToSpawn = 0;
 
+    Animator animator;
+
     void Start()
     {
+
         //GameLogic.levelNum = 0;
         enemiesList = FindFirstObjectByType< EnemiesList >();
         //currentArray = enemiesList.GetEnemiesListForLevel(GameLogic.levelNum);
+
+        //animator = GetComponent<Animator>();
+        
+        animator = spawnPointsObjects[1].GetComponent<Animator>();
+        animator.Play("SpawnEnemy");
     }
 
     void Update()
@@ -89,6 +100,10 @@ public class Spawner : MonoBehaviour
                 return enemyPrefabLvl1;
             case 1:
                 return enemyPrefabLvl2;
+            case 2:
+                return enemyPrefabLvl3;
+            case 3:
+                return enemyPrefabLvl4;
             default:
                 return null;
         }

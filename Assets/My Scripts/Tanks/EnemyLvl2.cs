@@ -50,7 +50,7 @@ public class EnemyLvl2 : Enemy
             }
         }
 
-        EnemyMove(currentMoveDirection);
+        //EnemyMove(currentMoveDirection);
         //Debug.Log("timePassedSinceBlocked = " + timePassedSinceBlocked);
 
         if (objectIsCurrentlyBeingBlocked)
@@ -95,7 +95,7 @@ public class EnemyLvl2 : Enemy
         if (timerForShooting >= shotCooldown)
         {
             timerForShooting = 0;
-            ShootTheGun();
+            //ShootTheGun();
             requestNewCooldown = true;
         }
         //-------------

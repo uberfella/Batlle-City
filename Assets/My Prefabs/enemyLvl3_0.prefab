@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 4052273824527208134}
   - component: {fileID: -368125537421118697}
   - component: {fileID: -1506999913179715171}
-  - component: {fileID: -3226369473867036796}
-  - component: {fileID: 4475221692869912300}
-  m_Layer: 10
-  m_Name: enemyLvl2_1
-  m_TagString: EnemyLvl2
+  - component: {fileID: 1637047093583612567}
+  - component: {fileID: -6685568893880967989}
+  m_Layer: 7
+  m_Name: enemyLvl3_0
+  m_TagString: EnemyLvl3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: -2968746264868559177, guid: bdf9df120b94744419736e09a6715db9, type: 3}
+  m_Sprite: {fileID: -1118770404515667921, guid: dc64ba409bdc19242a08e39fd9c6d1a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -164,7 +164,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &-3226369473867036796
+--- !u!114 &1637047093583612567
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalInput: 0
   verticalInput: 0
---- !u!114 &4475221692869912300
+--- !u!114 &-6685568893880967989
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -187,7 +187,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8144844828339306946}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66f0457401b5d8046a5c7b91bc493403, type: 3}
+  m_Script: {fileID: 11500000, guid: 830063154c3b3574ab63af35e2a4308e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyIsAlive: 0
@@ -197,10 +197,10 @@ MonoBehaviour:
   aiController: {fileID: 0}
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 7104
-  timePassedSinceBlocked: 1.8
+    m_Bits: 8000
+  timePassedSinceBlocked: 0
   trackSprites:
-  - {fileID: -2968746264868559177, guid: bdf9df120b94744419736e09a6715db9, type: 3}
-  - {fileID: -1118770404515667921, guid: 404842703316e8c4b989d201c767a1de, type: 3}
+  - {fileID: -8896940666201160718, guid: 5f3e05ca40335234b9a4285441cf6e50, type: 3}
+  - {fileID: -1118770404515667921, guid: dc64ba409bdc19242a08e39fd9c6d1a4, type: 3}
   animationSpeed: 0.2
   spriteRenderer: {fileID: 4052273824527208134}

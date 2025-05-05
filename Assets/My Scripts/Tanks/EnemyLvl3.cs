@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 
-public class EnemyLvl1 : Enemy
+public class EnemyLvl3 : Enemy
 {
     public float timePassedSinceBlocked = 0f;
     public Sprite[] trackSprites;
@@ -50,8 +50,7 @@ public class EnemyLvl1 : Enemy
             }
         }
 
-        EnemyMove(currentMoveDirection);
-
+        //EnemyMove(currentMoveDirection);
         //Debug.Log("timePassedSinceBlocked = " + timePassedSinceBlocked);
 
         if (objectIsCurrentlyBeingBlocked)
@@ -62,6 +61,7 @@ public class EnemyLvl1 : Enemy
         }
         else
         {
+            //Debug
             timePassedSinceBlocked = 0;
         }
 
@@ -95,7 +95,7 @@ public class EnemyLvl1 : Enemy
         if (timerForShooting >= shotCooldown)
         {
             timerForShooting = 0;
-            ShootTheGun();
+            //ShootTheGun();
             requestNewCooldown = true;
         }
         //-------------
@@ -103,9 +103,6 @@ public class EnemyLvl1 : Enemy
 
     private Vector2 getDirection()
     {
-        //-1, 1, -1, 1
-        //1,0 -1,0 0,1 0,-1
-        //0    1   2   3
 
         switch (aiController.GetHorizontalVerticalInput())
         {
@@ -127,7 +124,6 @@ public class EnemyLvl1 : Enemy
                 break;
         }
 
-
         return new Vector2(horizontalInput, verticalInput).normalized;
     }
 
@@ -138,10 +134,10 @@ public class EnemyLvl1 : Enemy
 
     //if (gameObject.CompareTag("enemy0"))
     //enemyIsAlive
-    private int GetEnemyIndex(string tag) 
+    private int GetEnemyIndex(string tag)
     {
         GameObject[] taggedObjects = GameObject.FindGameObjectsWithTag(tag);
-        switch (tag) 
+        switch (tag)
         {
             case "enemy0":
                 return 0;
@@ -179,7 +175,7 @@ public class EnemyLvl1 : Enemy
         }
     }
 
-    public int GetEnemyLayer() 
+    public int GetEnemyLayer()
     {
         switch (gameObject.layer)
         {
@@ -196,3 +192,4 @@ public class EnemyLvl1 : Enemy
     }
 
 }
+

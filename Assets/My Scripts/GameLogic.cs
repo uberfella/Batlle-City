@@ -14,8 +14,8 @@ ui for lives and enemy count ✓
 base sprite turns into flag of surrender when destroyed ✓
 player is invincible for 3 seconds when spawning.✓
 enemy and player animations ✓
-different types of enemies and enemy type presets for each level
-spawning animations before enemy spawn
+different types of enemies and enemy type presets for each level ✓
+spawning animations before enemy spawn 
 score counting 
 sounds
 main menu and levels system
@@ -25,7 +25,9 @@ AI - enemy changes direction if facing the obstacle for more than 0.5 sec ✓
 AI - enemy changes direction if a random time value between 1 and 9 seconds has passed
 sprites - use sprite atlas to avoid visible breaks between individual sprites 
 remove physics from tanks so you can't bump into them and move their bodies ✓
-get rid of objectIsCurrentlyBeingBlocked bool
+get rid of objectIsCurrentlyBeingBlocked bool ✓ (cant do that)
+clean code
+rename sprites, variables, scripts like enemyLvl0-3 to one standard so it would make more sense
 
 QUESTIONS
 do enemies have different projectile speeds ? 

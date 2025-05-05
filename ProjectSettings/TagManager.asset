@@ -11,6 +11,9 @@ TagManager:
   - Base
   - EnemyLvl1
   - Wall
+  - EnemyLvl2
+  - EnemyLvl3
+  - EnemyLvl4
   layers:
   - Default
   - TransparentFX

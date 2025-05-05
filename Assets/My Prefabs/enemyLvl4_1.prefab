@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 4052273824527208134}
   - component: {fileID: -368125537421118697}
   - component: {fileID: -1506999913179715171}
-  - component: {fileID: -3226369473867036796}
-  - component: {fileID: 4475221692869912300}
+  - component: {fileID: 1637047093583612567}
+  - component: {fileID: 2477090364829655654}
   m_Layer: 10
-  m_Name: enemyLvl2_1
-  m_TagString: EnemyLvl2
+  m_Name: enemyLvl4_1
+  m_TagString: EnemyLvl4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: -2968746264868559177, guid: bdf9df120b94744419736e09a6715db9, type: 3}
+  m_Sprite: {fileID: 4014729691385158549, guid: 620b15450f162014e9c0e20128a66024, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -164,7 +164,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &-3226369473867036796
+--- !u!114 &1637047093583612567
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalInput: 0
   verticalInput: 0
---- !u!114 &4475221692869912300
+--- !u!114 &2477090364829655654
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -187,7 +187,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8144844828339306946}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66f0457401b5d8046a5c7b91bc493403, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ec524e1ecb11404391f966ad068bb12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyIsAlive: 0
@@ -198,9 +198,18 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 7104
-  timePassedSinceBlocked: 1.8
-  trackSprites:
-  - {fileID: -2968746264868559177, guid: bdf9df120b94744419736e09a6715db9, type: 3}
-  - {fileID: -1118770404515667921, guid: 404842703316e8c4b989d201c767a1de, type: 3}
+  timePassedSinceBlocked: 0
+  trackSpritesHealth4:
+  - {fileID: 4014729691385158549, guid: 620b15450f162014e9c0e20128a66024, type: 3}
+  - {fileID: 9015139365796082523, guid: 831675e541260f54fb05030ad769796d, type: 3}
+  trackSpritesHealth3:
+  - {fileID: 6018473771478994763, guid: 52f1b01d81bb9864c95e022207894b84, type: 3}
+  - {fileID: -6495518283801622910, guid: 5015c070b2d160844a47922e1281838b, type: 3}
+  trackSpritesHealth2:
+  - {fileID: -5169297378197142375, guid: 3dfc67b5c8c894940b685313304256a9, type: 3}
+  - {fileID: 3692452868350345197, guid: e1a9c4cd589fcaa40ad85538497a2959, type: 3}
+  trackSpritesHealth1:
+  - {fileID: 3715273155608963290, guid: 6ce6fc2485eaf1242bacfea08583a9c4, type: 3}
+  - {fileID: 2514873839396803644, guid: 3ab0c4632c17cc54b9771e2515208a5c, type: 3}
   animationSpeed: 0.2
   spriteRenderer: {fileID: 4052273824527208134}

@@ -4,12 +4,17 @@ public class Shell : MonoBehaviour
 {
     public float speed = 10f;
     public PlayerController2D playerController2D;
-    //public GameObject myPrefab;
     private EnemyLvl1 enemyLvl1;
+    private EnemyLvl2 enemyLvl2;
+    private EnemyLvl3 enemyLvl3;
+    private EnemyLvl4 enemyLvl4;
 
     void Start()
     {
         enemyLvl1 = GetComponent<EnemyLvl1>();
+        enemyLvl2 = GetComponent<EnemyLvl2>();
+        enemyLvl3 = GetComponent<EnemyLvl3>();
+        enemyLvl4 = GetComponent<EnemyLvl4>();
         playerController2D = FindFirstObjectByType<PlayerController2D>();
     }
     void Update()
@@ -28,14 +33,13 @@ public class Shell : MonoBehaviour
         //the shell is player's
         if (gameObject.CompareTag("ShellPlayer"))
         {
-            if (other.gameObject.CompareTag("EnemyLvl1"))
+            string tag = other.gameObject.tag;
+            if (IsEnemyTag(tag))
             {
-                EnemyLvl1 enemyLvl1 = other.gameObject.GetComponent<EnemyLvl1>();
-                if (enemyLvl1 != null)
-                {
-                    enemyLvl1.TakeDamage(1);
-                    Destroy(gameObject);
-                }
+                GetTagAndTakeDamage(tag, other.gameObject);
+
+                //destroy player's shell
+                Destroy(gameObject);
             }
             //destroy both shells if they collide w each other in mid-air
             else if (other.gameObject.CompareTag("ShellEnemy"))
@@ -54,7 +58,8 @@ public class Shell : MonoBehaviour
                 {
                     PlayerController2D playerController2D = other.gameObject.GetComponent<PlayerController2D>();
                     playerController2D.TakeDamage(1);
-                    Destroy(other.gameObject);
+                    
+                    //destroy enemy's shell
                     Destroy(gameObject);
                 }
                 else
@@ -62,20 +67,17 @@ public class Shell : MonoBehaviour
                     Destroy(gameObject);
                 }
             }
-            //else if (other.gameObject.CompareTag("ShellPlayer")) 
-            //{
-            //    Destroy(other.gameObject);
-            //    Destroy(gameObject);
-            //}
-
         }
 
+        //any shell hits an obstacle
         if (other.gameObject.CompareTag("Brick") ||
             other.gameObject.CompareTag("Wall") ||
             other.gameObject.CompareTag("Base") ||
             other.gameObject.CompareTag("Concrete"))
         {
+            //shell explodes forward and to the left and right
             Explode();
+            //destroy shell
             Destroy(gameObject);
         }
     }
@@ -126,5 +128,33 @@ public class Shell : MonoBehaviour
     public void SetSpeed(float newSpeed) 
     {
         speed = newSpeed;
+    }
+
+    private void GetTagAndTakeDamage(string tag, GameObject other)
+    {
+        switch (tag)
+        {
+            case "EnemyLvl1":
+                EnemyLvl1 enemyLvl1 = other.gameObject.GetComponent<EnemyLvl1>();
+                enemyLvl1.TakeDamage(1);
+                break;
+            case "EnemyLvl2":
+                EnemyLvl2 enemyLvl2 = other.gameObject.GetComponent<EnemyLvl2>();
+                enemyLvl2.TakeDamage(1);
+                break;
+            case "EnemyLvl3":
+                EnemyLvl3 enemyLvl3 = other.gameObject.GetComponent<EnemyLvl3>();
+                enemyLvl3.TakeDamage(1);
+                break;
+            case "EnemyLvl4":
+                EnemyLvl4 enemyLvl4 = other.gameObject.GetComponent<EnemyLvl4>();
+                enemyLvl4.TakeDamage(1);
+                break;
+        }
+    }
+
+    bool IsEnemyTag(string tag)
+    {
+        return tag == "EnemyLvl1" || tag == "EnemyLvl2" || tag == "EnemyLvl3" || tag == "EnemyLvl4";
     }
 }

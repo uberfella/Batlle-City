@@ -93,14 +93,6 @@ public class Enemy : Tank
         return false;
     }
 
-    
-    //void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.layer == gameObject.layer)
-    //    {
-    //        // Stop movement or resolve collision manually
-    //        transform.position -= speed * Time.deltaTime * transform.right;
-    //    }
-    //}
+
 
 }
