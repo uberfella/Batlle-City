@@ -21,6 +21,8 @@ public class Spawner : MonoBehaviour
     private float cooldownToSpawn = 5f;
     private int iterateOverSpawnList = 0;
     private int enemyIdToSpawn = 0;
+    private GameObject[] spawnAnim;
+    private Renderer[] spawnAnimationRenderer;
 
     Animator animator;
 
@@ -30,11 +32,14 @@ public class Spawner : MonoBehaviour
         //GameLogic.levelNum = 0;
         enemiesList = FindFirstObjectByType< EnemiesList >();
         //currentArray = enemiesList.GetEnemiesListForLevel(GameLogic.levelNum);
+        spawnAnim = new GameObject[3];
+        spawnAnimationRenderer = new Renderer[3];
+        for (int i = 0; i < 3; i++)
+        {
+            spawnAnim[i] = GameObject.Find($"Spawn{i}");
+            spawnAnimationRenderer[i] = spawnAnim[i].GetComponent<Renderer>();
+        }
 
-        //animator = GetComponent<Animator>();
-        
-        animator = spawnPointsObjects[1].GetComponent<Animator>();
-        animator.Play("SpawnEnemy");
     }
 
     void Update()
@@ -47,9 +52,14 @@ public class Spawner : MonoBehaviour
             if (!enemyAlive[i] && enemiesToSpawn > 0)
             {
                 timer += Time.deltaTime;
+                if (timer > cooldownToSpawn - 2)
+                {
+                    spawnAnimationRenderer[i].enabled = true;
+                }
                 if (timer >= cooldownToSpawn)
                 {
                     SpawnEnemy(i);
+                    spawnAnimationRenderer[i].enabled = false;
                     enemiesToSpawn--;
                     //Debug.Log("enemies to spawn: " + enemiesToSpawn);
                     timer = 0f;
