@@ -23,6 +23,7 @@ public class Spawner : MonoBehaviour
     private int enemyIdToSpawn = 0;
     private GameObject[] spawnAnim;
     private Renderer[] spawnAnimationRenderer;
+    private int randomSpawnPoint = 0;
 
     Animator animator;
 
@@ -30,7 +31,7 @@ public class Spawner : MonoBehaviour
     {
 
         //GameLogic.levelNum = 0;
-        enemiesList = FindFirstObjectByType< EnemiesList >();
+        enemiesList = FindFirstObjectByType<EnemiesList>();
         //currentArray = enemiesList.GetEnemiesListForLevel(GameLogic.levelNum);
         spawnAnim = new GameObject[3];
         spawnAnimationRenderer = new Renderer[3];
@@ -52,14 +53,31 @@ public class Spawner : MonoBehaviour
             if (!enemyAlive[i] && enemiesToSpawn > 0)
             {
                 timer += Time.deltaTime;
+
                 if (timer > cooldownToSpawn - 2)
                 {
-                    spawnAnimationRenderer[i].enabled = true;
+                    if (i == 3)
+                    {
+                        spawnAnimationRenderer[randomSpawnPoint].enabled = true;
+                    }
+                    else
+                    {
+                        spawnAnimationRenderer[i].enabled = true;
+                    }
                 }
+
                 if (timer >= cooldownToSpawn)
                 {
                     SpawnEnemy(i);
-                    spawnAnimationRenderer[i].enabled = false;
+                    if (i == 3)
+                    {
+                        spawnAnimationRenderer[randomSpawnPoint].enabled = false;
+                    }
+                    else
+                    {
+                        spawnAnimationRenderer[i].enabled = false;
+                    }
+
                     enemiesToSpawn--;
                     //Debug.Log("enemies to spawn: " + enemiesToSpawn);
                     timer = 0f;
@@ -80,7 +98,8 @@ public class Spawner : MonoBehaviour
         //dynamic spawnPoint
         if (index == 3)
         {
-            int randomSpawnPoint = Random.Range(0, 3);
+            /*int */
+            randomSpawnPoint = Random.Range(0, 3);
             spawnPoint = spawnPoints[randomSpawnPoint];
         }
 

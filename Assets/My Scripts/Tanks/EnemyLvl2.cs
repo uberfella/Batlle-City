@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine.InputSystem.XR;
 
 public class EnemyLvl2 : Enemy
 {
+    public static event Action<Enemy> OnDestroyed;
+
     public float timePassedSinceBlocked = 0f;
     public Sprite[] trackSprites;
     public float animationSpeed = 0.2f;
@@ -24,7 +27,7 @@ public class EnemyLvl2 : Enemy
     {
         health = 1;
         speed = 3.5f;
-        scoreOnDestroy = 100;
+        scoreOnDestroy = 120;
         projectileSpeed = 10f;
         aiController = GetComponent<AiController>();
         rb = GetComponent<Rigidbody2D>();
@@ -169,19 +172,19 @@ public class EnemyLvl2 : Enemy
         switch (gameObject.layer)
         {
             case 7:
-                Debug.Log("7 is false");
+                //Debug.Log("7 is false");
                 spawner.enemyAlive[0] = false;
                 break;
             case 10:
-                Debug.Log("10 is false");
+                //Debug.Log("10 is false");
                 spawner.enemyAlive[1] = false;
                 break;
             case 11:
-                Debug.Log("11 is false");
+                //Debug.Log("11 is false");
                 spawner.enemyAlive[2] = false;
                 break;
             case 12:
-                Debug.Log("12 is false");
+                //Debug.Log("12 is false");
                 spawner.enemyAlive[3] = false;
                 break;
         }
@@ -201,6 +204,11 @@ public class EnemyLvl2 : Enemy
                 return 12;
         }
         return 0;
+    }
+
+    private void OnDestroy()
+    {
+        OnDestroyed?.Invoke(this);
     }
 
 }

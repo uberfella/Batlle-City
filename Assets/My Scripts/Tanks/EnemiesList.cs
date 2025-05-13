@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class EnemiesList : MonoBehaviour
 {
-    private int[] level1 = { 0, 0, 0, 0, 0, 1, 1, 0 };
-    //private int[] level1 = { 0, 1, 2, 3, 0, 1, 1, 0 };
+    //private int[] level1 = { 0, 0, 0, 0, 0, 1, 1, 0 };
+    private int[] level1 = { 0, 1, 2, 3, 0, 1, 1, 0 };
     private int[] level2 = { 0, 0, 0, 0, 0, 1, 1, 0 };
 
     public int[] GetEnemiesListForLevel(int level)

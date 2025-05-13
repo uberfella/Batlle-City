@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 
 public class Shell : MonoBehaviour
 {
+
     public float speed = 10f;
     public PlayerController2D playerController2D;
     private EnemyLvl1 enemyLvl1;
@@ -98,10 +100,9 @@ public class Shell : MonoBehaviour
                 {
                     Destroy(obj.gameObject);
                 }
-                else if (obj.CompareTag("EnemyLvl1"))
+                else if (IsEnemyTag(tag))
                 {
-                    EnemyLvl1 enemyLvl1 = obj.gameObject.GetComponent<EnemyLvl1>();
-                    enemyLvl1.TakeDamage(1);
+                    GetTagAndTakeDamage(tag, obj.gameObject);
                 }
             }
             else

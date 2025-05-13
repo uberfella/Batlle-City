@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine.InputSystem.XR;
 
 public class EnemyLvl4 : Enemy
 {
+    public static event Action<Enemy> OnDestroyed;
+
     public float timePassedSinceBlocked = 0f;
     public Sprite[] trackSpritesHealth4;
     public Sprite[] trackSpritesHealth3;
@@ -27,7 +30,7 @@ public class EnemyLvl4 : Enemy
     {
         health = 4;
         speed = 2.5f;
-        scoreOnDestroy = 100;
+        scoreOnDestroy = 200;
         projectileSpeed = 10f;
         aiController = GetComponent<AiController>();
         rb = GetComponent<Rigidbody2D>();
@@ -40,7 +43,7 @@ public class EnemyLvl4 : Enemy
 
     void Update()
     {
-        Debug.Log("health = " + health);
+        //Debug.Log("health = " + health);
         //---------------
         //MOVING
         if (horizontalInput != 0 || verticalInput != 0)
@@ -137,19 +140,19 @@ public class EnemyLvl4 : Enemy
         switch (gameObject.layer)
         {
             case 7:
-                Debug.Log("7 is false");
+                //Debug.Log("7 is false");
                 spawner.enemyAlive[0] = false;
                 break;
             case 10:
-                Debug.Log("10 is false");
+                //Debug.Log("10 is false");
                 spawner.enemyAlive[1] = false;
                 break;
             case 11:
-                Debug.Log("11 is false");
+                //Debug.Log("11 is false");
                 spawner.enemyAlive[2] = false;
                 break;
             case 12:
-                Debug.Log("12 is false");
+                //Debug.Log("12 is false");
                 spawner.enemyAlive[3] = false;
                 break;
         }
@@ -172,6 +175,11 @@ public class EnemyLvl4 : Enemy
             default:
                 return trackSpritesHealth4;
         }
+    }
+
+    private void OnDestroy()
+    {
+        OnDestroyed?.Invoke(this);
     }
 
 }

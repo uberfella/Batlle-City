@@ -15,7 +15,7 @@ base sprite turns into flag of surrender when destroyed ✓
 player is invincible for 3 seconds when spawning.✓
 enemy and player animations ✓
 different types of enemies and enemy type presets for each level ✓
-spawning animations before enemy spawn 
+spawning animations before enemy spawn ✓
 score counting 
 sounds
 main menu and levels system
@@ -28,6 +28,7 @@ remove physics from tanks so you can't bump into them and move their bodies ✓
 get rid of objectIsCurrentlyBeingBlocked bool ✓ (cant do that)
 clean code
 rename sprites, variables, scripts like enemyLvl0-3 to one standard so it would make more sense
+refactor enemy spawn anim
 
 QUESTIONS
 do enemies have different projectile speeds ? 

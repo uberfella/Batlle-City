@@ -1,10 +1,13 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 
-public class EnemyLvl1 : Enemy
+public class EnemyLvl1 : Enemy  
 {
+    public static event Action<Enemy> OnDestroyed;
+
     public float timePassedSinceBlocked = 0f;
     public Sprite[] trackSprites;
     public float animationSpeed = 0.2f;
@@ -19,6 +22,11 @@ public class EnemyLvl1 : Enemy
     private Spawner spawner;
     private int currentFrame = 0;
     private float timer = 0f;
+
+    private void OnDestroy()
+    {
+        OnDestroyed?.Invoke(this);
+    }
 
     void Start()
     {
@@ -161,19 +169,19 @@ public class EnemyLvl1 : Enemy
         switch (gameObject.layer)
         {
             case 7:
-                Debug.Log("7 is false");
+                //Debug.Log("7 is false");
                 spawner.enemyAlive[0] = false;
                 break;
             case 10:
-                Debug.Log("10 is false");
+                //Debug.Log("10 is false");
                 spawner.enemyAlive[1] = false;
                 break;
             case 11:
-                Debug.Log("11 is false");
+                //Debug.Log("11 is false");
                 spawner.enemyAlive[2] = false;
                 break;
             case 12:
-                Debug.Log("12 is false");
+                //Debug.Log("12 is false");
                 spawner.enemyAlive[3] = false;
                 break;
         }
