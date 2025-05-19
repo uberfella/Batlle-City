@@ -16,11 +16,12 @@ player is invincible for 3 seconds when spawning.✓
 enemy and player animations ✓
 different types of enemies and enemy type presets for each level ✓
 spawning animations before enemy spawn ✓
-score counting 
-sounds
+score counting ✓
+powerups 
+sounds 
 main menu and levels system
 friendly and enemy projectiles will cancel each other out when they collide in midair ✓
-player powerup, changing sprite and damage (?)
+player levelup, changing sprite and damage ✓
 AI - enemy changes direction if facing the obstacle for more than 0.5 sec ✓
 AI - enemy changes direction if a random time value between 1 and 9 seconds has passed
 sprites - use sprite atlas to avoid visible breaks between individual sprites 

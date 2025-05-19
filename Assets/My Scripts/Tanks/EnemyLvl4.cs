@@ -39,11 +39,9 @@ public class EnemyLvl4 : Enemy
         currentMoveDirection = getDirection();
         enemyIsAlive = true;
     }
-    //green, yellowish, green, white
 
     void Update()
     {
-        //Debug.Log("health = " + health);
         //---------------
         //MOVING
         if (horizontalInput != 0 || verticalInput != 0)
@@ -58,7 +56,7 @@ public class EnemyLvl4 : Enemy
             }
         }
 
-        //EnemyMove(currentMoveDirection);
+        EnemyMove(currentMoveDirection);
 
         if (objectIsCurrentlyBeingBlocked)
         {
@@ -91,7 +89,7 @@ public class EnemyLvl4 : Enemy
         if (timerForShooting >= shotCooldown)
         {
             timerForShooting = 0;
-            //ShootTheGun();
+            ShootTheGun();
             requestNewCooldown = true;
         }
         //-------------
@@ -177,6 +175,7 @@ public class EnemyLvl4 : Enemy
         }
     }
 
+    //neccessary for the score counting
     private void OnDestroy()
     {
         OnDestroyed?.Invoke(this);

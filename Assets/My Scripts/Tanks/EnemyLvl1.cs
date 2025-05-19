@@ -23,6 +23,7 @@ public class EnemyLvl1 : Enemy
     private int currentFrame = 0;
     private float timer = 0f;
 
+    //neccessary for the score counting
     private void OnDestroy()
     {
         OnDestroyed?.Invoke(this);
