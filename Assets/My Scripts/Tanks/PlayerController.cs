@@ -76,10 +76,10 @@ public class PlayerController2D : Tank
             invincibilityAnimationRenderer.enabled = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            PlayerLevelUp(); 
-        }
+        //if (Input.GetKeyDown(KeyCode.G))
+        //{
+        //    PlayerLevelUp(); 
+        //}
     }
 
     void FixedUpdate()
@@ -179,7 +179,7 @@ public class PlayerController2D : Tank
         shell.GetComponent<Shell>().SetSpeed(projectileSpeed);
     }
 
-    private void PlayerLevelUp() 
+    public void PlayerLevelUp() 
     {
         if (playerLevel <= 4)
         {

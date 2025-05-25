@@ -40,6 +40,8 @@ public class EnemyLvl2 : Enemy
 
     void Update()
     {
+        if (GameLogic.Instance.isEnemiesFrozen)
+            return;
         //---------------
         //MOVING
         if (horizontalInput != 0 || verticalInput != 0)
@@ -53,7 +55,7 @@ public class EnemyLvl2 : Enemy
             }
         }
 
-        //EnemyMove(currentMoveDirection);
+        EnemyMove(currentMoveDirection);
         //Debug.Log("timePassedSinceBlocked = " + timePassedSinceBlocked);
 
         if (objectIsCurrentlyBeingBlocked)
@@ -98,7 +100,7 @@ public class EnemyLvl2 : Enemy
         if (timerForShooting >= shotCooldown)
         {
             timerForShooting = 0;
-            //ShootTheGun();
+            ShootTheGun();
             requestNewCooldown = true;
         }
         //-------------

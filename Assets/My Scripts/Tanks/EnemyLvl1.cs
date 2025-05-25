@@ -46,6 +46,8 @@ public class EnemyLvl1 : Enemy
 
     void Update()
     {
+        if (GameLogic.Instance.isEnemiesFrozen)
+            return;
         //---------------
         //MOVING
         if (horizontalInput != 0 || verticalInput != 0)
@@ -58,7 +60,7 @@ public class EnemyLvl1 : Enemy
                 spriteRenderer.sprite = trackSprites[currentFrame];
             }
         }
-
+        
         EnemyMove(currentMoveDirection);
 
         //Debug.Log("timePassedSinceBlocked = " + timePassedSinceBlocked);

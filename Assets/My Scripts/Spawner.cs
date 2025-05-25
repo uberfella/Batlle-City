@@ -78,7 +78,7 @@ public class Spawner : MonoBehaviour
                         spawnAnimationRenderer[i].enabled = false;
                     }
 
-                    enemiesToSpawn--;
+                    //enemiesToSpawn--;
                     //Debug.Log("enemies to spawn: " + enemiesToSpawn);
                     timer = 0f;
                 }
@@ -110,6 +110,7 @@ public class Spawner : MonoBehaviour
             enemyIdToSpawn = enemiesList.GetEnemiesListForLevel(GameLogic.levelNum)[iterateOverSpawnList]; //0 1 2 3 4 
             iterateOverSpawnList++;
             GameObject newEnemy = Instantiate(GetPrefabTypeById(enemyIdToSpawn)[index], spawnPoint.position, Quaternion.identity);
+            enemiesToSpawn--;
             enemyAlive[index] = true;
         }
         else

@@ -51,6 +51,8 @@ public class GameLogic : MonoBehaviour
 {
     public static bool GameOver;
     public static int levelNum = 0;
+    public static GameLogic Instance { get; private set; }
+    public bool isEnemiesFrozen;
 
     public Text levelNumText;
 
@@ -58,7 +60,13 @@ public class GameLogic : MonoBehaviour
     public float moveDuration = 1.5f;
     public Vector2 targetPosition;
     private Vector2 startPosition;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+        DontDestroyOnLoad(gameObject);
+    }
     void Start()
     {
         startPosition = gameOverText.anchoredPosition;
