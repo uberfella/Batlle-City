@@ -29,6 +29,8 @@ remove physics from tanks so you can't bump into them and move their bodies ✓
 get rid of objectIsCurrentlyBeingBlocked bool ✓ (cant do that)
 clean code
 rename sprites, variables, scripts like enemyLvl0-3 to one standard so it would make more sense
+freeze powerup affects only tanks that are alive not the ones that would spawn after picking up the powerup
+get rid of constant checking variables' values in Update() method, replace em with Coroutines
 refactor enemy spawn anim
 
 QUESTIONS

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
@@ -41,7 +42,8 @@ public class PlayerController2D : Tank
         shell = GetComponent<Shell>();
         
         playerIsAlive = true;
-        playerIsInvincible = true;
+        //playerIsInvincible = true;
+        
 
         spawnFreezeIsOver = true;
 
@@ -50,7 +52,8 @@ public class PlayerController2D : Tank
 
         // Get the Renderer (could be SpriteRenderer, MeshRenderer, etc.)
         invincibilityAnimationRenderer = invincibilityAnim.GetComponent<Renderer>();
-        invincibilityAnimationRenderer.enabled = true;
+        //invincibilityAnimationRenderer.enabled = true;
+        TriggerInvincibility();
     }
 
     void Update()
@@ -69,17 +72,15 @@ public class PlayerController2D : Tank
             cooldownHasPassed = true;
         }
 
-        timeToBeInvincible -= Time.deltaTime;
-        if (timeToBeInvincible <= 0)
-        {
-            playerIsInvincible = false;
-            invincibilityAnimationRenderer.enabled = false;
-        }
-
-        //if (Input.GetKeyDown(KeyCode.G))
+        //timeToBeInvincible -= Time.deltaTime;
+        //if (timeToBeInvincible <= 0)
         //{
-        //    PlayerLevelUp(); 
+        //    playerIsInvincible = false;
+        //    invincibilityAnimationRenderer.enabled = false;
         //}
+
+
+
     }
 
     void FixedUpdate()
@@ -204,5 +205,20 @@ public class PlayerController2D : Tank
             default:
                 return tankLevelOneSprites;
         }
+    }
+
+    public void TriggerInvincibility()
+    {
+        StartCoroutine(InvincibilityCoroutine());
+    }
+    private IEnumerator InvincibilityCoroutine()
+    {
+        playerIsInvincible = true;
+        invincibilityAnimationRenderer.enabled = true;
+
+        yield return new WaitForSeconds(5f);
+
+        playerIsInvincible = false;
+        invincibilityAnimationRenderer.enabled = false;
     }
 }

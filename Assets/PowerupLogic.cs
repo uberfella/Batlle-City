@@ -31,6 +31,10 @@ public class PowerupLogic : MonoBehaviour
                     //we can't destroy powerup gameobject here, otherwise the coroutine won't operate properly. So we just make it invisible
                     freezePowerupSprite.GetComponent<SpriteRenderer>().enabled = false;
                     break;
+                case PowerupType.Invulnerability:
+                    playerController2D.TriggerInvincibility();
+                    Destroy(gameObject);
+                    break;
             }
         }
     }
