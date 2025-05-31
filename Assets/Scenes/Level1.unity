@@ -1931,11 +1931,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1253235995767084093, guid: 5ebffdfebe0ca5d43b2805d05f2e55b2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.5068755
+      value: -0.919
       objectReference: {fileID: 0}
     - target: {fileID: 1253235995767084093, guid: 5ebffdfebe0ca5d43b2805d05f2e55b2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.4276726
+      value: 5.491
       objectReference: {fileID: 0}
     - target: {fileID: 1253235995767084093, guid: 5ebffdfebe0ca5d43b2805d05f2e55b2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2622,7 +2622,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &387890428
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2687,7 +2687,7 @@ Transform:
   m_GameObject: {fileID: 387890427}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.32, y: -6.3, z: 0}
+  m_LocalPosition: {x: -1.33, y: -5.09, z: 0}
   m_LocalScale: {x: 6.6, y: 6.6, z: 6.6}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -5349,11 +5349,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1865884208980975761, guid: 350d39ad2cdedef4681e0aff7c28b1ee, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.5138366
+      value: -2.054
       objectReference: {fileID: 0}
     - target: {fileID: 1865884208980975761, guid: 350d39ad2cdedef4681e0aff7c28b1ee, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.8914473
+      value: 5.486
       objectReference: {fileID: 0}
     - target: {fileID: 1865884208980975761, guid: 350d39ad2cdedef4681e0aff7c28b1ee, type: 3}
       propertyPath: m_LocalPosition.z
@@ -18131,7 +18131,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2138321554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18324,6 +18324,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8187092367606771518, guid: 0a5ea3429a81f9c44939519f83ab6d07, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8588389452971600557, guid: 0a5ea3429a81f9c44939519f83ab6d07, type: 3}
+      propertyPath: godmode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8588389452971600557, guid: 0a5ea3429a81f9c44939519f83ab6d07, type: 3}

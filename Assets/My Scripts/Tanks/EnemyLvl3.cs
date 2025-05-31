@@ -19,7 +19,7 @@ public class EnemyLvl3 : Enemy
     private bool requestNewCooldown = true;
     private bool requestNewDirection = true;
     private Vector2 currentMoveDirection = Vector2.zero;
-    private Spawner spawner;
+    //private Spawner spawner;
     private int currentFrame = 0;
     private float timer = 0f;
 
@@ -32,7 +32,7 @@ public class EnemyLvl3 : Enemy
         aiController = GetComponent<AiController>();
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
-        spawner = FindFirstObjectByType<Spawner>();
+        //spawner = FindFirstObjectByType<Spawner>();
         currentMoveDirection = getDirection();
         enemyIsAlive = true;
     }
@@ -150,35 +150,35 @@ public class EnemyLvl3 : Enemy
         return 1;
     }
 
-    public override void TakeDamage(int amount)
-    {
-        ChangeEnemyStatus();
+    //public override void TakeDamage(int amount)
+    //{
+    //    ChangeEnemyStatus();
 
-        base.TakeDamage(amount);
-    }
+    //    base.TakeDamage(amount);
+    //}
 
-    public void ChangeEnemyStatus()
-    {
-        switch (gameObject.layer)
-        {
-            case 7:
-                //Debug.Log("7 is false");
-                spawner.enemyAlive[0] = false;
-                break;
-            case 10:
-                //Debug.Log("10 is false");
-                spawner.enemyAlive[1] = false;
-                break;
-            case 11:
-                //Debug.Log("11 is false");
-                spawner.enemyAlive[2] = false;
-                break;
-            case 12:
-                //Debug.Log("12 is false");
-                spawner.enemyAlive[3] = false;
-                break;
-        }
-    }
+    //public void ChangeEnemyStatus()
+    //{
+    //    switch (gameObject.layer)
+    //    {
+    //        case 7:
+    //            //Debug.Log("7 is false");
+    //            spawner.enemyAlive[0] = false;
+    //            break;
+    //        case 10:
+    //            //Debug.Log("10 is false");
+    //            spawner.enemyAlive[1] = false;
+    //            break;
+    //        case 11:
+    //            //Debug.Log("11 is false");
+    //            spawner.enemyAlive[2] = false;
+    //            break;
+    //        case 12:
+    //            //Debug.Log("12 is false");
+    //            spawner.enemyAlive[3] = false;
+    //            break;
+    //    }
+    //}
 
     public int GetEnemyLayer()
     {

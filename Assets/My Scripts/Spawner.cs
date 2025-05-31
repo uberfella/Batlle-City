@@ -115,7 +115,10 @@ public class Spawner : MonoBehaviour
         }
         else
         {
-            //Debug.Log("Spawn point is obstructed. Try again later.");
+            Debug.Log("Spawn point is obstructed. Try again later.");
+            //Debug.Log("colliders.Length = " + colliders.Length);
+            //Debug.Log("iterateOverSpawnList = "+ iterateOverSpawnList);
+            //Debug.Log("enemiesList.GetEnemiesListForLevel(GameLogic.levelNum).Length = "+ enemiesList.GetEnemiesListForLevel(GameLogic.levelNum).Length);
         }
     }
 

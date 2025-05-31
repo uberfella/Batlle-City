@@ -18,6 +18,7 @@ different types of enemies and enemy type presets for each level ✓
 spawning animations before enemy spawn ✓
 score counting ✓
 powerups 
+godmode ✓
 sounds 
 main menu and levels system
 friendly and enemy projectiles will cancel each other out when they collide in midair ✓

@@ -8,6 +8,12 @@ public class Enemy : Tank
     public AiController aiController;
     public LayerMask obstacleLayer;
     protected bool objectIsCurrentlyBeingBlocked;
+    private Spawner spawner;
+
+    void Awake()
+    {
+        spawner = FindFirstObjectByType<Spawner>();
+    }
 
     public virtual void TakeDamage(int damage)
     {
@@ -17,7 +23,7 @@ public class Enemy : Tank
             Destroy(gameObject);
             enemyIsAlive = false;
             //Debug.Log(" super class ");
-            //spawner.ChangeEnemyStatus();
+            ChangeEnemyStatus();
         }
     }
     protected void ShootTheGun()
@@ -93,6 +99,27 @@ public class Enemy : Tank
         return false;
     }
 
-
+    public void ChangeEnemyStatus()
+    {
+        switch (gameObject.layer)
+        {
+            case 7:
+                //Debug.Log("7 is false");
+                spawner.enemyAlive[0] = false;
+                break;
+            case 10:
+                //Debug.Log("10 is false");
+                spawner.enemyAlive[1] = false;
+                break;
+            case 11:
+                //Debug.Log("11 is false");
+                spawner.enemyAlive[2] = false;
+                break;
+            case 12:
+                //Debug.Log("12 is false");
+                spawner.enemyAlive[3] = false;
+                break;
+        }
+    }
 
 }

@@ -96,7 +96,7 @@ public class Shell : MonoBehaviour
             //the shell is player's
             if (gameObject.CompareTag("ShellPlayer"))
             {
-                if (obj.CompareTag("Brick") || /*obj.CompareTag("Concrete") ||*/ obj.CompareTag("Base"))
+                if (obj.CompareTag("Brick"))
                 {
                     Destroy(obj.gameObject);
                 }
@@ -109,7 +109,7 @@ public class Shell : MonoBehaviour
             //the shell is enemy's
             if (gameObject.CompareTag("ShellEnemy"))
             {
-                if (obj.CompareTag("Brick") || /*obj.CompareTag("Concrete") ||*/ obj.CompareTag("Base") || obj.CompareTag("Player"))
+                if (obj.CompareTag("Brick") || /*obj.CompareTag("Concrete") ||*/ obj.CompareTag("Player"))
                 {
                     Destroy(obj.gameObject);
                 }
@@ -133,23 +133,32 @@ public class Shell : MonoBehaviour
 
     private void GetTagAndTakeDamage(string tag, GameObject other)
     {
+        Enemy enemy = other.GetComponent<Enemy>();
         switch (tag)
         {
             case "EnemyLvl1":
-                EnemyLvl1 enemyLvl1 = other.gameObject.GetComponent<EnemyLvl1>();
-                enemyLvl1.TakeDamage(1);
+                if (enemy != null)
+                {
+                    enemy.TakeDamage(1);
+                }
                 break;
             case "EnemyLvl2":
-                EnemyLvl2 enemyLvl2 = other.gameObject.GetComponent<EnemyLvl2>();
-                enemyLvl2.TakeDamage(1);
+                if (enemy != null)
+                {
+                    enemy.TakeDamage(1);
+                }
                 break;
             case "EnemyLvl3":
-                EnemyLvl3 enemyLvl3 = other.gameObject.GetComponent<EnemyLvl3>();
-                enemyLvl3.TakeDamage(1);
+                if (enemy != null)
+                {
+                    enemy.TakeDamage(1);
+                }
                 break;
             case "EnemyLvl4":
-                EnemyLvl4 enemyLvl4 = other.gameObject.GetComponent<EnemyLvl4>();
-                enemyLvl4.TakeDamage(1);
+                if (enemy != null)
+                {
+                    enemy.TakeDamage(1);
+                }
                 break;
         }
     }

@@ -11,6 +11,7 @@ public class PlayerController2D : Tank
     public GameObject shellPrefab;
     public bool playerIsAlive;
     public bool playerIsInvincible;
+    public bool godmode;
     public Sprite[] tankLevelOneSprites;
     public Sprite[] tankLevelTwoSprites;
     public Sprite[] tankLevelThreeSprites;
@@ -78,8 +79,6 @@ public class PlayerController2D : Tank
         //    playerIsInvincible = false;
         //    invincibilityAnimationRenderer.enabled = false;
         //}
-
-
 
     }
 
@@ -216,9 +215,14 @@ public class PlayerController2D : Tank
         playerIsInvincible = true;
         invincibilityAnimationRenderer.enabled = true;
 
-        yield return new WaitForSeconds(5f);
+        if (!godmode)
+        {
+            Debug.Log("HI?");
+            yield return new WaitForSeconds(5f);
 
-        playerIsInvincible = false;
-        invincibilityAnimationRenderer.enabled = false;
+            playerIsInvincible = false;
+            invincibilityAnimationRenderer.enabled = false;
+        }
+
     }
 }

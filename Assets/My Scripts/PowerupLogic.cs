@@ -8,10 +8,20 @@ public class PowerupLogic : MonoBehaviour
     public GameObject freezePowerupSprite;
 
     private PlayerController2D playerController2D;
+    private Enemy enemy;
 
-    private void Start()
+    private void Awake()
     {
         playerController2D = FindFirstObjectByType<PlayerController2D>();
+        enemy = GetComponent<Enemy>();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            StartCoroutine(FreezeEnemies());
+        }
     }
 
     //Player picks up the powerup
@@ -36,7 +46,7 @@ public class PowerupLogic : MonoBehaviour
                     Destroy(gameObject);
                     break;                
                 case PowerupType.KillAll:
-                    playerController2D.TriggerInvincibility();
+                    TryToKillAll();
                     Destroy(gameObject);
                     break;
             }
@@ -51,5 +61,9 @@ public class PowerupLogic : MonoBehaviour
         Destroy(gameObject);
     }
 
+    private void TryToKillAll()
+    {
+        //enemy.TakeDamage();
+    }
 
 }
