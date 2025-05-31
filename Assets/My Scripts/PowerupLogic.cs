@@ -34,6 +34,10 @@ public class PowerupLogic : MonoBehaviour
                 case PowerupType.Invulnerability:
                     playerController2D.TriggerInvincibility();
                     Destroy(gameObject);
+                    break;                
+                case PowerupType.KillAll:
+                    playerController2D.TriggerInvincibility();
+                    Destroy(gameObject);
                     break;
             }
         }
