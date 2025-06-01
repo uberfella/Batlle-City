@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      concrete_double_0: 2844344408112847552
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

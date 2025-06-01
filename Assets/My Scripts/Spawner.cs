@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour
     public Text enemiesToSpawnText;
     //TODO get rid of enemiesOnTheField
     public int enemiesOnTheField = 4;
-    public bool[] enemyAlive = new bool[4] { false, false, false, false }; //7, 10, 11, 12
+    public static bool[] enemyAlive = new bool[4] { false, false, false, false }; //7, 10, 11, 12
     public LayerMask obstructionMask;
     public EnemiesList enemiesList;
 

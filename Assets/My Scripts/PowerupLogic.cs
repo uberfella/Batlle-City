@@ -63,7 +63,7 @@ public class PowerupLogic : MonoBehaviour
 
     private void TryToKillAll()
     {
-        //enemy.TakeDamage();
+        Enemy.DestroyAllInLayer();
     }
 
 }

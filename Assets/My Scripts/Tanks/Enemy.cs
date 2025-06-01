@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Enemy : Tank
@@ -105,21 +106,59 @@ public class Enemy : Tank
         {
             case 7:
                 //Debug.Log("7 is false");
-                spawner.enemyAlive[0] = false;
+                Spawner.enemyAlive[0] = false;
                 break;
             case 10:
                 //Debug.Log("10 is false");
-                spawner.enemyAlive[1] = false;
+                Spawner.enemyAlive[1] = false;
                 break;
             case 11:
                 //Debug.Log("11 is false");
-                spawner.enemyAlive[2] = false;
+                Spawner.enemyAlive[2] = false;
                 break;
             case 12:
                 //Debug.Log("12 is false");
-                spawner.enemyAlive[3] = false;
+                Spawner.enemyAlive[3] = false;
                 break;
         }
     }
 
+    //public static void DestroyAllEnemies()
+    //{
+    //    Enemy[] enemies = Object.FindObjectsByType<Enemy>(FindObjectsSortMode.None);
+    //    foreach (Enemy enemy in enemies)
+    //    {
+    //        // Only destroy if the object is *exactly* of type Enemy
+    //        if (enemy.GetType() == typeof(Enemy))
+    //        {
+    //            Debug.Log("Skipping subclass: " + enemy.GetType().Name);
+    //        }
+    //        else
+    //        {
+    //            Debug.Log("Destroying exact Enemy: " + enemy);
+    //            Object.Destroy(enemy.gameObject);
+    //        }
+    //    }
+    //}
+    public static void DestroyAllInLayer()
+    {
+        //GameObject[] allObjects = GameObject.FindObjectsOfType<GameObject>();
+        GameObject[] allObjects = UnityEngine.Object.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
+        foreach (GameObject obj in allObjects)
+        {
+            if (obj.layer == 7 || 
+                obj.layer == 10 ||
+                obj.layer == 11 ||
+                obj.layer == 12)
+            {
+                Debug.Log("Destroying: " + obj.name);
+                Enemy script = obj.GetComponent<Enemy>();
+                if (script != null)
+                {
+                    script.ChangeEnemyStatus();
+                }
+                GameObject.Destroy(obj);
+            }
+        }
+    }
 }
