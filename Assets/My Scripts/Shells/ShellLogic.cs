@@ -75,7 +75,8 @@ public class Shell : MonoBehaviour
         if (other.gameObject.CompareTag("Brick") ||
             other.gameObject.CompareTag("Wall") ||
             other.gameObject.CompareTag("Base") ||
-            other.gameObject.CompareTag("Concrete"))
+            other.gameObject.CompareTag("Concrete") ||
+            other.gameObject.CompareTag("Fortify_Concrete"))
         {
             //shell explodes forward and to the left and right
             Explode();

@@ -15,6 +15,7 @@ TagManager:
   - EnemyLvl3
   - EnemyLvl4
   - Powerup
+  - Fortify_Concrete
   layers:
   - Default
   - TransparentFX

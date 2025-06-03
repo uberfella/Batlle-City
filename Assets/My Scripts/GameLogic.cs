@@ -19,8 +19,8 @@ spawning animations before enemy spawn ✓
 score counting ✓
 powerups 
 godmode ✓
-sounds 
 main menu and levels system
+sounds 
 friendly and enemy projectiles will cancel each other out when they collide in midair ✓
 player levelup, changing sprite and damage ✓
 AI - enemy changes direction if facing the obstacle for more than 0.5 sec ✓
@@ -33,6 +33,7 @@ rename sprites, variables, scripts like enemyLvl0-3 to one standard so it would 
 freeze powerup affects only tanks that are alive not the ones that would spawn after picking up the powerup
 get rid of constant checking variables' values in Update() method, replace em with Coroutines
 refactor enemy spawn anim
+powerups spawn on grid, e.g. spawn position should divide on 0.5 1.0 1.5
 
 QUESTIONS
 do enemies have different projectile speeds ? 

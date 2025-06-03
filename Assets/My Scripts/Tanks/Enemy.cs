@@ -123,26 +123,8 @@ public class Enemy : Tank
         }
     }
 
-    //public static void DestroyAllEnemies()
-    //{
-    //    Enemy[] enemies = Object.FindObjectsByType<Enemy>(FindObjectsSortMode.None);
-    //    foreach (Enemy enemy in enemies)
-    //    {
-    //        // Only destroy if the object is *exactly* of type Enemy
-    //        if (enemy.GetType() == typeof(Enemy))
-    //        {
-    //            Debug.Log("Skipping subclass: " + enemy.GetType().Name);
-    //        }
-    //        else
-    //        {
-    //            Debug.Log("Destroying exact Enemy: " + enemy);
-    //            Object.Destroy(enemy.gameObject);
-    //        }
-    //    }
-    //}
     public static void DestroyAllInLayer()
     {
-        //GameObject[] allObjects = GameObject.FindObjectsOfType<GameObject>();
         GameObject[] allObjects = UnityEngine.Object.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
         foreach (GameObject obj in allObjects)
         {
