@@ -56,6 +56,7 @@ public class Shell : MonoBehaviour
             //the enemy shell hits a player
             if (other.gameObject.CompareTag("Player"))
             {
+                //if(other.gameObject.)
                 if (!playerController2D.playerIsInvincible)
                 {
                     PlayerController2D playerController2D = other.gameObject.GetComponent<PlayerController2D>();

@@ -22,7 +22,6 @@ public class PlayerController2D : Tank
 
     private float timerForShooting;
     private float shootCooldown = 1f;
-    private float timeToBeInvincible = 3.0f;
     private bool cooldownHasPassed = true;
     //private PlayerSpawner playerSpawner;
     private GameObject invincibilityAnim;

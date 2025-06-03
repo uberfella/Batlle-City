@@ -2,7 +2,15 @@ using UnityEngine;
 
 public class EnemiesList : MonoBehaviour
 {
-    //private int[] level1 = { 0, 0, 0, 0, 0, 1, 1, 0 };
+    //0 enemyLvl1 regular
+    //1 enemyLvl1 powerup
+    //2 enemyLvl2 regular
+    //3 enemyLvl2 powerup
+    //4 enemyLvl3 regular
+    //5 enemyLvl3 powerup
+    //6 enemyLvl4 regular
+    //7 enemyLvl4 powerup
+
     private int[] level1 = { 0, 1, 2, 3, 0, 1, 1, 0, 1, 2, 3, 0, 1, 1, 1, 2, 3, 0, 1, 1 };
     private int[] level2 = { 0, 0, 0, 0, 0, 1, 1, 0, 1, 2, 3, 0, 1, 1, 1, 2, 3, 0, 1, 1 };
 
