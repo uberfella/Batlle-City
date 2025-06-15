@@ -10,6 +10,7 @@ public class EnemyLvl1 : Enemy
 
     public float timePassedSinceBlocked = 0f;
     public Sprite[] trackSprites;
+    public Sprite[] trackSpritesPowerup;
     public float animationSpeed = 0.2f;
     public SpriteRenderer spriteRenderer;
 
@@ -41,8 +42,9 @@ public class EnemyLvl1 : Enemy
         //spawner = FindFirstObjectByType<Spawner>();
         currentMoveDirection = getDirection();
         enemyIsAlive = true;
+        hasPowerup = true;
+        Debug.Log("hasPowerup = " + hasPowerup);
     }
-
 
     void Update()
     {
@@ -56,12 +58,20 @@ public class EnemyLvl1 : Enemy
             if (timer >= animationSpeed)
             {
                 timer = 0f;
-                currentFrame = (currentFrame + 1) % trackSprites.Length;
-                spriteRenderer.sprite = trackSprites[currentFrame];
+                if (!hasPowerup)
+                {
+                    currentFrame = (currentFrame + 1) % trackSprites.Length;
+                    spriteRenderer.sprite = trackSprites[currentFrame];
+                }
+                else
+                {
+                    currentFrame = (currentFrame + 1) % trackSpritesPowerup.Length;
+                    spriteRenderer.sprite = trackSpritesPowerup[currentFrame];
+                }
             }
         }
-        
-        EnemyMove(currentMoveDirection);
+
+            EnemyMove(currentMoveDirection);
 
         //Debug.Log("timePassedSinceBlocked = " + timePassedSinceBlocked);
 

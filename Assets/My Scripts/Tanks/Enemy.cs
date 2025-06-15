@@ -8,6 +8,7 @@ public class Enemy : Tank
     public Vector2 movement;
     public AiController aiController;
     public LayerMask obstacleLayer;
+    public bool hasPowerup;
     protected bool objectIsCurrentlyBeingBlocked;
     private Spawner spawner;
 

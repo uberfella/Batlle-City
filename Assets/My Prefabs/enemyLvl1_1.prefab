@@ -198,9 +198,13 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 7104
+  hasPowerup: 0
   timePassedSinceBlocked: 1.8
   trackSprites:
   - {fileID: -936549676407480981, guid: 179eec459c3c6cd41aea37eff020e70c, type: 3}
   - {fileID: -3344446844354859876, guid: 72ed9fa154398ce41a4c41980cb70f5d, type: 3}
+  trackSpritesPowerup:
+  - {fileID: -936549676407480981, guid: 179eec459c3c6cd41aea37eff020e70c, type: 3}
+  - {fileID: 2660193422995524831, guid: 9a03286bab8de8b45bc4eeda171f0aa8, type: 3}
   animationSpeed: 0.2
   spriteRenderer: {fileID: 2137960719256042090}
