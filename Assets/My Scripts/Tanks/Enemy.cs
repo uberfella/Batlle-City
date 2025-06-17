@@ -11,20 +11,26 @@ public class Enemy : Tank
     public bool hasPowerup;
     protected bool objectIsCurrentlyBeingBlocked;
     private Spawner spawner;
+    private PowerupLogic powerupLogic;
 
     void Awake()
     {
         spawner = FindFirstObjectByType<Spawner>();
+        powerupLogic = FindFirstObjectByType<PowerupLogic>();
     }
 
     public virtual void TakeDamage(int damage)
     {
+        if (hasPowerup) 
+        {
+            powerupLogic.SpawnRandomPowerupOnField();
+            hasPowerup = false;
+        }
         health -= damage;
         if (health <= 0)
         {
             Destroy(gameObject);
             enemyIsAlive = false;
-            //Debug.Log(" super class ");
             ChangeEnemyStatus();
         }
     }

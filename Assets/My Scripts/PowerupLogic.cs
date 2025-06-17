@@ -9,23 +9,18 @@ public class PowerupLogic : MonoBehaviour
     public GameObject [] powerupsToSpawn;
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            SpawnRandomPowerupOnField() ;
-        }
+
     }
 
     //-5.5 -6.5 
     //6.5 5.5
-    public void SpawnRandomPowerupOnField() 
+    public void SpawnRandomPowerupOnField()
     {
-        
         int randomPowerUp = Random.Range(0, 6);
         //Debug.Log("randomPowerUp = " + randomPowerUp);
         float randomPosX = Random.Range(-5.5f, 6.5f);
         float randomPosY = Random.Range(-6.5f, 5.5f);
-        GameObject instance = Instantiate(powerupsToSpawn[randomPowerUp], 
-            new Vector2(randomPosX, randomPosY), Quaternion.identity);
+        GameObject instance = Instantiate(powerupsToSpawn[randomPowerUp], new Vector2(randomPosX, randomPosY), Quaternion.identity);
         instance.SetActive(true);
     }
 

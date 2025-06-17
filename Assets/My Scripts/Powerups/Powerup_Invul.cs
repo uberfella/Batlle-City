@@ -10,7 +10,11 @@ public class Powerup_Invul : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        playerController2D.TriggerInvincibility();
-        Destroy(gameObject);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            playerController2D.TriggerInvincibility();
+            Destroy(gameObject);
+        }
     }
 }
+

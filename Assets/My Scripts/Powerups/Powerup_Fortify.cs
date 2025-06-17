@@ -14,9 +14,12 @@ public class Powerup_Fortify : MonoBehaviour
     // Update is called once per frame
     void OnTriggerEnter2D(Collider2D other)
     {
-        StartCoroutine(FortifySpawnConcreteOnBase());
-        //we can't destroy powerup gameobject here, otherwise the coroutine won't operate properly. So we just make it invisible while the base is fortified and then we destroy it
-        fortifyPowerupSprite.GetComponent<SpriteRenderer>().enabled = false;
+        if (other.gameObject.CompareTag("Player"))
+        {
+            StartCoroutine(FortifySpawnConcreteOnBase());
+            //we can't destroy powerup gameobject here, otherwise the coroutine won't operate properly. So we just make it invisible while the base is fortified and then we destroy it
+            fortifyPowerupSprite.GetComponent<SpriteRenderer>().enabled = false;
+        }
     }
 
     IEnumerator FortifySpawnConcreteOnBase()

@@ -3443,6 +3443,7 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 0
+  hasPowerup: 0
 --- !u!4 &486619445
 Transform:
   m_ObjectHideFlags: 0
@@ -6486,23 +6487,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cf435e2ae1edfe49ba803ade1911e06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerupType: 0
-  freezePowerupSprite: {fileID: 716309371}
   powerupsToSpawn:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  objectToSpawn: {fileID: 1864882036422906146, guid: 8705d85ff3ea51d4faa886e344aab811, type: 3}
-  spawnPositions:
-  - {x: -0.241, y: -6.495}
-  - {x: 0.004, y: -5.756}
-  - {x: 1.007, y: -5.751}
-  - {x: 1.245, y: -6.492}
-  rotate90Z: 01000001
-  powerupSpawnPosition: {x: -1.33, y: -5.09}
+  - {fileID: 3638255777565444822, guid: 410560a11b632dd4fb2770f592adeebf, type: 3}
+  - {fileID: 8312217855205737599, guid: af4a9601a37c79949a7166935acc4f60, type: 3}
+  - {fileID: 6026882526322492185, guid: 994a85d1002a52041b09d2b127ac86c2, type: 3}
+  - {fileID: 3932599552472315033, guid: 55d4f51eb1095154186260463a67e30b, type: 3}
+  - {fileID: 2679096192692436997, guid: 2f420ceb801a4fe4195e02902771d8e6, type: 3}
+  - {fileID: 2700375812524027498, guid: ae251af11e674174e9d6b5cfa4160003, type: 3}
 --- !u!61 &716309373
 BoxCollider2D:
   m_ObjectHideFlags: 0

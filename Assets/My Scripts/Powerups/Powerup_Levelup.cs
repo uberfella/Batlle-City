@@ -11,7 +11,10 @@ public class Powerup_Levelup : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        playerController2D.PlayerLevelUp();
-        Destroy(gameObject);
+        if (other.gameObject.CompareTag("Player")) 
+        {
+            playerController2D.PlayerLevelUp();
+            Destroy(gameObject);
+        }
     }
 }
