@@ -25,7 +25,7 @@ public class PlayerSpawner : MonoBehaviour
 
         if (playerLives < 0)
         {
-            Debug.Log("GAME OVER, out of lives");
+            GameLogic.GameOver = true;
         }
 
         if (playerLives >= 0)

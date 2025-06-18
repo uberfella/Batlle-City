@@ -111,11 +111,15 @@ public class Shell : MonoBehaviour
             //the shell is enemy's
             if (gameObject.CompareTag("ShellEnemy"))
             {
-                if (obj.CompareTag("Brick") || /*obj.CompareTag("Concrete") ||*/ obj.CompareTag("Player"))
+                if (obj.CompareTag("Brick"))
                 {
                     Destroy(obj.gameObject);
                 }
-
+                if (obj.CompareTag("Player") && !playerController2D.playerIsInvincible)
+                {
+                    PlayerController2D playerController2D = obj.GetComponent<PlayerController2D>();
+                    playerController2D.TakeDamage(1);
+                }
             }
         }
     }

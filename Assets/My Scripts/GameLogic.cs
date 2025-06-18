@@ -35,6 +35,7 @@ freeze powerup affects only tanks that are alive not the ones that would spawn a
 get rid of constant checking variables' values in Update() method, replace em with Coroutines
 refactor enemy spawn anim
 powerups spawn on grid, e.g. spawn position should divide on 0.5 1.0 1.5
+leveledup player can destroy concrete?
 
 QUESTIONS
 do enemies have different projectile speeds ? 
@@ -84,16 +85,25 @@ public class GameLogic : MonoBehaviour
         levelNumText.text = levelNum.ToString();
 
 
-        if(GameOver) 
+        //if(GameOver) 
+        //{
+        //    ShowGameOver();
+        //}
+    }
+
+    public void TriggerGameOver()
+    {
+        if (!GameOver)
         {
-            ShowGameOver();
+            GameOver = true;
+            StartCoroutine(ShowGameOver());
         }
     }
 
-    public void ShowGameOver()
+    IEnumerator ShowGameOver()
     {
         gameOverText.gameObject.SetActive(true);
-        StartCoroutine(MoveText(startPosition, targetPosition, moveDuration));
+        yield return StartCoroutine(MoveText(startPosition, targetPosition, moveDuration));
     }
 
     IEnumerator MoveText(Vector2 from, Vector2 to, float duration)
