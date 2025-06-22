@@ -87,7 +87,7 @@ public class PlayerController2D : Tank
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        if (horizontalInput != 0 || verticalInput != 0)
+        if ((horizontalInput != 0 || verticalInput != 0) && !GameLogic.GameOver)
         {
             timer += Time.deltaTime;
             if (timer >= animationSpeed)

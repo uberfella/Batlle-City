@@ -4,10 +4,12 @@ public class Base : MonoBehaviour
 {
     public GameObject surrenderFlagSprite;
     private PlayerController2D playerController2D;
+    private GameLogic gameLogic;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         playerController2D = FindFirstObjectByType<PlayerController2D>();
+        gameLogic = FindFirstObjectByType<GameLogic>();
     }
 
     // Update is called once per frame
@@ -24,7 +26,8 @@ public class Base : MonoBehaviour
             {
                 surrenderFlagSprite.GetComponent<SpriteRenderer>().enabled = true;
                 //Destroy(gameObject);
-                GameLogic.GameOver = true;
+                //GameLogic.GameOver = true;
+                gameLogic.TriggerGameOver();
             }
         }
     }

@@ -85,7 +85,7 @@ public class GameLogic : MonoBehaviour
         levelNumText.text = levelNum.ToString();
 
 
-        //if(GameOver) 
+        //if (GameOver)
         //{
         //    ShowGameOver();
         //}
