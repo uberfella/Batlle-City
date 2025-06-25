@@ -11,7 +11,7 @@ public class EnemiesList : MonoBehaviour
     //6 enemyLvl4 regular
     //7 enemyLvl4 powerup
 
-    private int[] level1 = { 0, 1, 2, 3, 0, 1, 1, 0, 1, 2, 3, 0, 1, 1, 1, 2, 3, 0, 1, 1 };
+    private int[] level1 = { 2, 3, 2, 3, 0, 1, 3, 4, 6, 6, 7, 0, 1, 1, 1, 2, 3, 0, 1, 1 };
     private int[] level2 = { 0, 0, 0, 0, 0, 1, 1, 0, 1, 2, 3, 0, 1, 1, 1, 2, 3, 0, 1, 1 };
 
     public int[] GetEnemiesListForLevel(int level)

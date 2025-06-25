@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -107,9 +108,30 @@ public class Spawner : MonoBehaviour
 
         if (colliders.Length == 0 && iterateOverSpawnList < enemiesList.GetEnemiesListForLevel(GameLogic.levelNum).Length)  // No obstructions
         {
-            enemyIdToSpawn = enemiesList.GetEnemiesListForLevel(GameLogic.levelNum)[iterateOverSpawnList]; //0 1 2 3 4 
+            enemyIdToSpawn = enemiesList.GetEnemiesListForLevel(GameLogic.levelNum)[iterateOverSpawnList]; //0 1 2 3 4 5 6 7
             iterateOverSpawnList++;
             GameObject newEnemy = Instantiate(GetPrefabTypeById(enemyIdToSpawn)[index], spawnPoint.position, Quaternion.identity);
+
+            EnemyLvl1 scriptEnemyLvl1 = newEnemy.GetComponent<EnemyLvl1>();
+            EnemyLvl2 scriptEnemyLvl2 = newEnemy.GetComponent<EnemyLvl2>();
+            EnemyLvl3 scriptEnemyLvl3 = newEnemy.GetComponent<EnemyLvl3>();
+            EnemyLvl4 scriptEnemyLvl4 = newEnemy.GetComponent<EnemyLvl4>();
+
+            if (enemyIdToSpawn % 2 != 0)
+            {
+                scriptEnemyLvl1.hasPowerup = true;
+                scriptEnemyLvl2.hasPowerup = true;
+                scriptEnemyLvl3.hasPowerup = true;
+                scriptEnemyLvl4.hasPowerup = true;
+            }
+            else
+            {
+                scriptEnemyLvl1.hasPowerup = false;
+                scriptEnemyLvl2.hasPowerup = false;
+                scriptEnemyLvl3.hasPowerup = false;
+                scriptEnemyLvl4.hasPowerup = false;
+            }
+
             enemiesToSpawn--;
             enemyAlive[index] = true;
         }
@@ -125,22 +147,36 @@ public class Spawner : MonoBehaviour
     //int random = Random.Range(minValForInput, maxValForInput);
     //spawnPoint[3]
 
+    //0 enemyLvl1 regular || even
+    //1 enemyLvl1 powerup || uneven
+    //2 enemyLvl2 regular || even
+    //3 enemyLvl2 powerup || uneven
+    //4 enemyLvl3 regular || even
+    //5 enemyLvl3 powerup || uneven
+    //6 enemyLvl4 regular || even
+    //7 enemyLvl4 powerup || uneven
     private GameObject[] GetPrefabTypeById(int id)
     {
         switch (id)
         {
             case 0:
-                return enemyPrefabLvl1;
             case 1:
-                return enemyPrefabLvl2;
+                return enemyPrefabLvl1;
             case 2:
-                return enemyPrefabLvl3;
             case 3:
+                return enemyPrefabLvl2;
+            case 4:
+            case 5:
+                return enemyPrefabLvl3;
+            case 6:
+            case 7:
                 return enemyPrefabLvl4;
             default:
                 return null;
         }
     }
+
+
 
 }
 

@@ -42,7 +42,7 @@ public class EnemyLvl1 : Enemy
         //spawner = FindFirstObjectByType<Spawner>();
         currentMoveDirection = getDirection();
         enemyIsAlive = true;
-        hasPowerup = true;
+        //hasPowerup = true;
         Debug.Log("hasPowerup = " + hasPowerup);
     }
 
@@ -71,7 +71,7 @@ public class EnemyLvl1 : Enemy
             }
         }
 
-            EnemyMove(currentMoveDirection);
+        EnemyMove(currentMoveDirection);
 
         //Debug.Log("timePassedSinceBlocked = " + timePassedSinceBlocked);
 
