@@ -17830,7 +17830,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8588389452971600557, guid: 0a5ea3429a81f9c44939519f83ab6d07, type: 3}
       propertyPath: godmode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8588389452971600557, guid: 0a5ea3429a81f9c44939519f83ab6d07, type: 3}
       propertyPath: tankLevelFourSprites.Array.size

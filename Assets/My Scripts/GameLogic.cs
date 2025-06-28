@@ -17,8 +17,8 @@ enemy and player animations ✓
 different types of enemies and enemy type presets for each level ✓
 spawning animations before enemy spawn ✓
 score counting ✓
-powerups 
-powerups disappear after ? seconds
+powerups ✓
+powerups disappear after ? seconds ✓
 godmode ✓
 main menu and levels system
 sounds 

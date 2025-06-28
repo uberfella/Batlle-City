@@ -22,6 +22,8 @@ public class PowerupLogic : MonoBehaviour
         float randomPosY = Random.Range(-6.5f, 5.5f);
         GameObject instance = Instantiate(powerupsToSpawn[randomPowerUp], new Vector2(randomPosX, randomPosY), Quaternion.identity);
         instance.SetActive(true);
+
+        Destroy(instance, 15f);
     }
 
 }

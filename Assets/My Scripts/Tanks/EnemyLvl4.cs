@@ -13,6 +13,7 @@ public class EnemyLvl4 : Enemy
     public Sprite[] trackSpritesHealth3;
     public Sprite[] trackSpritesHealth2;
     public Sprite[] trackSpritesHealth1;
+    public Sprite[] trackSpritesHealth4Powerup;
     public float animationSpeed = 0.2f;
     public SpriteRenderer spriteRenderer;
 
@@ -52,49 +53,57 @@ public class EnemyLvl4 : Enemy
             if (timer >= animationSpeed)
             {
                 timer = 0f;
-                
-                currentFrame = (currentFrame + 1) % GetSpriteColor().Length;
-                spriteRenderer.sprite = GetSpriteColor()[currentFrame];
+
+                if (!hasPowerup)
+                {
+                    currentFrame = (currentFrame + 1) % GetSpriteColor().Length;
+                    spriteRenderer.sprite = GetSpriteColor()[currentFrame];
+                }
+                else
+                {
+                    currentFrame = (currentFrame + 1) % GetSpriteColorWPowerup().Length;
+                    spriteRenderer.sprite = GetSpriteColorWPowerup()[currentFrame];
+                }
             }
-        }
 
-        EnemyMove(currentMoveDirection);
+            EnemyMove(currentMoveDirection);
 
-        if (objectIsCurrentlyBeingBlocked)
-        {
-            timePassedSinceBlocked += Time.deltaTime;
-            requestNewDirection = true;
-        }
-        else
-        {
-            timePassedSinceBlocked = 0;
-        }
+            if (objectIsCurrentlyBeingBlocked)
+            {
+                timePassedSinceBlocked += Time.deltaTime;
+                requestNewDirection = true;
+            }
+            else
+            {
+                timePassedSinceBlocked = 0;
+            }
 
-        if (requestNewDirection && timePassedSinceBlocked >= changeDirectionTime)
-        {
-            timePassedSinceBlocked = 0;
+            if (requestNewDirection && timePassedSinceBlocked >= changeDirectionTime)
+            {
+                timePassedSinceBlocked = 0;
 
-            SetMoveDirection(getDirection());
-            requestNewDirection = false;
-        }
-        //---------------
+                SetMoveDirection(getDirection());
+                requestNewDirection = false;
+            }
+            //---------------
 
-        //---------------
-        //SHOOTING
-        //getting new value with each call after each shot
-        if (requestNewCooldown)
-        {
-            shotCooldown = aiController.GetShootCooldown();
-            requestNewCooldown = false;
+            //---------------
+            //SHOOTING
+            //getting new value with each call after each shot
+            if (requestNewCooldown)
+            {
+                shotCooldown = aiController.GetShootCooldown();
+                requestNewCooldown = false;
+            }
+            timerForShooting += Time.deltaTime;
+            if (timerForShooting >= shotCooldown)
+            {
+                timerForShooting = 0;
+                ShootTheGun();
+                requestNewCooldown = true;
+            }
+            //-------------
         }
-        timerForShooting += Time.deltaTime;
-        if (timerForShooting >= shotCooldown)
-        {
-            timerForShooting = 0;
-            ShootTheGun();
-            requestNewCooldown = true;
-        }
-        //-------------
     }
 
     private Vector2 getDirection()
@@ -174,6 +183,17 @@ public class EnemyLvl4 : Enemy
                 return trackSpritesHealth4;
             default:
                 return trackSpritesHealth4;
+        }
+    }
+
+    private Sprite[] GetSpriteColorWPowerup()
+    {
+        switch (health)
+        {
+            case 4:
+                return trackSpritesHealth4Powerup;
+            default:
+                return trackSpritesHealth4Powerup;
         }
     }
 

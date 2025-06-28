@@ -198,6 +198,7 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 6080
+  hasPowerup: 0
   timePassedSinceBlocked: 0
   trackSpritesHealth4:
   - {fileID: 4014729691385158549, guid: 620b15450f162014e9c0e20128a66024, type: 3}
@@ -211,5 +212,8 @@ MonoBehaviour:
   trackSpritesHealth1:
   - {fileID: 3715273155608963290, guid: 6ce6fc2485eaf1242bacfea08583a9c4, type: 3}
   - {fileID: 2514873839396803644, guid: 3ab0c4632c17cc54b9771e2515208a5c, type: 3}
+  trackSpritesHealth4Powerup:
+  - {fileID: 9015139365796082523, guid: 831675e541260f54fb05030ad769796d, type: 3}
+  - {fileID: -5016984418908435367, guid: b86f1925e43c9274f9c7287f3636a036, type: 3}
   animationSpeed: 0.2
   spriteRenderer: {fileID: 4052273824527208134}

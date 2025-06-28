@@ -119,17 +119,41 @@ public class Spawner : MonoBehaviour
 
             if (enemyIdToSpawn % 2 != 0)
             {
-                scriptEnemyLvl1.hasPowerup = true;
-                scriptEnemyLvl2.hasPowerup = true;
-                scriptEnemyLvl3.hasPowerup = true;
-                scriptEnemyLvl4.hasPowerup = true;
+                if (enemyIdToSpawn == 0 || enemyIdToSpawn == 1)
+                {
+                    scriptEnemyLvl1.hasPowerup = true;
+                }
+                if (enemyIdToSpawn == 2 || enemyIdToSpawn == 3)
+                {
+                    scriptEnemyLvl2.hasPowerup = true;
+                }
+                if (enemyIdToSpawn == 4 || enemyIdToSpawn == 5)
+                {
+                    scriptEnemyLvl3.hasPowerup = true;
+                }
+                if (enemyIdToSpawn == 6 || enemyIdToSpawn == 7)
+                {
+                    scriptEnemyLvl4.hasPowerup = true;
+                }
             }
-            else
+            else if (enemyIdToSpawn % 2 == 0)
             {
-                scriptEnemyLvl1.hasPowerup = false;
-                scriptEnemyLvl2.hasPowerup = false;
-                scriptEnemyLvl3.hasPowerup = false;
-                scriptEnemyLvl4.hasPowerup = false;
+                if (enemyIdToSpawn == 0 || enemyIdToSpawn == 1)
+                {
+                    scriptEnemyLvl1.hasPowerup = false;
+                }
+                if (enemyIdToSpawn == 2 || enemyIdToSpawn == 3)
+                {
+                    scriptEnemyLvl2.hasPowerup = false;
+                }
+                if (enemyIdToSpawn == 4 || enemyIdToSpawn == 5)
+                {
+                    scriptEnemyLvl3.hasPowerup = false;
+                }
+                if (enemyIdToSpawn == 6 || enemyIdToSpawn == 7)
+                {
+                    scriptEnemyLvl4.hasPowerup = false;
+                }
             }
 
             enemiesToSpawn--;
