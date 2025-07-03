@@ -9,7 +9,7 @@ public class ContinueGameButton : MonoBehaviour
     {
         if (/*PlayerPrefs.HasKey("HasSaveData")*/true)
         {
-            continueButton.SetActive(true);
+            continueButton.SetActive(false);
         }
         else
         {

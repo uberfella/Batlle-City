@@ -230,8 +230,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2038795267}
   - {fileID: 645041133}
+  - {fileID: 2038795267}
   m_Father: {fileID: 1348485742}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -859,8 +859,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2071992358}
-  - {fileID: 1590473192}
   - {fileID: 955774635}
+  - {fileID: 1590473192}
   - {fileID: 616263660}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -960,8 +960,9 @@ GameObject:
   - component: {fileID: 1590473191}
   - component: {fileID: 1590473194}
   - component: {fileID: 1590473193}
+  - component: {fileID: 1590473195}
   m_Layer: 0
-  m_Name: OptionSelectIcon
+  m_Name: SelectorIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1029,17 +1030,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1590473190}
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 218.94736, y: 184.03, z: 218.94736}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 4.7, y: 3.9504516, z: 4.7}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1348485742}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -82.2, y: 0.2}
-  m_SizeDelta: {x: 0.13, y: 0.16}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 857, y: -465}
+  m_SizeDelta: {x: 13, y: 13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1590473193
 MonoBehaviour:
@@ -1079,6 +1080,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1590473190}
   m_CullTransparentMesh: 1
+--- !u!114 &1590473195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590473190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b717df2ec2d48f2499f7278a57638728, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectorIcon: {fileID: 1590473192}
+  buttonTargets:
+  - {fileID: 645041133}
+  - {fileID: 2038795267}
+  buttonComponents:
+  - {fileID: 645041134}
+  - {fileID: 2038795268}
 --- !u!1 &2038795266
 GameObject:
   m_ObjectHideFlags: 0
