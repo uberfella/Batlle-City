@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,7 +13,12 @@ public class MenuSelector : MonoBehaviour
     void Start()
     {
         RefreshVisibleButtons();
-        MoveSelectorToCurrent();
+        StartCoroutine(DeferredMoveSelector());
+    }
+    IEnumerator DeferredMoveSelector()
+    {
+        yield return null; // wait one frame
+        MoveSelectorToCurrent(); // now layout is done
     }
 
     void Update()
@@ -54,13 +60,21 @@ public class MenuSelector : MonoBehaviour
 
     void MoveSelectorToCurrent()
     {
+
         if (buttonTargets.Count == 0) return;
 
-        //Vector3 targetPos = buttonTargets[currentIndex].position;
-        //Vector3 newPos = new Vector3(selectorIcon.position.x, targetPos.y, selectorIcon.position.z);
-        //selectorIcon.position = newPos;
+        Vector3 targetPos = buttonTargets[currentIndex].position;
+        Vector3 newPos = new Vector3(targetPos.x - 50, targetPos.y, targetPos.z);
+        Debug.Log("targetPos.x = " + (targetPos.x - 50) + "targetPos.y" + (targetPos.y) + "targetPos.z" + (targetPos.z));
+        selectorIcon.position = newPos;
 
-        selectorIcon.anchoredPosition = new Vector2(-200, buttonTargets[currentIndex].anchoredPosition.y);
+        //selectorIcon.anchoredPosition = new Vector2(-200, buttonTargets[currentIndex].anchoredPosition.y);
+        //Debug.Log("currentIndex = " + currentIndex);
+        //Debug.Log("anchoredPosition.x = " + (buttonTargets[currentIndex].anchoredPosition.x) + "anchoredPosition.y" + (buttonTargets[currentIndex].anchoredPosition.y));
 
     }
 }
+
+//2 buttons - starts at random pos, continues stuck
+//1 button -  
+// 

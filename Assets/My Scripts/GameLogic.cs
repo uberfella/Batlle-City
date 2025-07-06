@@ -29,6 +29,7 @@ AI - enemy changes direction if a random time value between 1 and 9 seconds has 
 sprites - use sprite atlas to avoid visible breaks between individual sprites 
 remove physics from tanks so you can't bump into them and move their bodies ✓
 get rid of objectIsCurrentlyBeingBlocked bool ✓ (cant do that)
+main menu - main menu appears from the bottom of the screen
 clean code
 rename sprites, variables, scripts like enemyLvl0-3 to one standard so it would make more sense
 freeze powerup affects only tanks that are alive not the ones that would spawn after picking up the powerup
