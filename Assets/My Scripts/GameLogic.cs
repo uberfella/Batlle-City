@@ -18,13 +18,14 @@ different types of enemies and enemy type presets for each level ✓
 spawning animations before enemy spawn ✓
 score counting ✓
 powerups ✓
-powerups disappear after ? seconds ✓
+powerups disappear after 10 seconds ✓
 godmode ✓
 main menu and levels system
+does the game gets saved when finishing the game?
 sounds 
-friendly and enemy projectiles will cancel each other out when they collide in midair ✓
+friendly and enemy projectiles will destroy each other when they collide in midair ✓
 player levelup, changing sprite and damage ✓
-AI - enemy changes direction if facing the obstacle for more than 0.5 sec ✓
+AI - enemy changes direction if it is facing the obstacle for more than 0.5 sec ✓
 AI - enemy changes direction if a random time value between 1 and 9 seconds has passed
 sprites - use sprite atlas to avoid visible breaks between individual sprites 
 remove physics from tanks so you can't bump into them and move their bodies ✓
@@ -35,7 +36,7 @@ rename sprites, variables, scripts like enemyLvl0-3 to one standard so it would 
 freeze powerup affects only tanks that are alive not the ones that would spawn after picking up the powerup
 get rid of constant checking variables' values in Update() method, replace em with Coroutines
 refactor enemy spawn anim
-powerups spawn on grid, e.g. spawn position should divide on 0.5 1.0 1.5
+power-ups spawn on a grid; for example, the spawn position should be divisible by 0.5, 1.0, 1.5 without any remainder
 leveledup player can destroy concrete?
 
 QUESTIONS
@@ -58,6 +59,7 @@ public class GameLogic : MonoBehaviour
 {
     public static bool GameOver;
     public static int levelNum = 0;
+    public static int finalLevelNum = 1;
     public static GameLogic Instance { get; private set; }
     public bool isEnemiesFrozen;
 
@@ -86,10 +88,7 @@ public class GameLogic : MonoBehaviour
         levelNumText.text = levelNum.ToString();
 
 
-        //if (GameOver)
-        //{
-        //    ShowGameOver();
-        //}
+
     }
 
     public void TriggerGameOver()
@@ -117,5 +116,21 @@ public class GameLogic : MonoBehaviour
             yield return null;
         }
         gameOverText.anchoredPosition = to; // Ensure it reaches the final position
+    }
+
+    IEnumerator TriggerLevelEndAndSaveGame()
+    {
+        if ((levelNum < finalLevelNum))
+        {
+            float elapsed = 0f;
+
+        }
+    }
+
+    public static void SaveGame()
+    {
+        PlayerPrefs.SetInt("SavedLevel", GameLogic.levelNum);
+        PlayerPrefs.SetInt("PlayerLives", GameLogic.playerLives);
+        PlayerPrefs.Save();
     }
 }

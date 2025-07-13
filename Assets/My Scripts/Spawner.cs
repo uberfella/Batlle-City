@@ -31,9 +31,7 @@ public class Spawner : MonoBehaviour
     void Start()
     {
 
-        //GameLogic.levelNum = 0;
         enemiesList = FindFirstObjectByType<EnemiesList>();
-        //currentArray = enemiesList.GetEnemiesListForLevel(GameLogic.levelNum);
         spawnAnim = new GameObject[3];
         spawnAnimationRenderer = new Renderer[3];
         for (int i = 0; i < 3; i++)
