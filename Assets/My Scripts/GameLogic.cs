@@ -118,19 +118,7 @@ public class GameLogic : MonoBehaviour
         gameOverText.anchoredPosition = to; // Ensure it reaches the final position
     }
 
-    IEnumerator TriggerLevelEndAndSaveGame()
-    {
-        if ((levelNum < finalLevelNum))
-        {
-            float elapsed = 0f;
 
-        }
-    }
 
-    public static void SaveGame()
-    {
-        PlayerPrefs.SetInt("SavedLevel", GameLogic.levelNum);
-        PlayerPrefs.SetInt("PlayerLives", GameLogic.playerLives);
-        PlayerPrefs.Save();
-    }
+
 }

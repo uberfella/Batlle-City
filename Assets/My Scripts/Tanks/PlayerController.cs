@@ -18,7 +18,7 @@ public class PlayerController2D : Tank
     public Sprite[] tankLevelFourSprites;
     public float animationSpeed = 0.2f; // Time between frames
     public SpriteRenderer spriteRenderer;
-    public int playerLevel;
+    public static int playerLevel;
 
     private float timerForShooting;
     private float shootCooldown = 1f;

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Spawner : MonoBehaviour
@@ -13,7 +14,7 @@ public class Spawner : MonoBehaviour
     public int enemiesToSpawn = 0;
     public Text enemiesToSpawnText;
     //TODO get rid of enemiesOnTheField
-    public int enemiesOnTheField = 4;
+    //public int enemiesOnTheField = 4;
     public static bool[] enemyAlive = new bool[4] { false, false, false, false }; //7, 10, 11, 12
     public LayerMask obstructionMask;
     public EnemiesList enemiesList;
@@ -25,6 +26,7 @@ public class Spawner : MonoBehaviour
     private GameObject[] spawnAnim;
     private Renderer[] spawnAnimationRenderer;
     private int randomSpawnPoint = 0;
+    private bool levelFinished = false;
 
     Animator animator;
 
@@ -85,6 +87,11 @@ public class Spawner : MonoBehaviour
             }
         }
 
+        if (!levelFinished && enemiesToSpawn == 0 && AllEnemiesDead())
+        {
+            levelFinished = true;
+            OnLevelFinished();
+        }
     }
 
     public void SpawnEnemy(int index)
@@ -198,7 +205,25 @@ public class Spawner : MonoBehaviour
         }
     }
 
+    bool AllEnemiesDead()
+    {
+        foreach (bool alive in enemyAlive)
+        {
+            if (alive) return false;
+        }
+        return true;
+    }
 
+    void OnLevelFinished()
+    {
+        Debug.Log("Level Complete!");
+
+        SaveManager.SaveGame();
+
+        // Load next level (optional, or wait a few seconds before transition)
+        //string nextScene = "Level" + (levelNum + 1);
+        //SceneManager.LoadScene(nextScene);
+    }
 
 }
 

@@ -7,7 +7,7 @@ public class ContinueGameButton : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (/*PlayerPrefs.HasKey("HasSaveData")*/true)
+        if (PlayerPrefs.HasKey("HasSaveData"))
         {
             continueButton.SetActive(true);
         }
@@ -23,4 +23,6 @@ public class ContinueGameButton : MonoBehaviour
     {
         
     }
+
+
 }
