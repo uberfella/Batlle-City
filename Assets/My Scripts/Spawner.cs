@@ -221,8 +221,12 @@ public class Spawner : MonoBehaviour
         SaveManager.SaveGame();
 
         // Load next level (optional, or wait a few seconds before transition)
-        //string nextScene = "Level" + (levelNum + 1);
-        //SceneManager.LoadScene(nextScene);
+        string nextScene = "Level" + (GameLogic.levelNum + 1);
+        if (GameLogic.levelNum < GameLogic.finalLevelNum)
+        {
+            GameLogic.levelNum++;
+        }
+        SceneManager.LoadScene(nextScene);
     }
 
 }

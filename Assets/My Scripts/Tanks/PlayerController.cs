@@ -72,12 +72,10 @@ public class PlayerController2D : Tank
             cooldownHasPassed = true;
         }
 
-        //timeToBeInvincible -= Time.deltaTime;
-        //if (timeToBeInvincible <= 0)
-        //{
-        //    playerIsInvincible = false;
-        //    invincibilityAnimationRenderer.enabled = false;
-        //}
+        if (Input.GetKeyDown(KeyCode.Backspace)) 
+        {
+            godmode = false;
+        }
 
     }
 

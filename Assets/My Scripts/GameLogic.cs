@@ -1,7 +1,8 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using System.Collections;
 using TMPro;
-using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 /*
 TODO
@@ -96,7 +97,9 @@ public class GameLogic : MonoBehaviour
         if (!GameOver)
         {
             GameOver = true;
+            SaveManager.EraseSave();
             StartCoroutine(ShowGameOver());
+            SceneManager.LoadScene("Main Menu");
         }
     }
 
