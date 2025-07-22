@@ -67,7 +67,7 @@ public class GameLogic : MonoBehaviour
     public Text levelNumText;
 
     public RectTransform gameOverText;
-    public float moveDuration = 1.5f;
+    public float moveDuration = 5.5f;
     public Vector2 targetPosition;
     private Vector2 startPosition;
 
@@ -86,7 +86,7 @@ public class GameLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        levelNumText.text = levelNum.ToString();
+        levelNumText.text = (levelNum + 1).ToString();
 
 
 
@@ -99,7 +99,7 @@ public class GameLogic : MonoBehaviour
             GameOver = true;
             SaveManager.EraseSave();
             StartCoroutine(ShowGameOver());
-            SceneManager.LoadScene("Main Menu");
+            
         }
     }
 
@@ -107,6 +107,7 @@ public class GameLogic : MonoBehaviour
     {
         gameOverText.gameObject.SetActive(true);
         yield return StartCoroutine(MoveText(startPosition, targetPosition, moveDuration));
+        SceneManager.LoadScene("Main Menu");
     }
 
     IEnumerator MoveText(Vector2 from, Vector2 to, float duration)
