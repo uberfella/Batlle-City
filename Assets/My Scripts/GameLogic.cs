@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -63,19 +64,20 @@ public class GameLogic : MonoBehaviour
     public static int finalLevelNum = 1;
     public static GameLogic Instance { get; private set; }
     public bool isEnemiesFrozen;
-
     public Text levelNumText;
-
     public RectTransform gameOverText;
     public float moveDuration = 5.5f;
     public Vector2 targetPosition;
+
     private Vector2 startPosition;
+    private Spawner spawner;
 
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
+        spawner = FindFirstObjectByType<Spawner>();
     }
     void Start()
     {
@@ -94,7 +96,7 @@ public class GameLogic : MonoBehaviour
 
     public void TriggerGameOver()
     {
-        if (!GameOver)
+        if (!GameOver && !spawner.levelFinished)
         {
             GameOver = true;
             SaveManager.EraseSave();

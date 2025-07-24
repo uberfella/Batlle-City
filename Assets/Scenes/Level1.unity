@@ -5430,7 +5430,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1
+  m_Text: 2
 --- !u!222 &637358270
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -17763,6 +17763,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 7552
   enemiesList: {fileID: 4200056}
+  levelFinished: 0
 --- !u!1001 &3043116010102652193
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -18,6 +18,7 @@ public class Spawner : MonoBehaviour
     public static bool[] enemyAlive = new bool[4] { false, false, false, false }; //7, 10, 11, 12
     public LayerMask obstructionMask;
     public EnemiesList enemiesList;
+    public bool levelFinished = false;
 
     private float timer = 0f;
     private float cooldownToSpawn = 5f;
@@ -26,7 +27,6 @@ public class Spawner : MonoBehaviour
     private GameObject[] spawnAnim;
     private Renderer[] spawnAnimationRenderer;
     private int randomSpawnPoint = 0;
-    private bool levelFinished = false;
 
     Animator animator;
 
@@ -46,6 +46,11 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("levelFinished = " + levelFinished);
+            Debug.Log("GameOver = " + GameLogic.GameOver);
+        }
 
         enemiesToSpawnText.text = enemiesToSpawn.ToString();
 
@@ -87,7 +92,7 @@ public class Spawner : MonoBehaviour
             }
         }
 
-        if (!levelFinished && enemiesToSpawn == 0 && AllEnemiesDead())
+        if (!levelFinished && enemiesToSpawn <= 0 && AllEnemiesDead())
         {
             levelFinished = true;
             OnLevelFinished();
@@ -225,8 +230,9 @@ public class Spawner : MonoBehaviour
         if (GameLogic.levelNum < GameLogic.finalLevelNum)
         {
             GameLogic.levelNum++;
+            SceneManager.LoadScene(nextScene);
         }
-        SceneManager.LoadScene(nextScene);
+        
     }
 
 }

@@ -17763,6 +17763,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 7552
   enemiesList: {fileID: 4200056}
+  levelFinished: 0
 --- !u!1001 &3043116010102652193
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17829,7 +17830,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8588389452971600557, guid: 0a5ea3429a81f9c44939519f83ab6d07, type: 3}
       propertyPath: godmode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8588389452971600557, guid: 0a5ea3429a81f9c44939519f83ab6d07, type: 3}
       propertyPath: tankLevelFourSprites.Array.size
