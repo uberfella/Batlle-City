@@ -18,7 +18,7 @@ public class MainMenuController : MonoBehaviour
     public void StartGame()
     {
         GameLogic.levelNum = 0;
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("Level0");
     }
 
     public void ContinueGame()

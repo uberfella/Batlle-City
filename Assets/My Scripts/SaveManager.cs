@@ -16,15 +16,6 @@ public class SaveManager : MonoBehaviour
         
     }
 
-    //IEnumerator TriggerLevelEndAndSaveGame()
-    //{
-    //    if ((levelNum < finalLevelNum))
-    //    {
-    //        float elapsed = 0f;
-
-    //    }
-    //}
-
     public static void SaveGame()
     {
         PlayerPrefs.SetInt("SavedLevel", GameLogic.levelNum);
@@ -32,6 +23,7 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.SetInt("PlayerUpgrade", PlayerController2D.playerLevel);
         PlayerPrefs.SetInt("HasSaveData", 1);
         PlayerPrefs.Save();
+        Debug.Log("Game saved");
     }
 
     public static void LoadGame()
@@ -53,6 +45,7 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.DeleteKey("PlayerLives");
         PlayerPrefs.DeleteKey("PlayerUpgrade");
         PlayerPrefs.DeleteKey("HasSaveData");
+        Debug.Log("Game erased");
     }
 
 }

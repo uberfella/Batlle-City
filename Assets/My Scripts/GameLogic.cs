@@ -61,7 +61,7 @@ public class GameLogic : MonoBehaviour
 {
     public static bool GameOver;
     public static int levelNum = 0;
-    public static int finalLevelNum = 1;
+    public static int finalLevelNum = 2;
     public static GameLogic Instance { get; private set; }
     public bool isEnemiesFrozen;
     public Text levelNumText;
