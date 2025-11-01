@@ -48,8 +48,9 @@ public class Spawner : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("levelFinished = " + levelFinished);
-            Debug.Log("GameOver = " + GameLogic.GameOver);
+            //Debug.Log("levelFinished = " + levelFinished);
+            //Debug.Log("GameOver = " + GameLogic.GameOver);
+            //Debug.Log("levelNum = " + GameLogic.levelNum);
         }
 
         enemiesToSpawnText.text = enemiesToSpawn.ToString();

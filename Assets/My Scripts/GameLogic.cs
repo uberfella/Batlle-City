@@ -88,7 +88,11 @@ public class GameLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        levelNumText.text = (levelNum + 1).ToString();
+        //if (levelNumText.text != null)
+        {
+            levelNumText.text = (levelNum + 1).ToString();
+        }
+        
 
 
 
