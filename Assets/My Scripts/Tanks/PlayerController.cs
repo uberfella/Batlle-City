@@ -75,6 +75,7 @@ public class PlayerController2D : Tank
         if (Input.GetKeyDown(KeyCode.Backspace)) 
         {
             godmode = false;
+            TriggerInvincibility();
         }
 
     }

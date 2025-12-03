@@ -7,9 +7,15 @@ public enum PowerupType { Fortify, Freeze, Invulnerability, KillAll, Levelup, Ex
 public class PowerupLogic : MonoBehaviour
 {
     public GameObject [] powerupsToSpawn;
+
     private void Update()
     {
-
+        //cheat to kill all
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            GameObject instance = Instantiate(powerupsToSpawn[3], new Vector2(-1.75f, -5.95f), Quaternion.identity);
+            instance.SetActive(true);
+        }
     }
 
     //-5.5 -6.5 
@@ -24,6 +30,7 @@ public class PowerupLogic : MonoBehaviour
         instance.SetActive(true);
 
         Destroy(instance, 10f);
+
     }
 
 }

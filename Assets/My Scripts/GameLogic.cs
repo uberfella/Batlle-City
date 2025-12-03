@@ -89,6 +89,7 @@ public class GameLogic : MonoBehaviour
     void Update()
     {
         //if (levelNumText.text != null)
+        if (GameLogic.levelNum < GameLogic.finalLevelNum)
         {
             levelNumText.text = (levelNum + 1).ToString();
         }
@@ -100,6 +101,7 @@ public class GameLogic : MonoBehaviour
 
     public void TriggerGameOver()
     {
+        Debug.Log("trying to game over");
         if (!GameOver && !spawner.levelFinished)
         {
             GameOver = true;

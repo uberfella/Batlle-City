@@ -14,10 +14,13 @@ public class Base : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        
         if (other.gameObject.CompareTag("ShellPlayer") || other.gameObject.CompareTag("ShellEnemy"))
         {
+            Debug.Log("trying to destroy base");
             if (playerController2D.godmode)
             {
+                Debug.Log("godmode is on, returning");
                 return;
             }
 
