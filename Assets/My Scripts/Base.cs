@@ -17,7 +17,7 @@ public class Base : MonoBehaviour
         
         if (other.gameObject.CompareTag("ShellPlayer") || other.gameObject.CompareTag("ShellEnemy"))
         {
-            Debug.Log("trying to destroy base");
+            //Debug.Log("trying to destroy base");
             if (playerController2D.godmode)
             {
                 Debug.Log("godmode is on, returning");

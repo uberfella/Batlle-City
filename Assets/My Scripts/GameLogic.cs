@@ -23,6 +23,9 @@ powerups ✓
 powerups disappear after 10 seconds ✓
 godmode ✓
 main menu and levels system
+    nullpointreference for levelnum text when starting the game over
+    no gameover in level2 and level3
+    no destroyed base sprite in level2 and level3
 does the game gets saved when finishing the game?
 sounds 
 friendly and enemy projectiles will destroy each other when they collide in midair ✓
@@ -74,8 +77,16 @@ public class GameLogic : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+            Debug.Log("no instance found, assigning a new one");
+        }
+        else 
+        {
+            Destroy(gameObject);
+            Debug.Log("old instance found, destroying it...");
+        }
         DontDestroyOnLoad(gameObject);
         spawner = FindFirstObjectByType<Spawner>();
     }
@@ -101,7 +112,7 @@ public class GameLogic : MonoBehaviour
 
     public void TriggerGameOver()
     {
-        Debug.Log("trying to game over");
+        //Debug.Log("trying to game over");
         if (!GameOver && !spawner.levelFinished)
         {
             GameOver = true;

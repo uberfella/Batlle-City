@@ -65,7 +65,7 @@ public class MenuSelector : MonoBehaviour
 
         Vector3 targetPos = buttonTargets[currentIndex].position;
         Vector3 newPos = new Vector3(targetPos.x - 50, targetPos.y, targetPos.z);
-        Debug.Log("targetPos.x = " + (targetPos.x - 50) + "targetPos.y" + (targetPos.y) + "targetPos.z" + (targetPos.z));
+        //Debug.Log("targetPos.x = " + (targetPos.x - 50) + "targetPos.y" + (targetPos.y) + "targetPos.z" + (targetPos.z));
         selectorIcon.position = newPos;
 
         //selectorIcon.anchoredPosition = new Vector2(-200, buttonTargets[currentIndex].anchoredPosition.y);

@@ -43,7 +43,7 @@ public class EnemyLvl1 : Enemy
         currentMoveDirection = getDirection();
         enemyIsAlive = true;
         //hasPowerup = true;
-        Debug.Log("hasPowerup = " + hasPowerup);
+        //Debug.Log("hasPowerup = " + hasPowerup);
     }
 
     void Update()
