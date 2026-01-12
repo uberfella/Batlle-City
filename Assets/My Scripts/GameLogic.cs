@@ -63,8 +63,7 @@ Enemy tanks that flash red provide power-ups whenever hit. The power up will app
 public class GameLogic : MonoBehaviour
 {
     public static bool GameOver;
-    public static int levelNum = 0;
-    public static int finalLevelNum = 2;
+
     public static GameLogic Instance { get; private set; }
     public bool isEnemiesFrozen;
     public Text levelNumText;
@@ -100,9 +99,9 @@ public class GameLogic : MonoBehaviour
     void Update()
     {
         //if (levelNumText.text != null)
-        if (GameLogic.levelNum < GameLogic.finalLevelNum)
+        if (BootstrappedData.levelNum < BootstrappedData.finalLevelNum)
         {
-            levelNumText.text = (levelNum + 1).ToString();
+            levelNumText.text = (BootstrappedData.levelNum + 1).ToString();
         }
         
 
