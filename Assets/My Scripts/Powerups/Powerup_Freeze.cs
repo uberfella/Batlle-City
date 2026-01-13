@@ -18,9 +18,9 @@ public class Powerup_Freeze : MonoBehaviour
 
     IEnumerator FreezeEnemies()
     {
-        GameLogic.Instance.isEnemiesFrozen = true;
+        //GameLogic.Instance.isEnemiesFrozen = true;
         yield return new WaitForSeconds(5f);
-        GameLogic.Instance.isEnemiesFrozen = false;
+        //GameLogic.Instance.isEnemiesFrozen = false;
         Destroy(gameObject);
     }
 }

@@ -76,17 +76,17 @@ public class GameLogic : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            Debug.Log("no instance found, assigning a new one");
-        }
-        else 
-        {
-            Destroy(gameObject);
-            Debug.Log("old instance found, destroying it...");
-        }
-        DontDestroyOnLoad(gameObject);
+        //if (Instance == null)
+        //{
+        //    Instance = this;
+        //    Debug.Log("no instance found, assigning a new one");
+        //}
+        //else 
+        //{
+        //    Destroy(gameObject);
+        //    Debug.Log("old instance found, destroying it...");
+        //}
+        //DontDestroyOnLoad(gameObject);
         spawner = FindFirstObjectByType<Spawner>();
     }
     void Start()

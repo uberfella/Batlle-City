@@ -43,8 +43,8 @@ public class EnemyLvl4 : Enemy
 
     void Update()
     {
-        if (GameLogic.Instance.isEnemiesFrozen)
-            return;
+        //if (GameLogic.Instance.isEnemiesFrozen)
+        //    return;
         //---------------
         //MOVING
         if (horizontalInput != 0 || verticalInput != 0)
