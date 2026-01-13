@@ -117,9 +117,9 @@ public class Spawner : MonoBehaviour
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(spawnPoint.position, checkRadius, obstructionMask);
 
-        if (colliders.Length == 0 && iterateOverSpawnList < enemiesList.GetEnemiesListForLevel(BootstrappedData.levelNum).Length)  // No obstructions
+        if (colliders.Length == 0 && iterateOverSpawnList < enemiesList.GetEnemiesListForLevel(GameLogic.levelNum).Length)  // No obstructions
         {
-            enemyIdToSpawn = enemiesList.GetEnemiesListForLevel(BootstrappedData.levelNum)[iterateOverSpawnList]; //0 1 2 3 4 5 6 7
+            enemyIdToSpawn = enemiesList.GetEnemiesListForLevel(GameLogic.levelNum)[iterateOverSpawnList]; //0 1 2 3 4 5 6 7
             iterateOverSpawnList++;
             GameObject newEnemy = Instantiate(GetPrefabTypeById(enemyIdToSpawn)[index], spawnPoint.position, Quaternion.identity);
 
@@ -227,10 +227,10 @@ public class Spawner : MonoBehaviour
         SaveManager.SaveGame();
 
         // Load next level (optional, or wait a few seconds before transition)
-        string nextScene = "Level" + (BootstrappedData.levelNum + 1);
-        if (BootstrappedData.levelNum < BootstrappedData.finalLevelNum)
+        string nextScene = "Level" + (GameLogic.levelNum + 1);
+        if (GameLogic.levelNum < GameLogic.finalLevelNum)
         {
-            BootstrappedData.levelNum++;
+            GameLogic.levelNum++;
             SceneManager.LoadScene(nextScene);
         }
         

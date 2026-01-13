@@ -60,11 +60,35 @@ If one enemy bullet hits you, you lose one life. If your base is ever hit by a b
 Bullets can destroy walls, whether they are fired by you or the enemy. It takes four shots to break through a standard width wall.
 Enemy tanks that flash red provide power-ups whenever hit. The power up will appear randomly somewhere on the screen.
  */
+
+public static class PerformBootstrap
+{
+    const string SceneName = "Bootstrapped Scene";
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    public static void Execute()
+    {
+        // traverse the currently loaded scenes
+        for (int sceneIndex = 0; sceneIndex < SceneManager.sceneCount; ++sceneIndex)
+        {
+            var candidate = SceneManager.GetSceneAt(sceneIndex);
+
+            if (candidate.name == SceneName)
+            {
+                return;
+            }
+        }
+
+        SceneManager.LoadScene(SceneName, LoadSceneMode.Additive);
+    }
+}
+
 public class GameLogic : MonoBehaviour
 {
     public static bool GameOver;
-
-    public static GameLogic Instance { get; private set; }
+    public static GameLogic Instance { get; private set; } = null;
+    public static int levelNum = 0;
+    public static int finalLevelNum = 2;
     public bool isEnemiesFrozen;
     public Text levelNumText;
     public RectTransform gameOverText;
@@ -76,37 +100,35 @@ public class GameLogic : MonoBehaviour
 
     private void Awake()
     {
-        //if (Instance == null)
-        //{
-        //    Instance = this;
-        //    Debug.Log("no instance found, assigning a new one");
-        //}
-        //else 
-        //{
-        //    Destroy(gameObject);
-        //    Debug.Log("old instance found, destroying it...");
-        //}
-        //DontDestroyOnLoad(gameObject);
+        // check if an instance already exists
+        if (Instance != null)
+        {
+            Debug.LogError("Found another BootstrappedData on " + gameObject.name);
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
+        // prevent the data from being unloaded
+        DontDestroyOnLoad(gameObject);
         spawner = FindFirstObjectByType<Spawner>();
     }
     void Start()
     {
-        startPosition = gameOverText.anchoredPosition;
-        gameOverText.gameObject.SetActive(false);
+        //startPosition = gameOverText.anchoredPosition;
+        //gameOverText.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
         //if (levelNumText.text != null)
-        if (BootstrappedData.levelNum < BootstrappedData.finalLevelNum)
+        if (levelNum < finalLevelNum)
         {
-            levelNumText.text = (BootstrappedData.levelNum + 1).ToString();
+            //levelNumText.text = (levelNum + 1).ToString();
         }
         
-
-
-
     }
 
     public void TriggerGameOver()

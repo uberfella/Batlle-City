@@ -18,7 +18,7 @@ public class SaveManager : MonoBehaviour
 
     public static void SaveGame()
     {
-        PlayerPrefs.SetInt("SavedLevel", BootstrappedData.levelNum);
+        PlayerPrefs.SetInt("SavedLevel", GameLogic.levelNum);
         PlayerPrefs.SetInt("PlayerLives", PlayerSpawner.playerLives);
         PlayerPrefs.SetInt("PlayerUpgrade", PlayerController2D.playerLevel);
         PlayerPrefs.SetInt("HasSaveData", 1);
@@ -30,11 +30,11 @@ public class SaveManager : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("HasSaveData"))
         {
-            BootstrappedData.levelNum = PlayerPrefs.GetInt("SavedLevel");
+            GameLogic.levelNum = PlayerPrefs.GetInt("SavedLevel");
             PlayerSpawner.playerLives = PlayerPrefs.GetInt("PlayerLives");
             PlayerController2D.playerLevel = PlayerPrefs.GetInt("PlayerUpgrade");
 
-            string sceneName = "Level" + BootstrappedData.levelNum;
+            string sceneName = "Level" + GameLogic.levelNum;
             SceneManager.LoadScene(sceneName);
         }
     }
