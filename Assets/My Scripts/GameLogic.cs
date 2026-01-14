@@ -91,12 +91,8 @@ public class GameLogic : MonoBehaviour
     public static int finalLevelNum = 2;
     public bool isEnemiesFrozen;
     
-    public RectTransform gameOverText;
-    public float moveDuration = 5.5f;
-    public Vector2 targetPosition;
 
-    private Vector2 startPosition;
-    private Spawner spawner;
+
 
     private void Awake()
     {
@@ -112,12 +108,11 @@ public class GameLogic : MonoBehaviour
 
         // prevent the data from being unloaded
         DontDestroyOnLoad(gameObject);
-        spawner = FindFirstObjectByType<Spawner>();
+        
     }
     void Start()
     {
-        //startPosition = gameOverText.anchoredPosition;
-        //gameOverText.gameObject.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -127,36 +122,9 @@ public class GameLogic : MonoBehaviour
         
     }
 
-    public void TriggerGameOver()
-    {
-        //Debug.Log("trying to game over");
-        if (!GameOver && !spawner.levelFinished)
-        {
-            GameOver = true;
-            SaveManager.EraseSave();
-            StartCoroutine(ShowGameOver());
-            
-        }
-    }
 
-    IEnumerator ShowGameOver()
-    {
-        gameOverText.gameObject.SetActive(true);
-        yield return StartCoroutine(MoveText(startPosition, targetPosition, moveDuration));
-        SceneManager.LoadScene("Main Menu");
-    }
 
-    IEnumerator MoveText(Vector2 from, Vector2 to, float duration)
-    {
-        float elapsed = 0f;
-        while (elapsed < duration)
-        {
-            gameOverText.anchoredPosition = Vector2.Lerp(from, to, elapsed / duration);
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-        gameOverText.anchoredPosition = to; // Ensure it reaches the final position
-    }
+
 
 
 
