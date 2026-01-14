@@ -222,15 +222,16 @@ public class Spawner : MonoBehaviour
 
     void OnLevelFinished()
     {
-        Debug.Log("Level Complete!");
+        //Debug.Log("Level Complete!");
 
         SaveManager.SaveGame();
 
         // Load next level (optional, or wait a few seconds before transition)
         string nextScene = "Level" + (GameLogic.levelNum + 1);
-        if (GameLogic.levelNum < GameLogic.finalLevelNum)
+        if (GameLogic.levelNum <= GameLogic.finalLevelNum)
         {
             GameLogic.levelNum++;
+            Debug.Log("levelNum = " + GameLogic.levelNum);
             SceneManager.LoadScene(nextScene);
         }
         

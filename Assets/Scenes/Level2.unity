@@ -3315,7 +3315,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 2
+  m_Text: 3
 --- !u!222 &637358270
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7844,7 +7844,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnemiesFrozen: 0
-  levelNumText: {fileID: 637358269}
   gameOverText: {fileID: 450635335}
   moveDuration: 3
   targetPosition: {x: -799.5643, y: -451.0071}

@@ -90,7 +90,7 @@ public class GameLogic : MonoBehaviour
     public static int levelNum = 0;
     public static int finalLevelNum = 2;
     public bool isEnemiesFrozen;
-    public Text levelNumText;
+    
     public RectTransform gameOverText;
     public float moveDuration = 5.5f;
     public Vector2 targetPosition;
@@ -123,11 +123,7 @@ public class GameLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (levelNumText.text != null)
-        if (levelNum < finalLevelNum)
-        {
-            //levelNumText.text = (levelNum + 1).ToString();
-        }
+
         
     }
 

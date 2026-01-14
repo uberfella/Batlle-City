@@ -14104,7 +14104,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnemiesFrozen: 0
-  levelNumText: {fileID: 637358269}
   gameOverText: {fileID: 450635335}
   moveDuration: 1.5
   targetPosition: {x: -799.5643, y: -451.0071}
