@@ -7,14 +7,14 @@ public class PlayerSpawner : MonoBehaviour
     public PlayerController2D playerController2D;
     public Transform spawnPoint;
     public GameObject playerPrefab;
-    public static int playerLives = 2;
+    public static int playerLives = 1;
     public Text playerLivesUI;
 
-    private GameLogic gameLogic;
+    private GameOverSequence gameOverSequence;
 
     void Start()
     {
-        gameLogic = FindFirstObjectByType<GameLogic>();
+        gameOverSequence = FindFirstObjectByType<GameOverSequence>();
         playerController2D = FindFirstObjectByType<PlayerController2D>();
     }
 
@@ -27,8 +27,8 @@ public class PlayerSpawner : MonoBehaviour
 
         if (playerLives < 0)
         {
-            gameLogic.TriggerGameOver();
-            //GameLogic.GameOver = true;
+            gameOverSequence.TriggerGameOver();
+            GameLogic.GameOver = true;
         }
 
         if (playerLives >= 0)

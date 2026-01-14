@@ -4,12 +4,12 @@ public class Base : MonoBehaviour
 {
     public GameObject surrenderFlagSprite;
     private PlayerController2D playerController2D;
-    private GameLogic gameLogic;
+    private GameOverSequence gameOverSequence;
 
     void Awake()
     {
         playerController2D = FindFirstObjectByType<PlayerController2D>();
-        gameLogic = FindFirstObjectByType<GameLogic>();
+        gameOverSequence = FindFirstObjectByType<GameOverSequence>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -25,7 +25,7 @@ public class Base : MonoBehaviour
             }
 
             surrenderFlagSprite.GetComponent<SpriteRenderer>().enabled = true;
-            gameLogic.TriggerGameOver();
+            gameOverSequence.TriggerGameOver();
 
         }
     }

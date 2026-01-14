@@ -2859,7 +2859,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -799.62, y: -464.83}
+  m_AnchoredPosition: {x: -799.62, y: -465.7}
   m_SizeDelta: {x: 6.207, y: 1.9725}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &450635336
@@ -3412,6 +3412,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6365453430955258249, guid: 2038d69f7bba83e4897a350d3109bd69, type: 3}
   m_PrefabInstance: {fileID: 1446714880}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &495956896
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 495956898}
+  - component: {fileID: 495956897}
+  m_Layer: 0
+  m_Name: GameOverSequence
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &495956897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495956896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82d762b94a9de7c4d96720c8a38d6315, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameOverText: {fileID: 450635335}
+  moveDuration: 5
+  targetPosition: {x: -799.62, y: -451.2}
+--- !u!4 &495956898
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495956896}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &505483355
 GameObject:
   m_ObjectHideFlags: 0
@@ -14104,9 +14151,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnemiesFrozen: 0
-  gameOverText: {fileID: 450635335}
-  moveDuration: 1.5
-  targetPosition: {x: -799.5643, y: -451.0071}
 --- !u!4 &1590052279
 Transform:
   m_ObjectHideFlags: 0
@@ -17804,3 +17848,4 @@ SceneRoots:
   - {fileID: 239280468}
   - {fileID: 1158050135}
   - {fileID: 885220219}
+  - {fileID: 495956898}
