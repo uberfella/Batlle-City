@@ -6,15 +6,17 @@ using UnityEngine.UIElements;
 public enum PowerupType { Fortify, Freeze, Invulnerability, KillAll, Levelup, Extralife }
 public class DontDestroy : MonoBehaviour
 {
-    void Awake()
-    {
-        DontDestroyOnLoad(this.gameObject);
-    }
+
 }
 
 public class PowerupLogic : MonoBehaviour
 {
     public GameObject [] powerupsToSpawn;
+
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
 
     private void Update()
     {
