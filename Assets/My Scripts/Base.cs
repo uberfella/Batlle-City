@@ -26,7 +26,7 @@ public class Base : MonoBehaviour
 
             surrenderFlagSprite.GetComponent<SpriteRenderer>().enabled = true;
             gameOverSequence.TriggerGameOver();
-
+            Destroy(gameObject);
         }
     }
 }

@@ -1,9 +1,5 @@
-﻿using System.Collections;
-using TMPro;
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 /*
 TODO
@@ -22,11 +18,12 @@ score counting ✓
 powerups ✓
 powerups disappear after 10 seconds ✓
 godmode ✓
-main menu and levels system
-    nullpointreference for levelnum text when starting the game over
-    no gameover in level2 and level3
-    no destroyed base sprite in level2 and level3
-does the game gets saved when finishing the game?
+main menu and levels system 
+    nullpointreference for levelnum text when starting the game over ✓
+    no gameover in level2 and level3 ✓
+    no destroyed base sprite in level2 and level3 ✓
+scoreboard on finishing the level with breakdown of each enemy type kill
+does the game gets saved when finishing the game? why would it, erase the game when finishing
 sounds 
 friendly and enemy projectiles will destroy each other when they collide in midair ✓
 player levelup, changing sprite and damage ✓
