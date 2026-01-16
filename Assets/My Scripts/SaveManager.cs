@@ -45,7 +45,7 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.DeleteKey("PlayerLives");
         PlayerPrefs.DeleteKey("PlayerUpgrade");
         PlayerPrefs.DeleteKey("HasSaveData");
-        ScoreCount.currentScore = 0;
+        
         Debug.Log("Game erased");
     }
 

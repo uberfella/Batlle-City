@@ -22,6 +22,7 @@ main menu and levels system
     nullpointreference for levelnum text when starting the game over ✓
     no gameover in level2 and level3 ✓
     no destroyed base sprite in level2 and level3 ✓
+player gets frozen when losing the game on any level and starting over
 scoreboard on finishing the level with breakdown of each enemy type kill
 does the game gets saved when finishing the game? why would it, erase the game when finishing
 sounds 
@@ -44,6 +45,7 @@ leveledup player can destroy concrete?
 QUESTIONS
 do enemies have different projectile speeds ? 
 does player collider changes when leveling up?
+does high score gets overriden in real time or it does only when player finishes the level
  * 
  * 
  * 
