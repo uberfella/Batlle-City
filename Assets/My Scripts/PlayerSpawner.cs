@@ -20,15 +20,15 @@ public class PlayerSpawner : MonoBehaviour
 
     void Update()
     {
-        if (!playerController2D.playerIsAlive && playerLives >= 0)
+        if (!playerController2D.playerIsAlive && playerLives > 0)
         {
             StartCoroutine(RespawnPlayer());
         }
 
-        if (playerLives < 0)
+        if (playerLives <= 0)
         {
             gameOverSequence.TriggerGameOver();
-            GameLogic.GameOver = true;
+            //GameLogic.GameOver = true;
         }
 
         if (playerLives >= 0)

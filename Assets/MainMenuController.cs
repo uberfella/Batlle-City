@@ -6,7 +6,8 @@ public class MainMenuController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        GameLogic.GameOver = false;
+        Debug.Log("GameOver = " + GameLogic.GameOver);
     }
 
     // Update is called once per frame
@@ -19,6 +20,7 @@ public class MainMenuController : MonoBehaviour
     {
         GameLogic.levelNum = 0;
         ScoreCount.currentScore = 0;
+        PlayerSpawner.playerLives = 1;
         SceneManager.LoadScene("Level0");
     }
 

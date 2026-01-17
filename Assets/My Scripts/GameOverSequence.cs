@@ -35,6 +35,7 @@ public class GameOverSequence : MonoBehaviour
         if (!GameLogic.GameOver && !spawner.levelFinished)
         {
             GameLogic.GameOver = true;
+            Debug.Log("GameOver = " + GameLogic.GameOver);
             SaveManager.EraseSave();
             StartCoroutine(ShowGameOver());
 

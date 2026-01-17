@@ -32,7 +32,7 @@ public class Spawner : MonoBehaviour
 
     void Start()
     {
-
+        Debug.Log("levelFinished = " + levelFinished);
         enemiesList = FindFirstObjectByType<EnemiesList>();
         spawnAnim = new GameObject[3];
         spawnAnimationRenderer = new Renderer[3];
@@ -96,6 +96,7 @@ public class Spawner : MonoBehaviour
         if (!levelFinished && enemiesToSpawn <= 0 && AllEnemiesDead())
         {
             levelFinished = true;
+            Debug.Log("levelFinished = " + levelFinished);
             OnLevelFinished();
         }
     }
@@ -217,7 +218,9 @@ public class Spawner : MonoBehaviour
         {
             if (alive) return false;
         }
+        Debug.Log("AllEnemiesDead() = " + true);
         return true;
+        
     }
 
     void OnLevelFinished()
