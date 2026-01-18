@@ -24,7 +24,6 @@ main menu and levels system
     no destroyed base sprite in level2 and level3 ✓
 player gets frozen when losing the game on any level and starting over
 scoreboard on finishing the level with breakdown of each enemy type kill
-does the game gets saved when finishing the game? why would it, erase the game when finishing
 sounds 
 friendly and enemy projectiles will destroy each other when they collide in midair ✓
 player levelup, changing sprite and damage ✓
@@ -46,7 +45,7 @@ QUESTIONS
 do enemies have different projectile speeds ? 
 does player collider changes when leveling up?
 does high score gets overriden in real time or it does only when player finishes the level
- * 
+does the game gets saved when finishing the game? ✓why would it, erase the game when finishing
  * 
  * 
  * 

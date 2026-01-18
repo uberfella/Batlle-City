@@ -32,6 +32,10 @@ public class Spawner : MonoBehaviour
 
     void Start()
     {
+        for (int i = 0; i < 4; i++)
+        {
+            enemyAlive[i] = false;
+        }
         Debug.Log("levelFinished = " + levelFinished);
         enemiesList = FindFirstObjectByType<EnemiesList>();
         spawnAnim = new GameObject[3];
