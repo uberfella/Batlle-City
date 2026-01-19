@@ -44,8 +44,8 @@ leveledup player can destroy concrete?
 QUESTIONS
 do enemies have different projectile speeds ? 
 does player collider changes when leveling up?
-does high score gets overriden in real time or it does only when player finishes the level
-does the game gets saved when finishing the game? ✓why would it, erase the game when finishing
+does high score gets overriden in real time or it does only when player finishes the level ✓ only when finishing the level either by killing everyone or losing it
+does the game gets saved when finishing the game? ✓ why would it, erase the game when finishing
  * 
  * 
  * 

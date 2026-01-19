@@ -30,6 +30,7 @@ public class EnemyLvl4 : Enemy
     void Start()
     {
         health = 4;
+        Debug.Log("health = " + health);
         speed = 2.5f;
         scoreOnDestroy = 200;
         projectileSpeed = 10f;
