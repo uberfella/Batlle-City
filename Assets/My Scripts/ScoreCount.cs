@@ -13,14 +13,17 @@ public class ScoreCount : MonoBehaviour
     void Start()
     {
         highScore = PlayerPrefs.GetInt("Highscore", 0);
+        highScoreText.text = highScore.ToString("D6");
     }
 
     // Update is called once per frame
     void Update()
     {
         currentScoreText.text = currentScore.ToString("D6");
-        highScoreText.text = highScore.ToString("D6");
+    }
 
+    public void UpdateHighScore() 
+    {
         if (currentScore > highScore)
         {
             highScore = currentScore;
@@ -28,7 +31,6 @@ public class ScoreCount : MonoBehaviour
             PlayerPrefs.Save();
         }
     }
-
 
     private void OnEnable()
     {
