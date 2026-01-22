@@ -3,6 +3,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
+using static Enemy;
 
 public class EnemyLvl1 : Enemy  
 {
@@ -13,7 +14,6 @@ public class EnemyLvl1 : Enemy
     public Sprite[] trackSpritesPowerup;
     public float animationSpeed = 0.2f;
     public SpriteRenderer spriteRenderer;
-    public EnemyType type;
 
     private readonly float changeDirectionTime = 0.5f; // Change direction every x milliseconds 
     private float timerForShooting;
@@ -40,6 +40,7 @@ public class EnemyLvl1 : Enemy
         aiController = GetComponent<AiController>();
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
+        enemyType = EnemyType.EnemyLvl1;
         //spawner = FindFirstObjectByType<Spawner>();
         currentMoveDirection = getDirection();
         enemyIsAlive = true;

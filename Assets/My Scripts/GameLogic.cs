@@ -1,5 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using static Enemy;
 
 /*
 TODO
@@ -88,9 +91,7 @@ public class GameLogic : MonoBehaviour
     public static int levelNum = 0;
     public static int finalLevelNum = 2;
     public bool isEnemiesFrozen;
-    
-
-
+    public Dictionary<EnemyType, int> destroyedByType = new();
 
     private void Awake()
     {
@@ -119,8 +120,17 @@ public class GameLogic : MonoBehaviour
 
         
     }
+    public void RegisterEnemyKill(EnemyType type)
+    {
+        if (!destroyedByType.ContainsKey(type))
+            destroyedByType[type] = 0;
 
-
+        destroyedByType[type]++;
+        foreach (var kvp in destroyedByType)
+        {
+            Debug.Log($"{kvp.Key}: {kvp.Value}");
+        }
+    }
 
 
 

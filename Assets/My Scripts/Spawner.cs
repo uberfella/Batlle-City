@@ -222,7 +222,7 @@ public class Spawner : MonoBehaviour
         {
             if (alive) return false;
         }
-        Debug.Log("AllEnemiesDead() = " + true);
+        //Debug.Log("AllEnemiesDead() = " + true);
         return true;
         
     }

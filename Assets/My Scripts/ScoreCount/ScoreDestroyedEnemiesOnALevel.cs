@@ -1,9 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
+using static Enemy;
 
 public class ScoreDestroyedEnemiesOnALevel : MonoBehaviour
 {
-
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

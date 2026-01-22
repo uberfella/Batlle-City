@@ -9,6 +9,7 @@ public class Enemy : Tank
     public AiController aiController;
     public LayerMask obstacleLayer;
     public bool hasPowerup;
+    public EnemyType enemyType;
     protected bool objectIsCurrentlyBeingBlocked;
     private Spawner spawner;
     private PowerupLogic powerupLogic;
@@ -37,6 +38,7 @@ public class Enemy : Tank
         health -= damage;
         if (health <= 0)
         {
+            GameLogic.Instance.RegisterEnemyKill(enemyType);
             Destroy(gameObject);
             enemyIsAlive = false;
             ChangeEnemyStatus();

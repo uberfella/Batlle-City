@@ -33,6 +33,7 @@ public class EnemyLvl2 : Enemy
         aiController = GetComponent<AiController>();
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
+        enemyType = EnemyType.EnemyLvl1;
         //spawner = FindFirstObjectByType<Spawner>();
         currentMoveDirection = getDirection();
         enemyIsAlive = true;
