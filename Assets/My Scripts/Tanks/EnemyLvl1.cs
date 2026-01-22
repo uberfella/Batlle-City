@@ -13,6 +13,7 @@ public class EnemyLvl1 : Enemy
     public Sprite[] trackSpritesPowerup;
     public float animationSpeed = 0.2f;
     public SpriteRenderer spriteRenderer;
+    public EnemyType type;
 
     private readonly float changeDirectionTime = 0.5f; // Change direction every x milliseconds 
     private float timerForShooting;

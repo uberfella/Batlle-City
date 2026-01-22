@@ -19,6 +19,14 @@ public class Enemy : Tank
         powerupLogic = FindFirstObjectByType<PowerupLogic>();
     }
 
+    public enum EnemyType
+    {
+        EnemyLvl1,
+        EnemyLvl2,
+        EnemyLvl3,
+        EnemyLvl4
+    }
+
     public virtual void TakeDamage(int damage)
     {
         if (hasPowerup) 
