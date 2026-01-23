@@ -155,8 +155,8 @@ public class Enemy : Tank
                 if (script != null)
                 {
                     script.ChangeEnemyStatus();
+                    script.TakeDamage(5);
                 }
-                GameObject.Destroy(obj);
             }
         }
     }

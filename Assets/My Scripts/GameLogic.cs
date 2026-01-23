@@ -117,8 +117,14 @@ public class GameLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            foreach (var kvp in destroyedByType)
+            {
+                Debug.Log($"{kvp.Key}: {kvp.Value}");
+            }
+        }
 
-        
     }
     public void RegisterEnemyKill(EnemyType type)
     {
@@ -126,15 +132,8 @@ public class GameLogic : MonoBehaviour
             destroyedByType[type] = 0;
 
         destroyedByType[type]++;
-        foreach (var kvp in destroyedByType)
-        {
-            Debug.Log($"{kvp.Key}: {kvp.Value}");
-        }
+
     }
-
-
-
-
 
 
 }
