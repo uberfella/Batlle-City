@@ -46,7 +46,7 @@ public class GameOverSequence : MonoBehaviour
     {
         gameOverText.gameObject.SetActive(true);
         yield return StartCoroutine(MoveText(startPosition, targetPosition, moveDuration));
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene("Scoreboard");
     }
 
     IEnumerator MoveText(Vector2 from, Vector2 to, float duration)

@@ -563,7 +563,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -985,7 +985,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -1366,7 +1366,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -8.75, y: -905.91}
+  m_AnchoredPosition: {x: -9.37, y: -905.91}
   m_SizeDelta: {x: 9.8919, y: 3.2561}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &424156014
@@ -1924,6 +1924,7 @@ GameObject:
   - component: {fileID: 689942246}
   - component: {fileID: 689942245}
   - component: {fileID: 689942244}
+  - component: {fileID: 689942249}
   m_Layer: 5
   m_Name: NextLevelButton
   m_TagString: Untagged
@@ -1948,7 +1949,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 11.590027, y: -905.91}
+  m_AnchoredPosition: {x: 11.18, y: -905.91}
   m_SizeDelta: {x: 9.8919, y: 3.2561}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &689942244
@@ -2078,6 +2079,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 689942242}
   m_CullTransparentMesh: 1
+--- !u!114 &689942249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689942242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd813e3282e499f469161e264c68f05a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextLevelButton: {fileID: 689942242}
 --- !u!1 &724877757
 GameObject:
   m_ObjectHideFlags: 0
@@ -2112,11 +2126,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectorIcon: {fileID: 724877762}
   buttonTargets:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 424156013}
+  - {fileID: 689942243}
   buttonComponents:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 424156016}
+  - {fileID: 689942246}
 --- !u!114 &724877759
 MonoBehaviour:
   m_ObjectHideFlags: 0

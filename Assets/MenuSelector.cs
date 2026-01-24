@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MenuSelector : MonoBehaviour
 {
@@ -9,11 +10,31 @@ public class MenuSelector : MonoBehaviour
     public List<RectTransform> buttonTargets;    // Button transforms to snap to
     public List<Button> buttonComponents;        // Matching Button components
     private int currentIndex = 0;
+    private int offsetForDifferentScenes = 0;
+    private KeyCode selectFirstKey = KeyCode.None;
+    private KeyCode selectSecondKey = KeyCode.None;
+    bool IsScene(string sceneName)
+    {
+        return SceneManager.GetActiveScene().name == sceneName;
+    }
 
     void Start()
     {
         RefreshVisibleButtons();
         StartCoroutine(DeferredMoveSelector());
+        //change variables depending on the current loaded scene
+        if (IsScene("Main Menu"))
+        {
+            offsetForDifferentScenes = 50;
+            selectFirstKey = KeyCode.W;
+            selectSecondKey = KeyCode.S;
+        }
+        else if (IsScene("Scoreboard"))
+        {
+            offsetForDifferentScenes = 2;
+            selectFirstKey = KeyCode.A;
+            selectSecondKey = KeyCode.D;
+        }
     }
     IEnumerator DeferredMoveSelector()
     {
@@ -23,12 +44,12 @@ public class MenuSelector : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(selectFirstKey))
         {
             currentIndex = Mathf.Max(0, currentIndex - 1);
             MoveSelectorToCurrent();
         }
-        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        else if (Input.GetKeyDown(selectSecondKey))
         {
             currentIndex = Mathf.Min(buttonTargets.Count - 1, currentIndex + 1);
             MoveSelectorToCurrent();
@@ -64,7 +85,7 @@ public class MenuSelector : MonoBehaviour
         if (buttonTargets.Count == 0) return;
 
         Vector3 targetPos = buttonTargets[currentIndex].position;
-        Vector3 newPos = new Vector3(targetPos.x - 50, targetPos.y, targetPos.z);
+        Vector3 newPos = new Vector3(targetPos.x - offsetForDifferentScenes, targetPos.y, targetPos.z);
         //Debug.Log("targetPos.x = " + (targetPos.x - 50) + "targetPos.y" + (targetPos.y) + "targetPos.z" + (targetPos.z));
         selectorIcon.position = newPos;
 
