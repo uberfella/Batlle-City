@@ -25,12 +25,14 @@ public class MenuSelector : MonoBehaviour
         //change variables depending on the current loaded scene
         if (IsScene("Main Menu"))
         {
+            currentIndex = 0;
             offsetForDifferentScenes = 50;
             selectFirstKey = KeyCode.W;
             selectSecondKey = KeyCode.S;
         }
         else if (IsScene("Scoreboard"))
         {
+            currentIndex = 1;
             offsetForDifferentScenes = 2;
             selectFirstKey = KeyCode.A;
             selectSecondKey = KeyCode.D;
@@ -86,16 +88,6 @@ public class MenuSelector : MonoBehaviour
 
         Vector3 targetPos = buttonTargets[currentIndex].position;
         Vector3 newPos = new Vector3(targetPos.x - offsetForDifferentScenes, targetPos.y, targetPos.z);
-        //Debug.Log("targetPos.x = " + (targetPos.x - 50) + "targetPos.y" + (targetPos.y) + "targetPos.z" + (targetPos.z));
         selectorIcon.position = newPos;
-
-        //selectorIcon.anchoredPosition = new Vector2(-200, buttonTargets[currentIndex].anchoredPosition.y);
-        //Debug.Log("currentIndex = " + currentIndex);
-        //Debug.Log("anchoredPosition.x = " + (buttonTargets[currentIndex].anchoredPosition.x) + "anchoredPosition.y" + (buttonTargets[currentIndex].anchoredPosition.y));
-
     }
 }
-
-//2 buttons - starts at random pos, continues stuck
-//1 button -  
-// 

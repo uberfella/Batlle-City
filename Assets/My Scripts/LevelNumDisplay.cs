@@ -9,7 +9,7 @@ public class LevelNumDisplay : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        levelNumText.text = (GameLogic.levelNum + 1).ToString();
+        levelNumText.text = (GameLogic.levelNum).ToString();
         currentScoreText.text = ScoreCount.currentScore.ToString("D6");
         highScoreText.text = ScoreCount.highScore.ToString("D6");
     }

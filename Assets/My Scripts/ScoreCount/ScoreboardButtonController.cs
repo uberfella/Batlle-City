@@ -1,0 +1,25 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class ScoreboardButtonController : MonoBehaviour
+{
+    void Start()
+    {
+
+    }
+
+    public void LoadNextLevel()
+    {
+        if (GameLogic.levelNum <= GameLogic.finalLevelNum)
+        {
+            string sceneName = "Level" + GameLogic.levelNum;
+            SceneManager.LoadScene(sceneName);
+        }
+    }
+
+    public void ReturnToMainMenu() 
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
+
+}

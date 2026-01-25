@@ -18,7 +18,8 @@ public class SaveManager : MonoBehaviour
 
     public static void SaveGame()
     {
-        PlayerPrefs.SetInt("SavedLevel", GameLogic.levelNum);
+        if (GameLogic.levelNum <= GameLogic.finalLevelNum)
+            PlayerPrefs.SetInt("SavedLevel", GameLogic.levelNum + 1);
         PlayerPrefs.SetInt("PlayerLives", PlayerSpawner.playerLives);
         PlayerPrefs.SetInt("PlayerUpgrade", PlayerController2D.playerLevel);
         PlayerPrefs.SetInt("HasSaveData", 1);
