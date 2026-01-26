@@ -32,7 +32,14 @@ public class MenuSelector : MonoBehaviour
         }
         else if (IsScene("Scoreboard"))
         {
-            currentIndex = 1;
+            if (!GameLogic.GameOver)
+            {
+                currentIndex = 1;
+            }
+            else
+            {
+                currentIndex = 0;
+            }
             offsetForDifferentScenes = 2;
             selectFirstKey = KeyCode.A;
             selectSecondKey = KeyCode.D;

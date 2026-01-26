@@ -1,7 +1,6 @@
-using System.Threading;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class ScoreCount : MonoBehaviour
 {
@@ -10,16 +9,25 @@ public class ScoreCount : MonoBehaviour
     public Text currentScoreText;
     public Text highScoreText;
 
+
     void Start()
     {
         highScore = PlayerPrefs.GetInt("Highscore", 0);
         highScoreText.text = highScore.ToString("D6");
+        if (IsScene("Scoreboard"))
+        {
+            UpdateHighScore();
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
         currentScoreText.text = currentScore.ToString("D6");
+    }
+
+    bool IsScene(string sceneName)
+    {
+        return SceneManager.GetActiveScene().name == sceneName;
     }
 
     public void UpdateHighScore() 
