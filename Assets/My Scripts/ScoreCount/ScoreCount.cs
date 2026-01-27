@@ -18,16 +18,22 @@ public class ScoreCount : MonoBehaviour
         {
             UpdateHighScore();
         }
+        UpdateCurrentScore();
     }
 
     void Update()
     {
-        currentScoreText.text = currentScore.ToString("D6");
+        
     }
 
     bool IsScene(string sceneName)
     {
         return SceneManager.GetActiveScene().name == sceneName;
+    }
+
+    public void UpdateCurrentScore()
+    {
+        currentScoreText.text = currentScore.ToString("D6");
     }
 
     public void UpdateHighScore() 
@@ -59,6 +65,7 @@ public class ScoreCount : MonoBehaviour
     private void OnObjectDestroyed(Enemy obj)
     {
         AddScore(obj.scoreOnDestroy);
+        UpdateCurrentScore();
     }
 
     private void AddScore(int amount)

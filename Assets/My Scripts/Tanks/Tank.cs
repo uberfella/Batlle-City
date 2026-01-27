@@ -14,7 +14,7 @@ public class Tank : MonoBehaviour
     protected bool spawnFreezeIsOver = false;
     public bool enemyIsAlive = false;
 
-    //so in the google play ripoff there is obviously no diagonal movement just like in the NES original
+    //in the google play ripoff there is no diagonal movement just like in the NES original
     //but in the said ripoff if you hold vertical you can not change the direction to the horizontal, and if you hold horizontal you can change it to the vertical immediately
     //let's declare it in the superclass so the everyone can use it
     protected void RestrictDiagonalMovements()

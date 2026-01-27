@@ -13,8 +13,6 @@ public class Spawner : MonoBehaviour
     public GameObject[] spawnPointsObjects;
     public int enemiesToSpawn = 0;
     public Text enemiesToSpawnText;
-    //TODO get rid of enemiesOnTheField
-    //public int enemiesOnTheField = 4;
     public static bool[] enemyAlive = new bool[4] { false, false, false, false }; //7, 10, 11, 12
     public LayerMask obstructionMask;
     public EnemiesList enemiesList;
@@ -50,13 +48,6 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            //Debug.Log("levelFinished = " + levelFinished);
-            //Debug.Log("GameOver = " + GameLogic.GameOver);
-            //Debug.Log("levelNum = " + GameLogic.levelNum);
-        }
-
         enemiesToSpawnText.text = enemiesToSpawn.ToString();
 
         for (int i = 0; i < enemyAlive.Length; i++)

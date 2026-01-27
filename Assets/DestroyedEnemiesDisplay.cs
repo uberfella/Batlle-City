@@ -14,10 +14,11 @@ public class DestroyedEnemiesDisplay : MonoBehaviour
     public Text TotalCount;
     void Start()
     {
-        
+        //destroyedByType[type]
+        //currentScoreText.text = currentScore.ToString("D6");
     }
 
-    
+
     void Update()
     {
         

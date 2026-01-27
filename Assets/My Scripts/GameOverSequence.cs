@@ -10,7 +10,6 @@ public class GameOverSequence : MonoBehaviour
     public Vector2 targetPosition;
     private Vector2 startPosition;
     private Spawner spawner;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     private void Awake()
     {
@@ -23,7 +22,6 @@ public class GameOverSequence : MonoBehaviour
         gameOverText.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         

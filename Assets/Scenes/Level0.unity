@@ -3365,6 +3365,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   hasPowerup: 0
+  enemyType: 0
 --- !u!4 &486619445
 Transform:
   m_ObjectHideFlags: 0
@@ -17623,7 +17624,7 @@ MonoBehaviour:
   - {fileID: 805236122}
   - {fileID: 950759007}
   - {fileID: 1387277190}
-  enemiesToSpawn: 2
+  enemiesToSpawn: 4
   enemiesToSpawnText: {fileID: 308609378}
   obstructionMask:
     serializedVersion: 2
