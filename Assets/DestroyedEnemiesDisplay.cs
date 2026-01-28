@@ -12,10 +12,13 @@ public class DestroyedEnemiesDisplay : MonoBehaviour
     public Text EnemyLvl3Count;
     public Text EnemyLvl4Count;
     public Text TotalCount;
+    private GameLogic gameLogic;
     void Start()
     {
         //destroyedByType[type]
         //currentScoreText.text = currentScore.ToString("D6");
+        gameLogic = FindFirstObjectByType<GameLogic>();
+        //EnemyLvl1Count.text = gameLogic.destroyedByType["EnemyLvl1"].ToString("D6");
     }
 
 

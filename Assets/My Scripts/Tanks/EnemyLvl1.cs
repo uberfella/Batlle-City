@@ -21,7 +21,6 @@ public class EnemyLvl1 : Enemy
     private bool requestNewCooldown = true;
     private bool requestNewDirection = true;
     private Vector2 currentMoveDirection = Vector2.zero;
-    //private Spawner spawner;
     private int currentFrame = 0;
     private float timer = 0f;
 
@@ -41,7 +40,6 @@ public class EnemyLvl1 : Enemy
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         enemyType = EnemyType.EnemyLvl1;
-        //spawner = FindFirstObjectByType<Spawner>();
         currentMoveDirection = getDirection();
         enemyIsAlive = true;
         //hasPowerup = true;

@@ -20,7 +20,6 @@ public class EnemyLvl3 : Enemy
     private bool requestNewCooldown = true;
     private bool requestNewDirection = true;
     private Vector2 currentMoveDirection = Vector2.zero;
-    //private Spawner spawner;
     private int currentFrame = 0;
     private float timer = 0f;
 
@@ -33,7 +32,7 @@ public class EnemyLvl3 : Enemy
         aiController = GetComponent<AiController>();
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
-        //spawner = FindFirstObjectByType<Spawner>();
+        enemyType = EnemyType.EnemyLvl3;
         currentMoveDirection = getDirection();
         enemyIsAlive = true;
     }
