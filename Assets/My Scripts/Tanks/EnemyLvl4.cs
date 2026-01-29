@@ -31,7 +31,7 @@ public class EnemyLvl4 : Enemy
         health = 4;
         Debug.Log("health = " + health);
         speed = 2.5f;
-        scoreOnDestroy = 200;
+        scoreOnDestroy = 400;
         projectileSpeed = 10f;
         aiController = GetComponent<AiController>();
         rb = GetComponent<Rigidbody2D>();

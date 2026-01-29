@@ -27,7 +27,7 @@ public class EnemyLvl3 : Enemy
     {
         health = 1;
         speed = 2.5f;
-        scoreOnDestroy = 150;
+        scoreOnDestroy = 300;
         projectileSpeed = 10f;
         aiController = GetComponent<AiController>();
         rb = GetComponent<Rigidbody2D>();

@@ -3,12 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
-    private GameLogic gameLogic;
     void Start()
     {
         GameLogic.GameOver = false;
-        gameLogic = FindFirstObjectByType<GameLogic>();
-        gameLogic.destroyedByType.Clear();
+        GameLogic.Instance.destroyedByType.Clear();
     }
 
     void Update()
