@@ -1,5 +1,8 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static Enemy;
 
 public class DestroyedEnemiesDisplay : MonoBehaviour
 {
@@ -16,9 +19,19 @@ public class DestroyedEnemiesDisplay : MonoBehaviour
     void Start()
     {
         //destroyedByType[type]
+        //public Dictionary<EnemyType, int> destroyedByType = new();
         //currentScoreText.text = currentScore.ToString("D6");
         gameLogic = FindFirstObjectByType<GameLogic>();
-        //EnemyLvl1Count.text = gameLogic.destroyedByType["EnemyLvl1"].ToString("D6");
+        //int count = gameLogic.destroyedByType["EnemyLvl1"];
+
+        EnemyLvl1Count.text = gameLogic.destroyedByType[EnemyType.EnemyLvl1].ToString();
+
+        
+
+        //if (gameLogic.destroyedByType.TryGetValue(EnemyType.EnemyLvl1, out int enemyLvl1Kills))
+        //{
+        //    Debug.Log("enemyLvl1 killed: " + enemyLvl1Kills);
+        //}
     }
 
 
