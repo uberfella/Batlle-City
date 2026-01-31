@@ -25,7 +25,7 @@ main menu and levels system
     nullpointreference for levelnum text when starting the game over ✓
     no gameover in level2 and level3 ✓
     no destroyed base sprite in level2 and level3 ✓
-scoreboard on finishing the level with breakdown of each enemy type kill
+scoreboard on finishing the level with breakdown of each enemy type kill ✓
 freeze powerup 
 sounds 
 friendly and enemy projectiles will destroy each other when they collide in midair ✓

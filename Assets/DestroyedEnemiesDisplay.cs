@@ -14,6 +14,7 @@ public class DestroyedEnemiesDisplay : MonoBehaviour
     public Text TotalCount;
     public GameObject totalRow;
     public GameObject buttonsRow;
+    public GameObject iconSelector;
     public float delayBetweenRows = 0.4f;
     public float countDuration = 0.8f;
     private int totalCountValue = 0;
@@ -28,8 +29,10 @@ public class DestroyedEnemiesDisplay : MonoBehaviour
             if (GameLogic.Instance.destroyedByType.TryGetValue(type, out int a)) 
             {
                 int count = GameLogic.Instance.destroyedByType[type];
-                enemyCountTexts[i].text = count.ToString();
-                enemyPointTexts[i].text = ((i + 1) * 100 * count).ToString();
+                //enemyCountTexts[i].text = count.ToString();
+                enemyCountTexts[i].text = 0.ToString();
+                //enemyPointTexts[i].text = ((i + 1) * 100 * count).ToString();
+                enemyPointTexts[i].text = 0.ToString();
                 totalCountValue += count;
             }
             // (0 + 1) * 100 * x = 100
@@ -44,18 +47,25 @@ public class DestroyedEnemiesDisplay : MonoBehaviour
 
     IEnumerator ShowScoreboard()
     {
-        int grandTotal = 0;
+        //int grandTotal = 0;
 
         for (int i = 0; i < rows.Length; i++)
         {
             rows[i].SetActive(true);
 
             EnemyType type = (EnemyType)i;
-            int count = GameLogic.Instance.destroyedByType[type];
+            if (GameLogic.Instance.destroyedByType.TryGetValue(type, out int a))
+            {
+                int count = GameLogic.Instance.destroyedByType[type];
+                int points = ((i + 1) * 100 * count);
+                yield return StartCoroutine(AnimateNumber(enemyCountTexts[i], count, 1));
+                yield return StartCoroutine(AnimateNumber(enemyPointTexts[i], points, 100));
+
+            }
+
             //int points = count * GameLogic.Instance.pointsPerType[type];
 
-            //yield return StartCoroutine(AnimateNumber(countTexts[i], count));
-            //yield return StartCoroutine(AnimateNumber(pointTexts[i], points));
+
 
             //grandTotal += points;
 
@@ -64,28 +74,29 @@ public class DestroyedEnemiesDisplay : MonoBehaviour
 
         // TOTAL
         totalRow.SetActive(true);
-        //yield return StartCoroutine(AnimateNumber(totalText, grandTotal));
+        //yield return StartCoroutine(AnimateNumber(TotalCount, totalCountValue));
 
         yield return new WaitForSeconds(0.5f);
 
         // SHOW BUTTONS
         buttonsRow.SetActive(true);
+        iconSelector.SetActive(true);
     }
 
-    IEnumerator AnimateNumber(Text text, int targetValue)
+    IEnumerator AnimateNumber(Text text, int targetValue, int progressStep)
     {
-        float timer = 0f;
         int startValue = 0;
 
-        while (timer < countDuration)
+        while (startValue < targetValue)
         {
-            timer += Time.deltaTime;
-            float progress = timer / countDuration;
+            startValue += progressStep;
 
-            int currentValue = Mathf.RoundToInt(Mathf.Lerp(startValue, targetValue, progress));
-            text.text = currentValue.ToString();
+            if (startValue > targetValue)
+                startValue = targetValue;
 
-            yield return null;
+            text.text = startValue.ToString();
+
+            yield return new WaitForSeconds(0.2f);
         }
 
         text.text = targetValue.ToString();
