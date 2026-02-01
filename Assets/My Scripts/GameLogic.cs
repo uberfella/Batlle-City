@@ -21,12 +21,13 @@ score counting ✓
 powerups ✓
 powerups disappear after 10 seconds ✓
 godmode ✓
-main menu and levels system 
+main menu and levels system ✓
     nullpointreference for levelnum text when starting the game over ✓
     no gameover in level2 and level3 ✓
     no destroyed base sprite in level2 and level3 ✓
 scoreboard on finishing the level with breakdown of each enemy type kill ✓
-freeze powerup 
+freeze powerup affects only tanks that are alive not the ones that would spawn after picking up the powerup ✓
+Enemy update() unification?
 sounds 
 friendly and enemy projectiles will destroy each other when they collide in midair ✓
 player levelup, changing sprite and damage ✓
@@ -38,14 +39,13 @@ get rid of objectIsCurrentlyBeingBlocked bool ✓ (cant do that)
 main menu - main menu appears from the bottom of the screen
 clean code
 rename sprites, variables, scripts like enemyLvl0-3 to one standard so it would make more sense
-freeze powerup affects only tanks that are alive not the ones that would spawn after picking up the powerup
 get rid of constant checking variables' values in Update() method, replace em with Coroutines
 refactor enemy spawn anim
 power-ups spawn on a grid; for example, the spawn position should be divisible by 0.5, 1.0, 1.5 without any remainder
 leveledup player can destroy concrete?
 
 QUESTIONS
-do enemies have different projectile speeds ? 
+do enemies have different projectile speeds ? yes
 does player collider changes when leveling up? ✓ no
 does high score gets overriden in real time or it does only when player finishes the level ✓ only when finishing the level either by killing everyone or losing it
 does the game gets saved when finishing the game? ✓ why would it, erase the game when finishing

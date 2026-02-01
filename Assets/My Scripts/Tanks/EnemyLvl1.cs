@@ -48,6 +48,7 @@ public class EnemyLvl1 : Enemy
 
     void Update()
     {
+        if (isFrozen) return;
         //if (GameLogic.Instance.isEnemiesFrozen)
         //    return;
         //---------------

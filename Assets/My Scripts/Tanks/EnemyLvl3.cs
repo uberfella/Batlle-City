@@ -40,6 +40,7 @@ public class EnemyLvl3 : Enemy
 
     void Update()
     {
+        if (isFrozen) return;
         //if (GameLogic.Instance.isEnemiesFrozen)
         //    return;
         //---------------

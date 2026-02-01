@@ -13,6 +13,7 @@ public class Enemy : Tank
     protected bool objectIsCurrentlyBeingBlocked;
     private Spawner spawner;
     private PowerupLogic powerupLogic;
+    protected bool isFrozen = false;
 
     void Awake()
     {
@@ -20,12 +21,33 @@ public class Enemy : Tank
         powerupLogic = FindFirstObjectByType<PowerupLogic>();
     }
 
+    void OnEnable()
+    {
+        Spawner.AliveEnemies.Add(this);
+    }
+
+    void OnDisable() // called on death or destroy
+    {
+        Spawner.AliveEnemies.Remove(this);
+    }
+
+
     public enum EnemyType
     {
         EnemyLvl1,
         EnemyLvl2,
         EnemyLvl3,
         EnemyLvl4
+    }
+
+    public void SetFrozen(bool frozen)
+    {
+        isFrozen = frozen;
+    }
+
+    void Update()
+    {
+        
     }
 
     public virtual void TakeDamage(int damage)

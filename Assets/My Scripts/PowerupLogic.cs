@@ -23,7 +23,7 @@ public class PowerupLogic : MonoBehaviour
         //cheat to kill all
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
-            GameObject instance = Instantiate(powerupsToSpawn[3], new Vector2(-1.75f, -5.95f), Quaternion.identity);
+            GameObject instance = Instantiate(powerupsToSpawn[1], new Vector2(-1.75f, -5.95f), Quaternion.identity);
             instance.SetActive(true);
         }
     }

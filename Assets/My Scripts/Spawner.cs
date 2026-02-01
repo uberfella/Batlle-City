@@ -14,6 +14,7 @@ public class Spawner : MonoBehaviour
     public int enemiesToSpawn = 0;
     public Text enemiesToSpawnText;
     public static bool[] enemyAlive = new bool[4] { false, false, false, false }; //7, 10, 11, 12
+    public static List<Enemy> AliveEnemies = new List<Enemy>(); //needed for freeze powerup also might be useful later (not)
     public LayerMask obstructionMask;
     public EnemiesList enemiesList;
     public bool levelFinished = false;
@@ -25,8 +26,6 @@ public class Spawner : MonoBehaviour
     private GameObject[] spawnAnim;
     private Renderer[] spawnAnimationRenderer;
     private int randomSpawnPoint = 0;
-
-    Animator animator;
 
     void Start()
     {
