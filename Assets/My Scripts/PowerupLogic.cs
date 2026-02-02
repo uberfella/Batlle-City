@@ -34,8 +34,13 @@ public class PowerupLogic : MonoBehaviour
     {
         int randomPowerUp = Random.Range(0, 6);
         //Debug.Log("randomPowerUp = " + randomPowerUp);
-        float randomPosX = Random.Range(-5.5f, 6.5f);
-        float randomPosY = Random.Range(-6.5f, 5.5f);
+        float rollX = Random.Range(-5.5f, 6.5f);
+        float rollY = Random.Range(-6.5f, 5.5f);
+        //ensure the final pos is even to the grid
+        float randomPosX = rollX - (rollX % 0.5f);
+        Debug.Log("rollX = " + rollX);
+        Debug.Log("rollX - (rollX % 0.5f) = " + randomPosX);
+        float randomPosY = rollY - (rollY % 0.5f);
         GameObject instance = Instantiate(powerupsToSpawn[randomPowerUp], new Vector2(randomPosX, randomPosY), Quaternion.identity);
         instance.SetActive(true);
 
