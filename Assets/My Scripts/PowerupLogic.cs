@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 public enum PowerupType { Fortify, Freeze, Invulnerability, KillAll, Levelup, Extralife }
+
+
 public class DontDestroy : MonoBehaviour
 {
 
@@ -12,6 +14,9 @@ public class DontDestroy : MonoBehaviour
 public class PowerupLogic : MonoBehaviour
 {
     public GameObject [] powerupsToSpawn;
+    //temporary way to make sure the powerup spawns inside squares nicely
+    float[] predefinedPosX = { -5.5f, -4.5f, -3.5f, -2.5f, -1.5f, -0.5f, 0.5f, 1.5f, 2.5f, 3.5f, 4.5f, 5.5f, 6.5f }; //13 entries
+    float[] predefinedPosY = { -6.5f, -5.5f, -4.5f, -3.5f, -2.5f, -1.5f, -0.5f, 0.5f, 1.5f, 2.5f, 3.5f, 4.5f, 5.5f };
 
     void Awake()
     {
@@ -33,14 +38,8 @@ public class PowerupLogic : MonoBehaviour
     public void SpawnRandomPowerupOnField()
     {
         int randomPowerUp = Random.Range(0, 6);
-        //Debug.Log("randomPowerUp = " + randomPowerUp);
-        float rollX = Random.Range(-5.5f, 6.5f);
-        float rollY = Random.Range(-6.5f, 5.5f);
-        //ensure the final pos is even to the grid
-        float randomPosX = rollX - (rollX % 0.5f);
-        Debug.Log("rollX = " + rollX);
-        Debug.Log("rollX - (rollX % 0.5f) = " + randomPosX);
-        float randomPosY = rollY - (rollY % 0.5f);
+        float randomPosX = predefinedPosX[Random.Range(0, 14)];
+        float randomPosY = predefinedPosY[Random.Range(0, 14)];
         GameObject instance = Instantiate(powerupsToSpawn[randomPowerUp], new Vector2(randomPosX, randomPosY), Quaternion.identity);
         instance.SetActive(true);
 
