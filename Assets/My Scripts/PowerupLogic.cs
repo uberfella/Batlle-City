@@ -31,19 +31,31 @@ public class PowerupLogic : MonoBehaviour
             GameObject instance = Instantiate(powerupsToSpawn[3], new Vector2(-1.75f, -5.95f), Quaternion.identity);
             instance.SetActive(true);
         }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            SpawnRandomPowerupOnField();
+        } 
     }
 
     //-5.5 -6.5 
     //6.5 5.5
     public void SpawnRandomPowerupOnField()
     {
+        float randomPosX = predefinedPosX[Random.Range(0, 12)];
+        float randomPosY = predefinedPosY[Random.Range(0, 12)];
         int randomPowerUp = Random.Range(0, 6);
-        float randomPosX = predefinedPosX[Random.Range(0, 14)];
-        float randomPosY = predefinedPosY[Random.Range(0, 14)];
+        //make sure the powerup doesn't spawn inside the base
+        if((randomPosX == -0.5f & randomPosY == -6.5) || (randomPosX == 0.5f & randomPosY == -6.5f) || (randomPosX == 1.5f & randomPosY == -6.5f) || 
+            (randomPosX == 0.5f & randomPosY == -5.5f) || (randomPosX == 0.5f & randomPosY == -5.5f) || (randomPosX == 1.5f & randomPosY == -5.5f))
+        {
+            randomPosX = predefinedPosX[Random.Range(0, 12)];
+            randomPosY = predefinedPosY[Random.Range(2, 12)];
+        }
+
         GameObject instance = Instantiate(powerupsToSpawn[randomPowerUp], new Vector2(randomPosX, randomPosY), Quaternion.identity);
         instance.SetActive(true);
 
-        Destroy(instance, 10f);
+        Destroy(instance, 1000f);
 
     }
 
