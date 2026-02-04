@@ -96,6 +96,7 @@ public class GameLogic : MonoBehaviour
     public static int finalLevelNum = 2;
     public bool isEnemiesFrozen;
     public Dictionary<EnemyType, int> destroyedByType = new();
+    private AudioManager audioManager;
 
     private void Awake()
     {
@@ -115,7 +116,8 @@ public class GameLogic : MonoBehaviour
     }
     void Start()
     {
-
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        audioManager.PlayMainTheme();
     }
 
     void Update()

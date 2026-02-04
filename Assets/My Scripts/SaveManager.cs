@@ -3,14 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class SaveManager : MonoBehaviour
 {
+    private AudioManager audioManager;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Awake()
+    private void Start()
     {
-
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -37,6 +36,7 @@ public class SaveManager : MonoBehaviour
 
             string sceneName = "Level" + GameLogic.levelNum;
             SceneManager.LoadScene(sceneName);
+            //audioManager.PlayMainTheme();
         }
     }
 

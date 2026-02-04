@@ -37,7 +37,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMainTheme()
     {
-        if (!IsScene("Main Menu")/* || !IsScene("Bootstrapped Scene")*/)
+        //if (!IsScene("Main Menu")/* || !IsScene("Bootstrapped Scene")*/)
         {
             musicSource.clip = mainTheme;
             musicSource.Play();

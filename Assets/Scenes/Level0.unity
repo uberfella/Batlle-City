@@ -5292,15 +5292,15 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1124884387}
     m_Modifications:
     - target: {fileID: 310232534193261194, guid: b305967d47edab94ea26f2491c9d5429, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.501
+      value: 5.636
       objectReference: {fileID: 0}
     - target: {fileID: 310232534193261194, guid: b305967d47edab94ea26f2491c9d5429, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.747
+      value: 3.385
       objectReference: {fileID: 0}
     - target: {fileID: 310232534193261194, guid: b305967d47edab94ea26f2491c9d5429, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5312,15 +5312,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 310232534193261194, guid: b305967d47edab94ea26f2491c9d5429, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 310232534193261194, guid: b305967d47edab94ea26f2491c9d5429, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 310232534193261194, guid: b305967d47edab94ea26f2491c9d5429, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 310232534193261194, guid: b305967d47edab94ea26f2491c9d5429, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5343,6 +5343,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b305967d47edab94ea26f2491c9d5429, type: 3}
+--- !u!4 &647915598 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 310232534193261194, guid: b305967d47edab94ea26f2491c9d5429, type: 3}
+  m_PrefabInstance: {fileID: 647915597}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &650185039
 GameObject:
   m_ObjectHideFlags: 0
@@ -10096,7 +10101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1124884387}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Obstacles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10180,6 +10185,7 @@ Transform:
   - {fileID: 768395277}
   - {fileID: 51509759}
   - {fileID: 1339052977}
+  - {fileID: 647915598}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1160423472
@@ -17443,7 +17449,6 @@ SceneRoots:
   - {fileID: 3043116010102652193}
   - {fileID: 597576602}
   - {fileID: 1124884387}
-  - {fileID: 647915597}
   - {fileID: 800336328}
   - {fileID: 1085376703}
   - {fileID: 1764738850}
