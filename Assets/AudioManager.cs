@@ -11,23 +11,26 @@ public class AudioManager : MonoBehaviour
 
     public AudioClip mainTheme;
     public AudioClip shotFired;
+    public AudioClip gameOverJingle;
+    public AudioClip playerTankStationarySound;
+    public AudioClip playerTankMovingSound;
 
     bool IsScene(string sceneName)
     {
         return SceneManager.GetActiveScene().name == sceneName;
     }
-    void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
+    //void Awake()
+    //{
+    //    DontDestroyOnLoad(gameObject);
+    //}
 
     private void Start()
     {
-        //if (!IsScene("Main Menu")/* || !IsScene("Bootstrapped Scene")*/)
-        //{
-        //    musicSource.clip = mainTheme;
-        //    musicSource.Play();
-        //}
+        if (!IsScene("Main Menu"))
+        {
+            musicSource.clip = mainTheme;
+            //musicSource.Play();
+        }
     }
 
     public void PlaySFX(AudioClip clip)
@@ -35,12 +38,10 @@ public class AudioManager : MonoBehaviour
         SFXSource.PlayOneShot(clip);
     }
 
-    public void PlayMainTheme()
+    public void Play(AudioClip clip)
     {
-        //if (!IsScene("Main Menu")/* || !IsScene("Bootstrapped Scene")*/)
-        {
-            musicSource.clip = mainTheme;
-            musicSource.Play();
-        }
+        SFXSource.clip = clip;
+        SFXSource.Play();
     }
+
 }

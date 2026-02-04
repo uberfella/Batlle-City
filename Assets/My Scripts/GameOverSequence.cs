@@ -10,6 +10,7 @@ public class GameOverSequence : MonoBehaviour
     public Vector2 targetPosition;
     private Vector2 startPosition;
     private Spawner spawner;
+    private AudioManager audioManager;
 
     private void Awake()
     {
@@ -20,6 +21,8 @@ public class GameOverSequence : MonoBehaviour
     {
         startPosition = gameOverText.anchoredPosition;
         gameOverText.gameObject.SetActive(false);
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
     }
 
     void Update()
@@ -29,14 +32,13 @@ public class GameOverSequence : MonoBehaviour
 
     public void TriggerGameOver()
     {
-        //Debug.Log("trying to game over");
         if (!GameLogic.GameOver && !spawner.levelFinished)
         {
+            audioManager.PlaySFX(audioManager.gameOverJingle);
             GameLogic.GameOver = true;
             Debug.Log("GameOver = " + GameLogic.GameOver);
             SaveManager.EraseSave();
             StartCoroutine(ShowGameOver());
-
         }
     }
 

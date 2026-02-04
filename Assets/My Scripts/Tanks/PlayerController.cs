@@ -29,8 +29,7 @@ public class PlayerController2D : Tank
     private int currentFrame = 0;
     private float timer = 0f;
     private Shell shell;
-
-    AudioManager audioManager;
+    private AudioManager audioManager;
 
     void Start()
     {
@@ -86,6 +85,7 @@ public class PlayerController2D : Tank
 
         if ((horizontalInput != 0 || verticalInput != 0) && !GameLogic.GameOver)
         {
+            audioManager.Play(audioManager.playerTankMovingSound);
             timer += Time.deltaTime;
             if (timer >= animationSpeed)
             {
@@ -97,6 +97,10 @@ public class PlayerController2D : Tank
                     spriteRenderer.sprite = GetSpriteBasedOnPlayerLevel(playerLevel)[currentFrame];
                 }
             }
+        }
+        else
+        {
+            audioManager.Play(audioManager.playerTankStationarySound);
         }
 
         RestrictDiagonalMovements();

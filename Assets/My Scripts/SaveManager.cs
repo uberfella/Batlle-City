@@ -3,11 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class SaveManager : MonoBehaviour
 {
-    private AudioManager audioManager;
 
     private void Start()
     {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
     }
 
     void Update()
@@ -36,7 +35,6 @@ public class SaveManager : MonoBehaviour
 
             string sceneName = "Level" + GameLogic.levelNum;
             SceneManager.LoadScene(sceneName);
-            //audioManager.PlayMainTheme();
         }
     }
 
