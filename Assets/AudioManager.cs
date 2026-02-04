@@ -16,14 +16,31 @@ public class AudioManager : MonoBehaviour
     {
         return SceneManager.GetActiveScene().name == sceneName;
     }
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
 
     private void Start()
     {
-        if (!IsScene("Main Menu")) 
+        //if (!IsScene("Main Menu")/* || !IsScene("Bootstrapped Scene")*/)
+        //{
+        //    musicSource.clip = mainTheme;
+        //    musicSource.Play();
+        //}
+    }
+
+    public void PlaySFX(AudioClip clip)
+    {
+        SFXSource.PlayOneShot(clip);
+    }
+
+    public void PlayMainTheme()
+    {
+        if (!IsScene("Main Menu")/* || !IsScene("Bootstrapped Scene")*/)
         {
             musicSource.clip = mainTheme;
             musicSource.Play();
         }
-
     }
 }

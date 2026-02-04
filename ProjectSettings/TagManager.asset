@@ -16,6 +16,7 @@ TagManager:
   - EnemyLvl4
   - Powerup
   - Fortify_Concrete
+  - Audio
   layers:
   - Default
   - TransparentFX

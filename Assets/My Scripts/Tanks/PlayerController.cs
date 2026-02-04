@@ -30,6 +30,8 @@ public class PlayerController2D : Tank
     private float timer = 0f;
     private Shell shell;
 
+    AudioManager audioManager;
+
     void Start()
     {
 
@@ -40,19 +42,15 @@ public class PlayerController2D : Tank
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         shell = GetComponent<Shell>();
-        
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
         playerIsAlive = true;
         //playerIsInvincible = true;
-        
 
         spawnFreezeIsOver = true;
 
-        // Find the child by name or reference it directly
         invincibilityAnim = transform.Find("InvincibilityAnim").gameObject;
-
-        // Get the Renderer (could be SpriteRenderer, MeshRenderer, etc.)
         invincibilityAnimationRenderer = invincibilityAnim.GetComponent<Renderer>();
-        //invincibilityAnimationRenderer.enabled = true;
         TriggerInvincibility();
     }
 
@@ -175,6 +173,7 @@ public class PlayerController2D : Tank
     {
         GameObject shell = Instantiate(shellPrefab, transform.position, transform.rotation);
         shell.GetComponent<Shell>().SetSpeed(projectileSpeed);
+        audioManager.PlaySFX(audioManager.shotFired);
     }
 
     public void PlayerLevelUp() 
