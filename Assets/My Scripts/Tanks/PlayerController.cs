@@ -44,12 +44,11 @@ public class PlayerController2D : Tank
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
         playerIsAlive = true;
-        //playerIsInvincible = true;
-
         spawnFreezeIsOver = true;
 
         invincibilityAnim = transform.Find("InvincibilityAnim").gameObject;
         invincibilityAnimationRenderer = invincibilityAnim.GetComponent<Renderer>();
+        audioManager.Play(audioManager.playerTankStationarySound);
         TriggerInvincibility();
     }
 
@@ -74,7 +73,10 @@ public class PlayerController2D : Tank
             godmode = false;
             TriggerInvincibility();
         }
-
+        if ((horizontalInput != 0 || verticalInput != 0))
+        {
+            
+        }
     }
 
     void FixedUpdate()
@@ -225,4 +227,19 @@ public class PlayerController2D : Tank
         }
 
     }
+
+    //void SwitchToMove()
+    //{
+    //    engineIdleSource.Pause();
+    //    if (!engineMoveSource.isPlaying)
+    //        engineMoveSource.Play();
+    //}
+
+    //void SwitchToIdle()
+    //{
+    //    engineMoveSource.Pause();
+    //    if (!engineIdleSource.isPlaying)
+    //        engineIdleSource.Play();
+    //}
+
 }

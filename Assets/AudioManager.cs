@@ -14,6 +14,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip gameOverJingle;
     public AudioClip playerTankStationarySound;
     public AudioClip playerTankMovingSound;
+    public AudioClip levelUpJingle;
 
     bool IsScene(string sceneName)
     {
@@ -31,6 +32,8 @@ public class AudioManager : MonoBehaviour
             musicSource.clip = mainTheme;
             //musicSource.Play();
         }
+
+
     }
 
     public void PlaySFX(AudioClip clip)

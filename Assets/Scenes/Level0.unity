@@ -9666,6 +9666,7 @@ MonoBehaviour:
   gameOverJingle: {fileID: 8300000, guid: f7645af21fa494543ba3feed2d9612ec, type: 3}
   playerTankStationarySound: {fileID: 8300000, guid: 28cedee7c96b7a442a0522e30ca7b74f, type: 3}
   playerTankMovingSound: {fileID: 8300000, guid: 08d5ea39ed8082840af8dc8e89533b64, type: 3}
+  levelUpJingle: {fileID: 8300000, guid: cc4f86e0f87e55a45a9f0b1927147966, type: 3}
 --- !u!1 &1069178123
 GameObject:
   m_ObjectHideFlags: 0
