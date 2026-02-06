@@ -30,6 +30,7 @@ freeze powerup affects only tanks that are alive not the ones that would spawn a
 power-ups spawn on a grid; for example, the spawn position should be divisible by 0.5, 1.0, 1.5 without any remainder✓
 sounds 
 when the new powerup spawns the previous powerup gets destroyed
+when the player stops moving or changes directions the shooting cooldown gets reset so it's possible to shoot the second time before the cooldown ends
 finish game screen
 friendly and enemy projectiles will destroy each other when they collide in midair ✓
 player levelup, changing sprite and damage ✓

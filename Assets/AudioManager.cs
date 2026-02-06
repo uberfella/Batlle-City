@@ -3,12 +3,15 @@ using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager Instance;
+
     [Header("------------ Audio Source ------------")]
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource SFXSource;
+    [SerializeField] AudioSource playerTankStationarySource;
+    [SerializeField] AudioSource playerTankMovingSource;
 
     [Header("------------ Audio Clip ------------")]
-
     public AudioClip mainTheme;
     public AudioClip shotFired;
     public AudioClip gameOverJingle;
@@ -20,10 +23,10 @@ public class AudioManager : MonoBehaviour
     {
         return SceneManager.GetActiveScene().name == sceneName;
     }
-    //void Awake()
-    //{
-    //    DontDestroyOnLoad(gameObject);
-    //}
+    void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -32,8 +35,10 @@ public class AudioManager : MonoBehaviour
             musicSource.clip = mainTheme;
             //musicSource.Play();
         }
-
-
+        playerTankStationarySource.clip = playerTankStationarySound;
+        playerTankMovingSource.clip = playerTankMovingSound;
+        playerTankStationarySource.loop = true;
+        playerTankMovingSource.loop = true;
     }
 
     public void PlaySFX(AudioClip clip)
@@ -45,6 +50,19 @@ public class AudioManager : MonoBehaviour
     {
         SFXSource.clip = clip;
         SFXSource.Play();
+    }
+    public void SetEngineState(bool moving)
+    {
+        if (moving)
+        {
+            if (!playerTankMovingSource.isPlaying) playerTankMovingSource.Play();
+            playerTankStationarySource.Pause();
+        }
+        else
+        {
+            if (!playerTankStationarySource.isPlaying) playerTankStationarySource.Play();
+            playerTankMovingSource.Pause();
+        }
     }
 
 }

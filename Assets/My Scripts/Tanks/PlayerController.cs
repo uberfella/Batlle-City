@@ -48,7 +48,6 @@ public class PlayerController2D : Tank
 
         invincibilityAnim = transform.Find("InvincibilityAnim").gameObject;
         invincibilityAnimationRenderer = invincibilityAnim.GetComponent<Renderer>();
-        audioManager.Play(audioManager.playerTankStationarySound);
         TriggerInvincibility();
     }
 
@@ -87,7 +86,6 @@ public class PlayerController2D : Tank
 
         if ((horizontalInput != 0 || verticalInput != 0) && !GameLogic.GameOver)
         {
-            audioManager.Play(audioManager.playerTankMovingSound);
             timer += Time.deltaTime;
             if (timer >= animationSpeed)
             {
@@ -100,10 +98,9 @@ public class PlayerController2D : Tank
                 }
             }
         }
-        else
-        {
-            audioManager.Play(audioManager.playerTankStationarySound);
-        }
+
+        bool isMoving = horizontalInput != 0 || verticalInput != 0;
+        AudioManager.Instance.SetEngineState(isMoving);
 
         RestrictDiagonalMovements();
 
