@@ -11,7 +11,8 @@ public class ScoreboardButtonController : MonoBehaviour
     public void LoadNextLevel()
     {
         GameLogic.Instance.destroyedByType.Clear();
-        if (GameLogic.levelNum <= GameLogic.finalLevelNum)
+        //0 1 2 3              < 3
+        if (GameLogic.levelNum < GameLogic.finalLevelNum)
         {
             string sceneName = "Level" + GameLogic.levelNum;
             SceneManager.LoadScene(sceneName);

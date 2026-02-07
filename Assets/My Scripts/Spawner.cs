@@ -212,19 +212,17 @@ public class Spawner : MonoBehaviour
         {
             if (alive) return false;
         }
-        //Debug.Log("AllEnemiesDead() = " + true);
         return true;
         
     }
 
     void OnLevelFinished()
     {
-        //Debug.Log("Level Complete!");
 
         SaveManager.SaveGame();
 
         // Load next level (optional, or wait a few seconds before transition)
-        string nextScene = "Level" + (GameLogic.levelNum + 1);
+        //string nextScene = "Level" + (GameLogic.levelNum + 1);
         if (GameLogic.levelNum <= GameLogic.finalLevelNum)
         {
             GameLogic.levelNum++;

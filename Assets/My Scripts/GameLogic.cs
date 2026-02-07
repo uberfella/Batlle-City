@@ -95,7 +95,7 @@ public class GameLogic : MonoBehaviour
     public static bool GameOver;
     public static GameLogic Instance { get; private set; } = null;
     public static int levelNum = 0;
-    public static int finalLevelNum = 2;
+    public static int finalLevelNum = 3; //finalLevel 3 == End scene
     public bool isEnemiesFrozen;
     public Dictionary<EnemyType, int> destroyedByType = new();
     private PlayerController2D playerController2D;
@@ -128,7 +128,7 @@ public class GameLogic : MonoBehaviour
             //AudioManager.Instance.SetEngineState(isMoving, playerIsAlive);
             playerController2D = FindFirstObjectByType<PlayerController2D>();
 
-            Debug.Log("Player is alive = " + playerController2D.playerIsAlive);
+            Debug.Log("LevelNum" + levelNum);
         }
 
     }
