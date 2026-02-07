@@ -16,6 +16,11 @@ public class ScoreboardButtonController : MonoBehaviour
             string sceneName = "Level" + GameLogic.levelNum;
             SceneManager.LoadScene(sceneName);
         }
+        else
+        {
+            SaveManager.EraseSave();
+            SceneManager.LoadScene("End Scene");
+        }
     }
 
     public void ReturnToMainMenu() 

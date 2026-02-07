@@ -13,28 +13,89 @@ public class AudioManager : MonoBehaviour
 
     [Header("------------ Audio Clip ------------")]
     public AudioClip mainTheme;
+    public AudioClip endTheme;
     public AudioClip shotFired;
     public AudioClip gameOverJingle;
     public AudioClip playerTankStationarySound;
     public AudioClip playerTankMovingSound;
     public AudioClip levelUpJingle;
 
-    bool IsScene(string sceneName)
-    {
-        return SceneManager.GetActiveScene().name == sceneName;
-    }
+    //bool IsScene(string sceneName)
+    //{
+    //    return SceneManager.GetActiveScene().name == sceneName;
+    //}
     void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (IsLevelScene(scene))
+        {
+            PlayMainTheme();
+        }
+
+        if (IsEndScene(scene))
+        {
+            PlayEndingTheme();
+        }
+
+    }
+
+    private bool IsLevelScene(Scene scene)
+    {
+        return scene.name.StartsWith("Level");
+        // or use build index, or a list, your choice
+    }
+
+    private bool IsEndScene(Scene scene)
+    {
+        return scene.name.StartsWith("End");
+        // or use build index, or a list, your choice
+    }
+
+    private void PlayMainTheme()
+    {
+        if (musicSource.clip == mainTheme && musicSource.isPlaying)
+            return;
+
+        musicSource.clip = mainTheme;
+        //musicSource.Play();
+    }
+
+    private void PlayEndingTheme()
+    {
+        if (musicSource.clip == mainTheme && musicSource.isPlaying)
+            return;
+
+        musicSource.clip = endTheme;
+        musicSource.Play();
+    }
+
+    private void StopMusic()
+    {
+        musicSource.Stop();
     }
 
     private void Start()
     {
-        if (!IsScene("Main Menu"))
-        {
-            musicSource.clip = mainTheme;
-            //musicSource.Play();
-        }
         playerTankStationarySource.clip = playerTankStationarySound;
         playerTankMovingSource.clip = playerTankMovingSound;
         playerTankStationarySource.loop = true;
@@ -46,13 +107,14 @@ public class AudioManager : MonoBehaviour
         SFXSource.PlayOneShot(clip);
     }
 
-    public void Play(AudioClip clip)
-    {
-        SFXSource.clip = clip;
-        SFXSource.Play();
-    }
+    //public void Play(AudioClip clip)
+    //{
+    //    SFXSource.clip = clip;
+    //    SFXSource.Play();
+    //}
     public void SetEngineState(bool moving)
-    {
+    { 
+
         if (moving)
         {
             if (!playerTankMovingSource.isPlaying) playerTankMovingSource.Play();
@@ -64,5 +126,9 @@ public class AudioManager : MonoBehaviour
             playerTankMovingSource.Pause();
         }
     }
-
+    public void StopEngineSound()
+    {
+        playerTankStationarySource.Stop();
+        playerTankMovingSource.Stop();
+    }
 }

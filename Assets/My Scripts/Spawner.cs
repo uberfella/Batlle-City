@@ -33,7 +33,7 @@ public class Spawner : MonoBehaviour
         {
             enemyAlive[i] = false;
         }
-        Debug.Log("levelFinished = " + levelFinished);
+        //Debug.Log("levelFinished = " + levelFinished);
         enemiesList = FindFirstObjectByType<EnemiesList>();
         spawnAnim = new GameObject[3];
         spawnAnimationRenderer = new Renderer[3];

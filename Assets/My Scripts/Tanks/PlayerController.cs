@@ -29,7 +29,6 @@ public class PlayerController2D : Tank
     private int currentFrame = 0;
     private float timer = 0f;
     private Shell shell;
-    private AudioManager audioManager;
 
     void Start()
     {
@@ -41,7 +40,6 @@ public class PlayerController2D : Tank
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         shell = GetComponent<Shell>();
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
 
         playerIsAlive = true;
         spawnFreezeIsOver = true;
@@ -72,10 +70,9 @@ public class PlayerController2D : Tank
             godmode = false;
             TriggerInvincibility();
         }
-        if ((horizontalInput != 0 || verticalInput != 0))
-        {
-            
-        }
+        //the scene gets switched = all sounds stop
+        bool isMoving = horizontalInput != 0 || verticalInput != 0;
+        AudioManager.Instance.SetEngineState(isMoving);
     }
 
     void FixedUpdate()
@@ -99,8 +96,7 @@ public class PlayerController2D : Tank
             }
         }
 
-        bool isMoving = horizontalInput != 0 || verticalInput != 0;
-        AudioManager.Instance.SetEngineState(isMoving);
+
 
         RestrictDiagonalMovements();
 
@@ -121,6 +117,12 @@ public class PlayerController2D : Tank
             playerIsAlive = false;
             PlayerSpawner.playerLives--;
         }
+    }
+
+    void OnDestroy()
+    {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.StopEngineSound();
     }
 
     private void PlayerMove(Vector2 moveDir)
@@ -176,7 +178,8 @@ public class PlayerController2D : Tank
     {
         GameObject shell = Instantiate(shellPrefab, transform.position, transform.rotation);
         shell.GetComponent<Shell>().SetSpeed(projectileSpeed);
-        audioManager.PlaySFX(audioManager.shotFired);
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.shotFired);
+
     }
 
     public void PlayerLevelUp() 
