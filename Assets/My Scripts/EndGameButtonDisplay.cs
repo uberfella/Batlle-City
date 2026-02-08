@@ -4,6 +4,8 @@ using UnityEngine;
 public class EndGameButtonDisplay : MonoBehaviour
 {
     public GameObject buttonsRow;
+    public GameObject iconSelector;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,5 +26,7 @@ public class EndGameButtonDisplay : MonoBehaviour
 
         // SHOW BUTTON
         buttonsRow.SetActive(true);
+        iconSelector.SetActive(true);
+
     }
 }
