@@ -20,10 +20,6 @@ public class AudioManager : MonoBehaviour
     public AudioClip playerTankMovingSound;
     public AudioClip levelUpJingle;
 
-    //bool IsScene(string sceneName)
-    //{
-    //    return SceneManager.GetActiveScene().name == sceneName;
-    //}
     void Awake()
     {
         if (Instance == null)
@@ -77,21 +73,16 @@ public class AudioManager : MonoBehaviour
             return;
 
         musicSource.clip = mainTheme;
-        //musicSource.Play();
+        musicSource.Play();
     }
 
     private void PlayEndingTheme()
     {
-        if (musicSource.clip == mainTheme && musicSource.isPlaying)
+        if (musicSource.clip == endTheme && musicSource.isPlaying)
             return;
 
         musicSource.clip = endTheme;
         musicSource.Play();
-    }
-
-    private void StopMusic()
-    {
-        musicSource.Stop();
     }
 
     private void Start()
@@ -106,12 +97,6 @@ public class AudioManager : MonoBehaviour
     {
         SFXSource.PlayOneShot(clip);
     }
-
-    //public void Play(AudioClip clip)
-    //{
-    //    SFXSource.clip = clip;
-    //    SFXSource.Play();
-    //}
     public void SetEngineState(bool moving)
     { 
 

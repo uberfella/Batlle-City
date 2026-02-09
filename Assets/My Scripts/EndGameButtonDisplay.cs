@@ -6,14 +6,11 @@ public class EndGameButtonDisplay : MonoBehaviour
     public GameObject buttonsRow;
     public GameObject iconSelector;
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         StartCoroutine(ShowHomeButton());
     }
 
-    // Update is called once per frame
     void Update()
     {
         

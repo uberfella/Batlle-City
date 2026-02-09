@@ -10,7 +10,7 @@ public class MenuSelector : MonoBehaviour
     public List<RectTransform> buttonTargets;    // Button transforms to snap to
     public List<Button> buttonComponents;        // Matching Button components
     private int currentIndex = 0;
-    private int offsetForDifferentScenes = 0;
+    private int offsetForDifferentScenes = -2;
     private KeyCode selectFirstKey = KeyCode.None;
     private KeyCode selectSecondKey = KeyCode.None;
     bool IsScene(string sceneName)

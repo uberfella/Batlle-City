@@ -547,7 +547,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 43.01, y: 10.22}
+  m_AnchoredPosition: {x: 44.76, y: 10.01}
   m_SizeDelta: {x: 36.039, y: 18.6845}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &423697319
@@ -1167,7 +1167,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1590473191
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1232,15 +1232,15 @@ RectTransform:
   m_GameObject: {fileID: 1590473190}
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.7, y: 3.9504516, z: 4.7}
+  m_LocalScale: {x: 5.38, y: 4.522, z: 5.38}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1348485742}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -5, y: -681}
-  m_SizeDelta: {x: 13, y: 13}
+  m_AnchoredPosition: {x: -1052.86, y: -501.53}
+  m_SizeDelta: {x: 0.3, y: 0.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1590473193
 MonoBehaviour:
@@ -1295,10 +1295,8 @@ MonoBehaviour:
   selectorIcon: {fileID: 1590473192}
   buttonTargets:
   - {fileID: 423697318}
-  - {fileID: 0}
   buttonComponents:
   - {fileID: 423697320}
-  - {fileID: 0}
 --- !u!1 &1650849803
 GameObject:
   m_ObjectHideFlags: 0
