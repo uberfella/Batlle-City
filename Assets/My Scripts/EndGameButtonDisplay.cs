@@ -8,6 +8,8 @@ public class EndGameButtonDisplay : MonoBehaviour
 
     void Start()
     {
+
+
         StartCoroutine(ShowHomeButton());
     }
 
