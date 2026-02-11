@@ -128,7 +128,7 @@ public class GameLogic : MonoBehaviour
             //AudioManager.Instance.SetEngineState(isMoving, playerIsAlive);
             playerController2D = FindFirstObjectByType<PlayerController2D>();
 
-            Debug.Log("LevelNum" + levelNum);
+            Debug.Log("high score has been beaten" + levelNum);
         }
 
     }
