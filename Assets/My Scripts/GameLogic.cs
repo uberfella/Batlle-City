@@ -115,20 +115,20 @@ public class GameLogic : MonoBehaviour
         // prevent the data from being unloaded
         DontDestroyOnLoad(gameObject);
 
+        
+
     }
     void Start()
     {
-
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.G))
         {
-            //AudioManager.Instance.SetEngineState(isMoving, playerIsAlive);
-            playerController2D = FindFirstObjectByType<PlayerController2D>();
 
-            Debug.Log("high score has been beaten" + levelNum);
+            Debug.Log("highScoreHasBeenBeaten = " + ScoreCount.highScoreHasBeenBeaten);
         }
 
     }
@@ -141,5 +141,18 @@ public class GameLogic : MonoBehaviour
 
     }
 
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (IsScoreboardScene(scene))
+        {
+            SaveManager.SaveGame();
+        }
 
+    }
+
+    private bool IsScoreboardScene(Scene scene)
+    {
+        return scene.name.StartsWith("Score");
+        // or use build index, or a list, your choice
+    }
 }

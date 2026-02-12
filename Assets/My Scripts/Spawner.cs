@@ -90,7 +90,7 @@ public class Spawner : MonoBehaviour
         if (!levelFinished && enemiesToSpawn <= 0 && AllEnemiesDead())
         {
             levelFinished = true;
-            Debug.Log("levelFinished = " + levelFinished);
+            //Debug.Log("levelFinished = " + levelFinished);
             OnLevelFinished();
         }
     }
@@ -219,7 +219,7 @@ public class Spawner : MonoBehaviour
     void OnLevelFinished()
     {
 
-        SaveManager.SaveGame();
+        //SaveManager.SaveGame();
 
         // Load next level (optional, or wait a few seconds before transition)
         //string nextScene = "Level" + (GameLogic.levelNum + 1);

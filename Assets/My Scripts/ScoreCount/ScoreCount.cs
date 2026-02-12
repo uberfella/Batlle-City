@@ -15,7 +15,7 @@ public class ScoreCount : MonoBehaviour
     public Text highScoreText;
 
 
-    void Start()
+    void Awake()
     {
         highScore = PlayerPrefs.GetInt("Highscore", 0);
         highScoreText.text = highScore.ToString("D6");
@@ -45,6 +45,7 @@ public class ScoreCount : MonoBehaviour
     {
         if (currentScore > highScore)
         {
+            highScoreHasBeenBeaten = true;
             highScore = currentScore;
             PlayerPrefs.SetInt("Highscore", currentScore);
             PlayerPrefs.Save();

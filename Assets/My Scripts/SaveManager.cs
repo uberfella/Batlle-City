@@ -16,6 +16,8 @@ public class SaveManager : MonoBehaviour
 
     public static void SaveGame()
     {
+        //PlayerPrefs doesnt support booleans so we use some awkward conversions
+        int highScoreHasBeenBeatenInt = ScoreCount.highScoreHasBeenBeaten ? 1 : 0;
         //0 1 2                <= 3
         if (GameLogic.levelNum <= GameLogic.finalLevelNum)
         {
@@ -23,10 +25,11 @@ public class SaveManager : MonoBehaviour
         }
         PlayerPrefs.SetInt("PlayerLives", PlayerSpawner.playerLives);
         PlayerPrefs.SetInt("PlayerUpgrade", PlayerController2D.playerLevel);
+        PlayerPrefs.SetInt("HighScoreHasBeenBeaten", highScoreHasBeenBeatenInt);
+        Debug.Log("Saving HighScoreHasBeenBeaten as "+ highScoreHasBeenBeatenInt);
         PlayerPrefs.SetInt("HasSaveData", 1);
-        PlayerPrefs.SetInt("HighScoreHasBeenBeaten", );
         PlayerPrefs.Save();
-        Debug.Log("Game saved");
+        //Debug.Log("Game saved");
     }
 
     public static void LoadGame()
@@ -36,6 +39,9 @@ public class SaveManager : MonoBehaviour
             GameLogic.levelNum = PlayerPrefs.GetInt("SavedLevel");
             PlayerSpawner.playerLives = PlayerPrefs.GetInt("PlayerLives");
             PlayerController2D.playerLevel = PlayerPrefs.GetInt("PlayerUpgrade");
+            ScoreCount.highScoreHasBeenBeaten = PlayerPrefs.GetInt("HighScoreHasBeenBeaten") != 0;
+            Debug.Log("Restoring HighScoreHasBeenBeaten as " + PlayerPrefs.GetInt("HighScoreHasBeenBeaten") + " which translates to " + ScoreCount.highScoreHasBeenBeaten + " as a respected boolean");
+
 
             //loading the game
             if (GameLogic.levelNum < GameLogic.finalLevelNum)
