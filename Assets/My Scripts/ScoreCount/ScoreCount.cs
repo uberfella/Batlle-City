@@ -6,6 +6,11 @@ public class ScoreCount : MonoBehaviour
 {
     public static int currentScore = 0;
     public static int highScore = 0;
+    public static bool highScoreHasBeenBeaten;
+    // 
+    //
+    //
+    //
     public Text currentScoreText;
     public Text highScoreText;
 

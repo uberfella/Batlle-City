@@ -24,6 +24,7 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.SetInt("PlayerLives", PlayerSpawner.playerLives);
         PlayerPrefs.SetInt("PlayerUpgrade", PlayerController2D.playerLevel);
         PlayerPrefs.SetInt("HasSaveData", 1);
+        PlayerPrefs.SetInt("HighScoreHasBeenBeaten", );
         PlayerPrefs.Save();
         Debug.Log("Game saved");
     }
@@ -36,14 +37,18 @@ public class SaveManager : MonoBehaviour
             PlayerSpawner.playerLives = PlayerPrefs.GetInt("PlayerLives");
             PlayerController2D.playerLevel = PlayerPrefs.GetInt("PlayerUpgrade");
 
+            //loading the game
             if (GameLogic.levelNum < GameLogic.finalLevelNum)
             {
                 string sceneName = "Level" + GameLogic.levelNum;
                 SceneManager.LoadScene(sceneName);
             }
             else
+            //if the player completes the last level, goes to main menu and continues the game later
             {
+                //delete the save — the games already beaten
                 EraseSave();
+                //load the end screen
                 SceneManager.LoadScene("End Scene");
             }
 
