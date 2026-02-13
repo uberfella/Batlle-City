@@ -16,8 +16,8 @@ public class EndGameButtonController : MonoBehaviour
         
     }
 
-    public void ReturnToMainMenu()
-    {
-        SceneManager.LoadScene("Main Menu");
-    }
+    //public void ReturnToMainMenu()
+    //{
+    //    SceneManager.LoadScene("Main Menu");
+    //}
 }

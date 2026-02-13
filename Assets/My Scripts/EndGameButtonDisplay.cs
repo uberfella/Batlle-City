@@ -5,7 +5,8 @@ public class EndGameButtonDisplay : MonoBehaviour
 {
     //public static int currentScore = 0;
     //public static int highScore = 0;
-    //hiscore 
+    //hiscore beaten - 
+    //hiscore not beaten - 
     public GameObject buttonsRow;
     public GameObject iconSelector;
 
