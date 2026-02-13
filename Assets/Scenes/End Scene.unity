@@ -217,6 +217,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonsRow: {fileID: 723924908}
   iconSelector: {fileID: 1590473190}
+  static_ScoreHigh: {fileID: 25050206}
+  scoreHighVal: {fileID: 43398225}
 --- !u!1 &25050206
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,7 +237,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &25050207
 RectTransform:
   m_ObjectHideFlags: 0
@@ -338,7 +340,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &43398226
 RectTransform:
   m_ObjectHideFlags: 0
@@ -725,7 +727,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &723924909
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1067,7 +1069,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 20
+  m_SortingOrder: 10
   m_Sprite: {fileID: -6633167025491098067, guid: 552c576ecc7d870489315f8b93de49ba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
