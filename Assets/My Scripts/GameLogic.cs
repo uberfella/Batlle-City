@@ -95,7 +95,7 @@ public class GameLogic : MonoBehaviour
     public static bool GameOver;
     public static GameLogic Instance { get; private set; } = null;
     public static int levelNum = 0;
-    public static int finalLevelNum = 3; //finalLevel 3 == End scene
+    public static int finalLevelNum = 1; //finalLevel 3 == End scene
     public bool isEnemiesFrozen;
     public Dictionary<EnemyType, int> destroyedByType = new();
     private PlayerController2D playerController2D;

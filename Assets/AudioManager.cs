@@ -45,13 +45,13 @@ public class AudioManager : MonoBehaviour
     {
         if (IsLevelScene(scene))
         {
-            PlayMainTheme();
+            //PlayMainTheme();
         }
 
-        if (IsEndScene(scene))
-        {
-            PlayEndingTheme();
-        }
+        //if (IsEndScene(scene))
+        //{
+        //    PlayEndingTheme();
+        //}
 
     }
 
