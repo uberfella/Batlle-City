@@ -16,6 +16,7 @@ public class Powerup_Fortify : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.powerUpPickup);
             StartCoroutine(FortifySpawnConcreteOnBase());
             //we can't destroy powerup gameobject here, otherwise the coroutine won't operate properly. So we just make it invisible while the base is fortified and then we destroy it
             fortifyPowerupSprite.GetComponent<SpriteRenderer>().enabled = false;

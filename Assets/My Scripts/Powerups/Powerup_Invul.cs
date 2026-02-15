@@ -13,6 +13,7 @@ public class Powerup_Invul : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             playerController2D.TriggerInvincibility();
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.powerUpPickup);
             Destroy(gameObject);
         }
     }

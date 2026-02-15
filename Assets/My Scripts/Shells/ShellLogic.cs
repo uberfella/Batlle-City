@@ -44,6 +44,7 @@ public class Shell : MonoBehaviour
                 Destroy(gameObject);
             }
             //destroy both shells if they collide w each other in mid-air
+            //no sound 
             else if (other.gameObject.CompareTag("ShellEnemy"))
             {
                 Destroy(other.gameObject);

@@ -50,6 +50,8 @@ public class PowerupLogic : MonoBehaviour
 
         GameObject instance = Instantiate(powerupsToSpawn[randomPowerUp], new Vector2(randomPosX, randomPosY), Quaternion.identity);
         instance.SetActive(true);
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.powerUpSpawn);
+
 
         Destroy(instance, 10f);
 

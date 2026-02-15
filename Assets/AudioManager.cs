@@ -18,7 +18,13 @@ public class AudioManager : MonoBehaviour
     public AudioClip gameOverJingle;
     public AudioClip playerTankStationarySound;
     public AudioClip playerTankMovingSound;
-    public AudioClip levelUpJingle;
+    public AudioClip powerUpSpawn;
+    public AudioClip powerUpPickup;
+    public AudioClip enemyExplodeSound;
+    public AudioClip playerExplodeSound;
+    public AudioClip brickDestroyedSound;
+    public AudioClip obstacleDestroyedSound;
+    public AudioClip enemyDecreasingLivesSound;
 
     void Awake()
     {

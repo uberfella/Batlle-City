@@ -57,10 +57,12 @@ public class Enemy : Tank
             powerupLogic.SpawnRandomPowerupOnField();
             hasPowerup = false;
         }
+        // 4 3 2 1
         health -= damage;
         if (health <= 0)
         {
             GameLogic.Instance.RegisterEnemyKill(enemyType);
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.enemyExplodeSound);
             Destroy(gameObject);
             enemyIsAlive = false;
             ChangeEnemyStatus();

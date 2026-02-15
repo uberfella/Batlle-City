@@ -12,6 +12,7 @@ public class Powerup_KillAll : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.powerUpPickup);
             TryToKillAll();
             Destroy(gameObject);
         }

@@ -14,7 +14,7 @@ public class Powerup_Levelup : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player")) 
         {
-            AudioManager.Instance.PlaySFX(AudioManager.Instance.levelUpJingle);
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.powerUpPickup);
             playerController2D.PlayerLevelUp();
             Destroy(gameObject);
         }
