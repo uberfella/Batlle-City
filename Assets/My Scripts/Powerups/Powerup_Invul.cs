@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Powerup_Invul : MonoBehaviour
+public class Powerup_Invul : Powerup_Superclass
 {
     private PlayerController2D playerController2D;
     void Awake()
@@ -8,12 +8,12 @@ public class Powerup_Invul : MonoBehaviour
         playerController2D = FindFirstObjectByType<PlayerController2D>();
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    public override void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            base.OnTriggerEnter2D(other);
             playerController2D.TriggerInvincibility();
-            AudioManager.Instance.PlaySFX(AudioManager.Instance.powerUpPickup);
             Destroy(gameObject);
         }
     }

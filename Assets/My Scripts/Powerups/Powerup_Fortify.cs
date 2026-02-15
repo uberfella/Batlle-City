@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Powerup_Fortify : MonoBehaviour
+public class Powerup_Fortify : Powerup_Superclass
 {
     public GameObject objectToSpawn; //fortify powerup concrete  
     public Vector2[] spawnPositions; //fortify powerup spawnpositions  
@@ -10,13 +10,19 @@ public class Powerup_Fortify : MonoBehaviour
     public GameObject fortifyPowerupSprite;
 
     private List<GameObject> spawnedObjects = new List<GameObject>();
+    private bool wasActivated;
+    void Start()
+    {
+        wasActivated = false;
+    }
 
     // Update is called once per frame
-    void OnTriggerEnter2D(Collider2D other)
+    public override void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && !wasActivated)
         {
-            AudioManager.Instance.PlaySFX(AudioManager.Instance.powerUpPickup);
+            wasActivated = true;
+            base.OnTriggerEnter2D(other);
             StartCoroutine(FortifySpawnConcreteOnBase());
             //we can't destroy powerup gameobject here, otherwise the coroutine won't operate properly. So we just make it invisible while the base is fortified and then we destroy it
             fortifyPowerupSprite.GetComponent<SpriteRenderer>().enabled = false;

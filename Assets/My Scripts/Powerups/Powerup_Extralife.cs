@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class Powerup_Extralife : MonoBehaviour
+public class Powerup_Extralife : Powerup_Superclass
 {
-    void OnTriggerEnter2D(Collider2D other)
+    public override void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            base.OnTriggerEnter2D(other);
             PlayerSpawner.playerLives++;
-            AudioManager.Instance.PlaySFX(AudioManager.Instance.powerUpPickup);
             Destroy(gameObject);
         }
     }

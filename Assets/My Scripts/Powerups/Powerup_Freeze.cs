@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Powerup_Freeze : MonoBehaviour
+public class Powerup_Freeze : Powerup_Superclass
 {
     public GameObject freezePowerupSprite;
     private Spawner spawner;
@@ -14,10 +14,11 @@ public class Powerup_Freeze : MonoBehaviour
         spawner = FindFirstObjectByType<Spawner>();
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    public override void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player") & !wasActivated)
         {
+            base.OnTriggerEnter2D(other);
             wasActivated = true; //prevents multiple activations
             StartCoroutine(FreezeEnemies());
             //we can't destroy powerup gameobject here, otherwise the coroutine won't operate properly. So we just make it invisible while the enemies are frozen and then we destroy it

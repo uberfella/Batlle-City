@@ -1,34 +1,30 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class ScoreCount : MonoBehaviour
 {
     public static int currentScore = 0;
     public static int highScore = 0;
-    public static bool highScoreHasBeenBeaten;
-    // 
-    //
-    //
-    //
+    public static bool highScoreHasBeenBeaten = true;
     public Text currentScoreText;
-    public Text highScoreText;
-
+    public Text highScoreText; //display hiscore on levels 
+    public TextMeshProUGUI highScoreTextEnd; //display hiscore on end screen 
 
     void Awake()
     {
         highScore = PlayerPrefs.GetInt("Highscore", 0);
         highScoreText.text = highScore.ToString("D6");
+        if (IsScene("End Scene"))
+        {
+            highScoreTextEnd.text = highScore.ToString("D6");
+        }
         if (IsScene("Scoreboard"))
         {
             UpdateHighScore();
         }
         UpdateCurrentScore();
-    }
-
-    void Update()
-    {
-        
     }
 
     bool IsScene(string sceneName)

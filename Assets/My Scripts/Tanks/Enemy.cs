@@ -67,6 +67,10 @@ public class Enemy : Tank
             enemyIsAlive = false;
             ChangeEnemyStatus();
         }
+        else
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.enemyDecreasingLivesSound);
+        }
     }
     protected void ShootTheGun()
     {

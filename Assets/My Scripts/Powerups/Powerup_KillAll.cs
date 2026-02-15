@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Powerup_KillAll : MonoBehaviour
+public class Powerup_KillAll : Powerup_Superclass
 {
     private Enemy enemy;
     void Awake()
@@ -8,18 +8,20 @@ public class Powerup_KillAll : MonoBehaviour
         enemy = GetComponent<Enemy>();
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    public override void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            AudioManager.Instance.PlaySFX(AudioManager.Instance.powerUpPickup);
-            TryToKillAll();
+            base.OnTriggerEnter2D(other);
+            //TryToKillAll();
+            Enemy.DestroyAllInLayer();
             Destroy(gameObject);
         }
     }
 
-    public void TryToKillAll()
-    {
-        Enemy.DestroyAllInLayer();
-    }
+    //why?
+    //public void TryToKillAll()
+    //{
+    //    Enemy.DestroyAllInLayer();
+    //}
 }

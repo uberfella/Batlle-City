@@ -1,20 +1,19 @@
 using UnityEngine;
 
-public class Powerup_Levelup : MonoBehaviour
+public class Powerup_Levelup : Powerup_Superclass
 {
     private PlayerController2D playerController2D;
 
     void Awake()
     {
-
         playerController2D = FindFirstObjectByType<PlayerController2D>();
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    public override void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player")) 
         {
-            AudioManager.Instance.PlaySFX(AudioManager.Instance.powerUpPickup);
+            base.OnTriggerEnter2D(other);
             playerController2D.PlayerLevelUp();
             Destroy(gameObject);
         }
