@@ -121,6 +121,8 @@ public class GameLogic : MonoBehaviour
     void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
+
+        playerController2D = FindFirstObjectByType<PlayerController2D>();
     }
 
     void Update()
@@ -128,7 +130,7 @@ public class GameLogic : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.G))
         {
 
-            Debug.Log("highScoreHasBeenBeaten = " + ScoreCount.highScoreHasBeenBeaten);
+            Debug.Log("playerIsAlive = " + playerController2D.playerIsAlive);
         }
 
     }

@@ -4,17 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 public class PlayerSpawner : MonoBehaviour
 {
-    public PlayerController2D playerController2D;
     public Transform spawnPoint;
     public GameObject playerPrefab;
-    public static int playerLives = 1;
+    public static int playerLives = 2;
     public Text playerLivesUI;
 
-    private GameOverSequence gameOverSequence;
+    private PlayerController2D playerController2D;
+    //private GameOverSequence gameOverSequence;
 
     void Start()
     {
-        gameOverSequence = FindFirstObjectByType<GameOverSequence>();
+        //gameOverSequence = FindFirstObjectByType<GameOverSequence>();
         playerController2D = FindFirstObjectByType<PlayerController2D>();
     }
 
@@ -25,11 +25,10 @@ public class PlayerSpawner : MonoBehaviour
             StartCoroutine(RespawnPlayer());
         }
 
-        if (playerLives <= 0)
-        {
-            gameOverSequence.TriggerGameOver();
-            //GameLogic.GameOver = true;
-        }
+        //if (playerLives <= 0)
+        //{
+        //    gameOverSequence.TriggerGameOver();
+        //}
 
         if (playerLives >= 0)
         {

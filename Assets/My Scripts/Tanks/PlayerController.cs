@@ -23,12 +23,12 @@ public class PlayerController2D : Tank
     private float timerForShooting;
     private float shootCooldown = 1f;
     private bool cooldownHasPassed = true;
-    //private PlayerSpawner playerSpawner;
     private GameObject invincibilityAnim;
     private Renderer invincibilityAnimationRenderer;
     private int currentFrame = 0;
     private float timer = 0f;
     private Shell shell;
+    private GameOverSequence gameOverSequence;
 
     void Start()
     {
@@ -46,6 +46,7 @@ public class PlayerController2D : Tank
 
         invincibilityAnim = transform.Find("InvincibilityAnim").gameObject;
         invincibilityAnimationRenderer = invincibilityAnim.GetComponent<Renderer>();
+        gameOverSequence = FindFirstObjectByType<GameOverSequence>();
         TriggerInvincibility();
     }
 
@@ -113,9 +114,13 @@ public class PlayerController2D : Tank
         health -= damage;
         if (health <= 0)
         {
-            Destroy(gameObject);
             playerIsAlive = false;
+            Destroy(gameObject);
             PlayerSpawner.playerLives--;
+            if (PlayerSpawner.playerLives <= 0)
+            {
+                gameOverSequence.TriggerGameOver();
+            }
         }
     }
 
