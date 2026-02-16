@@ -1,12 +1,13 @@
+using System;
 using System.Collections;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 
-//The RotatePlayer logic in this script has been copied from learn.unity.com lesson project with adjustments
-
 public class PlayerController2D : Tank
 {
+    public static event Action<PlayerController2D> OnDestroyed;
+
     public LayerMask obstacleLayer;
     public GameObject shellPrefab;
     public bool playerIsAlive;
@@ -126,6 +127,8 @@ public class PlayerController2D : Tank
 
     void OnDestroy()
     {
+        OnDestroyed?.Invoke(this);
+
         if (AudioManager.Instance != null)
             AudioManager.Instance.StopEngineSound();
     }

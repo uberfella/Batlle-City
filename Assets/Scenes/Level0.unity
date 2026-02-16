@@ -727,7 +727,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 3
+  m_Text: 9
 --- !u!222 &69145722
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10971,7 +10971,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04dce7aedcd4bb447a9440bae903381d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController2D: {fileID: 0}
   spawnPoint: {fileID: 1228383995}
   playerPrefab: {fileID: 4767744153960729220, guid: 0a5ea3429a81f9c44939519f83ab6d07, type: 3}
   playerLivesUI: {fileID: 69145721}

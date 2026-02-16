@@ -10,30 +10,33 @@ public class PlayerSpawner : MonoBehaviour
     public Text playerLivesUI;
 
     private PlayerController2D playerController2D;
-    //private GameOverSequence gameOverSequence;
+    private GameOverSequence gameOverSequence;
 
     void Start()
     {
-        //gameOverSequence = FindFirstObjectByType<GameOverSequence>();
+        gameOverSequence = FindFirstObjectByType<GameOverSequence>();
         playerController2D = FindFirstObjectByType<PlayerController2D>();
+
+        UpdatePlayerLivesUI();
+
     }
 
     void Update()
     {
-        if (!playerController2D.playerIsAlive && playerLives > 0)
-        {
-            StartCoroutine(RespawnPlayer());
-        }
+        //if (!playerController2D.playerIsAlive && playerLives > 0)
+        //{
+        //    StartCoroutine(RespawnPlayer());
+        //}
 
         //if (playerLives <= 0)
         //{
         //    gameOverSequence.TriggerGameOver();
         //}
 
-        if (playerLives >= 0)
-        {
-            playerLivesUI.text = playerLives.ToString();
-        }
+        //if (playerLives >= 0)
+        //{
+        //    playerLivesUI.text = playerLives.ToString();
+        //}
     }
 
     private IEnumerator RespawnPlayer()
@@ -45,5 +48,29 @@ public class PlayerSpawner : MonoBehaviour
             GameObject newPlayer = Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
             playerController2D = newPlayer.GetComponent<PlayerController2D>();
         }
+    }
+
+    private void OnEnable()
+    {
+        PlayerController2D.OnDestroyed += OnObjectDestroyed;
+    }
+
+    private void OnDisable()
+    {
+        PlayerController2D.OnDestroyed -= OnObjectDestroyed;
+    }
+
+    private void OnObjectDestroyed(PlayerController2D obj)
+    {
+        UpdatePlayerLivesUI();
+        if (!playerController2D.playerIsAlive && playerLives > 0)
+        {
+            StartCoroutine(RespawnPlayer());
+        }
+    }
+
+    private void UpdatePlayerLivesUI()
+    {
+        playerLivesUI.text = playerLives.ToString();
     }
 }

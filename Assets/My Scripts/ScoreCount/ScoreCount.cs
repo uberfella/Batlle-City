@@ -34,7 +34,10 @@ public class ScoreCount : MonoBehaviour
 
     public void UpdateCurrentScore()
     {
-        currentScoreText.text = currentScore.ToString("D6");
+        if (currentScoreText != null)
+        {
+            currentScoreText.text = currentScore.ToString("D6");
+        }
     }
 
     public void UpdateHighScore() 
