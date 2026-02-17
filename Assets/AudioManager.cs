@@ -23,7 +23,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip enemyExplodeSound;
     public AudioClip playerExplodeSound;
     public AudioClip brickDestroyedSound;
-    public AudioClip obstacleDestroyedSound;
+    public AudioClip obstacleHitButNotDestroyedSound;
     public AudioClip enemyDecreasingLivesSound;
 
     void Awake()

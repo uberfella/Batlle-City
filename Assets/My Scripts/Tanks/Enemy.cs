@@ -178,7 +178,7 @@ public class Enemy : Tank
                 obj.layer == 11 ||
                 obj.layer == 12)
             {
-                Debug.Log("Destroying: " + obj.name);
+                //Debug.Log("Destroying: " + obj.name);
                 Enemy script = obj.GetComponent<Enemy>();
                 if (script != null)
                 {

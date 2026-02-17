@@ -21,12 +21,13 @@ public class SaveManager : MonoBehaviour
         //0 1 2                <= 3
         if (GameLogic.levelNum <= GameLogic.finalLevelNum)
         {
-            PlayerPrefs.SetInt("SavedLevel", GameLogic.levelNum + 1);
+            PlayerPrefs.SetInt("SavedLevel", GameLogic.levelNum);
+            //Debug.Log("saving GameLogic.levelNum as " + GameLogic.levelNum);
         }
         PlayerPrefs.SetInt("PlayerLives", PlayerSpawner.playerLives);
         PlayerPrefs.SetInt("PlayerUpgrade", PlayerController2D.playerLevel);
         PlayerPrefs.SetInt("HighScoreHasBeenBeaten", highScoreHasBeenBeatenInt);
-        Debug.Log("Saving HighScoreHasBeenBeaten as "+ highScoreHasBeenBeatenInt);
+        //Debug.Log("Saving HighScoreHasBeenBeaten as "+ highScoreHasBeenBeatenInt);
         PlayerPrefs.SetInt("HasSaveData", 1);
         PlayerPrefs.Save();
         //Debug.Log("Game saved");
@@ -36,11 +37,12 @@ public class SaveManager : MonoBehaviour
     {
         if (PlayerPrefs.HasKey("HasSaveData"))
         {
+            //Debug.Log("restoring GameLogic.levelNum as " + GameLogic.levelNum); 
             GameLogic.levelNum = PlayerPrefs.GetInt("SavedLevel");
             PlayerSpawner.playerLives = PlayerPrefs.GetInt("PlayerLives");
             PlayerController2D.playerLevel = PlayerPrefs.GetInt("PlayerUpgrade");
             ScoreCount.highScoreHasBeenBeaten = PlayerPrefs.GetInt("HighScoreHasBeenBeaten") != 0;
-            Debug.Log("Restoring HighScoreHasBeenBeaten as " + PlayerPrefs.GetInt("HighScoreHasBeenBeaten") + " which translates to " + ScoreCount.highScoreHasBeenBeaten + " as a respected boolean");
+            //Debug.Log("Restoring HighScoreHasBeenBeaten as " + PlayerPrefs.GetInt("HighScoreHasBeenBeaten") + " which translates to " + ScoreCount.highScoreHasBeenBeaten + " as a respected boolean");
 
 
             //loading the game
@@ -68,7 +70,7 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.DeleteKey("PlayerUpgrade");
         PlayerPrefs.DeleteKey("HasSaveData");
         
-        Debug.Log("Game erased");
+        //Debug.Log("Game erased");
     }
 
 }

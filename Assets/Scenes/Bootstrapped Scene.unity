@@ -306,7 +306,7 @@ MonoBehaviour:
   enemyExplodeSound: {fileID: 8300000, guid: 2a8b50c69a1e72743b2d0d48d533b7e4, type: 3}
   playerExplodeSound: {fileID: 8300000, guid: 37763cde680f17740a15ea4bfd045545, type: 3}
   brickDestroyedSound: {fileID: 8300000, guid: f8c481cdc8bae7c4ba4eed30c01cd0d3, type: 3}
-  obstacleDestroyedSound: {fileID: 8300000, guid: 13ab031efdc810b4895fced093f47bd0, type: 3}
+  obstacleHitButNotDestroyedSound: {fileID: 8300000, guid: 13ab031efdc810b4895fced093f47bd0, type: 3}
   enemyDecreasingLivesSound: {fileID: 8300000, guid: bf63624e1ea436a43a2171b2b857a983, type: 3}
 --- !u!4 &1493151244
 Transform:

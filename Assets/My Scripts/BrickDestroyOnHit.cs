@@ -19,6 +19,7 @@ public class BrickDestroyOnHit : MonoBehaviour
         //Debug.Log("OnTriggerEnter2D");
         if (other.gameObject.CompareTag("ShellPlayer") || other.gameObject.CompareTag("ShellEnemy"))
         {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.brickDestroyedSound);
             Destroy(gameObject);
             //Debug.Log("HIT");
         }

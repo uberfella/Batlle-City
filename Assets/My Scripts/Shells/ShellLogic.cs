@@ -43,12 +43,23 @@ public class Shell : MonoBehaviour
                 //destroy player's shell
                 Destroy(gameObject);
             }
+            else if (other.gameObject.CompareTag("Brick") ||
+                    other.gameObject.CompareTag("Wall") ||
+                    other.gameObject.CompareTag("Base") ||
+                    other.gameObject.CompareTag("Concrete") ||
+                    other.gameObject.CompareTag("Fortify_Concrete"))
+            {
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.obstacleHitButNotDestroyedSound);
+                //shell explodes forward and to the left and right
+                Explode();
+                //destroy shell
+                Destroy(gameObject);
+            }
             //destroy both shells if they collide w each other in mid-air
             //no sound 
             else if (other.gameObject.CompareTag("ShellEnemy"))
             {
                 Destroy(other.gameObject);
-                Destroy(gameObject);
             }
         }
         //the shell is enemy's
@@ -71,20 +82,31 @@ public class Shell : MonoBehaviour
                     Destroy(gameObject);
                 }
             }
-        }
-
-        //any shell hits an obstacle
-        if (other.gameObject.CompareTag("Brick") ||
+            else if (other.gameObject.CompareTag("Brick") ||
             other.gameObject.CompareTag("Wall") ||
             other.gameObject.CompareTag("Base") ||
             other.gameObject.CompareTag("Concrete") ||
             other.gameObject.CompareTag("Fortify_Concrete"))
-        {
-            //shell explodes forward and to the left and right
-            Explode();
-            //destroy shell
-            Destroy(gameObject);
+            {
+                //shell explodes forward and to the left and right
+                Explode();
+                //destroy shell
+                Destroy(gameObject);
+            }
         }
+
+        //any shell hits an obstacle
+        //if (other.gameObject.CompareTag("Brick") ||
+        //    other.gameObject.CompareTag("Wall") ||
+        //    other.gameObject.CompareTag("Base") ||
+        //    other.gameObject.CompareTag("Concrete") ||
+        //    other.gameObject.CompareTag("Fortify_Concrete"))
+        //{
+        //    //shell explodes forward and to the left and right
+        //    Explode();
+        //    //destroy shell
+        //    Destroy(gameObject);
+        //}
     }
 
     private void Explode()

@@ -116,6 +116,7 @@ public class PlayerController2D : Tank
         if (health <= 0)
         {
             playerIsAlive = false;
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.playerExplodeSound);
             Destroy(gameObject);
             PlayerSpawner.playerLives--;
             if (PlayerSpawner.playerLives <= 0)
