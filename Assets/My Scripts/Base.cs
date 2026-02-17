@@ -26,6 +26,7 @@ public class Base : MonoBehaviour
 
             surrenderFlagSprite.GetComponent<SpriteRenderer>().enabled = true;
             gameOverSequence.TriggerGameOver();
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.playerExplodeSound);
             Destroy(gameObject);
         }
     }

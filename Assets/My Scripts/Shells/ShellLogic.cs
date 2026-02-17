@@ -49,7 +49,10 @@ public class Shell : MonoBehaviour
                     other.gameObject.CompareTag("Concrete") ||
                     other.gameObject.CompareTag("Fortify_Concrete"))
             {
-                AudioManager.Instance.PlaySFX(AudioManager.Instance.obstacleHitButNotDestroyedSound);
+                if (!other.gameObject.CompareTag("Brick") && !other.gameObject.CompareTag("Base"))
+                {
+                    AudioManager.Instance.PlaySFX(AudioManager.Instance.obstacleHitButNotDestroyedSound);
+                }
                 //shell explodes forward and to the left and right
                 Explode();
                 //destroy shell
