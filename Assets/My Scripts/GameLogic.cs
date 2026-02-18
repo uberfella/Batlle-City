@@ -27,11 +27,11 @@ main menu and levels system ✓
     no destroyed base sprite in level2 and level3 ✓
 scoreboard on finishing the level with breakdown of each enemy type kill ✓
 freeze powerup affects only tanks that are alive not the ones that would spawn after picking up the powerup ✓
-power-ups spawn on a grid; for example, the spawn position should be divisible by 0.5, 1.0, 1.5 without any remainder✓
+power-ups spawn on a grid; for example, the spawn position should be divisible by 0.5, 1.0, 1.5 without any remainder ✓
 sounds ✓
-what if the player reaches final level, gets his game saved and then returns to main menu and then continues the game✓
-when the new powerup spawns the previous powerup gets destroyed
-when the player stops moving or changes directions the shooting cooldown gets reset so it's possible to shoot the second time before the cooldown ends
+what if the player reaches final level, gets his game saved and then returns to main menu and then continues the game ✓
+when the new powerup spawns the previous powerup gets destroyed ✓
+when the player stops moving or changes directions the shooting cooldown gets reset so it's possible to shoot the second time before the cooldown ends 
 finish game screen
 friendly and enemy projectiles will destroy each other when they collide in midair ✓
 player levelup, changing sprite and damage ✓

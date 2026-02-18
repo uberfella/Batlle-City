@@ -38,6 +38,8 @@ public class PowerupLogic : MonoBehaviour
 
     public void SpawnRandomPowerupOnField()
     {
+        DestroyAllPowerUps();
+
         float randomPosX = predefinedPosX[Random.Range(0, 13)];
         float randomPosY = predefinedPosY[Random.Range(0, 13)];
         int randomPowerUp = Random.Range(0, 6);
@@ -57,4 +59,15 @@ public class PowerupLogic : MonoBehaviour
 
     }
 
+    public static void DestroyAllPowerUps()
+    {
+        GameObject[] allObjects = UnityEngine.Object.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
+        foreach (GameObject obj in allObjects)
+        {
+            if (obj.CompareTag("Powerup"))
+            {
+                Destroy(obj);
+            }
+        }
+    }
 }

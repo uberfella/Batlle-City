@@ -22,7 +22,7 @@ public class PlayerController2D : Tank
     public static int playerLevel;
 
     private float timerForShooting;
-    private float shootCooldown = 1f;
+    private float shootCooldown = 30f;
     private bool cooldownHasPassed = true;
     private GameObject invincibilityAnim;
     private Renderer invincibilityAnimationRenderer;
@@ -61,6 +61,10 @@ public class PlayerController2D : Tank
         }
 
         timerForShooting += Time.deltaTime;
+        if (timerForShooting % 5 == 0)
+        {
+            Debug.Log("timerForShooting = " + timerForShooting);
+        }
         if (timerForShooting >= shootCooldown)
         {
             timerForShooting = 0;
@@ -72,7 +76,7 @@ public class PlayerController2D : Tank
             godmode = false;
             TriggerInvincibility();
         }
-        //the scene gets switched = all sounds stop
+        //when the scene gets switched = all sounds stop
         bool isMoving = horizontalInput != 0 || verticalInput != 0;
         AudioManager.Instance.SetEngineState(isMoving);
     }

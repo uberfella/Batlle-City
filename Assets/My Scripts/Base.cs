@@ -20,7 +20,7 @@ public class Base : MonoBehaviour
             //Debug.Log("trying to destroy base");
             if (playerController2D.godmode)
             {
-                Debug.Log("godmode is on, returning");
+                //Debug.Log("godmode is on, returning");
                 return;
             }
 
