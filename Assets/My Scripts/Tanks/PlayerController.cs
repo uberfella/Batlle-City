@@ -21,8 +21,7 @@ public class PlayerController2D : Tank
     public SpriteRenderer spriteRenderer;
     public static int playerLevel;
 
-    private float timerForShooting;
-    private float shootCooldown = 30f;
+    private float shootCooldown = 1f;
     private bool cooldownHasPassed = true;
     private GameObject invincibilityAnim;
     private Renderer invincibilityAnimationRenderer;
@@ -58,17 +57,7 @@ public class PlayerController2D : Tank
         {
             ShootTheGun();
             cooldownHasPassed = false;
-        }
-
-        timerForShooting += Time.deltaTime;
-        if (timerForShooting % 5 == 0)
-        {
-            Debug.Log("timerForShooting = " + timerForShooting);
-        }
-        if (timerForShooting >= shootCooldown)
-        {
-            timerForShooting = 0;
-            cooldownHasPassed = true;
+            TriggerShoootCooldown();
         }
 
         if (Input.GetKeyDown(KeyCode.Backspace)) 
@@ -89,7 +78,7 @@ public class PlayerController2D : Tank
 
         if ((horizontalInput != 0 || verticalInput != 0) && !GameLogic.GameOver)
         {
-            timer += Time.deltaTime;
+            timer += Time.fixedDeltaTime;
             if (timer >= animationSpeed)
             {
                 timer = 0f;
@@ -101,8 +90,6 @@ public class PlayerController2D : Tank
                 }
             }
         }
-
-
 
         RestrictDiagonalMovements();
 
@@ -189,6 +176,8 @@ public class PlayerController2D : Tank
 
     private void ShootTheGun()
     {
+        Debug.Log("cooldownHasPassed = " + cooldownHasPassed);
+
         GameObject shell = Instantiate(shellPrefab, transform.position, transform.rotation);
         shell.GetComponent<Shell>().SetSpeed(projectileSpeed);
         AudioManager.Instance.PlaySFX(AudioManager.Instance.shotFired);
@@ -239,6 +228,16 @@ public class PlayerController2D : Tank
             invincibilityAnimationRenderer.enabled = false;
         }
 
+    }
+    public void TriggerShoootCooldown()
+    {
+        StartCoroutine(SetShootingCooldownCoroutine());
+    }
+    private IEnumerator SetShootingCooldownCoroutine()
+    {
+        yield return new WaitForSeconds(shootCooldown);
+
+        cooldownHasPassed = true;
     }
 
     //void SwitchToMove()
