@@ -24,7 +24,7 @@ public class EnemyLvl4 : Enemy
     private bool requestNewDirection = true;
     private Vector2 currentMoveDirection = Vector2.zero;
     private int currentFrame = 0;
-    private float timer = 0f;
+    private float timerForSpritesRender = 0f;
 
     void Start()
     {
@@ -50,10 +50,10 @@ public class EnemyLvl4 : Enemy
         //MOVING
         if (horizontalInput != 0 || verticalInput != 0)
         {
-            timer += Time.deltaTime;
-            if (timer >= animationSpeed)
+            timerForSpritesRender += Time.deltaTime;
+            if (timerForSpritesRender >= animationSpeed)
             {
-                timer = 0f;
+                timerForSpritesRender = 0f;
 
                 if (!hasPowerup)
                 {

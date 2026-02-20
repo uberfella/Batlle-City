@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 using static Enemy;
@@ -15,14 +16,19 @@ public class EnemyLvl1 : Enemy
     public float animationSpeed = 0.2f;
     public SpriteRenderer spriteRenderer;
 
-    private readonly float changeDirectionTime = 0.5f; // Change direction every x milliseconds 
+    private readonly float changeDirectionTime = 0.25f; // Change direction every x milliseconds 
     private float timerForShooting;
     private int shotCooldown = 1;
     private bool requestNewCooldown = true;
     private bool requestNewDirection = true;
     private Vector2 currentMoveDirection = Vector2.zero;
     private int currentFrame = 0;
-    private float timer = 0f;
+    private float timerForSpritesRender = 0f;
+    private int lastUsedDirection = 0;
+    private float timerForRandomDirection = 0f;
+    private float changeRandomDirectionTime = 0f;
+    private bool requestNewRandomVal = true;
+
 
     //neccessary for the score counting
     private void OnDestroy()
@@ -55,10 +61,10 @@ public class EnemyLvl1 : Enemy
         //MOVING
         if (horizontalInput != 0 || verticalInput != 0)
         {
-            timer += Time.deltaTime;
-            if (timer >= animationSpeed)
+            timerForSpritesRender += Time.deltaTime;
+            if (timerForSpritesRender >= animationSpeed)
             {
-                timer = 0f;
+                timerForSpritesRender = 0f;
                 if (!hasPowerup)
                 {
                     currentFrame = (currentFrame + 1) % trackSprites.Length;
@@ -81,10 +87,23 @@ public class EnemyLvl1 : Enemy
             timePassedSinceBlocked += Time.deltaTime;
             //Debug.Log("timePassedSinceBlocked: " + timePassedSinceBlocked);
             requestNewDirection = true;
+
+            changeRandomDirectionTime = UnityEngine.Random.Range(1, 10);
+            Debug.Log("setting changeRandomDirectionTime to " + changeRandomDirectionTime);
+
+
+            timerForRandomDirection = 0f;
         }
         else
         {
             timePassedSinceBlocked = 0;
+
+            timerForRandomDirection += Time.deltaTime;
+            if(timerForRandomDirection >= changeRandomDirectionTime)
+            {
+                Debug.Log("requestin random new direction");
+                SetMoveDirection(getDirection());
+            }
         }
 
         if (requestNewDirection && timePassedSinceBlocked >= changeDirectionTime)
@@ -134,18 +153,22 @@ public class EnemyLvl1 : Enemy
             case 0:
                 horizontalInput = 1;
                 verticalInput = 0;
+                lastUsedDirection = 0;
                 break;
             case 1:
                 horizontalInput = -1;
                 verticalInput = 0;
+                lastUsedDirection = 1;
                 break;
             case 2:
                 horizontalInput = 0;
                 verticalInput = 1;
+                lastUsedDirection = 2;
                 break;
             case 3:
                 horizontalInput = 0;
                 verticalInput = -1;
+                lastUsedDirection = 3;
                 break;
         }
 
