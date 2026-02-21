@@ -55,8 +55,7 @@ public class EnemyLvl1 : Enemy
     void Update()
     {
         if (isFrozen) return;
-        //if (GameLogic.Instance.isEnemiesFrozen)
-        //    return;
+
         //---------------
         //MOVING
         if (horizontalInput != 0 || verticalInput != 0)
@@ -80,45 +79,29 @@ public class EnemyLvl1 : Enemy
 
         EnemyMove(currentMoveDirection);
 
-        //Debug.Log("timePassedSinceBlocked = " + timePassedSinceBlocked);
-
         if (objectIsCurrentlyBeingBlocked)
         {
             timePassedSinceBlocked += Time.deltaTime;
-            //Debug.Log("timePassedSinceBlocked: " + timePassedSinceBlocked);
-            requestNewDirection = true;
-
-            changeRandomDirectionTime = UnityEngine.Random.Range(1, 10);
-            Debug.Log("setting changeRandomDirectionTime to " + changeRandomDirectionTime);
-
-
-            timerForRandomDirection = 0f;
+            //requestNewDirection = true;
         }
         else
         {
             timePassedSinceBlocked = 0;
 
             timerForRandomDirection += Time.deltaTime;
-            if(timerForRandomDirection >= changeRandomDirectionTime)
-            {
-                Debug.Log("requestin random new direction");
-                SetMoveDirection(getDirection());
-            }
         }
 
-        if (requestNewDirection && timePassedSinceBlocked >= changeDirectionTime)
+        if ((/*requestNewDirection && */timePassedSinceBlocked >= changeDirectionTime) || (timerForRandomDirection >= changeRandomDirectionTime))
         {
-            //Debug.Log("Requesting new direction");
-            //Debug.Log("--------------");
-            //Debug.Log("--------------");
-            //Debug.Log("--------------");
-            timePassedSinceBlocked = 0;
-            //Vector2 moveDirection = new Vector2(aiController.GetHorizontalRandom(), aiController.GetVerticalRandom()).normalized;
+            timePassedSinceBlocked = 0f;
+            timerForRandomDirection = 0f;
 
-            //
             SetMoveDirection(getDirection());
-            //Debug.Log("getDirection() = " + getDirection());
-            requestNewDirection = false;
+
+            changeRandomDirectionTime = UnityEngine.Random.Range(1, 10);
+            Debug.Log("setting changeRandomDirectionTime to " + changeRandomDirectionTime);
+
+            //requestNewDirection = false;
         }
 
 

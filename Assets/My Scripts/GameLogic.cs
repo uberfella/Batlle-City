@@ -36,7 +36,7 @@ finish game screen ✓
 friendly and enemy projectiles will destroy each other when they collide in midair ✓
 player levelup, changing sprite and damage ✓
 AI - enemy changes direction if it is facing the obstacle for more than 0.5 sec ✓
-AI - enemy changes direction if a random time value between 1 and 9 seconds has passed
+AI - enemy changes direction if a random time value between 1 and 9 seconds has passed ✓
 sprites - use sprite atlas to avoid visible breaks between individual sprites 
 remove physics from tanks so you can't bump into them and move their bodies ✓
 get rid of objectIsCurrentlyBeingBlocked bool ✓ (cant do that)
