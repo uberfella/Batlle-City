@@ -57,7 +57,7 @@ public class PlayerController2D : Tank
         {
             ShootTheGun();
             cooldownHasPassed = false;
-            TriggerShoootCooldown();
+            TriggerShootCooldown();
         }
 
         if (Input.GetKeyDown(KeyCode.Backspace)) 
@@ -229,7 +229,7 @@ public class PlayerController2D : Tank
         }
 
     }
-    public void TriggerShoootCooldown()
+    public void TriggerShootCooldown()
     {
         StartCoroutine(SetShootingCooldownCoroutine());
     }

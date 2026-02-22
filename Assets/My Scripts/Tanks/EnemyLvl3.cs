@@ -14,14 +14,14 @@ public class EnemyLvl3 : Enemy
     public float animationSpeed = 0.2f;
     public SpriteRenderer spriteRenderer;
 
-    private readonly float changeDirectionTime = 0.5f; // Change direction every x milliseconds 
-    private float timerForShooting;
+    private readonly float changeDirectionTime = 0.25f; // Change direction every x milliseconds
     private int shotCooldown = 1;
-    private bool requestNewCooldown = true;
-    private bool requestNewDirection = true;
     private Vector2 currentMoveDirection = Vector2.zero;
     private int currentFrame = 0;
     private float timerForSpritesRender = 0f;
+    private float timerForRandomDirection = 0f;
+    private float changeRandomDirectionTime = 0f;
+    private bool cooldownForShootingHasPassed = true;
 
     void Start()
     {
@@ -35,14 +35,13 @@ public class EnemyLvl3 : Enemy
         enemyType = EnemyType.EnemyLvl3;
         currentMoveDirection = getDirection();
         enemyIsAlive = true;
+        changeRandomDirectionTime = UnityEngine.Random.Range(1, 10);
     }
 
 
     void Update()
     {
         if (isFrozen) return;
-        //if (GameLogic.Instance.isEnemiesFrozen)
-        //    return;
         //---------------
         //MOVING
         if (horizontalInput != 0 || verticalInput != 0)
@@ -65,54 +64,49 @@ public class EnemyLvl3 : Enemy
         }
 
         EnemyMove(currentMoveDirection);
-        //Debug.Log("timePassedSinceBlocked = " + timePassedSinceBlocked);
+
+        timerForRandomDirection += Time.deltaTime;
 
         if (objectIsCurrentlyBeingBlocked)
         {
             timePassedSinceBlocked += Time.deltaTime;
-            //Debug.Log("timePassedSinceBlocked: " + timePassedSinceBlocked);
-            requestNewDirection = true;
         }
         else
         {
-            //Debug
             timePassedSinceBlocked = 0;
         }
 
-        if (requestNewDirection && timePassedSinceBlocked >= changeDirectionTime)
+        if ((timePassedSinceBlocked >= changeDirectionTime) || (timerForRandomDirection >= changeRandomDirectionTime))
         {
-            //Debug.Log("Requesting new direction");
-            //Debug.Log("--------------");
-            //Debug.Log("--------------");
-            //Debug.Log("--------------");
-            timePassedSinceBlocked = 0;
-            //Vector2 moveDirection = new Vector2(aiController.GetHorizontalRandom(), aiController.GetVerticalRandom()).normalized;
+            timePassedSinceBlocked = 0f;
+            timerForRandomDirection = 0f;
 
-            //
             SetMoveDirection(getDirection());
-            //Debug.Log("getDirection() = " + getDirection());
-            requestNewDirection = false;
+
+            changeRandomDirectionTime = UnityEngine.Random.Range(1, 10);
         }
-
-
         //---------------
 
         //---------------
         //SHOOTING
         //getting new value with each call after each shot
-        if (requestNewCooldown)
+        if (cooldownForShootingHasPassed)
         {
-            shotCooldown = aiController.GetShootCooldown();
-            requestNewCooldown = false;
-        }
-        timerForShooting += Time.deltaTime;
-        if (timerForShooting >= shotCooldown)
-        {
-            timerForShooting = 0;
             ShootTheGun();
-            requestNewCooldown = true;
+            cooldownForShootingHasPassed = false;
+            TriggerShootCooldown();
         }
         //-------------
+    }
+    public void TriggerShootCooldown()
+    {
+        StartCoroutine(SetShootingCooldownCoroutine());
+    }
+    private IEnumerator SetShootingCooldownCoroutine()
+    {
+        yield return new WaitForSeconds(shotCooldown = aiController.GetShootCooldown());
+
+        cooldownForShootingHasPassed = true;
     }
 
     private Vector2 getDirection()
@@ -146,8 +140,6 @@ public class EnemyLvl3 : Enemy
         currentMoveDirection = newDirection;
     }
 
-    //if (gameObject.CompareTag("enemy0"))
-    //enemyIsAlive
     private int GetEnemyIndex(string tag)
     {
         GameObject[] taggedObjects = GameObject.FindGameObjectsWithTag(tag);
@@ -158,36 +150,6 @@ public class EnemyLvl3 : Enemy
         }
         return 1;
     }
-
-    //public override void TakeDamage(int amount)
-    //{
-    //    ChangeEnemyStatus();
-
-    //    base.TakeDamage(amount);
-    //}
-
-    //public void ChangeEnemyStatus()
-    //{
-    //    switch (gameObject.layer)
-    //    {
-    //        case 7:
-    //            //Debug.Log("7 is false");
-    //            spawner.enemyAlive[0] = false;
-    //            break;
-    //        case 10:
-    //            //Debug.Log("10 is false");
-    //            spawner.enemyAlive[1] = false;
-    //            break;
-    //        case 11:
-    //            //Debug.Log("11 is false");
-    //            spawner.enemyAlive[2] = false;
-    //            break;
-    //        case 12:
-    //            //Debug.Log("12 is false");
-    //            spawner.enemyAlive[3] = false;
-    //            break;
-    //    }
-    //}
 
     public int GetEnemyLayer()
     {

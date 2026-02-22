@@ -17,19 +17,18 @@ public class EnemyLvl4 : Enemy
     public float animationSpeed = 0.2f;
     public SpriteRenderer spriteRenderer;
 
-    private readonly float changeDirectionTime = 0.5f; // Change direction every x milliseconds 
-    private float timerForShooting;
+    private readonly float changeDirectionTime = 0.25f; // Change direction every x milliseconds
     private int shotCooldown = 1;
-    private bool requestNewCooldown = true;
-    private bool requestNewDirection = true;
     private Vector2 currentMoveDirection = Vector2.zero;
     private int currentFrame = 0;
     private float timerForSpritesRender = 0f;
+    private float timerForRandomDirection = 0f;
+    private float changeRandomDirectionTime = 0f;
+    private bool cooldownForShootingHasPassed = true;
 
     void Start()
     {
         health = 4;
-        //Debug.Log("health = " + health);
         speed = 2.5f;
         scoreOnDestroy = 400;
         projectileSpeed = 10f;
@@ -39,13 +38,12 @@ public class EnemyLvl4 : Enemy
         enemyType = EnemyType.EnemyLvl4;
         currentMoveDirection = getDirection();
         enemyIsAlive = true;
+        changeRandomDirectionTime = UnityEngine.Random.Range(1, 10);
     }
 
     void Update()
     {
         if (isFrozen) return;
-        //if (GameLogic.Instance.isEnemiesFrozen)
-        //    return;
         //---------------
         //MOVING
         if (horizontalInput != 0 || verticalInput != 0)
@@ -69,42 +67,49 @@ public class EnemyLvl4 : Enemy
 
             EnemyMove(currentMoveDirection);
 
+            timerForRandomDirection += Time.deltaTime;
+
             if (objectIsCurrentlyBeingBlocked)
             {
                 timePassedSinceBlocked += Time.deltaTime;
-                requestNewDirection = true;
             }
             else
             {
                 timePassedSinceBlocked = 0;
             }
 
-            if (requestNewDirection && timePassedSinceBlocked >= changeDirectionTime)
+            if ((timePassedSinceBlocked >= changeDirectionTime) || (timerForRandomDirection >= changeRandomDirectionTime))
             {
-                timePassedSinceBlocked = 0;
+                timePassedSinceBlocked = 0f;
+                timerForRandomDirection = 0f;
 
                 SetMoveDirection(getDirection());
-                requestNewDirection = false;
+
+                changeRandomDirectionTime = UnityEngine.Random.Range(1, 10);
             }
             //---------------
 
             //---------------
             //SHOOTING
             //getting new value with each call after each shot
-            if (requestNewCooldown)
+            if (cooldownForShootingHasPassed)
             {
-                shotCooldown = aiController.GetShootCooldown();
-                requestNewCooldown = false;
-            }
-            timerForShooting += Time.deltaTime;
-            if (timerForShooting >= shotCooldown)
-            {
-                timerForShooting = 0;
                 ShootTheGun();
-                requestNewCooldown = true;
+                cooldownForShootingHasPassed = false;
+                TriggerShootCooldown();
             }
             //-------------
         }
+    }
+    public void TriggerShootCooldown()
+    {
+        StartCoroutine(SetShootingCooldownCoroutine());
+    }
+    private IEnumerator SetShootingCooldownCoroutine()
+    {
+        yield return new WaitForSeconds(shotCooldown = aiController.GetShootCooldown());
+
+        cooldownForShootingHasPassed = true;
     }
 
     private Vector2 getDirection()
@@ -137,39 +142,6 @@ public class EnemyLvl4 : Enemy
     {
         currentMoveDirection = newDirection;
     }
-
-    //public override void TakeDamage(int amount)
-    //{
-    //    ChangeEnemyStatus();
-
-    //    base.TakeDamage(amount);
-    //}
-
-    //public void ChangeEnemyStatus()
-    //{
-    //    switch (gameObject.layer)
-    //    {
-    //        case 7:
-    //            Debug.Log("7 is false");
-    //            spawner.enemyAlive[0] = false;
-    //            break;
-    //        case 10:
-    //            Debug.Log("10 is false");
-    //            spawner.enemyAlive[1] = false;
-    //            break;
-    //        case 11:
-    //            Debug.Log("11 is false");
-    //            spawner.enemyAlive[2] = false;
-    //            break;
-    //        case 12:
-    //            Debug.Log("12 is false");
-    //            spawner.enemyAlive[3] = false;
-    //            break;
-    //    }
-    //}
-
-    //0 1, 2 3, 4 5, 6 7
-    //currentFrame = (currentFrame + 1) % trackSprites.Length;
     private Sprite[] GetSpriteColor() 
     {
         switch (health) 
@@ -186,7 +158,6 @@ public class EnemyLvl4 : Enemy
                 return trackSpritesHealth4;
         }
     }
-
     private Sprite[] GetSpriteColorWPowerup()
     {
         switch (health)
