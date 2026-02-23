@@ -6,6 +6,7 @@ public class Shell : MonoBehaviour
 
     public float speed = 10f;
     public PlayerController2D playerController2D;
+    public ExplosionEffectScript explosionEffect;
     private EnemyLvl1 enemyLvl1;
     private EnemyLvl2 enemyLvl2;
     private EnemyLvl3 enemyLvl3;
@@ -18,6 +19,7 @@ public class Shell : MonoBehaviour
         enemyLvl3 = GetComponent<EnemyLvl3>();
         enemyLvl4 = GetComponent<EnemyLvl4>();
         playerController2D = FindFirstObjectByType<PlayerController2D>();
+        explosionEffect = FindFirstObjectByType<ExplosionEffectScript>();
     }
     void Update()
     {
@@ -76,7 +78,7 @@ public class Shell : MonoBehaviour
                 {
                     PlayerController2D playerController2D = other.gameObject.GetComponent<PlayerController2D>();
                     playerController2D.TakeDamage(1);
-                    
+
                     //destroy enemy's shell
                     Destroy(gameObject);
                 }
@@ -114,6 +116,7 @@ public class Shell : MonoBehaviour
 
     private void Explode()
     {
+
         Vector2 explosionCenter = transform.position;
         Vector2 explosionSize = new Vector2(1.0f, 0.25f); // 2.0f left, 2.0f right, 0.5f forward
         Collider2D[] objectsHit = Physics2D.OverlapBoxAll(explosionCenter, explosionSize, transform.eulerAngles.z);
@@ -124,6 +127,8 @@ public class Shell : MonoBehaviour
             //the shell is player's
             if (gameObject.CompareTag("ShellPlayer"))
             {
+                Instantiate(explosionEffect, transform.position, transform.rotation);
+
                 if (obj.CompareTag("Brick"))
                 {
                     Destroy(obj.gameObject);
