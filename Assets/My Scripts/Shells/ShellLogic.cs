@@ -6,7 +6,8 @@ public class Shell : MonoBehaviour
 
     public float speed = 10f;
     public PlayerController2D playerController2D;
-    public ExplosionEffectScript explosionEffect;
+    public GameObject explosionEffectPrefab;
+    private ExplosionEffectScript explosionEffect;
     private EnemyLvl1 enemyLvl1;
     private EnemyLvl2 enemyLvl2;
     private EnemyLvl3 enemyLvl3;
@@ -19,7 +20,7 @@ public class Shell : MonoBehaviour
         enemyLvl3 = GetComponent<EnemyLvl3>();
         enemyLvl4 = GetComponent<EnemyLvl4>();
         playerController2D = FindFirstObjectByType<PlayerController2D>();
-        explosionEffect = FindFirstObjectByType<ExplosionEffectScript>();
+        explosionEffect = GetComponent<ExplosionEffectScript>();
     }
     void Update()
     {
@@ -127,7 +128,9 @@ public class Shell : MonoBehaviour
             //the shell is player's
             if (gameObject.CompareTag("ShellPlayer"))
             {
-                Instantiate(explosionEffect, transform.position, transform.rotation);
+                //GameObject shell = Instantiate(shellPrefab, transform.position, transform.rotation);
+
+                GameObject explosionEffect = Instantiate(explosionEffectPrefab, transform.position, transform.rotation);
 
                 if (obj.CompareTag("Brick"))
                 {

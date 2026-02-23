@@ -150,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 60
   playerController2D: {fileID: 0}
+  explosionEffectPrefab: {fileID: 7678845025099040012, guid: 10fa4a5c4d4b7f14894ef02b00d8c359, type: 3}
 --- !u!50 &-8243031448967089219
 Rigidbody2D:
   serializedVersion: 5
