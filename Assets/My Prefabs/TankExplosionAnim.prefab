@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2021396825700934834}
   - component: {fileID: 7897209810324904801}
-  - component: {fileID: 4778896039375078508}
+  - component: {fileID: 6138312581292324234}
   m_Layer: 0
-  m_Name: ExplosionAnim1
+  m_Name: TankExplosionAnim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4778896039375078508
+--- !u!114 &6138312581292324234
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,12 +97,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7678845025099040012}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 733c664a4e90b8a40a702de5a329667d, type: 3}
+  m_Script: {fileID: 11500000, guid: c03a0996433d43343b547baa69343217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 7897209810324904801}
   explosionSprites:
-  - {fileID: 8749195915536698435, guid: 07cb34b3f77a53e4db8be99726983493, type: 3}
-  - {fileID: -770555552909765754, guid: 253c2328224579144a6ba8a95a04bc7f, type: 3}
-  - {fileID: 1705508771569739824, guid: 9da8e2e3af1ea3c4c93a6958bf461e92, type: 3}
+  - {fileID: -4311898003075547295, guid: eb7c49b4dfcabfe4eae61380f71c896b, type: 3}
+  - {fileID: -3010685116369969939, guid: e2998b1308fdc754c8ed0f2623cb946b, type: 3}
   frameTime: 0.1

@@ -20,6 +20,7 @@ public class PlayerController2D : Tank
     public float animationSpeed = 0.2f; // Time between frames
     public SpriteRenderer spriteRenderer;
     public static int playerLevel;
+    public GameObject tankExplosionEffectPrefab;
 
     private float shootCooldown = 1f;
     private bool cooldownHasPassed = true;
@@ -108,12 +109,13 @@ public class PlayerController2D : Tank
         {
             playerIsAlive = false;
             AudioManager.Instance.PlaySFX(AudioManager.Instance.playerExplodeSound);
+            Instantiate(tankExplosionEffectPrefab, transform.position, transform.rotation);
             Destroy(gameObject);
             PlayerSpawner.playerLives--;
-            if (PlayerSpawner.playerLives <= 0)
-            {
-                gameOverSequence.TriggerGameOver();
-            }
+            //if (PlayerSpawner.playerLives <= 0)
+            //{
+            //    gameOverSequence.TriggerGameOver();
+            //}
         }
     }
 

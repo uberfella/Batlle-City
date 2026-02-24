@@ -10,15 +10,16 @@ public class Enemy : Tank
     public LayerMask obstacleLayer;
     public bool hasPowerup;
     public EnemyType enemyType;
+    public GameObject tankExplosionEffectPrefab;
+
     protected bool objectIsCurrentlyBeingBlocked;
-    private Spawner spawner;
-    private PowerupLogic powerupLogic;
     protected bool isFrozen = false;
+
+    private Spawner spawner;
 
     void Awake()
     {
         spawner = FindFirstObjectByType<Spawner>();
-        powerupLogic = FindFirstObjectByType<PowerupLogic>();
     }
 
     void OnEnable()
@@ -54,7 +55,7 @@ public class Enemy : Tank
     {
         if (hasPowerup) 
         {
-            powerupLogic.SpawnRandomPowerupOnField();
+            PowerupLogic.Instance.SpawnRandomPowerupOnField();
             hasPowerup = false;
         }
         // 4 3 2 1
@@ -63,6 +64,7 @@ public class Enemy : Tank
         {
             GameLogic.Instance.RegisterEnemyKill(enemyType);
             AudioManager.Instance.PlaySFX(AudioManager.Instance.enemyExplodeSound);
+            Instantiate(tankExplosionEffectPrefab, transform.position, transform.rotation);
             Destroy(gameObject);
             enemyIsAlive = false;
             ChangeEnemyStatus();

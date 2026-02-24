@@ -199,6 +199,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 7104
   hasPowerup: 0
+  enemyType: 0
+  tankExplosionEffectPrefab: {fileID: 7678845025099040012, guid: 2c982297192e5eb4d84b1f33c01df961, type: 3}
   timePassedSinceBlocked: 0
   trackSprites:
   - {fileID: -8896940666201160718, guid: 5f3e05ca40335234b9a4285441cf6e50, type: 3}

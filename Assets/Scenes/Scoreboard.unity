@@ -406,8 +406,8 @@ Transform:
   m_GameObject: {fileID: 155352235}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.255, y: -0.50068, z: 0}
-  m_LocalScale: {x: 23.390001, y: 22.83689, z: 0}
+  m_LocalPosition: {x: -0.2071, y: -0.50068, z: 0}
+  m_LocalScale: {x: 34.633804, y: 22.83689, z: 0}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -2910,6 +2910,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentScoreText: {fileID: 1106156734}
   highScoreText: {fileID: 1531551775}
+  highScoreTextEnd: {fileID: 0}
 --- !u!4 &801739538
 Transform:
   m_ObjectHideFlags: 0

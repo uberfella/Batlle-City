@@ -14,6 +14,7 @@ public class DontDestroy : MonoBehaviour
 public class PowerupLogic : MonoBehaviour
 {
     public GameObject [] powerupsToSpawn;
+    public static PowerupLogic Instance;
     //temporary way to make sure the powerup spawns inside squares nicely
     //-5.5 -6.5 
     //6.5 5.5
@@ -22,6 +23,7 @@ public class PowerupLogic : MonoBehaviour
 
     void Awake()
     {
+        Instance = this;
         DontDestroyOnLoad(gameObject);
     }
 
@@ -44,7 +46,7 @@ public class PowerupLogic : MonoBehaviour
         float randomPosY = predefinedPosY[Random.Range(0, 13)];
         int randomPowerUp = Random.Range(0, 6);
         //make sure the powerup doesn't spawn inside the base
-        if (((randomPosY == -6.5f || randomPosY == -5.5f) & (randomPosX == -0.5f || randomPosX == 0.5f || randomPosX == 1.5f)))
+        if (((randomPosY == -6.5f || randomPosY == -5.5f) && (randomPosX == -0.5f || randomPosX == 0.5f || randomPosX == 1.5f)))
         {
             randomPosX = predefinedPosX[Random.Range(0, 13)];
             randomPosY = predefinedPosY[Random.Range(2, 13)];
@@ -61,13 +63,13 @@ public class PowerupLogic : MonoBehaviour
 
     public static void DestroyAllPowerUps()
     {
-        GameObject[] allObjects = UnityEngine.Object.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
-        foreach (GameObject obj in allObjects)
+        GameObject[] powerups = GameObject.FindGameObjectsWithTag("Powerup");
+
+        foreach (GameObject obj in powerups)
         {
-            if (obj.CompareTag("Powerup"))
-            {
-                Destroy(obj);
-            }
+            if (obj == null) continue;
+            if (obj != null)
+                UnityEngine.Object.Destroy(obj);
         }
     }
 }

@@ -293,6 +293,7 @@ MonoBehaviour:
   shellPrefab: {fileID: 2980163820454248444, guid: 39024b584b2d6c64893fc21a1d676504, type: 3}
   playerIsAlive: 0
   playerIsInvincible: 0
+  godmode: 0
   tankLevelOneSprites:
   - {fileID: 5814629126671592647, guid: 5c36a72110562314eb83e7844a0a5ef5, type: 3}
   - {fileID: 9212205326544522359, guid: 6f909e2734fb0ac48b205de00bea1c51, type: 3}
@@ -307,4 +308,4 @@ MonoBehaviour:
   - {fileID: -7819337433466014027, guid: 3d65e5df298c9b344a2969dfb8f2bef7, type: 3}
   animationSpeed: 0.2
   spriteRenderer: {fileID: 6505327073920512807}
-  playerLevel: 0
+  tankExplosionEffectPrefab: {fileID: 7678845025099040012, guid: 2c982297192e5eb4d84b1f33c01df961, type: 3}
