@@ -36,7 +36,7 @@ public class EnemyLvl1 : Enemy
         health = 1;
         speed = 2.5f;
         scoreOnDestroy = 100;
-        projectileSpeed = 10f;
+        projectileSpeed = 8f;
         aiController = GetComponent<AiController>();
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();

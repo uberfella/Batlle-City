@@ -15,7 +15,7 @@ public class EnemyLvl3 : Enemy
     public SpriteRenderer spriteRenderer;
 
     private readonly float changeDirectionTime = 0.25f; // Change direction every x milliseconds
-    private int shotCooldown = 1;
+    private float shotCooldown = 1;
     private Vector2 currentMoveDirection = Vector2.zero;
     private int currentFrame = 0;
     private float timerForSpritesRender = 0f;
@@ -28,7 +28,7 @@ public class EnemyLvl3 : Enemy
         health = 1;
         speed = 2.5f;
         scoreOnDestroy = 300;
-        projectileSpeed = 10f;
+        projectileSpeed = 12f;
         aiController = GetComponent<AiController>();
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
@@ -104,8 +104,7 @@ public class EnemyLvl3 : Enemy
     }
     private IEnumerator SetShootingCooldownCoroutine()
     {
-        //yield return new WaitForSeconds(shotCooldown = aiController.GetShootCooldown());
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(shotCooldown = aiController.GetShootCooldown());
 
         cooldownForShootingHasPassed = true;
     }
