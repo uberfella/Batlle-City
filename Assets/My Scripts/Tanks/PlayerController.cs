@@ -178,7 +178,7 @@ public class PlayerController2D : Tank
 
     private void ShootTheGun()
     {
-        Debug.Log("cooldownHasPassed = " + cooldownHasPassed);
+        //Debug.Log("cooldownHasPassed = " + cooldownHasPassed);
 
         GameObject shell = Instantiate(shellPrefab, transform.position, transform.rotation);
         shell.GetComponent<Shell>().SetSpeed(projectileSpeed);

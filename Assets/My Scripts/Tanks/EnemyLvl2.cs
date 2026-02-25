@@ -106,7 +106,8 @@ public class EnemyLvl2 : Enemy
     }
     private IEnumerator SetShootingCooldownCoroutine()
     {
-        yield return new WaitForSeconds(shotCooldown = aiController.GetShootCooldown());
+        //yield return new WaitForSeconds(shotCooldown = aiController.GetShootCooldown());
+        yield return new WaitForSeconds(1);
 
         cooldownForShootingHasPassed = true;
     }

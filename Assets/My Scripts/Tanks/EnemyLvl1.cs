@@ -17,7 +17,7 @@ public class EnemyLvl1 : Enemy
     public SpriteRenderer spriteRenderer;
 
     private readonly float changeDirectionTime = 0.25f; // Change direction every x milliseconds
-    private int shotCooldown = 1;
+    private float shotCooldown = 1f;
     private Vector2 currentMoveDirection = Vector2.zero;
     private int currentFrame = 0;
     private float timerForSpritesRender = 0f;

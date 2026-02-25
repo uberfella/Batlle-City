@@ -132,7 +132,8 @@ public class GameLogic : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.G))
         {
 
-            Debug.Log("playerIsAlive = " + playerController2D.playerIsAlive);
+            Debug.Log(10/10.0f);
+            Debug.Log(11/10.0f);
         }
 
     }
