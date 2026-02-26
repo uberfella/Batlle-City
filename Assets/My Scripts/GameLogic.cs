@@ -39,10 +39,10 @@ AI - enemy changes direction if it is facing the obstacle for more than 0.5 sec 
 AI - enemy changes direction if a random time value between 1 and 9 seconds has passed ✓
 GetShootCooldown() for different enemies ✓
 game pause ✓
-sprites - use sprite atlas to avoid visible breaks between individual sprites 
+sprites - use sprite atlas (pixel perfect camera) to avoid visible breaks between individual sprites ✓
 remove physics from tanks so you can't bump into them and move their bodies ✓
 get rid of objectIsCurrentlyBeingBlocked bool ✓ (cant do that)
-main menu - main menu appears from the bottom of the screen
+main menu - main menu appears from the bottom of the screen 
 clean code
     Enemy update() unification?
     rename sprites, variables, scripts like enemyLvl0-3 to one standard so it would make more sense

@@ -35,6 +35,7 @@ public class PlayerController2D : Tank
     {
 
         health = 1;
+        //speed = 2.5f;
         speed = 5f;
         projectileSpeed = 10f;
 
