@@ -12,7 +12,7 @@ public class PauseButton : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) && !GameLogic.GameOver)
         {
             if (PauseManager.Instance.isPaused)
             {
