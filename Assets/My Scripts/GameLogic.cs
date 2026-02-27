@@ -43,6 +43,7 @@ sprites - use sprite atlas (pixel perfect camera) to avoid visible breaks betwee
 remove physics from tanks so you can't bump into them and move their bodies ✓
 get rid of objectIsCurrentlyBeingBlocked bool ✓ (cant do that)
 main menu - main menu appears from the bottom of the screen 
+if player has a save and chooses new game theres a confirmation window
 clean code
     Enemy update() unification?
     rename sprites, variables, scripts like enemyLvl0-3 to one standard so it would make more sense

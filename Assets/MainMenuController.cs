@@ -9,20 +9,13 @@ public class MainMenuController : MonoBehaviour
     public float moveDuration = 5.5f;
     public Vector2 targetPosition;
     private Vector2 startPosition;
-    //-2.599976
-    //161.3
 
     void Start()
     {
-
-
+        startPosition = GameTitle.transform.position;
         GameLogic.GameOver = false;
         GameLogic.Instance.destroyedByType.Clear();
-    }
-
-    void Update()
-    {
-        
+        StartCoroutine(ShowMainMenu());
     }
 
     public void StartGame()
@@ -53,6 +46,6 @@ public class MainMenuController : MonoBehaviour
             elapsed += Time.deltaTime;
             yield return null;
         }
-        //GameTitle.anchoredPosition = to;
+        GameTitle.transform.position = to;
     }
 }

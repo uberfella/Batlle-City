@@ -23,11 +23,6 @@ public class GameOverSequence : MonoBehaviour
 
     }
 
-    void Update()
-    {
-        
-    }
-
     public void TriggerGameOver()
     {
         if (!GameLogic.GameOver && !spawner.levelFinished)
