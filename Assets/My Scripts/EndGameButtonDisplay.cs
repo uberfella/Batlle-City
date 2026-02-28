@@ -9,8 +9,6 @@ public class EndGameButtonDisplay : MonoBehaviour
 
     void Start()
     {
-
-        //static_ScoreHigh.SetActive(true);
         StartCoroutine(ShowHomeButton());
     }
 
