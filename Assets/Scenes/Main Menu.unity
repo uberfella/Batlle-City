@@ -169,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameTitle: {fileID: 1751753313}
   moveDuration: 2
-  targetPosition: {x: 500, y: 307}
+  targetPosition: {x: 550, y: 480}
 --- !u!1 &333009173
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,10 +591,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.16800001
+    x: 0.07447775
     y: 0
-    width: 0.66400003
-    height: 1
+    width: 0.8515895
+    height: 0.99999994
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60

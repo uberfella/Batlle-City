@@ -6,24 +6,36 @@ public class ContinueGameButton : MonoBehaviour
 {
     public GameObject continueButton;
 
+    private MainMenuController mainMenuController;
+
     void Start()
     {
+        if (!PlayerPrefs.HasKey("HasSaveData"))
+        {
+            continueButton.SetActive(false);
+        }
+        else
+        {
+            StartCoroutine(ShowButton());
+        }
 
-    
+        mainMenuController = FindFirstObjectByType<MainMenuController>();
+
     }
 
-    //IEnumerator ShowButton() 
-    //{
-    //    yield return StartCoroutine(PullMainMenuUp(startPosition, targetPosition, moveDuration));
-    //    if (PlayerPrefs.HasKey("HasSaveData"))
-    //    {
-    //        continueButton.SetActive(true);
-    //    }
-    //    else
-    //    {
-    //        continueButton.SetActive(false);
-    //    }
-    //}
+    IEnumerator ShowButton()
+    {
+        //Debug.Log("waiting " + mainMenuController.moveDuration + " seconds");
+        yield return new WaitForSeconds(mainMenuController.moveDuration);
+        //Debug.Log("wait is over");
+        if (PlayerPrefs.HasKey("HasSaveData"))
+        {
+            continueButton.SetActive(true);
+        }
+        else
+        {
+        }
+    }
 
 
 
