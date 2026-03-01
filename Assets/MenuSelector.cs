@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuSelector : MonoBehaviour
 {
+    //public GameObject selectorIconObject;          
     public RectTransform selectorIcon;           // The arrow or icon object
     public List<RectTransform> buttonTargets;    // Button transforms to snap to
     public List<Button> buttonComponents;        // Matching Button components
@@ -13,6 +14,7 @@ public class MenuSelector : MonoBehaviour
     private int offsetForDifferentScenes = -2;
     private KeyCode selectFirstKey = KeyCode.None;
     private KeyCode selectSecondKey = KeyCode.None;
+    private MainMenuController mainMenuController;
     bool IsScene(string sceneName)
     {
         return SceneManager.GetActiveScene().name == sceneName;
@@ -20,18 +22,25 @@ public class MenuSelector : MonoBehaviour
 
     void Start()
     {
+        mainMenuController = FindFirstObjectByType<MainMenuController>();
+
         RefreshVisibleButtons();
         StartCoroutine(DeferredMoveSelector());
         //change variables depending on the current loaded scene
         if (IsScene("Main Menu"))
         {
+            //this is not executed because the gameobj that the script is attached to is not active
+            Debug.Log("scene is Main Menu");
             currentIndex = 0;
             offsetForDifferentScenes = 50;
             selectFirstKey = KeyCode.W;
             selectSecondKey = KeyCode.S;
+            StartCoroutine(ShowIconSelectorAfterDelay());
         }
         else if (IsScene("Scoreboard"))
         {
+            selectorIcon.gameObject.SetActive(true);
+
             if (!GameLogic.GameOver)
             {
                 currentIndex = 1;
@@ -96,5 +105,13 @@ public class MenuSelector : MonoBehaviour
         Vector3 targetPos = buttonTargets[currentIndex].position;
         Vector3 newPos = new Vector3(targetPos.x - offsetForDifferentScenes, targetPos.y, targetPos.z);
         selectorIcon.position = newPos;
+    }
+    
+    IEnumerator ShowIconSelectorAfterDelay()
+    {
+        Debug.Log("starting coroutine");
+        yield return new WaitForSeconds(mainMenuController.moveDuration);
+        Debug.Log("setting selectorIcon active");
+        selectorIcon.gameObject.SetActive(true);
     }
 }
