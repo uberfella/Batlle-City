@@ -66,14 +66,17 @@ public class MenuSelector : MonoBehaviour
         {
             currentIndex = Mathf.Max(0, currentIndex - 1);
             MoveSelectorToCurrent();
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.enemyDecreasingLivesSound);
         }
         else if (Input.GetKeyDown(selectSecondKey))
         {
             currentIndex = Mathf.Min(buttonTargets.Count - 1, currentIndex + 1);
             MoveSelectorToCurrent();
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.enemyDecreasingLivesSound);
         }
         else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.enemyDecreasingLivesSound);
             if (currentIndex < buttonComponents.Count)
             {
                 buttonComponents[currentIndex].onClick.Invoke();
