@@ -42,8 +42,6 @@ game pause ✓
 sprites - use sprite atlas (pixel perfect camera) to avoid visible breaks between individual sprites ✓
 remove physics from tanks so you can't bump into them and move their bodies ✓
 get rid of objectIsCurrentlyBeingBlocked bool ✓ (cant do that)
-main menu - main menu appears from the bottom of the screen 
-GameTitle.transform.position change to RectTransform.anchoredPosition to avoid scaling weirdness
 if player has a save and chooses new game theres a confirmation window
 clean code
     Enemy update() unification?

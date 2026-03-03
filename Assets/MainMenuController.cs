@@ -5,20 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
-    public GameObject GameTitle;
-    public float moveDuration = 5.5f;
-    public Vector2 targetPosition;
-    private Vector2 startPosition;
-
     void Start()
     {
-        startPosition = GameTitle.transform.position;
         GameLogic.GameOver = false;
         GameLogic.Instance.destroyedByType.Clear();
-        StartCoroutine(ShowMainMenu());
     }
 
-    public void StartGame()
+    public void TryStartGame()
     {
         GameLogic.levelNum = 0;
         ScoreCount.currentScore = 0;
@@ -30,22 +23,5 @@ public class MainMenuController : MonoBehaviour
     public void ContinueGame()
     {
         SaveManager.LoadGame(); // wherever LoadGame is defined
-    }
-
-    IEnumerator ShowMainMenu()
-    {
-        yield return StartCoroutine(PullMainMenuUp(startPosition, targetPosition, moveDuration));
-    }
-
-    IEnumerator PullMainMenuUp(Vector2 from, Vector2 to, float duration)
-    {
-        float elapsed = 0f;
-        while (elapsed < duration)
-        {
-            GameTitle.transform.position = Vector2.Lerp(from, to, elapsed / duration);
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-        GameTitle.transform.position = to;
     }
 }
