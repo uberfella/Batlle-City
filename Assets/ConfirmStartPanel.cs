@@ -4,15 +4,12 @@ using UnityEngine.SceneManagement;
 
 public class ConfirmStartPanel : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public GameObject confirmPanel;   // Drag panel here in Inspector
+
+    public void TryStartGame()
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
