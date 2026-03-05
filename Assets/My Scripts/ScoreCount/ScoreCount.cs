@@ -10,7 +10,7 @@ public class ScoreCount : MonoBehaviour
     public static bool highScoreHasBeenBeaten = true;
     public Text currentScoreText;
     public Text highScoreText; //display hiscore on levels 
-    public TextMeshProUGUI highScoreTextEnd; //display hiscore on end screen 
+    public TextMeshProUGUI highScoreTextForEndscreen; //display hiscore on end screen 
 
     void Awake()
     {
@@ -18,7 +18,7 @@ public class ScoreCount : MonoBehaviour
         highScoreText.text = highScore.ToString("D6");
         if (IsScene("End Scene"))
         {
-            highScoreTextEnd.text = highScore.ToString("D6");
+            highScoreTextForEndscreen.text = highScore.ToString("D6");
         }
         if (IsScene("Scoreboard"))
         {

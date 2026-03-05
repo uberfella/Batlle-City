@@ -1,30 +1,22 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuSelector : MonoBehaviour
 {
-    //public GameObject selectorIconObject;          
-    public RectTransform selectorIcon;           // The arrow or icon object
-    public List<RectTransform> buttonTargets;    // Button transforms to snap to
-    public List<Button> buttonComponents;        // Matching Button components
+    public RectTransform selectorIcon;
+    public List<Button> buttons;
+
     private int currentIndex = 0;
-    private int offsetForDifferentScenes = -2;
     private KeyCode selectFirstKey = KeyCode.None;
     private KeyCode selectSecondKey = KeyCode.None;
-    bool IsScene(string sceneName)
-    {
-        return SceneManager.GetActiveScene().name == sceneName;
-    }
+    private int offsetForDifferentScenes = -2;
 
     void Start()
     {
-
-        RefreshVisibleButtons();
-        StartCoroutine(DeferredMoveSelector());
-        //change variables depending on the current loaded scene
+        MoveSelector();
         if (IsScene("Main Menu"))
         {
             currentIndex = 0;
@@ -34,7 +26,7 @@ public class MenuSelector : MonoBehaviour
         }
         else if (IsScene("Scoreboard"))
         {
-            selectorIcon.gameObject.SetActive(true);
+            //selectorIcon.gameObject.SetActive(true);
 
             if (!GameLogic.GameOver)
             {
@@ -49,59 +41,61 @@ public class MenuSelector : MonoBehaviour
             selectSecondKey = KeyCode.D;
         }
     }
-    IEnumerator DeferredMoveSelector()
+
+    private bool IsScene(string sceneName)
     {
-        yield return null; // wait one frame
-        MoveSelectorToCurrent(); // now layout is done
+        return SceneManager.GetActiveScene().name == sceneName;
     }
 
     void Update()
     {
         if (Input.GetKeyDown(selectFirstKey))
         {
-            currentIndex = Mathf.Max(0, currentIndex - 1);
-            MoveSelectorToCurrent();
-            AudioManager.Instance.PlaySFX(AudioManager.Instance.enemyDecreasingLivesSound);
+            MoveUp();
         }
-        else if (Input.GetKeyDown(selectSecondKey))
+
+        if (Input.GetKeyDown(selectSecondKey))
         {
-            currentIndex = Mathf.Min(buttonTargets.Count - 1, currentIndex + 1);
-            MoveSelectorToCurrent();
-            AudioManager.Instance.PlaySFX(AudioManager.Instance.enemyDecreasingLivesSound);
+            MoveDown();
         }
-        else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            AudioManager.Instance.PlaySFX(AudioManager.Instance.enemyDecreasingLivesSound);
-            if (currentIndex < buttonComponents.Count)
-            {
-                buttonComponents[currentIndex].onClick.Invoke();
-            }
+            buttons[currentIndex].onClick.Invoke();
         }
     }
 
-    void RefreshVisibleButtons()
+    void MoveUp()
     {
-        // Remove hidden or inactive buttons
-        for (int i = buttonTargets.Count - 1; i >= 0; i--)
-        {
-            if (!buttonTargets[i].gameObject.activeInHierarchy)
-            {
-                buttonTargets.RemoveAt(i);
-                buttonComponents.RemoveAt(i);
-            }
-        }
+        currentIndex--;
 
-        // Reset index in case current selection is now out of bounds
-        currentIndex = Mathf.Clamp(currentIndex, 0, buttonTargets.Count - 1);
+        if (currentIndex < 0)
+            currentIndex = buttons.Count - 1;
+
+        MoveSelector();
     }
 
-    void MoveSelectorToCurrent()
+    void MoveDown()
     {
+        currentIndex++;
 
-        if (buttonTargets.Count == 0) return;
+        if (currentIndex >= buttons.Count)
+            currentIndex = 0;
 
-        Vector3 targetPos = buttonTargets[currentIndex].position;
-        Vector3 newPos = new Vector3(targetPos.x - offsetForDifferentScenes, targetPos.y, targetPos.z);
-        selectorIcon.position = newPos;
+        MoveSelector();
+    }
+
+    void MoveSelector()
+    {
+        if (buttons == null || buttons.Count == 0)
+            return;
+
+        RectTransform target = buttons[currentIndex].GetComponent<RectTransform>();
+
+        selectorIcon.position = new Vector3(
+            target.position.x - offsetForDifferentScenes,
+            target.position.y,
+            target.position.z
+        );
     }
 }

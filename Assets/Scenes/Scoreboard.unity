@@ -633,9 +633,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.07175295
+    x: 0
     y: 0
-    width: 0.85594916
+    width: 1
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -2736,7 +2736,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &724877758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2750,12 +2750,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectorIcon: {fileID: 724877762}
-  buttonTargets:
-  - {fileID: 424156013}
-  - {fileID: 689942243}
-  buttonComponents:
-  - {fileID: 424156016}
+  buttons:
   - {fileID: 689942246}
+  - {fileID: 424156016}
 --- !u!114 &724877759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2935,7 +2932,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentScoreText: {fileID: 1106156734}
   highScoreText: {fileID: 1531551775}
-  highScoreTextEnd: {fileID: 0}
+  highScoreTextForEndscreen: {fileID: 0}
 --- !u!4 &801739538
 Transform:
   m_ObjectHideFlags: 0

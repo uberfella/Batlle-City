@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eeb76858fb990948b9fcef4026952f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  confirmPanel: {fileID: 0}
+  confirmPanel: {fileID: 1409265386}
 --- !u!1 &333009173
 GameObject:
   m_ObjectHideFlags: 0
@@ -1576,10 +1576,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectorIcon: {fileID: 1590473192}
-  buttonTargets:
+  buttonTargetsMainMenu:
   - {fileID: 645041133}
   - {fileID: 2038795267}
-  buttonComponents:
+  buttonComponentsMainMenu:
   - {fileID: 645041134}
   - {fileID: 2038795268}
 --- !u!1 &1591158943
