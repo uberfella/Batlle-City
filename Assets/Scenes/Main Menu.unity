@@ -1576,12 +1576,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectorIcon: {fileID: 1590473192}
-  buttonTargetsMainMenu:
-  - {fileID: 645041133}
-  - {fileID: 2038795267}
-  buttonComponentsMainMenu:
-  - {fileID: 645041134}
+  buttons:
   - {fileID: 2038795268}
+  - {fileID: 645041134}
+  buttonsConfirmPanel: []
 --- !u!1 &1591158943
 GameObject:
   m_ObjectHideFlags: 0

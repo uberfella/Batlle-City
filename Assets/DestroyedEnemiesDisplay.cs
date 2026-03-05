@@ -16,10 +16,13 @@ public class DestroyedEnemiesDisplay : MonoBehaviour
     public GameObject buttonsRow;
     public GameObject iconSelector;
     public float delayBetweenRows = 0.4f;
-    public float countDuration = 0.8f;
+    public bool scoreBoardHasFinishedDrawing = false;
+    //public float countDuration = 0.8f;
     private int totalCountValue = 0;
+    private MenuSelectorScoreboard menuSelectorScoreboard;
     void Start()
     {
+        menuSelectorScoreboard = FindFirstObjectByType<MenuSelectorScoreboard>();
 
         for (int i = 0; i < 4; i++)
         {
@@ -81,6 +84,9 @@ public class DestroyedEnemiesDisplay : MonoBehaviour
         // SHOW BUTTONS
         buttonsRow.SetActive(true);
         iconSelector.SetActive(true);
+        // and move SelectorIconToTheButton
+        scoreBoardHasFinishedDrawing = true;
+        menuSelectorScoreboard.MoveSelector();
     }
 
     IEnumerator AnimateNumber(Text text, int targetValue, int progressStep)
@@ -100,11 +106,5 @@ public class DestroyedEnemiesDisplay : MonoBehaviour
         }
 
         text.text = targetValue.ToString();
-    }
-
-
-    void Update()
-    {
-        
     }
 }

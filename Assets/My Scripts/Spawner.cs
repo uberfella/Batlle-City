@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -223,13 +224,20 @@ public class Spawner : MonoBehaviour
 
         // Load next level (optional, or wait a few seconds before transition)
         //string nextScene = "Level" + (GameLogic.levelNum + 1);
+
+        StartCoroutine(LoadNextLevel());
+    }
+
+    private IEnumerator LoadNextLevel()
+    {
+        yield return new WaitForSeconds(1f);
+
         if (GameLogic.levelNum <= GameLogic.finalLevelNum)
         {
             GameLogic.levelNum++;
             //Debug.Log("levelNum = " + GameLogic.levelNum);
             SceneManager.LoadScene("Scoreboard");
         }
-        
     }
 
 }

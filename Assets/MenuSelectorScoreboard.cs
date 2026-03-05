@@ -5,55 +5,66 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MenuSelector : MonoBehaviour
+public class MenuSelectorScoreboard : MonoBehaviour
 {
     public RectTransform selectorIcon;
     public List<Button> buttons;
-    public List<Button> buttonsConfirmPanel;
 
     private int currentIndex = 0;
-    private KeyCode selectFirstKey = KeyCode.W;
-    private KeyCode selectSecondKey = KeyCode.S;
-    private int offsetForDifferentScenes = 50;
     private int lastUsedIndex = 0;
+    private KeyCode selectFirstKey = KeyCode.A;
+    private KeyCode selectSecondKey = KeyCode.D;
+    private int offsetForDifferentScenes = 2;
+    private DestroyedEnemiesDisplay destroyedEnemiesDisplay;
 
 
     void Start()
     {
-        if (PlayerPrefs.HasKey("HasSaveData"))
+        destroyedEnemiesDisplay = FindFirstObjectByType<DestroyedEnemiesDisplay>();
+
+        if (!GameLogic.GameOver)
         {
             currentIndex = 1;
             lastUsedIndex = 1;
-
         }
         else
         {
             currentIndex = 0;
             lastUsedIndex = 0;
-
         }
-        StartCoroutine(ExecuteMoveSelectorAfterOneFrame());
+
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(selectFirstKey) && PlayerPrefs.HasKey("HasSaveData"))
+        if (Input.GetKeyDown(selectFirstKey) && destroyedEnemiesDisplay.scoreBoardHasFinishedDrawing)
         {
-            MoveUp();
+            MoveLeft();
         }
 
-        if (Input.GetKeyDown(selectSecondKey))
+        if (Input.GetKeyDown(selectSecondKey) && !GameLogic.GameOver && destroyedEnemiesDisplay.scoreBoardHasFinishedDrawing)
         {
-            MoveDown();
+            MoveRight();
         }
 
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+        if ((Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)) && destroyedEnemiesDisplay.scoreBoardHasFinishedDrawing)
         {
             buttons[currentIndex].onClick.Invoke();
         }
     }
 
-    void MoveUp()
+    void MoveLeft()
+    {
+        currentIndex = 0;
+        if (currentIndex != lastUsedIndex)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.enemyDecreasingLivesSound);
+        }
+        lastUsedIndex = 0;
+        MoveSelector();
+    }
+
+    void MoveRight()
     {
         currentIndex = 1;
         if (currentIndex != lastUsedIndex)
@@ -65,18 +76,7 @@ public class MenuSelector : MonoBehaviour
         MoveSelector();
     }
 
-    void MoveDown()
-    {
-        currentIndex = 0;
-        if (currentIndex != lastUsedIndex)
-        {
-            AudioManager.Instance.PlaySFX(AudioManager.Instance.enemyDecreasingLivesSound);
-        }
-        lastUsedIndex = 0;
-        MoveSelector();
-    }
-
-    void MoveSelector()
+    public void MoveSelector()
     {
         if (buttons == null || buttons.Count == 0)
             return;
@@ -88,11 +88,5 @@ public class MenuSelector : MonoBehaviour
             target.position.y,
             target.position.z
         );
-    }
-
-    IEnumerator ExecuteMoveSelectorAfterOneFrame()
-    {
-        yield return null;
-        MoveSelector();
     }
 }
