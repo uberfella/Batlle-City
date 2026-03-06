@@ -710,9 +710,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.16800001
+    x: 0
     y: 0
-    width: 0.66400003
+    width: 1
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -1579,7 +1579,10 @@ MonoBehaviour:
   buttons:
   - {fileID: 2038795268}
   - {fileID: 645041134}
-  buttonsConfirmPanel: []
+  buttonsConfirmPanel:
+  - {fileID: 570066286}
+  - {fileID: 1576295602}
+  confirmStartPanel: {fileID: 0}
 --- !u!1 &1591158943
 GameObject:
   m_ObjectHideFlags: 0

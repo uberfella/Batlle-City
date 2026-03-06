@@ -10,16 +10,21 @@ public class MenuSelector : MonoBehaviour
     public RectTransform selectorIcon;
     public List<Button> buttons;
     public List<Button> buttonsConfirmPanel;
+    public GameObject confirmStartPanel;
 
     private int currentIndex = 0;
     private KeyCode selectFirstKey = KeyCode.W;
     private KeyCode selectSecondKey = KeyCode.S;
     private int offsetForDifferentScenes = 50;
     private int lastUsedIndex = 0;
-
+    private bool confirmPanelActive;
 
     void Start()
     {
+        if (true)
+        {
+
+        }
         if (PlayerPrefs.HasKey("HasSaveData"))
         {
             currentIndex = 1;
@@ -37,14 +42,21 @@ public class MenuSelector : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(selectFirstKey) && PlayerPrefs.HasKey("HasSaveData"))
+        if (!confirmStartPanel.activeInHierarchy)
         {
-            MoveUp();
-        }
+            if (Input.GetKeyDown(selectFirstKey) && PlayerPrefs.HasKey("HasSaveData"))
+            {
+                MoveUp();
+            }
 
-        if (Input.GetKeyDown(selectSecondKey))
+            if (Input.GetKeyDown(selectSecondKey))
+            {
+                MoveDown();
+            }
+        }
+        else 
         {
-            MoveDown();
+
         }
 
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
@@ -62,7 +74,7 @@ public class MenuSelector : MonoBehaviour
         }
         lastUsedIndex = 1;
 
-        MoveSelector();
+        MoveSelector(buttons);
     }
 
     void MoveDown()
@@ -73,15 +85,27 @@ public class MenuSelector : MonoBehaviour
             AudioManager.Instance.PlaySFX(AudioManager.Instance.enemyDecreasingLivesSound);
         }
         lastUsedIndex = 0;
-        MoveSelector();
+        MoveSelector(buttons);
     }
 
-    void MoveSelector()
+    void MoveRight()
+    {
+        //no 0 right
+
+    }
+
+    void MoveLeft()
+    {
+        //yes 1 left
+
+    }
+
+    void MoveSelector(List<Button> buttonsType)
     {
         if (buttons == null || buttons.Count == 0)
             return;
 
-        RectTransform target = buttons[currentIndex].GetComponent<RectTransform>();
+        RectTransform target = buttonsType[currentIndex].GetComponent<RectTransform>();
 
         selectorIcon.position = new Vector3(
             target.position.x - offsetForDifferentScenes,
@@ -93,6 +117,6 @@ public class MenuSelector : MonoBehaviour
     IEnumerator ExecuteMoveSelectorAfterOneFrame()
     {
         yield return null;
-        MoveSelector();
+        MoveSelector(buttons);
     }
 }
