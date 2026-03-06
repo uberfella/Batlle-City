@@ -15,6 +15,8 @@ public class MenuSelector : MonoBehaviour
     private int currentIndex = 0;
     private KeyCode selectFirstKey = KeyCode.W;
     private KeyCode selectSecondKey = KeyCode.S;
+    private KeyCode selectFirstKeyConfirmPanel = KeyCode.A;
+    private KeyCode selectSecondKeyConfirmPanel = KeyCode.D;
     private int offsetForDifferentScenes = 50;
     private int lastUsedIndex = 0;
     private bool confirmPanelActive;
@@ -53,19 +55,38 @@ public class MenuSelector : MonoBehaviour
             {
                 MoveDown();
             }
+
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+            {
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.enemyDecreasingLivesSound);
+
+                buttons[currentIndex].onClick.Invoke();
+            }
         }
         else 
         {
+            if (Input.GetKeyDown(selectFirstKeyConfirmPanel) && PlayerPrefs.HasKey("HasSaveData"))
+            {
+                MoveLeft();
+            }
 
+            if (Input.GetKeyDown(selectSecondKeyConfirmPanel))
+            {
+                MoveRight();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
+            {
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.enemyDecreasingLivesSound);
+
+                buttonsConfirmPanel[currentIndex].onClick.Invoke();
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
-        {
-            buttons[currentIndex].onClick.Invoke();
-        }
+
     }
 
-    void MoveUp()
+    public void MoveUp()
     {
         currentIndex = 1;
         if (currentIndex != lastUsedIndex)
@@ -73,11 +94,10 @@ public class MenuSelector : MonoBehaviour
             AudioManager.Instance.PlaySFX(AudioManager.Instance.enemyDecreasingLivesSound);
         }
         lastUsedIndex = 1;
-
         MoveSelector(buttons);
     }
 
-    void MoveDown()
+    public void MoveDown()
     {
         currentIndex = 0;
         if (currentIndex != lastUsedIndex)
@@ -88,16 +108,30 @@ public class MenuSelector : MonoBehaviour
         MoveSelector(buttons);
     }
 
-    void MoveRight()
+    public void MoveRight()
     {
         //no 0 right
-
+        //selectSecondKeyConfirmPanel = KeyCode.D
+        currentIndex = 0;
+        if (currentIndex != lastUsedIndex)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.enemyDecreasingLivesSound);
+        }
+        lastUsedIndex = 0;
+        MoveSelector(buttonsConfirmPanel);
     }
 
-    void MoveLeft()
+    public void MoveLeft()
     {
         //yes 1 left
-
+        //selectFirstKeyConfirmPanel = KeyCode.A;
+        currentIndex = 1;
+        if (currentIndex != lastUsedIndex)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.enemyDecreasingLivesSound);
+        }
+        lastUsedIndex = 1;
+        MoveSelector(buttonsConfirmPanel);
     }
 
     void MoveSelector(List<Button> buttonsType)

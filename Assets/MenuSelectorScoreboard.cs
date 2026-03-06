@@ -32,7 +32,7 @@ public class MenuSelectorScoreboard : MonoBehaviour
             currentIndex = 0;
             lastUsedIndex = 0;
         }
-
+        //MoveSelector is being executed in destroyedEnemiesDisplay script here
     }
 
     void Update()

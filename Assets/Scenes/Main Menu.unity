@@ -329,7 +329,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 570066287}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 241779}
+        m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
+        m_MethodName: ConfirmNo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &570066287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -710,9 +722,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0
+    x: 0.16800001
     y: 0
-    width: 1
+    width: 0.66400003
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -1127,11 +1139,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2071992358}
-  - {fileID: 1590473192}
   - {fileID: 616263660}
   - {fileID: 241778}
   - {fileID: 1751753314}
   - {fileID: 1409265387}
+  - {fileID: 1590473192}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1313,7 +1325,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1576295603}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 241779}
+        m_TargetAssemblyTypeName: MainMenuController, Assembly-CSharp
+        m_MethodName: ConfirmYes
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1576295603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1582,7 +1606,7 @@ MonoBehaviour:
   buttonsConfirmPanel:
   - {fileID: 570066286}
   - {fileID: 1576295602}
-  confirmStartPanel: {fileID: 0}
+  confirmStartPanel: {fileID: 1409265386}
 --- !u!1 &1591158943
 GameObject:
   m_ObjectHideFlags: 0
