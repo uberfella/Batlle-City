@@ -38,7 +38,7 @@ public class MainMenuController : MonoBehaviour
 
     public void ConfirmYes()
     {
-        confirmPanel.SetActive(false);
+        //confirmPanel.SetActive(false);
         StartGame();
     }
 

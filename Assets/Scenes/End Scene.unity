@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eeb76858fb990948b9fcef4026952f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  confirmPanel: {fileID: 0}
 --- !u!1 &21970742
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,8 +459,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1047.88, y: -490.4}
-  m_SizeDelta: {x: 257.609, y: 50}
+  m_AnchoredPosition: {x: -1046.34, y: -488.68}
+  m_SizeDelta: {x: 403.522, y: 78.32001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &232898512
 MonoBehaviour:
@@ -508,8 +509,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 56
+  m_fontSizeBase: 56
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -846,7 +847,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentScoreText: {fileID: 1576620381}
   highScoreText: {fileID: 1576620381}
-  highScoreTextEnd: {fileID: 1205916775}
+  highScoreTextForEndscreen: {fileID: 1205916775}
 --- !u!4 &686555754
 Transform:
   m_ObjectHideFlags: 0
@@ -1384,8 +1385,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1046.36, y: -496.31}
-  m_SizeDelta: {x: 358.581, y: 69.598}
+  m_AnchoredPosition: {x: -1044.93, y: -496.63}
+  m_SizeDelta: {x: 435.661, y: 84.559}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1205916775
 MonoBehaviour:
@@ -1434,8 +1435,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 47.22
-  m_fontSizeBase: 47.22
+  m_fontSize: 68
+  m_fontSizeBase: 68
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1860,10 +1861,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectorIcon: {fileID: 1590473192}
-  buttonTargets:
-  - {fileID: 423697318}
-  buttonComponents:
-  - {fileID: 423697320}
+  buttons: []
+  buttonsConfirmPanel: []
+  confirmStartPanel: {fileID: 0}
 --- !u!1 &1650849803
 GameObject:
   m_ObjectHideFlags: 0

@@ -32,16 +32,10 @@ public class DestroyedEnemiesDisplay : MonoBehaviour
             if (GameLogic.Instance.destroyedByType.TryGetValue(type, out int a)) 
             {
                 int count = GameLogic.Instance.destroyedByType[type];
-                //enemyCountTexts[i].text = count.ToString();
                 enemyCountTexts[i].text = 0.ToString();
-                //enemyPointTexts[i].text = ((i + 1) * 100 * count).ToString();
                 enemyPointTexts[i].text = 0.ToString();
                 totalCountValue += count;
             }
-            // (0 + 1) * 100 * x = 100
-            // (1 + 1) * 100 * x = 200
-            // (2 + 1) * 100 * x = 300
-            // (3 + 1) * 100 * x = 400
             TotalCount.text = totalCountValue.ToString();
         }
 

@@ -42,7 +42,8 @@ game pause ✓
 sprites - use sprite atlas (pixel perfect camera) to avoid visible breaks between individual sprites ✓
 remove physics from tanks so you can't bump into them and move their bodies ✓
 get rid of objectIsCurrentlyBeingBlocked bool ✓ (cant do that)
-if player has a save and chooses new game theres a confirmation window
+if player has a save and chooses new game theres a confirmation window ✓
+double shoot cooldown on ? player level
 clean code
     Enemy update() unification?
     rename sprites, variables, scripts like enemyLvl0-3 to one standard so it would make more sense
