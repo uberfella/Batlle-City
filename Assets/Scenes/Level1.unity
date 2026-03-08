@@ -318,7 +318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentScoreText: {fileID: 1994163463}
   highScoreText: {fileID: 1453602038}
-  highScoreTextEnd: {fileID: 0}
+  highScoreTextForEndscreen: {fileID: 0}
 --- !u!4 &31332788
 Transform:
   m_ObjectHideFlags: 0
@@ -2078,15 +2078,15 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.16800001
+    x: 0
     y: 0
-    width: 0.66400003
+    width: 1
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 8.181818
+  orthographic size: 8.4375
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2130,9 +2130,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ComponentVersion: 1
-  m_AssetsPPU: 11
-  m_RefResolutionX: 288
-  m_RefResolutionY: 180
+  m_AssetsPPU: 64
+  m_RefResolutionX: 1920
+  m_RefResolutionY: 1080
   m_CropFrame: 4
   m_GridSnapping: 0
   m_FilterMode: 1
@@ -7294,8 +7294,8 @@ Transform:
   m_GameObject: {fileID: 1521329352}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0051904568, y: -0, z: -0, w: 0.9999866}
-  m_LocalPosition: {x: 0.916, y: 0.07684856, z: -0.00046635114}
-  m_LocalScale: {x: 26.829556, y: 18.438072, z: 10.9244}
+  m_LocalPosition: {x: 0.39, y: 0.1, z: -0}
+  m_LocalScale: {x: 37.150883, y: 22.428072, z: 10.9244}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
