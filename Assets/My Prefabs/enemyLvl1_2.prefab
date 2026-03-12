@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 6.54, y: 7.38, z: 0}
-  m_LocalScale: {x: 6.3, y: 6.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -80,12 +80,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: -3344446844354859876, guid: 72ed9fa154398ce41a4c41980cb70f5d, type: 3}
+  m_Sprite: {fileID: -2599920836050466960, guid: 72ed9fa154398ce41a4c41980cb70f5d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.13, y: 0.13}
+  m_Size: {x: 0.9375, y: 0.9375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -101,7 +101,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 2ed2331ff34e90e4faa5ab1dac8db69a, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -125,17 +125,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.016936064, y: -0.05457282}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.13, y: 0.13}
-    newSize: {x: 0.13, y: 0.13}
+    oldSize: {x: 0.9375, y: 0.9375}
+    newSize: {x: 0.9375, y: 0.9375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.12, y: 0.12}
+  m_Size: {x: 0.71544504, y: 0.73049974}
   m_EdgeRadius: 0
 --- !u!50 &1103171562647212866
 Rigidbody2D:
@@ -204,7 +204,7 @@ MonoBehaviour:
   timePassedSinceBlocked: 1.8
   trackSprites:
   - {fileID: -936549676407480981, guid: 179eec459c3c6cd41aea37eff020e70c, type: 3}
-  - {fileID: -3344446844354859876, guid: 72ed9fa154398ce41a4c41980cb70f5d, type: 3}
+  - {fileID: -2599920836050466960, guid: 72ed9fa154398ce41a4c41980cb70f5d, type: 3}
   trackSpritesPowerup:
   - {fileID: -936549676407480981, guid: 179eec459c3c6cd41aea37eff020e70c, type: 3}
   - {fileID: 2660193422995524831, guid: 9a03286bab8de8b45bc4eeda171f0aa8, type: 3}
