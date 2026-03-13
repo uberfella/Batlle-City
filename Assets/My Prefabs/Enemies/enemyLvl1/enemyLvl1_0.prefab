@@ -88,7 +88,7 @@ SpriteRenderer:
   m_Size: {x: 0.9375, y: 0.9375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &1023361214474492453
@@ -202,11 +202,29 @@ MonoBehaviour:
   enemyType: 0
   tankExplosionEffectPrefab: {fileID: 7678845025099040012, guid: 2c982297192e5eb4d84b1f33c01df961, type: 3}
   timePassedSinceBlocked: 1.8
-  trackSprites:
-  - {fileID: -936549676407480981, guid: 179eec459c3c6cd41aea37eff020e70c, type: 3}
-  - {fileID: -2599920836050466960, guid: 72ed9fa154398ce41a4c41980cb70f5d, type: 3}
-  trackSpritesPowerup:
-  - {fileID: -936549676407480981, guid: 179eec459c3c6cd41aea37eff020e70c, type: 3}
-  - {fileID: 2660193422995524831, guid: 9a03286bab8de8b45bc4eeda171f0aa8, type: 3}
+  tankSpritesFacingUp:
+  - {fileID: 1990449650152609478, guid: 924e5bd606db46e409f6db2245390b93, type: 3}
+  - {fileID: 2173498293119351491, guid: f73fd73616256ee4e8cd692e6bdedae9, type: 3}
+  tankSpritesFacingLeft:
+  - {fileID: -7203093472253785129, guid: eda1f3d2d43b0634f850552b30a27f28, type: 3}
+  - {fileID: -2370622157848193781, guid: cc9499ca6993b0b4f9478a0aed7afef6, type: 3}
+  tankSpritesFacingRight:
+  - {fileID: 3896865275560660735, guid: e7f57dedb6bee844fa1faf8e18a8192c, type: 3}
+  - {fileID: -6178852970477448957, guid: dbe44c0ede7ad474ea02d61cb557a8bf, type: 3}
+  tankSpritesFacingDown:
+  - {fileID: 8029882528978185744, guid: 127ab3dfb2b7c48448d9adef6a801aae, type: 3}
+  - {fileID: 3896341597727679955, guid: 373b6d088107b89469dd83c723910627, type: 3}
+  trackSpritesFacingUpPowerup:
+  - {fileID: 1990449650152609478, guid: 924e5bd606db46e409f6db2245390b93, type: 3}
+  - {fileID: -2002746298701751958, guid: 1355ec1134606d94fadc20166c659615, type: 3}
+  trackSpritesFacingLeftPowerup:
+  - {fileID: -7203093472253785129, guid: eda1f3d2d43b0634f850552b30a27f28, type: 3}
+  - {fileID: 4559864365059225918, guid: 0d3d95f967301334c887050e8d2de062, type: 3}
+  trackSpritesFacingRightPowerup:
+  - {fileID: 3896865275560660735, guid: e7f57dedb6bee844fa1faf8e18a8192c, type: 3}
+  - {fileID: 1244241560142485245, guid: e6d99c82ce179d342adcc1a1b46af8d5, type: 3}
+  trackSpritesFacingDownPowerup:
+  - {fileID: 8029882528978185744, guid: 127ab3dfb2b7c48448d9adef6a801aae, type: 3}
+  - {fileID: -6415703742958797821, guid: 9c1e6cc727cf70e4194c4d6008cdec21, type: 3}
   animationSpeed: 0.2
   spriteRenderer: {fileID: 8883251326943187666}

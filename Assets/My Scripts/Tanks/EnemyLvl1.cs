@@ -11,8 +11,14 @@ public class EnemyLvl1 : Enemy
     public static event Action<Enemy> OnDestroyed;
 
     public float timePassedSinceBlocked = 0f;
-    public Sprite[] trackSprites;
-    public Sprite[] trackSpritesPowerup;
+    public Sprite[] tankSpritesFacingUp;
+    public Sprite[] tankSpritesFacingLeft;
+    public Sprite[] tankSpritesFacingRight;
+    public Sprite[] tankSpritesFacingDown;
+    public Sprite[] trackSpritesFacingUpPowerup;
+    public Sprite[] trackSpritesFacingLeftPowerup;
+    public Sprite[] trackSpritesFacingRightPowerup;
+    public Sprite[] trackSpritesFacingDownPowerup;
     public float animationSpeed = 0.2f;
     public SpriteRenderer spriteRenderer;
 
@@ -61,13 +67,13 @@ public class EnemyLvl1 : Enemy
                 timerForSpritesRender = 0f;
                 if (!hasPowerup)
                 {
-                    currentFrame = (currentFrame + 1) % trackSprites.Length;
-                    spriteRenderer.sprite = trackSprites[currentFrame];
+                    //currentFrame = (currentFrame + 1) % trackSprites.Length;
+                    //spriteRenderer.sprite = trackSprites[currentFrame];
                 }
                 else
                 {
-                    currentFrame = (currentFrame + 1) % trackSpritesPowerup.Length;
-                    spriteRenderer.sprite = trackSpritesPowerup[currentFrame];
+                    //currentFrame = (currentFrame + 1) % trackSpritesPowerup.Length;
+                    //spriteRenderer.sprite = trackSpritesPowerup[currentFrame];
                 }
             }
         }
