@@ -4,6 +4,7 @@ using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
+using UnityEngine.UIElements;
 using static Enemy;
 
 public class EnemyLvl1 : Enemy  
@@ -30,6 +31,37 @@ public class EnemyLvl1 : Enemy
     private float timerForRandomDirection = 0f;
     private float changeRandomDirectionTime = 0f;
     private bool cooldownForShootingHasPassed = true;
+
+    private Sprite[] GetArray(float x, float y) 
+    {
+        if (x == 0)
+        {
+            if (y == 1) 
+            {
+                Debug.Log("sprite up");
+                return tankSpritesFacingUp;
+            }
+            else
+            {
+                Debug.Log("sprite down");
+
+                return tankSpritesFacingDown;
+            }
+        }
+        else if(x == -1)
+        {
+            Debug.Log("sprite left");
+
+            return tankSpritesFacingLeft;
+        }
+        else 
+        {
+            Debug.Log("sprite right");
+
+            return tankSpritesFacingRight;
+
+        }
+    }
 
     //neccessary for the score counting
     private void OnDestroy()
@@ -67,13 +99,13 @@ public class EnemyLvl1 : Enemy
                 timerForSpritesRender = 0f;
                 if (!hasPowerup)
                 {
-                    //currentFrame = (currentFrame + 1) % trackSprites.Length;
-                    //spriteRenderer.sprite = trackSprites[currentFrame];
+                    currentFrame = (currentFrame + 1) % GetArray(currentMoveDirection.x, currentMoveDirection.y).Length;
+                    spriteRenderer.sprite = GetArray(currentMoveDirection.x, currentMoveDirection.y)[currentFrame];
                 }
                 else
                 {
-                    //currentFrame = (currentFrame + 1) % trackSpritesPowerup.Length;
-                    //spriteRenderer.sprite = trackSpritesPowerup[currentFrame];
+                    currentFrame = (currentFrame + 1) % tankSpritesFacingUp.Length;
+                    spriteRenderer.sprite = tankSpritesFacingUp[currentFrame];
                 }
             }
         }
@@ -152,6 +184,9 @@ public class EnemyLvl1 : Enemy
     private void SetMoveDirection(Vector2 newDirection)
     {
         currentMoveDirection = newDirection;
+        Debug.Log("currentMoveDirection.x = " + currentMoveDirection.x);
+        Debug.Log("currentMoveDirection.y = " + currentMoveDirection.y);
+
     }
 
     public int GetEnemyLayer() 
