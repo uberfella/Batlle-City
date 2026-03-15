@@ -38,25 +38,25 @@ public class EnemyLvl1 : Enemy
         {
             if (y == 1) 
             {
-                Debug.Log("sprite up");
+                //Debug.Log("sprite up");
                 return tankSpritesFacingUp;
             }
             else
             {
-                Debug.Log("sprite down");
+                //Debug.Log("sprite down");
 
                 return tankSpritesFacingDown;
             }
         }
         else if(x == -1)
         {
-            Debug.Log("sprite left");
+            //Debug.Log("sprite left");
 
             return tankSpritesFacingLeft;
         }
         else 
         {
-            Debug.Log("sprite right");
+            //Debug.Log("sprite right");
 
             return tankSpritesFacingRight;
 
@@ -99,7 +99,12 @@ public class EnemyLvl1 : Enemy
                 timerForSpritesRender = 0f;
                 if (!hasPowerup)
                 {
+                    //Debug.Log("currentFrame = " + currentFrame);
+                    //Debug.Log("tankSpritesFacingUp.Length = " + tankSpritesFacingUp.Length);
+                    //Debug.Log("GetArray(currentMoveDirection.x, currentMoveDirection.y).Length = " + GetArray(currentMoveDirection.x, currentMoveDirection.y).Length);
+
                     currentFrame = (currentFrame + 1) % GetArray(currentMoveDirection.x, currentMoveDirection.y).Length;
+                    //currentFrame = (currentFrame + 1) % tankSpritesFacingUp.Length;
                     spriteRenderer.sprite = GetArray(currentMoveDirection.x, currentMoveDirection.y)[currentFrame];
                 }
                 else
@@ -167,6 +172,8 @@ public class EnemyLvl1 : Enemy
             case 1:
                 horizontalInput = -1;
                 verticalInput = 0;
+                //Debug.Log("go left");
+
                 break;
             case 2:
                 horizontalInput = 0;
@@ -184,8 +191,8 @@ public class EnemyLvl1 : Enemy
     private void SetMoveDirection(Vector2 newDirection)
     {
         currentMoveDirection = newDirection;
-        Debug.Log("currentMoveDirection.x = " + currentMoveDirection.x);
-        Debug.Log("currentMoveDirection.y = " + currentMoveDirection.y);
+        //Debug.Log("currentMoveDirection.x = " + currentMoveDirection.x);
+        //Debug.Log("currentMoveDirection.y = " + currentMoveDirection.y);
 
     }
 

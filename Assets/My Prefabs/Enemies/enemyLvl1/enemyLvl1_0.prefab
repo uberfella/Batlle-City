@@ -212,8 +212,8 @@ MonoBehaviour:
   - {fileID: 3896865275560660735, guid: e7f57dedb6bee844fa1faf8e18a8192c, type: 3}
   - {fileID: -6178852970477448957, guid: dbe44c0ede7ad474ea02d61cb557a8bf, type: 3}
   tankSpritesFacingDown:
-  - {fileID: 8029882528978185744, guid: 127ab3dfb2b7c48448d9adef6a801aae, type: 3}
-  - {fileID: 3896341597727679955, guid: 373b6d088107b89469dd83c723910627, type: 3}
+  - {fileID: -7260793549736080487, guid: a16df06235bae814e9800a76f67df0cb, type: 3}
+  - {fileID: 6514813375635014627, guid: f87b47be72e4a02489df405de7ba2dc0, type: 3}
   trackSpritesFacingUpPowerup:
   - {fileID: 1990449650152609478, guid: 924e5bd606db46e409f6db2245390b93, type: 3}
   - {fileID: -2002746298701751958, guid: 1355ec1134606d94fadc20166c659615, type: 3}
