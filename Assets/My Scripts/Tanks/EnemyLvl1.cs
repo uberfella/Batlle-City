@@ -16,10 +16,10 @@ public class EnemyLvl1 : Enemy
     public Sprite[] tankSpritesFacingLeft;
     public Sprite[] tankSpritesFacingRight;
     public Sprite[] tankSpritesFacingDown;
-    public Sprite[] trackSpritesFacingUpPowerup;
-    public Sprite[] trackSpritesFacingLeftPowerup;
-    public Sprite[] trackSpritesFacingRightPowerup;
-    public Sprite[] trackSpritesFacingDownPowerup;
+    public Sprite[] tankSpritesFacingUpPowerup;
+    public Sprite[] tankSpritesFacingLeftPowerup;
+    public Sprite[] tankSpritesFacingRightPowerup;
+    public Sprite[] tankSpritesFacingDownPowerup;
     public float animationSpeed = 0.2f;
     public SpriteRenderer spriteRenderer;
 
@@ -32,35 +32,61 @@ public class EnemyLvl1 : Enemy
     private float changeRandomDirectionTime = 0f;
     private bool cooldownForShootingHasPassed = true;
 
-    private Sprite[] GetArray(float x, float y) 
+    private Sprite[] GetArray(float x, float y, bool hasPowerup) 
     {
-        if (x == 0)
+        if (!hasPowerup)
         {
-            if (y == 1) 
+            if (x == 0)
             {
-                //Debug.Log("sprite up");
-                return tankSpritesFacingUp;
+                if (y == 1)
+                {
+                    //Debug.Log("sprite up");
+                    return tankSpritesFacingUp;
+                }
+                else
+                {
+                    //Debug.Log("sprite down");
+                    return tankSpritesFacingDown;
+                }
+            }
+            else if (x == -1)
+            {
+                //Debug.Log("sprite left");
+                return tankSpritesFacingLeft;
             }
             else
             {
-                //Debug.Log("sprite down");
-
-                return tankSpritesFacingDown;
+                //Debug.Log("sprite right");
+                return tankSpritesFacingRight;
             }
         }
-        else if(x == -1)
+        else
         {
-            //Debug.Log("sprite left");
-
-            return tankSpritesFacingLeft;
+            if (x == 0)
+            {
+                if (y == 1)
+                {
+                    //Debug.Log("sprite up");
+                    return tankSpritesFacingUpPowerup;
+                }
+                else
+                {
+                    //Debug.Log("sprite down");
+                    return tankSpritesFacingDownPowerup;
+                }
+            }
+            else if (x == -1)
+            {
+                //Debug.Log("sprite left");
+                return tankSpritesFacingLeftPowerup;
+            }
+            else
+            {
+                //Debug.Log("sprite right");
+                return tankSpritesFacingRightPowerup;
+            }
         }
-        else 
-        {
-            //Debug.Log("sprite right");
 
-            return tankSpritesFacingRight;
-
-        }
     }
 
     //neccessary for the score counting
@@ -98,19 +124,14 @@ public class EnemyLvl1 : Enemy
             {
                 timerForSpritesRender = 0f;
                 if (!hasPowerup)
-                {
-                    //Debug.Log("currentFrame = " + currentFrame);
-                    //Debug.Log("tankSpritesFacingUp.Length = " + tankSpritesFacingUp.Length);
-                    //Debug.Log("GetArray(currentMoveDirection.x, currentMoveDirection.y).Length = " + GetArray(currentMoveDirection.x, currentMoveDirection.y).Length);
-
-                    currentFrame = (currentFrame + 1) % GetArray(currentMoveDirection.x, currentMoveDirection.y).Length;
-                    //currentFrame = (currentFrame + 1) % tankSpritesFacingUp.Length;
-                    spriteRenderer.sprite = GetArray(currentMoveDirection.x, currentMoveDirection.y)[currentFrame];
+                { 
+                    currentFrame = (currentFrame + 1) % GetArray(currentMoveDirection.x, currentMoveDirection.y, false).Length;
+                    spriteRenderer.sprite = GetArray(currentMoveDirection.x, currentMoveDirection.y, false)[currentFrame];
                 }
                 else
                 {
-                    currentFrame = (currentFrame + 1) % tankSpritesFacingUp.Length;
-                    spriteRenderer.sprite = tankSpritesFacingUp[currentFrame];
+                    currentFrame = (currentFrame + 1) % GetArray(currentMoveDirection.x, currentMoveDirection.y, true).Length;
+                    spriteRenderer.sprite = GetArray(currentMoveDirection.x, currentMoveDirection.y, true)[currentFrame];
                 }
             }
         }

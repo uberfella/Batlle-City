@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 1990449650152609478, guid: 924e5bd606db46e409f6db2245390b93, type: 3}
+  m_Sprite: {fileID: 6255016153575460242, guid: 924e5bd606db46e409f6db2245390b93, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -203,28 +203,28 @@ MonoBehaviour:
   tankExplosionEffectPrefab: {fileID: 7678845025099040012, guid: 2c982297192e5eb4d84b1f33c01df961, type: 3}
   timePassedSinceBlocked: 1.8
   tankSpritesFacingUp:
-  - {fileID: 1990449650152609478, guid: 924e5bd606db46e409f6db2245390b93, type: 3}
-  - {fileID: 2173498293119351491, guid: f73fd73616256ee4e8cd692e6bdedae9, type: 3}
+  - {fileID: 6255016153575460242, guid: 924e5bd606db46e409f6db2245390b93, type: 3}
+  - {fileID: 8207036324564219766, guid: f73fd73616256ee4e8cd692e6bdedae9, type: 3}
   tankSpritesFacingLeft:
-  - {fileID: -7203093472253785129, guid: eda1f3d2d43b0634f850552b30a27f28, type: 3}
-  - {fileID: -2370622157848193781, guid: cc9499ca6993b0b4f9478a0aed7afef6, type: 3}
+  - {fileID: -8048260240170413633, guid: 1ae5dd307551d2041953da42bf8024fe, type: 3}
+  - {fileID: 5807888351276616183, guid: 49924eacc9ef64a45953404ac86f254b, type: 3}
   tankSpritesFacingRight:
-  - {fileID: 3896865275560660735, guid: e7f57dedb6bee844fa1faf8e18a8192c, type: 3}
-  - {fileID: -6178852970477448957, guid: dbe44c0ede7ad474ea02d61cb557a8bf, type: 3}
+  - {fileID: 1693519883186515201, guid: 150f9d587605678439aacb13d609ae34, type: 3}
+  - {fileID: 8473110060432674854, guid: 61e7d5759f5e1b54a89f22f29980caaf, type: 3}
   tankSpritesFacingDown:
   - {fileID: -7260793549736080487, guid: a16df06235bae814e9800a76f67df0cb, type: 3}
   - {fileID: 6514813375635014627, guid: f87b47be72e4a02489df405de7ba2dc0, type: 3}
-  trackSpritesFacingUpPowerup:
-  - {fileID: 1990449650152609478, guid: 924e5bd606db46e409f6db2245390b93, type: 3}
-  - {fileID: -2002746298701751958, guid: 1355ec1134606d94fadc20166c659615, type: 3}
-  trackSpritesFacingLeftPowerup:
-  - {fileID: -7203093472253785129, guid: eda1f3d2d43b0634f850552b30a27f28, type: 3}
-  - {fileID: 4559864365059225918, guid: 0d3d95f967301334c887050e8d2de062, type: 3}
-  trackSpritesFacingRightPowerup:
-  - {fileID: 3896865275560660735, guid: e7f57dedb6bee844fa1faf8e18a8192c, type: 3}
-  - {fileID: 1244241560142485245, guid: e6d99c82ce179d342adcc1a1b46af8d5, type: 3}
-  trackSpritesFacingDownPowerup:
-  - {fileID: 8029882528978185744, guid: 127ab3dfb2b7c48448d9adef6a801aae, type: 3}
-  - {fileID: -6415703742958797821, guid: 9c1e6cc727cf70e4194c4d6008cdec21, type: 3}
+  tankSpritesFacingUpPowerup:
+  - {fileID: 6255016153575460242, guid: 924e5bd606db46e409f6db2245390b93, type: 3}
+  - {fileID: -56821111395576754, guid: 1355ec1134606d94fadc20166c659615, type: 3}
+  tankSpritesFacingLeftPowerup:
+  - {fileID: -8048260240170413633, guid: 1ae5dd307551d2041953da42bf8024fe, type: 3}
+  - {fileID: -4772881552392398649, guid: f01ef7b2ed7d3cf47a4172f9111ee84e, type: 3}
+  tankSpritesFacingRightPowerup:
+  - {fileID: 4060559514732666036, guid: 4bdd05b848b44574595db460675cbe34, type: 3}
+  - {fileID: -1019504746493884578, guid: d4242572ef938ee43b213c1e8982f270, type: 3}
+  tankSpritesFacingDownPowerup:
+  - {fileID: -7260793549736080487, guid: a16df06235bae814e9800a76f67df0cb, type: 3}
+  - {fileID: 8652693188593408822, guid: d85f7dd954926a74db3e0fca4ec1e6e9, type: 3}
   animationSpeed: 0.2
   spriteRenderer: {fileID: 3500331399990593986}
