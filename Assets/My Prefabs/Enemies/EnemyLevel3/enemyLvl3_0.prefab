@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: -368125537421118697}
   - component: {fileID: -1506999913179715171}
   - component: {fileID: 1637047093583612567}
-  - component: {fileID: 2477090364829655654}
-  m_Layer: 12
-  m_Name: enemyLvl4_3
-  m_TagString: EnemyLvl4
+  - component: {fileID: -6685568893880967989}
+  m_Layer: 7
+  m_Name: enemyLvl3_0
+  m_TagString: EnemyLvl3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.4201556, y: -5.112776, z: 0}
-  m_LocalScale: {x: 6.6, y: 6.6, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -80,12 +80,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 4014729691385158549, guid: 620b15450f162014e9c0e20128a66024, type: 3}
+  m_Sprite: {fileID: -7192271013971829751, guid: bca0ce398e178a143ba035a727ffb33e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.13, y: 0.15}
+  m_Size: {x: 0.9375, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -125,17 +125,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0020000935, y: -0.05800152}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.13, y: 0.15}
-    newSize: {x: 0.13, y: 0.15}
+    oldSize: {x: 0.9375, y: 1}
+    newSize: {x: 0.9375, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.12, y: 0.12}
+  m_Size: {x: 0.8200207, y: 0.7720194}
   m_EdgeRadius: 0
 --- !u!50 &-1506999913179715171
 Rigidbody2D:
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalInput: 0
   verticalInput: 0
---- !u!114 &2477090364829655654
+--- !u!114 &-6685568893880967989
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -187,7 +187,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8144844828339306946}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ec524e1ecb11404391f966ad068bb12, type: 3}
+  m_Script: {fileID: 11500000, guid: 830063154c3b3574ab63af35e2a4308e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyIsAlive: 0
@@ -197,25 +197,16 @@ MonoBehaviour:
   aiController: {fileID: 0}
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 4032
+    m_Bits: 8000
   hasPowerup: 0
   enemyType: 0
   tankExplosionEffectPrefab: {fileID: 7678845025099040012, guid: 2c982297192e5eb4d84b1f33c01df961, type: 3}
   timePassedSinceBlocked: 0
-  trackSpritesHealth4:
-  - {fileID: 4014729691385158549, guid: 620b15450f162014e9c0e20128a66024, type: 3}
-  - {fileID: 9015139365796082523, guid: 831675e541260f54fb05030ad769796d, type: 3}
-  trackSpritesHealth3:
-  - {fileID: 6018473771478994763, guid: 52f1b01d81bb9864c95e022207894b84, type: 3}
-  - {fileID: -6495518283801622910, guid: 5015c070b2d160844a47922e1281838b, type: 3}
-  trackSpritesHealth2:
-  - {fileID: -5169297378197142375, guid: 3dfc67b5c8c894940b685313304256a9, type: 3}
-  - {fileID: 3692452868350345197, guid: e1a9c4cd589fcaa40ad85538497a2959, type: 3}
-  trackSpritesHealth1:
-  - {fileID: 3715273155608963290, guid: 6ce6fc2485eaf1242bacfea08583a9c4, type: 3}
-  - {fileID: 2514873839396803644, guid: 3ab0c4632c17cc54b9771e2515208a5c, type: 3}
-  trackSpritesHealth4Powerup:
-  - {fileID: 9015139365796082523, guid: 831675e541260f54fb05030ad769796d, type: 3}
-  - {fileID: -5016984418908435367, guid: b86f1925e43c9274f9c7287f3636a036, type: 3}
+  trackSprites:
+  - {fileID: -7192271013971829751, guid: bca0ce398e178a143ba035a727ffb33e, type: 3}
+  - {fileID: 3849866295676511607, guid: 15d6b81e3b7911245a46e8d77c352cf2, type: 3}
+  trackSpritesPowerup:
+  - {fileID: -7192271013971829751, guid: bca0ce398e178a143ba035a727ffb33e, type: 3}
+  - {fileID: -3702292662418238605, guid: f8160e767beb50a4aaaff02aa7cbcf87, type: 3}
   animationSpeed: 0.2
   spriteRenderer: {fileID: 4052273824527208134}

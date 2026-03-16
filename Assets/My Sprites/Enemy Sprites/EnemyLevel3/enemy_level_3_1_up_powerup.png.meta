@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 40467fee54f8ed1409dd33d64e1a774d
+guid: f8160e767beb50a4aaaff02aa7cbcf87
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4510711692587729205
-    second: enemy_level_3_0_powerup_0
+      213: -3702292662418238605
+    second: enemy_level_3_1_up_powerup_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -48,10 +48,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: enemy_level_3_0_powerup_0
+      name: enemy_level_3_1_up_powerup_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 13
-        height: 15
+        width: 15
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 53184e8b264499e30800000000000000
-      internalID: 4510711692587729205
+      spriteID: 373960a6070de9cc0800000000000000
+      internalID: -3702292662418238605
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      enemy_level_3_0_powerup_0: 4510711692587729205
+      enemy_level_3_1_up_powerup_0: -3702292662418238605
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

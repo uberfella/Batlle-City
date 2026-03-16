@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 4014729691385158549, guid: 620b15450f162014e9c0e20128a66024, type: 3}
+  m_Sprite: {fileID: -1516807050466461731, guid: 8df62e9f18da9df4aaf69ee287ce9588, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -129,7 +129,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.13, y: 0.15}
+    oldSize: {x: 0.9375, y: 1}
     newSize: {x: 0.13, y: 0.15}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -203,17 +203,17 @@ MonoBehaviour:
   tankExplosionEffectPrefab: {fileID: 7678845025099040012, guid: 2c982297192e5eb4d84b1f33c01df961, type: 3}
   timePassedSinceBlocked: 0
   trackSpritesHealth4:
-  - {fileID: 4014729691385158549, guid: 620b15450f162014e9c0e20128a66024, type: 3}
-  - {fileID: 9015139365796082523, guid: 831675e541260f54fb05030ad769796d, type: 3}
+  - {fileID: -1516807050466461731, guid: 8df62e9f18da9df4aaf69ee287ce9588, type: 3}
+  - {fileID: -1477593695650072116, guid: 48b101bce82e810468cda228d33d16ae, type: 3}
   trackSpritesHealth3:
-  - {fileID: 6018473771478994763, guid: 52f1b01d81bb9864c95e022207894b84, type: 3}
-  - {fileID: -6495518283801622910, guid: 5015c070b2d160844a47922e1281838b, type: 3}
+  - {fileID: 1980430981265432278, guid: 76b1dec32a17fd543a5388479121411e, type: 3}
+  - {fileID: -5581806708686843008, guid: ebd71b327433f9e4a946b9838dfd5b23, type: 3}
   trackSpritesHealth2:
-  - {fileID: -5169297378197142375, guid: 3dfc67b5c8c894940b685313304256a9, type: 3}
-  - {fileID: 3692452868350345197, guid: e1a9c4cd589fcaa40ad85538497a2959, type: 3}
+  - {fileID: 7494900436332363179, guid: d422d290e0ae1d24dbd4031050e6cd9e, type: 3}
+  - {fileID: -3344824523233851640, guid: eeb64c4a6b79c6049a3f63a5724d4a52, type: 3}
   trackSpritesHealth1:
-  - {fileID: 3715273155608963290, guid: 6ce6fc2485eaf1242bacfea08583a9c4, type: 3}
-  - {fileID: 2514873839396803644, guid: 3ab0c4632c17cc54b9771e2515208a5c, type: 3}
+  - {fileID: 7901333408391477760, guid: fdf6437e33d71ce4dbe18792ff37cf14, type: 3}
+  - {fileID: -5999979132220124366, guid: 0f57320caa7214d4c88dfb2398952d68, type: 3}
   trackSpritesHealth4Powerup:
   - {fileID: 9015139365796082523, guid: 831675e541260f54fb05030ad769796d, type: 3}
   - {fileID: -5016984418908435367, guid: b86f1925e43c9274f9c7287f3636a036, type: 3}
