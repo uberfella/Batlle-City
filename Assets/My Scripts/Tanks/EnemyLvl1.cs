@@ -26,6 +26,7 @@ public class EnemyLvl1 : Enemy
     private readonly float changeDirectionTime = 0.25f; // Change direction every x milliseconds
     private float shotCooldown = 1f;
     private Vector2 currentMoveDirection = Vector2.zero;
+    private Vector2 lastMoveDirection = Vector2.zero;
     private int currentFrame = 0;
     private float timerForSpritesRender = 0f;
     private float timerForRandomDirection = 0f;
@@ -114,6 +115,14 @@ public class EnemyLvl1 : Enemy
     void Update()
     {
         if (isFrozen) return;
+
+        if (currentMoveDirection != lastMoveDirection)
+        {
+            lastMoveDirection = currentMoveDirection;
+
+            currentFrame = 0;        // reset animation frame
+            UpdateSpriteImmediate(); // update sprite instantly
+        }
 
         //---------------
         //MOVING
@@ -231,6 +240,18 @@ public class EnemyLvl1 : Enemy
                 return 12;
         }
         return 0;
+    }
+
+    void UpdateSpriteImmediate()
+    {
+        if (!hasPowerup)
+        {
+            spriteRenderer.sprite = GetArray(currentMoveDirection.x, currentMoveDirection.y, false)[currentFrame];
+        }
+        else
+        {
+            spriteRenderer.sprite = GetArray(currentMoveDirection.x, currentMoveDirection.y, true)[currentFrame];
+        }
     }
 
 }

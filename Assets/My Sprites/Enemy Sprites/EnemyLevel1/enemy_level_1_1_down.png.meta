@@ -103,7 +103,7 @@ TextureImporter:
       name: enemy_level_1_1_down_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 0
         width: 15
         height: 16

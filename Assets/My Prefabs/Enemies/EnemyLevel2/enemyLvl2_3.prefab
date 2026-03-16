@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 4052273824527208134}
   - component: {fileID: -368125537421118697}
   - component: {fileID: -1506999913179715171}
-  - component: {fileID: -3226369473867036796}
+  - component: {fileID: -8755087150677884623}
   - component: {fileID: 4475221692869912300}
-  m_Layer: 10
-  m_Name: enemyLvl2_1
+  m_Layer: 12
+  m_Name: enemyLvl2_3
   m_TagString: EnemyLvl2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.4201556, y: -5.112776, z: 0}
-  m_LocalScale: {x: 6.6, y: 6.6, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -80,12 +80,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: -2968746264868559177, guid: bdf9df120b94744419736e09a6715db9, type: 3}
+  m_Sprite: {fileID: 848075570362122816, guid: 6d6e6073b1023254988337b508efae21, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.13, y: 0.15}
+  m_Size: {x: 0.9375, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -125,17 +125,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0015302896, y: -0.03060627}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.13, y: 0.15}
-    newSize: {x: 0.13, y: 0.15}
+    oldSize: {x: 0.9375, y: 1}
+    newSize: {x: 0.9375, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.12, y: 0.12}
+  m_Size: {x: 0.8242576, y: 0.8408489}
   m_EdgeRadius: 0
 --- !u!50 &-1506999913179715171
 Rigidbody2D:
@@ -164,7 +164,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &-3226369473867036796
+--- !u!114 &-8755087150677884623
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -197,16 +197,16 @@ MonoBehaviour:
   aiController: {fileID: 0}
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 7104
+    m_Bits: 4032
   hasPowerup: 0
   enemyType: 0
   tankExplosionEffectPrefab: {fileID: 7678845025099040012, guid: 2c982297192e5eb4d84b1f33c01df961, type: 3}
   timePassedSinceBlocked: 1.8
   trackSprites:
-  - {fileID: -2968746264868559177, guid: bdf9df120b94744419736e09a6715db9, type: 3}
-  - {fileID: -1118770404515667921, guid: 404842703316e8c4b989d201c767a1de, type: 3}
+  - {fileID: 848075570362122816, guid: 6d6e6073b1023254988337b508efae21, type: 3}
+  - {fileID: -804477224117139562, guid: 1f3617fc0bb267d499204b389eb00cbf, type: 3}
   trackSpritesPowerup:
-  - {fileID: -1118770404515667921, guid: 404842703316e8c4b989d201c767a1de, type: 3}
-  - {fileID: -6193591728619958343, guid: 4b80d9b7ace029b429b91279bb707a94, type: 3}
+  - {fileID: 848075570362122816, guid: 6d6e6073b1023254988337b508efae21, type: 3}
+  - {fileID: -8536679644579034448, guid: abf31034a3313fd478726dbe2f63a808, type: 3}
   animationSpeed: 0.2
   spriteRenderer: {fileID: 4052273824527208134}
