@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.4201556, y: -5.112776, z: 0}
-  m_LocalScale: {x: 6.6, y: 6.6, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -125,7 +125,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.00479877, y: -0.03039217}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -135,7 +135,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.12, y: 0.12}
+  m_Size: {x: 0.78713846, y: 0.93921566}
   m_EdgeRadius: 0
 --- !u!50 &-1506999913179715171
 Rigidbody2D:
@@ -215,7 +215,7 @@ MonoBehaviour:
   - {fileID: 7901333408391477760, guid: fdf6437e33d71ce4dbe18792ff37cf14, type: 3}
   - {fileID: -5999979132220124366, guid: 0f57320caa7214d4c88dfb2398952d68, type: 3}
   trackSpritesHealth4Powerup:
-  - {fileID: 9015139365796082523, guid: 831675e541260f54fb05030ad769796d, type: 3}
-  - {fileID: -5016984418908435367, guid: b86f1925e43c9274f9c7287f3636a036, type: 3}
+  - {fileID: -1516807050466461731, guid: 8df62e9f18da9df4aaf69ee287ce9588, type: 3}
+  - {fileID: 8000320383904206288, guid: 01741f1ba6bf3fb42aeffdcd39b6c2ea, type: 3}
   animationSpeed: 0.2
   spriteRenderer: {fileID: 4052273824527208134}
