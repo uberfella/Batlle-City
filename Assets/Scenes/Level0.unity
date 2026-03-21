@@ -2304,7 +2304,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.74, y: 3.31, z: -10}
+  m_LocalPosition: {x: 0.55, y: 4.05, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6136,6 +6136,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5113439375438094263, guid: 0a5ea3429a81f9c44939519f83ab6d07, type: 3}
+      propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805867538795743709, guid: 0a5ea3429a81f9c44939519f83ab6d07, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6089627241691270642, guid: 0a5ea3429a81f9c44939519f83ab6d07, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.479
@@ -6176,9 +6184,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8187092367606771518, guid: 0a5ea3429a81f9c44939519f83ab6d07, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8187092367606771518, guid: 0a5ea3429a81f9c44939519f83ab6d07, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8588389452971600557, guid: 0a5ea3429a81f9c44939519f83ab6d07, type: 3}
       propertyPath: godmode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9739,7 +9755,7 @@ MonoBehaviour:
   - {fileID: 805236122}
   - {fileID: 950759007}
   - {fileID: 1387277190}
-  enemiesToSpawn: 4
+  enemiesToSpawn: 1
   enemiesToSpawnText: {fileID: 308609378}
   obstructionMask:
     serializedVersion: 2

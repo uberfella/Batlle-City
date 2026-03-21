@@ -174,8 +174,11 @@ public class PlayerController2D : Tank
             //Debug.Log("Blocked by: " + hit.collider.gameObject.name);
             return true;
         }
+
         return false;
     }
+
+
 
     private void ShootTheGun()
     {
@@ -257,4 +260,39 @@ public class PlayerController2D : Tank
     //        engineIdleSource.Play();
     //}
 
+}
+
+public class RaycastVisualizer : MonoBehaviour
+{
+    public float rayDistance = 10f;
+    private RaycastHit2D hit;
+
+    void Update()
+    {
+        // Perform the raycast (e.g., shooting right from the object)
+        Vector2 direction = transform.right;
+        hit = Physics2D.Raycast(transform.position, direction, rayDistance);
+    }
+
+    // This method draws in the Scene view
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Vector2 origin = transform.position;
+        Vector2 direction = transform.right;
+
+        // If something was hit, draw up to the hit point
+        if (hit.collider != null)
+        {
+            Gizmos.color = Color.green; // Change color to green on hit
+            Gizmos.DrawLine(origin, hit.point);
+            // Optionally draw a small sphere at the hit point
+            Gizmos.DrawWireSphere(hit.point, 0.2f);
+        }
+        else
+        {
+            // Otherwise draw the full length
+            Gizmos.DrawRay(origin, direction * rayDistance);
+        }
+    }
 }
