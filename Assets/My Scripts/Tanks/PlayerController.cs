@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Threading.Tasks;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
@@ -21,6 +22,7 @@ public class PlayerController2D : Tank
     public SpriteRenderer spriteRenderer;
     public static int playerLevel;
     public GameObject tankExplosionEffectPrefab;
+    public float drawGizmoDistance;
 
     private float shootCooldown = 1f;
     private bool cooldownHasPassed = true;
@@ -30,6 +32,8 @@ public class PlayerController2D : Tank
     private float timer = 0f;
     private Shell shell;
     private GameOverSequence gameOverSequence;
+    private Vector2 lastMoveDir;
+    private RaycastHit2D lastHit;
 
     void Start()
     {
@@ -54,7 +58,6 @@ public class PlayerController2D : Tank
 
     void Update()
     {
-        
         if (Input.GetKeyDown(KeyCode.Space) && spawnFreezeIsOver && cooldownHasPassed && !GameLogic.GameOver)
         {
             ShootTheGun();
@@ -113,6 +116,7 @@ public class PlayerController2D : Tank
             Instantiate(tankExplosionEffectPrefab, transform.position, transform.rotation);
             Destroy(gameObject);
             PlayerSpawner.playerLives--;
+            //TODO
             //if (PlayerSpawner.playerLives <= 0)
             //{
             //    gameOverSequence.TriggerGameOver();
@@ -131,12 +135,41 @@ public class PlayerController2D : Tank
     private void PlayerMove(Vector2 moveDir)
     {
 
-        Vector2 targetPosition = rb.position + moveDir * speed * Time.fixedDeltaTime;
+        Vector2 targetPosition = rb.position + speed * Time.fixedDeltaTime * moveDir;
+        Vector2 projectedTargetPosition = targetPosition;
 
-        if (!IsBlocked(targetPosition, moveDir))
+
+        if (IsBlocked(targetPosition, moveDir))
+        {
+            //Debug.Log("moveDir = " + moveDir);
+            //Debug.Log("targetPosition.y = " + targetPosition.y);
+            //Debug.Log("rb.position = " + rb.position);
+            //moveDir = (0.00, 1.00)
+            //targetPosition = (0.62, -2.50)
+            //rb.position = (-1.58, -4.00)
+
+            //Debug.Log(" === ");
+            //Debug.Log("projectedTargetPosition.x = " + projectedTargetPosition.x);
+            //Debug.Log(" === ");
+            projectedTargetPosition.x = targetPosition.x + 2f;
+            Debug.Log(" === ");
+            Debug.Log("projectedTargetPosition.x = " + projectedTargetPosition.x);
+            Debug.Log("projectedTargetPosition.y = " + projectedTargetPosition.y);
+            Debug.Log(" === ");
+            if (!IsBlocked(projectedTargetPosition, moveDir))
+            {
+                Debug.Log(" inside isblocked ");
+                Debug.Log("projectedTargetPosition.x = " + projectedTargetPosition.x);
+                Debug.Log(" inside isblocked ");
+                rb.MovePosition(projectedTargetPosition);
+            }
+        }
+        else
         {
             rb.MovePosition(targetPosition);
         }
+
+
 
         if (horizontalInput == 1)
         {
@@ -159,6 +192,7 @@ public class PlayerController2D : Tank
 
     private bool IsBlocked(Vector2 targetPos, Vector2 moveDir)
     {
+        lastMoveDir = moveDir;
         // Cast a box to detect collisions ahead
         RaycastHit2D hit = Physics2D.BoxCast(
             boxCollider.bounds.center,  // Cast from collider center
@@ -168,6 +202,7 @@ public class PlayerController2D : Tank
             0.1f,                        // Distance to check
             obstacleLayer                // Check against obstacles
         );
+        lastHit = hit;
 
         if (hit.collider != null)
         {
@@ -178,11 +213,47 @@ public class PlayerController2D : Tank
         return false;
     }
 
+    void OnDrawGizmos()
+    {
+        if (boxCollider == null) return;
 
+        //Vector2 direction = Application.isPlaying ? lastMoveDir : Vector2.up;
+        Vector2 direction = lastMoveDir;
+
+        if (direction == Vector2.zero)
+        {
+            direction = transform.up; // force visible direction
+        }
+
+        //float distance = 0.1f;
+
+        Vector2 startCenter = boxCollider.bounds.center;
+        Vector2 size = boxCollider.bounds.size;
+        Vector2 endCenter = startCenter + direction * drawGizmoDistance;
+
+        // Start box (green)
+        //Gizmos.color = Color.green;
+        //Gizmos.DrawWireCube(startCenter, size);
+
+        // End box (red)
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(endCenter, size);
+
+        // Line showing direction
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(startCenter, endCenter);
+
+        if (lastHit.collider != null)
+        {
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawWireCube(lastHit.centroid, size);
+        }
+    }
 
     private void ShootTheGun()
     {
         //Debug.Log("cooldownHasPassed = " + cooldownHasPassed);
+        //Debug.Log("lastMoveDir = " + lastMoveDir);
 
         GameObject shell = Instantiate(shellPrefab, transform.position, transform.rotation);
         shell.GetComponent<Shell>().SetSpeed(projectileSpeed);
@@ -246,6 +317,7 @@ public class PlayerController2D : Tank
         cooldownHasPassed = true;
     }
 
+    //TODO
     //void SwitchToMove()
     //{
     //    engineIdleSource.Pause();
@@ -260,39 +332,4 @@ public class PlayerController2D : Tank
     //        engineIdleSource.Play();
     //}
 
-}
-
-public class RaycastVisualizer : MonoBehaviour
-{
-    public float rayDistance = 10f;
-    private RaycastHit2D hit;
-
-    void Update()
-    {
-        // Perform the raycast (e.g., shooting right from the object)
-        Vector2 direction = transform.right;
-        hit = Physics2D.Raycast(transform.position, direction, rayDistance);
-    }
-
-    // This method draws in the Scene view
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Vector2 origin = transform.position;
-        Vector2 direction = transform.right;
-
-        // If something was hit, draw up to the hit point
-        if (hit.collider != null)
-        {
-            Gizmos.color = Color.green; // Change color to green on hit
-            Gizmos.DrawLine(origin, hit.point);
-            // Optionally draw a small sphere at the hit point
-            Gizmos.DrawWireSphere(hit.point, 0.2f);
-        }
-        else
-        {
-            // Otherwise draw the full length
-            Gizmos.DrawRay(origin, direction * rayDistance);
-        }
-    }
 }
