@@ -23,6 +23,7 @@ public class PlayerController2D : Tank
     public static int playerLevel;
     public GameObject tankExplosionEffectPrefab;
     public float drawGizmoDistance;
+    public float slideWallsDistance;
 
     private float shootCooldown = 1f;
     private bool cooldownHasPassed = true;
@@ -37,11 +38,11 @@ public class PlayerController2D : Tank
 
     void Start()
     {
-
         health = 1;
-        //speed = 2.5f;
-        speed = 5f;
+        speed = 2.5f;
+        //speed = 5f;
         projectileSpeed = 10f;
+        slideWallsDistance = 0.3f;
 
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
@@ -65,7 +66,7 @@ public class PlayerController2D : Tank
             TriggerShootCooldown();
         }
 
-        if (Input.GetKeyDown(KeyCode.Backspace)) 
+        if (Input.GetKeyDown(KeyCode.Backspace))
         {
             godmode = false;
             TriggerInvincibility();
@@ -126,6 +127,7 @@ public class PlayerController2D : Tank
 
     void OnDestroy()
     {
+        playerLevel = 0;
         OnDestroyed?.Invoke(this);
 
         if (AudioManager.Instance != null)
@@ -136,41 +138,53 @@ public class PlayerController2D : Tank
     {
 
         Vector2 targetPosition = rb.position + speed * Time.fixedDeltaTime * moveDir;
-        Vector2 projectedTargetPosition = targetPosition;
-
+        Vector2 targetPositionForSliding = targetPosition;
 
         if (IsBlocked(targetPosition, moveDir))
         {
-            //Debug.Log("moveDir = " + moveDir);
-            //Debug.Log("targetPosition.y = " + targetPosition.y);
-            //Debug.Log("rb.position = " + rb.position);
-            //moveDir = (0.00, 1.00)
-            //targetPosition = (0.62, -2.50)
-            //rb.position = (-1.58, -4.00)
-
-            //Debug.Log(" === ");
-            //Debug.Log("projectedTargetPosition.x = " + projectedTargetPosition.x);
-            //Debug.Log(" === ");
-            projectedTargetPosition.x = targetPosition.x + 2f;
-            Debug.Log(" === ");
-            Debug.Log("projectedTargetPosition.x = " + projectedTargetPosition.x);
-            Debug.Log("projectedTargetPosition.y = " + projectedTargetPosition.y);
-            Debug.Log(" === ");
-            if (!IsBlocked(projectedTargetPosition, moveDir))
+            //sliding walls
+            if (moveDir.x == 0)
             {
-                Debug.Log(" inside isblocked ");
-                Debug.Log("projectedTargetPosition.x = " + projectedTargetPosition.x);
-                Debug.Log(" inside isblocked ");
-                rb.MovePosition(projectedTargetPosition);
+                //up or down
+                targetPositionForSliding.x = targetPosition.x + slideWallsDistance;
+                if (!IsBlocked(targetPositionForSliding, moveDir))
+                {
+                    rb.MovePosition(targetPositionForSliding);
+                }
+                else
+                {
+                    targetPositionForSliding.x = targetPosition.x - slideWallsDistance;
+                    if (!IsBlocked(targetPositionForSliding, moveDir))
+                    {
+                        rb.MovePosition(targetPositionForSliding);
+                    }
+                }
+            }
+            else
+            {
+                //left or right
+                targetPositionForSliding.y = targetPosition.y + slideWallsDistance;
+                if (!IsBlocked(targetPositionForSliding, moveDir))
+                {
+                    rb.MovePosition(targetPositionForSliding);
+                }
+                else
+                {
+                    targetPositionForSliding.y = targetPosition.y - slideWallsDistance;
+                    if (!IsBlocked(targetPositionForSliding, moveDir))
+                    {
+                        rb.MovePosition(targetPositionForSliding);
+                    }
+                }
             }
         }
         else
         {
+            //regular movement
             rb.MovePosition(targetPosition);
         }
 
-
-
+        //player gameobject rotation, sprites always facing up
         if (horizontalInput == 1)
         {
             RotatePlayer(horizontalInput, -90);
@@ -189,17 +203,16 @@ public class PlayerController2D : Tank
             RotatePlayer(-90, verticalInput);
         }
     }
-
     private bool IsBlocked(Vector2 targetPos, Vector2 moveDir)
     {
         lastMoveDir = moveDir;
         // Cast a box to detect collisions ahead
         RaycastHit2D hit = Physics2D.BoxCast(
-            boxCollider.bounds.center,  // Cast from collider center
+            targetPos,  // Cast from collider center
             boxCollider.bounds.size,    // Use actual collider size
             0f,                         // No rotation
             moveDir,                    // Move direction
-            0.1f,                        // Distance to check
+            0.05f,                        // Distance to check
             obstacleLayer                // Check against obstacles
         );
         lastHit = hit;
@@ -252,8 +265,6 @@ public class PlayerController2D : Tank
 
     private void ShootTheGun()
     {
-        //Debug.Log("cooldownHasPassed = " + cooldownHasPassed);
-        //Debug.Log("lastMoveDir = " + lastMoveDir);
 
         GameObject shell = Instantiate(shellPrefab, transform.position, transform.rotation);
         shell.GetComponent<Shell>().SetSpeed(projectileSpeed);
@@ -261,7 +272,7 @@ public class PlayerController2D : Tank
 
     }
 
-    public void PlayerLevelUp() 
+    public void PlayerLevelUp()
     {
         if (playerLevel <= 4)
         {
