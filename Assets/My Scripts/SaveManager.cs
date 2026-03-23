@@ -24,8 +24,8 @@ public class SaveManager : MonoBehaviour
             PlayerPrefs.SetInt("SavedLevel", GameLogic.levelNum);
             //Debug.Log("saving GameLogic.levelNum as " + GameLogic.levelNum);
         }
-        PlayerPrefs.SetInt("PlayerLives", PlayerSpawner.playerLives);
-        PlayerPrefs.SetInt("PlayerUpgrade", PlayerController2D.playerLevel);
+        PlayerPrefs.SetInt("PlayerLives", PlayerProperties.playerLives);
+        PlayerPrefs.SetInt("PlayerUpgrade", PlayerProperties.playerLevel);
         PlayerPrefs.SetInt("HighScoreHasBeenBeaten", highScoreHasBeenBeatenInt);
         //Debug.Log("Saving HighScoreHasBeenBeaten as "+ highScoreHasBeenBeatenInt);
         PlayerPrefs.SetInt("HasSaveData", 1);
@@ -39,8 +39,8 @@ public class SaveManager : MonoBehaviour
         {
             //Debug.Log("restoring GameLogic.levelNum as " + GameLogic.levelNum); 
             GameLogic.levelNum = PlayerPrefs.GetInt("SavedLevel");
-            PlayerSpawner.playerLives = PlayerPrefs.GetInt("PlayerLives");
-            PlayerController2D.playerLevel = PlayerPrefs.GetInt("PlayerUpgrade");
+            PlayerProperties.playerLives = PlayerPrefs.GetInt("PlayerLives");
+            PlayerProperties.playerLevel = PlayerPrefs.GetInt("PlayerUpgrade");
             ScoreCount.highScoreHasBeenBeaten = PlayerPrefs.GetInt("HighScoreHasBeenBeaten") != 0;
             //Debug.Log("Restoring HighScoreHasBeenBeaten as " + PlayerPrefs.GetInt("HighScoreHasBeenBeaten") + " which translates to " + ScoreCount.highScoreHasBeenBeaten + " as a respected boolean");
 

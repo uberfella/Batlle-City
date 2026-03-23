@@ -6,7 +6,7 @@ public class PlayerSpawner : MonoBehaviour
 {
     public Transform spawnPoint;
     public GameObject playerPrefab;
-    public static int playerLives = 2;
+
     public Text playerLivesUI;
 
     private PlayerController2D playerController2D;
@@ -50,7 +50,7 @@ public class PlayerSpawner : MonoBehaviour
     private void OnObjectDestroyed(PlayerController2D obj)
     {
         UpdatePlayerLivesUI();
-        if (playerLives > 0)
+        if (PlayerProperties.playerLives > 0)
         {
             if(!playerController2D.playerIsAlive)
             StartCoroutine(RespawnPlayer());
@@ -63,6 +63,6 @@ public class PlayerSpawner : MonoBehaviour
 
     private void UpdatePlayerLivesUI()
     {
-        playerLivesUI.text = playerLives.ToString();
+        playerLivesUI.text = PlayerProperties.playerLives.ToString();
     }
 }

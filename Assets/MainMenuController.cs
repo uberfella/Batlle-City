@@ -52,7 +52,7 @@ public class MainMenuController : MonoBehaviour
         GameLogic.levelNum = 0;
         ScoreCount.currentScore = 0;
         ScoreCount.highScoreHasBeenBeaten = false;
-        PlayerSpawner.playerLives = 2;
+        PlayerProperties.playerLives = 2;
 
         SceneManager.LoadScene("Level0");
     }

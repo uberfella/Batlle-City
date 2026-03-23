@@ -310,4 +310,4 @@ MonoBehaviour:
   spriteRenderer: {fileID: 6505327073920512807}
   tankExplosionEffectPrefab: {fileID: 7678845025099040012, guid: 2c982297192e5eb4d84b1f33c01df961, type: 3}
   drawGizmoDistance: 0
-  slideWallsDistance: 0
+  slideWallsDistance: 0.2

@@ -7,7 +7,7 @@ public class Powerup_Extralife : Powerup_Superclass
         if (other.gameObject.CompareTag("Player"))
         {
             base.OnTriggerEnter2D(other);
-            PlayerSpawner.playerLives++;
+            PlayerProperties.playerLives++;
             Destroy(gameObject);
         }
     }

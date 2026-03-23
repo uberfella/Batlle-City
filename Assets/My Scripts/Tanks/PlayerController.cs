@@ -20,7 +20,6 @@ public class PlayerController2D : Tank
     public Sprite[] tankLevelFourSprites;
     public float animationSpeed = 0.2f; // Time between frames
     public SpriteRenderer spriteRenderer;
-    public static int playerLevel;
     public GameObject tankExplosionEffectPrefab;
     public float drawGizmoDistance;
     public float slideWallsDistance;
@@ -42,7 +41,7 @@ public class PlayerController2D : Tank
         speed = 2.5f;
         //speed = 5f;
         projectileSpeed = 10f;
-        slideWallsDistance = 0.3f;
+        slideWallsDistance = 0.2f;
 
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
@@ -88,11 +87,11 @@ public class PlayerController2D : Tank
             if (timer >= animationSpeed)
             {
                 timer = 0f;
-                var sprites = GetSpriteBasedOnPlayerLevel(playerLevel);
+                var sprites = GetSpriteBasedOnPlayerLevel(PlayerProperties.playerLevel);
                 if (sprites.Length > 0)
                 {
-                    currentFrame = (currentFrame + 1) % GetSpriteBasedOnPlayerLevel(playerLevel).Length; //0 
-                    spriteRenderer.sprite = GetSpriteBasedOnPlayerLevel(playerLevel)[currentFrame];
+                    currentFrame = (currentFrame + 1) % GetSpriteBasedOnPlayerLevel(PlayerProperties.playerLevel).Length; //0 
+                    spriteRenderer.sprite = GetSpriteBasedOnPlayerLevel(PlayerProperties.playerLevel)[currentFrame];   
                 }
             }
         }
@@ -116,7 +115,8 @@ public class PlayerController2D : Tank
             AudioManager.Instance.PlaySFX(AudioManager.Instance.playerExplodeSound);
             Instantiate(tankExplosionEffectPrefab, transform.position, transform.rotation);
             Destroy(gameObject);
-            PlayerSpawner.playerLives--;
+            PlayerProperties.playerLives--;
+            PlayerProperties.playerLevel = 0;
             //TODO
             //if (PlayerSpawner.playerLives <= 0)
             //{
@@ -127,7 +127,6 @@ public class PlayerController2D : Tank
 
     void OnDestroy()
     {
-        playerLevel = 0;
         OnDestroyed?.Invoke(this);
 
         if (AudioManager.Instance != null)
@@ -274,11 +273,11 @@ public class PlayerController2D : Tank
 
     public void PlayerLevelUp()
     {
-        if (playerLevel <= 4)
+        if (PlayerProperties.playerLevel <= 4)
         {
-            playerLevel++;
+            PlayerProperties.playerLevel++;
             projectileSpeed += 2.5f;
-            Debug.Log("playerLevel = " + playerLevel);
+            Debug.Log("playerLevel = " + PlayerProperties.playerLevel);
         }
     }
 
