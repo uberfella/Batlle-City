@@ -1002,10 +1002,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.16800001
+    x: 0.22343752
     y: 0
-    width: 0.66400003
-    height: 1
+    width: 0.3166667
+    height: 0.35185185
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -1857,13 +1857,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1590473190}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b717df2ec2d48f2499f7278a57638728, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f014687acb0d9a4cb9b8e77c089c94a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   selectorIcon: {fileID: 1590473192}
-  buttons: []
-  buttonsConfirmPanel: []
-  confirmStartPanel: {fileID: 0}
+  buttons:
+  - {fileID: 423697320}
 --- !u!1 &1650849803
 GameObject:
   m_ObjectHideFlags: 0

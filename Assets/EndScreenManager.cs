@@ -10,7 +10,6 @@ public class EndScreenManager : MonoBehaviour
     public GameObject static_ScoreHigh;
     public GameObject scoreHighVal;
 
-
     void Start()
     {
 
@@ -23,10 +22,6 @@ public class EndScreenManager : MonoBehaviour
 
     }
 
-    void Update()
-    {
-
-    }
     IEnumerator HideGameOverImageTextAndShowHiscoreTexts()
     {
         yield return new WaitForSeconds(2.0f);

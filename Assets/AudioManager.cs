@@ -51,26 +51,13 @@ public class AudioManager : MonoBehaviour
     {
         if (IsLevelScene(scene))
         {
-            //PlayMainTheme();
+            PlayMainTheme();
         }
-
-        //if (IsEndScene(scene))
-        //{
-        //    PlayEndingTheme();
-        //}
-
     }
 
     private bool IsLevelScene(Scene scene)
     {
         return scene.name.StartsWith("Level");
-        // or use build index, or a list, your choice
-    }
-
-    private bool IsEndScene(Scene scene)
-    {
-        return scene.name.StartsWith("End");
-        // or use build index, or a list, your choice
     }
 
     private void PlayMainTheme()
@@ -79,15 +66,6 @@ public class AudioManager : MonoBehaviour
             return;
 
         musicSource.clip = mainTheme;
-        musicSource.Play();
-    }
-
-    private void PlayEndingTheme()
-    {
-        if (musicSource.clip == endTheme && musicSource.isPlaying)
-            return;
-
-        musicSource.clip = endTheme;
         musicSource.Play();
     }
 
