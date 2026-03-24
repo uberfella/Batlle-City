@@ -14,7 +14,7 @@ public class MenuSelectorScoreboard : MonoBehaviour
     private int lastUsedIndex = 0;
     private KeyCode selectFirstKey = KeyCode.A;
     private KeyCode selectSecondKey = KeyCode.D;
-    private int offsetForDifferentScenes = 2;
+    private int offsetForDifferentScenes = 5;
     private DestroyedEnemiesDisplay destroyedEnemiesDisplay;
 
 
