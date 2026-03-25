@@ -47,9 +47,21 @@ public class MenuSelectorScoreboard : MonoBehaviour
             MoveRight();
         }
 
-        if ((Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)) && destroyedEnemiesDisplay.scoreBoardHasFinishedDrawing)
+        if ((Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))/* && destroyedEnemiesDisplay.scoreBoardHasFinishedDrawing*/)
         {
-            buttons[currentIndex].onClick.Invoke();
+            if (IsScene("Scoreboard"))
+            {
+                if (destroyedEnemiesDisplay.scoreBoardHasFinishedDrawing)
+                {
+                    buttons[currentIndex].onClick.Invoke();
+
+                }
+            }
+            else if (IsScene("End Scene"))
+            {
+
+                buttons[currentIndex].onClick.Invoke();
+            }
         }
     }
 
@@ -88,5 +100,10 @@ public class MenuSelectorScoreboard : MonoBehaviour
             target.position.y,
             target.position.z
         );
+    }
+
+    bool IsScene(string sceneName)
+    {
+        return SceneManager.GetActiveScene().name == sceneName;
     }
 }

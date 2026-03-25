@@ -5421,7 +5421,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1000158747}
   m_Layer: 0
-  m_Name: MapBoundaries
+  m_Name: Map_boundaries
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10316,10 +10316,11 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 608937062}
   - {fileID: 2121565470}
+  - {fileID: 608937062}
   - {fileID: 1521329354}
   - {fileID: 486619445}
+  - {fileID: 875044224}
   - {fileID: 231930028}
   - {fileID: 800336328}
   - {fileID: 1085376703}
@@ -10331,4 +10332,3 @@ SceneRoots:
   - {fileID: 31332788}
   - {fileID: 4200057}
   - {fileID: 419611468}
-  - {fileID: 875044224}
