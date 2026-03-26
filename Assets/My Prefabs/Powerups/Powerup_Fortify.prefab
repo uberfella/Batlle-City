@@ -155,3 +155,4 @@ MonoBehaviour:
   - {x: 1.245, y: -6.492}
   rotate90Z: 01000001
   fortifyPowerupSprite: {fileID: 3638255777565444822}
+  spriteRenderer: {fileID: 4441940542718265275}

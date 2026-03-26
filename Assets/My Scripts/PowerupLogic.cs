@@ -6,10 +6,10 @@ using UnityEngine.UIElements;
 public enum PowerupType { Fortify, Freeze, Invulnerability, KillAll, Levelup, Extralife }
 
 
-public class DontDestroy : MonoBehaviour
-{
+//public class DontDestroy : MonoBehaviour
+//{
 
-}
+//}
 
 public class PowerupLogic : MonoBehaviour
 {

@@ -8,12 +8,19 @@ public class Powerup_Fortify : Powerup_Superclass
     public Vector2[] spawnPositions; //fortify powerup spawnpositions  
     public List<bool> rotate90Z; //fortify powerup concrete rotations  
     public GameObject fortifyPowerupSprite;
+    public SpriteRenderer spriteRenderer;
+
 
     private List<GameObject> spawnedObjects = new List<GameObject>();
     private bool wasActivated;
     void Start()
     {
         wasActivated = false;
+    }
+    void Update()
+    {
+        float alpha = Mathf.PingPong(Time.time, 1f);
+        spriteRenderer.color = new Color(1f, 1f, 1f, alpha);
     }
 
     // Update is called once per frame

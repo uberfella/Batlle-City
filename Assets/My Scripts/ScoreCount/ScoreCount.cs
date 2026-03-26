@@ -15,15 +15,20 @@ public class ScoreCount : MonoBehaviour
     void Awake()
     {
         highScore = PlayerPrefs.GetInt("Highscore", 0);
+
         if (IsScene("End Scene"))
         {
             highScoreTextForEndscreen.text = highScore.ToString("D6");
         }
-        if (IsScene("Scoreboard"))
+        else if (IsScene("Scoreboard"))
         {
-            highScoreText.text = highScore.ToString("D6");
             UpdateHighScore();
         }
+        else
+        {
+            highScoreText.text = highScore.ToString("D6");
+        }
+
         UpdateCurrentScore();
     }
 

@@ -3,9 +3,16 @@ using UnityEngine;
 public class Powerup_KillAll : Powerup_Superclass
 {
     private Enemy enemy;
+    public SpriteRenderer spriteRenderer;
+
     void Awake()
     {
         enemy = GetComponent<Enemy>();
+    }
+    void Update()
+    {
+        float alpha = Mathf.PingPong(Time.time, 1f);
+        spriteRenderer.color = new Color(1f, 1f, 1f, alpha);
     }
 
     public override void OnTriggerEnter2D(Collider2D other)
@@ -13,15 +20,8 @@ public class Powerup_KillAll : Powerup_Superclass
         if (other.gameObject.CompareTag("Player"))
         {
             base.OnTriggerEnter2D(other);
-            //TryToKillAll();
             Enemy.DestroyAllInLayer();
             Destroy(gameObject);
         }
     }
-
-    //why?
-    //public void TryToKillAll()
-    //{
-    //    Enemy.DestroyAllInLayer();
-    //}
 }

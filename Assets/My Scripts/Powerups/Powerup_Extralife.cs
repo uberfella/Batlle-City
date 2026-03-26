@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Powerup_Extralife : Powerup_Superclass
@@ -12,5 +13,13 @@ public class Powerup_Extralife : Powerup_Superclass
             PlayerProperties.playerLives++;
             Destroy(gameObject);
         }
+        
     }
+
+    void Update()
+    {
+        float alpha = Mathf.PingPong(Time.time, 1f);
+        spriteRenderer.color = new Color(1f, 1f, 1f, alpha);
+    }
+
 }

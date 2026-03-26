@@ -5,6 +5,8 @@ using UnityEngine;
 public class Powerup_Freeze : Powerup_Superclass
 {
     public GameObject freezePowerupSprite;
+    public SpriteRenderer spriteRenderer;
+
     private Spawner spawner;
     private bool wasActivated;
 
@@ -12,6 +14,11 @@ public class Powerup_Freeze : Powerup_Superclass
     {
         wasActivated = false;
         spawner = FindFirstObjectByType<Spawner>();
+    }
+    void Update()
+    {
+        float alpha = Mathf.PingPong(Time.time, 1f);
+        spriteRenderer.color = new Color(1f, 1f, 1f, alpha);
     }
 
     public override void OnTriggerEnter2D(Collider2D other)

@@ -148,3 +148,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   freezePowerupSprite: {fileID: 8312217855205737599}
+  spriteRenderer: {fileID: 3646004121195466302}
