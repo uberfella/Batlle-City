@@ -48,7 +48,7 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
-        enemiesToSpawnText.text = enemiesToSpawn.ToString();
+        //enemiesToSpawnText.text = enemiesToSpawn.ToString();
 
         for (int i = 0; i < enemyAlive.Length; i++)
         {
@@ -88,12 +88,12 @@ public class Spawner : MonoBehaviour
             }
         }
 
-        if (!levelFinished && enemiesToSpawn <= 0 && AllEnemiesDead())
-        {
-            levelFinished = true;
-            //Debug.Log("levelFinished = " + levelFinished);
-            OnLevelFinished();
-        }
+        //if (!levelFinished && enemiesToSpawn <= 0 && AllEnemiesDead())
+        //{
+        //    levelFinished = true;
+        //    //Debug.Log("levelFinished = " + levelFinished);
+        //    OnLevelFinished();
+        //}
     }
 
     public void SpawnEnemy(int index)
@@ -101,7 +101,7 @@ public class Spawner : MonoBehaviour
 
         float checkRadius = 1.0f;
 
-        Transform spawnPoint = spawnPoints[index];
+        Transform spawnPoint = spawnPoints[index]; //0 1 2
 
         //dynamic spawnPoint
         if (index == 3)
@@ -243,8 +243,7 @@ public class Spawner : MonoBehaviour
 }
 
 /*
-3 static spawn points, extra dynamic one
-each point belongs to a separate enemy, enemy index
+3 static spawn points, but 4 enemies with unique indices
 if the enemy with corresponding index dies the new one gets to spawn
 
 there's an x second cooldown before the enemy spawns

@@ -28,9 +28,9 @@ public class PlayerSpawner : MonoBehaviour
 
     private IEnumerator RespawnPlayer()
     {
-        yield return new WaitForSeconds(1f); // Wait for 1 second before respawning (optional)
+        yield return new WaitForSeconds(1f);
 
-        if (!playerController2D.playerIsAlive) // Ensure player is still dead before respawning
+        if (!playerController2D.playerIsAlive)
         {
             GameObject newPlayer = Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
             playerController2D = newPlayer.GetComponent<PlayerController2D>();

@@ -2935,37 +2935,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2148160428099460961, guid: 2038d69f7bba83e4897a350d3109bd69, type: 3}
   m_PrefabInstance: {fileID: 590030058}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &595892388
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 595892389}
-  m_Layer: 0
-  m_Name: Spawn3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &595892389
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 595892388}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.16, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1678111294}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &608937060
 GameObject:
   m_ObjectHideFlags: 0
@@ -7961,7 +7930,6 @@ Transform:
   - {fileID: 805236123}
   - {fileID: 950759008}
   - {fileID: 1387277191}
-  - {fileID: 595892389}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1693803322
@@ -9674,12 +9642,12 @@ MonoBehaviour:
   - {fileID: 805236123}
   - {fileID: 950759008}
   - {fileID: 1387277191}
-  - {fileID: 595892389}
+  - {fileID: 0}
   spawnPointsObjects:
   - {fileID: 805236122}
   - {fileID: 950759007}
   - {fileID: 1387277190}
-  enemiesToSpawn: 1
+  enemiesToSpawn: 4
   enemiesToSpawnText: {fileID: 308609378}
   obstructionMask:
     serializedVersion: 2
