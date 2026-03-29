@@ -6031,11 +6031,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6089627241691270642, guid: 0a5ea3429a81f9c44939519f83ab6d07, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.49
+      value: -5.486
       objectReference: {fileID: 0}
     - target: {fileID: 6089627241691270642, guid: 0a5ea3429a81f9c44939519f83ab6d07, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.19
+      value: 6.037
       objectReference: {fileID: 0}
     - target: {fileID: 6089627241691270642, guid: 0a5ea3429a81f9c44939519f83ab6d07, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6079,7 +6079,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8588389452971600557, guid: 0a5ea3429a81f9c44939519f83ab6d07, type: 3}
       propertyPath: godmode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8588389452971600557, guid: 0a5ea3429a81f9c44939519f83ab6d07, type: 3}
       propertyPath: drawGizmoDistance

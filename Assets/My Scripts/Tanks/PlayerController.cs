@@ -38,8 +38,10 @@ public class PlayerController2D : Tank
     void Start()
     {
         health = 1;
-        speed = 2.5f;
-        //speed = 5f;
+        //speed = 2.5f;
+        speed = 5f;
+        PlayerProperties.playerLevel = 3;
+
         projectileSpeed = 10f;
         slideWallsDistance = 0.2f;
 

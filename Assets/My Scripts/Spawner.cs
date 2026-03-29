@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,13 +21,17 @@ public class Spawner : MonoBehaviour
     public EnemiesList enemiesList;
     public bool levelFinished = false;
 
-    private float timer = 0f;
+    //private float timer = 0f;
     private float cooldownToSpawn = 5f;
     private int iterateOverSpawnList = 0;
     private int enemyIdToSpawn = 0;
+    private int enemyIndexToSpawn = 0;
+    private int currentSpawnPoint = 0;
     private GameObject[] spawnAnim;
     private Renderer[] spawnAnimationRenderer;
-    private int randomSpawnPoint = 0;
+    private bool spawnPointHasEnoughRoom = false;
+    private Transform spawnPoint;
+    //private int randomSpawnPoint = 0;
 
     void Start()
     {
@@ -43,7 +48,12 @@ public class Spawner : MonoBehaviour
             spawnAnim[i] = GameObject.Find($"Spawn{i}");
             spawnAnimationRenderer[i] = spawnAnim[i].GetComponent<Renderer>();
         }
+        
+        enemiesToSpawnText.text = enemiesToSpawn.ToString();
 
+        spawnPoint = spawnPoints[currentSpawnPoint];
+
+        StartCoroutine(SpawnEnemyProcessCoroutine());
     }
 
     void Update()
@@ -96,34 +106,140 @@ public class Spawner : MonoBehaviour
         //}
     }
 
-    public void SpawnEnemy(int enemyIndex)
+    private int GetDeadEnemyIndex(bool[] enemyAlive)
     {
-        float checkRadius = 1.0f;
+        for (int i = 0; i < enemyAlive.Length; i++)
+        {
+            if (enemyAlive[i] == false)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
 
-        //Transform spawnPoint = spawnPoints[enemyIndex];
+    public void SpawnEnemy()
+    {
 
+        if (iterateOverSpawnList < enemiesList.GetEnemiesListForLevel(GameLogic.levelNum).Length)  // No obstructions
+        {
+            enemyIdToSpawn = enemiesList.GetEnemiesListForLevel(GameLogic.levelNum)[iterateOverSpawnList]; //0 1 2 3 4 5 6 7
+        }
 
+        GameObject newEnemy = Instantiate(GetPrefabTypeById(enemyIdToSpawn)[enemyIndexToSpawn], spawnPoint.position, Quaternion.identity);
 
+        EnemyLvl1 scriptEnemyLvl1 = newEnemy.GetComponent<EnemyLvl1>();
+        EnemyLvl2 scriptEnemyLvl2 = newEnemy.GetComponent<EnemyLvl2>();
+        EnemyLvl3 scriptEnemyLvl3 = newEnemy.GetComponent<EnemyLvl3>();
+        EnemyLvl4 scriptEnemyLvl4 = newEnemy.GetComponent<EnemyLvl4>();
+
+        Debug.Log("tag = " + GetTarget(newEnemy.tag));
+        //TODO
+        if (newEnemy.tag.Contains("enemyLvl1"))
+        {
+            scriptEnemyLvl1.hasPowerup = EnemyHasPowerup(enemyIdToSpawn);
+        }
+        else if (newEnemy.tag.Contains("enemyLvl2"))
+        {
+            scriptEnemyLvl2.hasPowerup = EnemyHasPowerup(enemyIdToSpawn);
+        }
+        else if (newEnemy.tag.Contains("enemyLvl3"))
+        {
+            scriptEnemyLvl3.hasPowerup = EnemyHasPowerup(enemyIdToSpawn);
+        }
+        else if (newEnemy.tag.Contains("enemyLvl4"))
+        {
+            scriptEnemyLvl4.hasPowerup = EnemyHasPowerup(enemyIdToSpawn);
+        }
+
+        enemiesToSpawn--;
+
+        enemyAlive[enemyIndexToSpawn] = true;
+        enemiesToSpawnText.text = enemiesToSpawn.ToString();
 
     }
 
-    private IEnumerator EnemySpawnCoroutine()
+    public GameObject GetTarget(string tag)
     {
-        StartCoroutine(ShowPreSpawnAnimation(0));
+        GameObject target = GameObject.FindWithTag(tag);
+        return target; // Returns the reference to the caller
+    }
 
-        yield return new WaitForSeconds(1f);
+    private IEnumerator SpawnEnemyProcessCoroutine()
+    {
 
+        float checkRadius = 1.0f;
 
+        enemyIndexToSpawn = GetDeadEnemyIndex(enemyAlive);
 
+        while (!spawnPointHasEnoughRoom)
+        {
+
+            spawnPoint = spawnPoints[currentSpawnPoint];
+
+            StartCoroutine(ShowPreSpawnAnimation(currentSpawnPoint));
+
+            yield return new WaitForSeconds(1f);
+
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(spawnPoint.position, checkRadius, obstructionMask);
+
+            if (colliders.Length == 0)
+            {
+                spawnPointHasEnoughRoom = true;
+            }
+
+            if (currentSpawnPoint <= 2)
+            {
+                currentSpawnPoint++;
+            }
+            else
+            {
+                currentSpawnPoint = 0;
+            }
+
+        }
+
+        SpawnEnemy();
+
+        spawnPointHasEnoughRoom = false;
+
+        yield return new WaitForSeconds(3f);
+
+        if (GetDeadEnemyIndex(enemyAlive) != -1)
+        {
+            StartCoroutine(SpawnEnemyProcessCoroutine());
+        }
+
+    }
+
+    private bool EnemyHasPowerup(int enemyIdToSpawnLocal) 
+    {
+        if (enemyIdToSpawnLocal % 2 != 0)
+        {
+            //if (enemyIdToSpawnLocal >= 0 && enemyIdToSpawnLocal <= 7)
+            {
+                return true;
+            }
+        }
+        else if (enemyIdToSpawnLocal % 2 == 0)
+        {
+            //if (enemyIdToSpawnLocal >= 0 && enemyIdToSpawnLocal <= 7)
+            {
+                return false;
+            }
+        }
+        return false;
     }
 
     private IEnumerator ShowPreSpawnAnimation(int spawnPointIndex)
     {
         spawnAnimationRenderer[spawnPointIndex].enabled = true;
+        //Debug.Log("showing pre spawn animation at "+ spawnPointIndex);
 
         yield return new WaitForSeconds(1f);
 
-        spawnAnimationRenderer[spawnPointIndex].enabled = true;
+        spawnAnimationRenderer[spawnPointIndex].enabled = false;
+        //Debug.Log("showing pre spawn animation at "+ spawnPointIndex);
 
     }
 
@@ -150,7 +266,7 @@ public class Spawner : MonoBehaviour
     //    {
     //        enemyIdToSpawn = enemiesList.GetEnemiesListForLevel(GameLogic.levelNum)[iterateOverSpawnList]; //0 1 2 3 4 5 6 7
     //        iterateOverSpawnList++;
-    //        GameObject newEnemy = Instantiate(GetPrefabTypeById(enemyIdToSpawn)[index], spawnPoint.position, Quaternion.identity);
+            //GameObject newEnemy = Instantiate(GetPrefabTypeById(enemyIdToSpawn)[index], spawnPoint.position, Quaternion.identity);
 
     //        EnemyLvl1 scriptEnemyLvl1 = newEnemy.GetComponent<EnemyLvl1>();
     //        EnemyLvl2 scriptEnemyLvl2 = newEnemy.GetComponent<EnemyLvl2>();
@@ -270,7 +386,7 @@ public class Spawner : MonoBehaviour
     {
         if (enemiesToSpawn > 0)
         {
-            SpawnEnemy(GetDeadEnemyIndex(enemyAlive));
+            StartCoroutine(SpawnEnemyProcessCoroutine());
         }
         else if (!levelFinished && AllEnemiesDead())
         {
@@ -279,17 +395,7 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    private int GetDeadEnemyIndex(bool[] enemyAlive)
-    {
-        for (int i = 0; i < enemyAlive.Length; i++)
-        {
-            if (enemyAlive[i] == false)
-            {
-                return i;
-            }
-        }
-        return 0;
-    }
+
 
     void OnLevelFinished()
     {
