@@ -124,6 +124,7 @@ public class Spawner : MonoBehaviour
         if (iterateOverSpawnList < enemiesList.GetEnemiesListForLevel(GameLogic.levelNum).Length)  // No obstructions
         {
             enemyIdToSpawn = enemiesList.GetEnemiesListForLevel(GameLogic.levelNum)[iterateOverSpawnList]; //0 1 2 3 4 5 6 7
+            iterateOverSpawnList++;
         }
 
         GameObject newEnemy = Instantiate(GetPrefabTypeById(enemyIdToSpawn)[enemyIndexToSpawn], spawnPoint.position, Quaternion.identity);
@@ -134,23 +135,41 @@ public class Spawner : MonoBehaviour
         EnemyLvl4 scriptEnemyLvl4 = newEnemy.GetComponent<EnemyLvl4>();
 
         Debug.Log("tag = " + GetTarget(newEnemy.tag));
+        //tag = enemyLvl4_0(Clone)(UnityEngine.GameObject)
+        //tag = enemyLvl1_2(Clone)(UnityEngine.GameObject)
+
+
+
         //TODO
-        if (newEnemy.tag.Contains("enemyLvl1"))
+        if (newEnemy.CompareTag("enemyLvl4_0(Clone)"))
         {
+            Debug.Log("tag = " + GetTarget(newEnemy.tag));
+
             scriptEnemyLvl1.hasPowerup = EnemyHasPowerup(enemyIdToSpawn);
         }
         else if (newEnemy.tag.Contains("enemyLvl2"))
         {
+            Debug.Log("tag = " + GetTarget(newEnemy.tag));
+
             scriptEnemyLvl2.hasPowerup = EnemyHasPowerup(enemyIdToSpawn);
         }
         else if (newEnemy.tag.Contains("enemyLvl3"))
         {
+            Debug.Log("tag = " + GetTarget(newEnemy.tag));
+
             scriptEnemyLvl3.hasPowerup = EnemyHasPowerup(enemyIdToSpawn);
         }
-        else if (newEnemy.tag.Contains("enemyLvl4"))
+        else if (newEnemy.tag.Equals("enemyLvl4_0"))
         {
+            Debug.Log("tag = " + GetTarget(newEnemy.tag));
+
             scriptEnemyLvl4.hasPowerup = EnemyHasPowerup(enemyIdToSpawn);
         }
+
+        Debug.Log("= = =");
+
+        Debug.Log("tag = " + GetTarget(newEnemy.tag));
+
 
         enemiesToSpawn--;
 
@@ -188,11 +207,9 @@ public class Spawner : MonoBehaviour
                 spawnPointHasEnoughRoom = true;
             }
 
-            if (currentSpawnPoint <= 2)
-            {
-                currentSpawnPoint++;
-            }
-            else
+            currentSpawnPoint++;
+
+            if (currentSpawnPoint > 2)
             {
                 currentSpawnPoint = 0;
             }
