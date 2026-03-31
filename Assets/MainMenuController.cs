@@ -11,16 +11,10 @@ public class MainMenuController : MonoBehaviour
     {
         GameLogic.GameOver = false;
         GameLogic.Instance.destroyedByType.Clear();
-        Debug.Log("Has saved data " + PlayerPrefs.HasKey("HasSaveData"));
     }
 
     public void TryStartGame()
     {
-        //GameLogic.levelNum = 0;
-        //ScoreCount.currentScore = 0;
-        //ScoreCount.highScoreHasBeenBeaten = false;
-        //PlayerSpawner.playerLives = 2;
-        //SceneManager.LoadScene("Level0");
         if (PlayerPrefs.HasKey("HasSaveData"))
         {
             confirmPanel.SetActive(true);
@@ -33,12 +27,11 @@ public class MainMenuController : MonoBehaviour
 
     public void ContinueGame()
     {
-        SaveManager.LoadGame(); // wherever LoadGame is defined
+        SaveManager.LoadGame();
     }
 
     public void ConfirmYes()
     {
-        //confirmPanel.SetActive(false);
         StartGame();
     }
 

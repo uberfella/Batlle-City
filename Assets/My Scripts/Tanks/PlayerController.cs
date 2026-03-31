@@ -25,6 +25,7 @@ public class PlayerController2D : Tank
     public float slideWallsDistance;
 
     private float shootCooldown = 1f;
+    private float secondShootCooldown = 1f;
     private bool cooldownHasPassed = true;
     private GameObject invincibilityAnim;
     private Renderer invincibilityAnimationRenderer;
@@ -119,11 +120,6 @@ public class PlayerController2D : Tank
             Destroy(gameObject);
             PlayerProperties.playerLives--;
             PlayerProperties.playerLevel = 0;
-            //TODO
-            //if (PlayerSpawner.playerLives <= 0)
-            //{
-            //    gameOverSequence.TriggerGameOver();
-            //}
         }
     }
 
@@ -328,20 +324,5 @@ public class PlayerController2D : Tank
 
         cooldownHasPassed = true;
     }
-
-    //TODO
-    //void SwitchToMove()
-    //{
-    //    engineIdleSource.Pause();
-    //    if (!engineMoveSource.isPlaying)
-    //        engineMoveSource.Play();
-    //}
-
-    //void SwitchToIdle()
-    //{
-    //    engineMoveSource.Pause();
-    //    if (!engineIdleSource.isPlaying)
-    //        engineIdleSource.Play();
-    //}
 
 }

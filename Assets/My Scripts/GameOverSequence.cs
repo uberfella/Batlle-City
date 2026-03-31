@@ -29,7 +29,6 @@ public class GameOverSequence : MonoBehaviour
         {
             AudioManager.Instance.PlaySFX(AudioManager.Instance.gameOverJingle);
             GameLogic.GameOver = true;
-            //Debug.Log("GameOver = " + GameLogic.GameOver);
             SaveManager.EraseSave();
             StartCoroutine(ShowGameOver());
         }

@@ -3,17 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class SaveManager : MonoBehaviour
 {
-
-    private void Start()
-    {
-
-    }
-
-    void Update()
-    {
-        
-    }
-
     public static void SaveGame()
     {
         //PlayerPrefs doesnt support booleans so we use some awkward conversions
@@ -22,27 +11,22 @@ public class SaveManager : MonoBehaviour
         if (GameLogic.levelNum <= GameLogic.finalLevelNum)
         {
             PlayerPrefs.SetInt("SavedLevel", GameLogic.levelNum);
-            //Debug.Log("saving GameLogic.levelNum as " + GameLogic.levelNum);
         }
         PlayerPrefs.SetInt("PlayerLives", PlayerProperties.playerLives);
         PlayerPrefs.SetInt("PlayerUpgrade", PlayerProperties.playerLevel);
         PlayerPrefs.SetInt("HighScoreHasBeenBeaten", highScoreHasBeenBeatenInt);
-        //Debug.Log("Saving HighScoreHasBeenBeaten as "+ highScoreHasBeenBeatenInt);
         PlayerPrefs.SetInt("HasSaveData", 1);
         PlayerPrefs.Save();
-        //Debug.Log("Game saved");
     }
 
     public static void LoadGame()
     {
         if (PlayerPrefs.HasKey("HasSaveData"))
         {
-            //Debug.Log("restoring GameLogic.levelNum as " + GameLogic.levelNum); 
             GameLogic.levelNum = PlayerPrefs.GetInt("SavedLevel");
             PlayerProperties.playerLives = PlayerPrefs.GetInt("PlayerLives");
             PlayerProperties.playerLevel = PlayerPrefs.GetInt("PlayerUpgrade");
             ScoreCount.highScoreHasBeenBeaten = PlayerPrefs.GetInt("HighScoreHasBeenBeaten") != 0;
-            //Debug.Log("Restoring HighScoreHasBeenBeaten as " + PlayerPrefs.GetInt("HighScoreHasBeenBeaten") + " which translates to " + ScoreCount.highScoreHasBeenBeaten + " as a respected boolean");
 
             //loading the game
             if (GameLogic.levelNum < GameLogic.finalLevelNum)
@@ -68,8 +52,6 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.DeleteKey("PlayerLives");
         PlayerPrefs.DeleteKey("PlayerUpgrade");
         PlayerPrefs.DeleteKey("HasSaveData");
-        
-        //Debug.Log("Game erased");
     }
 
 }

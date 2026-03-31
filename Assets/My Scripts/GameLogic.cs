@@ -22,9 +22,9 @@ powerups ✓
 powerups disappear after 10 seconds ✓
 godmode ✓
 main menu and levels system ✓
-    nullpointreference for levelnum text when starting the game over ✓
-    no gameover in level2 and level3 ✓
-    no destroyed base sprite in level2 and level3 ✓
+    fix nullpointreference for levelnum text when starting the game over ✓
+    fix no gameover in level2 and level3 ✓
+    fix no destroyed base sprite in level2 and level3 ✓
 scoreboard on finishing the level with breakdown of each enemy type kill ✓
 freeze powerup affects only tanks that are alive not the ones that would spawn after picking up the powerup ✓
 power-ups spawn on a grid; for example, the spawn position should be divisible by 0.5, 1.0, 1.5 without any remainder ✓
@@ -44,12 +44,13 @@ remove physics from tanks so you can't bump into them and move their bodies ✓
 get rid of objectIsCurrentlyBeingBlocked bool ✓ (cant do that)
 if player has a save and chooses new game theres a confirmation window ✓
 double shoot cooldown on ? player level
-powerups shimmer
+counting score sound effects
+powerups shimmer ✓
 clean code
     Enemy update() unification?
-    rename sprites, variables, scripts like enemyLvl0-3 to one standard so it would make more sense
-    get rid of constant checking variables' values in Update() method, replace em with Coroutines
-    refactor enemy spawn anim
+    rename sprites, variables, scripts like enemyLvl0-3 to one standard so it would make more sense ✓
+    get rid of constant checking variables' values in Update() method, replace em with Coroutines ✓
+    refactor enemy spawn anim ✓
 
 
 
@@ -118,8 +119,6 @@ public class GameLogic : MonoBehaviour
 
         // prevent the data from being unloaded
         DontDestroyOnLoad(gameObject);
-
-        
 
     }
     void Start()
