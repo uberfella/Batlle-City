@@ -30,6 +30,7 @@ public class Spawner : MonoBehaviour
     private GameObject[] spawnAnim;
     private Renderer[] spawnAnimationRenderer;
     private bool spawnPointHasEnoughRoom = false;
+    private bool spawnEnemyProcessIsInProgress = false;
     private Transform spawnPoint;
     //private int randomSpawnPoint = 0;
 
@@ -134,41 +135,33 @@ public class Spawner : MonoBehaviour
         EnemyLvl3 scriptEnemyLvl3 = newEnemy.GetComponent<EnemyLvl3>();
         EnemyLvl4 scriptEnemyLvl4 = newEnemy.GetComponent<EnemyLvl4>();
 
-        Debug.Log("tag = " + GetTarget(newEnemy.tag));
+        //Debug.Log("tag = " + (newEnemy.tag));
         //tag = enemyLvl4_0(Clone)(UnityEngine.GameObject)
         //tag = enemyLvl1_2(Clone)(UnityEngine.GameObject)
 
 
 
         //TODO
-        if (newEnemy.CompareTag("enemyLvl4_0(Clone)"))
+        if (newEnemy.CompareTag("EnemyLvl1"))
         {
-            Debug.Log("tag = " + GetTarget(newEnemy.tag));
 
             scriptEnemyLvl1.hasPowerup = EnemyHasPowerup(enemyIdToSpawn);
         }
-        else if (newEnemy.tag.Contains("enemyLvl2"))
+        else if (newEnemy.CompareTag("EnemyLvl2"))
         {
-            Debug.Log("tag = " + GetTarget(newEnemy.tag));
 
             scriptEnemyLvl2.hasPowerup = EnemyHasPowerup(enemyIdToSpawn);
         }
-        else if (newEnemy.tag.Contains("enemyLvl3"))
+        else if (newEnemy.CompareTag("EnemyLvl3"))
         {
-            Debug.Log("tag = " + GetTarget(newEnemy.tag));
 
             scriptEnemyLvl3.hasPowerup = EnemyHasPowerup(enemyIdToSpawn);
         }
-        else if (newEnemy.tag.Equals("enemyLvl4_0"))
+        else if (newEnemy.CompareTag("EnemyLvl4"))
         {
-            Debug.Log("tag = " + GetTarget(newEnemy.tag));
 
             scriptEnemyLvl4.hasPowerup = EnemyHasPowerup(enemyIdToSpawn);
         }
-
-        Debug.Log("= = =");
-
-        Debug.Log("tag = " + GetTarget(newEnemy.tag));
 
 
         enemiesToSpawn--;
@@ -186,6 +179,7 @@ public class Spawner : MonoBehaviour
 
     private IEnumerator SpawnEnemyProcessCoroutine()
     {
+        spawnEnemyProcessIsInProgress = true;
 
         float checkRadius = 1.0f;
 
@@ -220,9 +214,11 @@ public class Spawner : MonoBehaviour
 
         spawnPointHasEnoughRoom = false;
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
 
-        if (GetDeadEnemyIndex(enemyAlive) != -1)
+        spawnEnemyProcessIsInProgress = false;
+
+        if (GetDeadEnemyIndex(enemyAlive) != -1 && enemiesToSpawn > 0)
         {
             StartCoroutine(SpawnEnemyProcessCoroutine());
         }
@@ -403,7 +399,10 @@ public class Spawner : MonoBehaviour
     {
         if (enemiesToSpawn > 0)
         {
-            StartCoroutine(SpawnEnemyProcessCoroutine());
+            if (!spawnEnemyProcessIsInProgress)
+            {
+                StartCoroutine(SpawnEnemyProcessCoroutine());
+            }
         }
         else if (!levelFinished && AllEnemiesDead())
         {

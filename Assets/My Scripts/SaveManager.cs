@@ -44,7 +44,6 @@ public class SaveManager : MonoBehaviour
             ScoreCount.highScoreHasBeenBeaten = PlayerPrefs.GetInt("HighScoreHasBeenBeaten") != 0;
             //Debug.Log("Restoring HighScoreHasBeenBeaten as " + PlayerPrefs.GetInt("HighScoreHasBeenBeaten") + " which translates to " + ScoreCount.highScoreHasBeenBeaten + " as a respected boolean");
 
-
             //loading the game
             if (GameLogic.levelNum < GameLogic.finalLevelNum)
             {
