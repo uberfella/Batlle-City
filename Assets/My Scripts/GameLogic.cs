@@ -43,7 +43,8 @@ sprites - use sprite atlas (pixel perfect camera) to avoid visible breaks betwee
 remove physics from tanks so you can't bump into them and move their bodies ✓
 get rid of objectIsCurrentlyBeingBlocked bool ✓ (cant do that)
 if player has a save and chooses new game theres a confirmation window ✓
-double shoot cooldown on ? player level
+double shoot cooldown on 2/3 (3/4) player level
+
 counting score sound effects
 powerups shimmer ✓
 clean code

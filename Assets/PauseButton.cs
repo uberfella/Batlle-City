@@ -5,11 +5,6 @@ public class PauseButton : MonoBehaviour
     [SerializeField] private RectTransform pauseText;
     [SerializeField] private Vector2 pausedPosition;
     [SerializeField] private Vector2 hiddenPosition;
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.P) && !GameLogic.GameOver)
@@ -17,13 +12,12 @@ public class PauseButton : MonoBehaviour
             if (PauseManager.Instance.isPaused)
             {
                 PauseManager.Instance.Resume();
-                pauseText.anchoredPosition = hiddenPosition;
-
+                pauseText.anchoredPosition = pausedPosition;
             }
             else
             {
                 PauseManager.Instance.Pause();
-                pauseText.anchoredPosition = pausedPosition;
+                pauseText.anchoredPosition = hiddenPosition;
             }
         }
     }

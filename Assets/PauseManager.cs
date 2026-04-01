@@ -3,9 +3,6 @@ using UnityEngine;
 public class PauseManager : MonoBehaviour
 {
     public static PauseManager Instance;
-
-
-
     public bool isPaused = false;
 
     private void Awake()

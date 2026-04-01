@@ -18,7 +18,7 @@ public class PlayerController2D : Tank
     public Sprite[] tankLevelTwoSprites;
     public Sprite[] tankLevelThreeSprites;
     public Sprite[] tankLevelFourSprites;
-    public float animationSpeed = 0.2f; // Time between frames
+    public float animationSpeed = 0.2f;
     public SpriteRenderer spriteRenderer;
     public GameObject tankExplosionEffectPrefab;
     public float drawGizmoDistance;
@@ -51,7 +51,7 @@ public class PlayerController2D : Tank
         shell = GetComponent<Shell>();
 
         playerIsAlive = true;
-        spawnFreezeIsOver = true;
+        //spawnFreezeIsOver = true;
 
         invincibilityAnim = transform.Find("InvincibilityAnim").gameObject;
         invincibilityAnimationRenderer = invincibilityAnim.GetComponent<Renderer>();
@@ -61,7 +61,7 @@ public class PlayerController2D : Tank
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && spawnFreezeIsOver && cooldownHasPassed && !GameLogic.GameOver)
+        if (Input.GetKeyDown(KeyCode.Space) /*&& spawnFreezeIsOver*/ && cooldownHasPassed && !GameLogic.GameOver)
         {
             ShootTheGun();
             cooldownHasPassed = false;
@@ -103,7 +103,7 @@ public class PlayerController2D : Tank
 
         Vector2 moveDirection = new Vector2(horizontalInput, verticalInput).normalized;
 
-        if (!GameLogic.GameOver && spawnFreezeIsOver)
+        if (!GameLogic.GameOver /*&& spawnFreezeIsOver*/)
         {
             PlayerMove(moveDirection);
         }
@@ -271,11 +271,14 @@ public class PlayerController2D : Tank
 
     public void PlayerLevelUp()
     {
-        if (PlayerProperties.playerLevel <= 4)
+        if (PlayerProperties.playerLevel <= 3)
         {
             PlayerProperties.playerLevel++;
-            projectileSpeed += 2.5f;
             Debug.Log("playerLevel = " + PlayerProperties.playerLevel);
+        }
+        if (PlayerProperties.playerLevel == 1)
+        {
+            projectileSpeed += 2.0f;
         }
     }
 
