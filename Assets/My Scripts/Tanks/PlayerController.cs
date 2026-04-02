@@ -25,8 +25,10 @@ public class PlayerController2D : Tank
     public float slideWallsDistance;
 
     private float shootCooldown = 1f;
-    private float secondShootCooldown = 1f;
+    private float betweenTwoShotsCooldown = 0.25f;
     private bool cooldownHasPassed = true;
+    private bool secondCooldownHasPassed = true;
+    private bool betweenTwoShotsCooldownHasPassed = true;
     private GameObject invincibilityAnim;
     private Renderer invincibilityAnimationRenderer;
     private int currentFrame = 0;
@@ -61,11 +63,26 @@ public class PlayerController2D : Tank
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) /*&& spawnFreezeIsOver*/ && cooldownHasPassed && !GameLogic.GameOver)
+        if (Input.GetKeyDown(KeyCode.Space) && !GameLogic.GameOver)
         {
-            ShootTheGun();
-            cooldownHasPassed = false;
-            TriggerShootCooldown();
+            if (cooldownHasPassed)
+            {
+                ShootTheGun();
+                cooldownHasPassed = false;
+                StartCoroutine(SetShootingCooldownCoroutine());
+            }
+            else
+            {
+                if (PlayerProperties.playerLevel >= 2 && secondCooldownHasPassed)
+                {
+                    ShootTheGun();
+                    secondCooldownHasPassed = false;
+                    StartCoroutine(SetSecondShootingCooldownCoroutine());
+                }
+            }
+
+            //if (Input.GetKeyDown(KeyCode.Space) /*&& spawnFreezeIsOver*/ && cooldownHasPassed && !GameLogic.GameOver)
+            //{
         }
 
         if (Input.GetKeyDown(KeyCode.Backspace))
@@ -317,10 +334,10 @@ public class PlayerController2D : Tank
         }
 
     }
-    public void TriggerShootCooldown()
-    {
-        StartCoroutine(SetShootingCooldownCoroutine());
-    }
+    //public void TriggerShootCooldown()
+    //{
+    //    StartCoroutine(SetShootingCooldownCoroutine());
+    //}
     private IEnumerator SetShootingCooldownCoroutine()
     {
         yield return new WaitForSeconds(shootCooldown);
@@ -328,4 +345,17 @@ public class PlayerController2D : Tank
         cooldownHasPassed = true;
     }
 
+    private IEnumerator SetbetweenTwoShotsCooldownCoroutine()
+    {
+        yield return new WaitForSeconds(betweenTwoShotsCooldown);
+
+        betweenTwoShotsCooldownHasPassed = true;
+    }
+
+    private IEnumerator SetSecondShootingCooldownCoroutine()
+    {
+        yield return new WaitForSeconds(shootCooldown);
+
+        secondCooldownHasPassed = true;
+    }
 }
