@@ -16,10 +16,10 @@ public class PowerupLogic : MonoBehaviour
     public GameObject [] powerupsToSpawn;
     public static PowerupLogic Instance;
     //temporary way to make sure the powerup spawns inside squares nicely
-    //-5.5 -6.5 
-    //6.5 5.5
+    //-5.5 -5.5 
+    //6.5 6.5
     float[] predefinedPosX = { -5.5f, -4.5f, -3.5f, -2.5f, -1.5f, -0.5f, 0.5f, 1.5f, 2.5f, 3.5f, 4.5f, 5.5f, 6.5f }; //13 entries
-    float[] predefinedPosY = { -6.5f, -5.5f, -4.5f, -3.5f, -2.5f, -1.5f, -0.5f, 0.5f, 1.5f, 2.5f, 3.5f, 4.5f, 5.5f };
+    float[] predefinedPosY = { -5.5f, -4.5f, -3.5f, -2.5f, -1.5f, -0.5f, 0.5f, 1.5f, 2.5f, 3.5f, 4.5f, 5.5f, 6.5f };
 
     void Awake()
     {
@@ -38,6 +38,11 @@ public class PowerupLogic : MonoBehaviour
             //Debug.Log("Instantiating the powerup " + instance);
             instance.SetActive(true);
         }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            SpawnRandomPowerupOnField();
+        }
+
     }
 
 
@@ -49,7 +54,7 @@ public class PowerupLogic : MonoBehaviour
         float randomPosY = predefinedPosY[Random.Range(0, 13)];
         int randomPowerUp = Random.Range(0, 6);
         //make sure the powerup doesn't spawn inside the base
-        if (((randomPosY == -6.5f || randomPosY == -5.5f) && (randomPosX == -0.5f || randomPosX == 0.5f || randomPosX == 1.5f)))
+        if (((randomPosY == -5.5f || randomPosY == -4.5f) && (randomPosX == -0.5f || randomPosX == 0.5f || randomPosX == 1.5f)))
         {
             randomPosX = predefinedPosX[Random.Range(0, 13)];
             randomPosY = predefinedPosY[Random.Range(2, 13)];

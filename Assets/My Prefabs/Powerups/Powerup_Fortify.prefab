@@ -119,7 +119,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -149,10 +149,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToSpawn: {fileID: 1864882036422906146, guid: 8705d85ff3ea51d4faa886e344aab811, type: 3}
   spawnPositions:
-  - {x: -0.241, y: -6.495}
-  - {x: 0.004, y: -5.756}
-  - {x: 1.007, y: -5.751}
-  - {x: 1.245, y: -6.492}
+  - {x: -0.25, y: -5.5}
+  - {x: 0, y: -4.75}
+  - {x: 1, y: -4.75}
+  - {x: 1.25, y: -5.5}
   rotate90Z: 01000001
   fortifyPowerupSprite: {fileID: 3638255777565444822}
   spriteRenderer: {fileID: 4441940542718265275}
