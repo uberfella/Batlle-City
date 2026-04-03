@@ -25,6 +25,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip brickDestroyedSound;
     public AudioClip obstacleHitButNotDestroyedSound;
     public AudioClip enemyDecreasingLivesSound;
+    public AudioClip scoreCountingSound;
 
     void Awake()
     {

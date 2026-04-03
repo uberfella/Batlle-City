@@ -305,6 +305,7 @@ MonoBehaviour:
   brickDestroyedSound: {fileID: 8300000, guid: f8c481cdc8bae7c4ba4eed30c01cd0d3, type: 3}
   obstacleHitButNotDestroyedSound: {fileID: 8300000, guid: 13ab031efdc810b4895fced093f47bd0, type: 3}
   enemyDecreasingLivesSound: {fileID: 8300000, guid: bf63624e1ea436a43a2171b2b857a983, type: 3}
+  scoreCountingSound: {fileID: 8300000, guid: 8d11364018009ce4681096607c7e889a, type: 3}
 --- !u!4 &1493151244
 Transform:
   m_ObjectHideFlags: 0

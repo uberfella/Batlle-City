@@ -7,7 +7,8 @@ public class PauseButton : MonoBehaviour
     [SerializeField] private Vector2 hiddenPosition;
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P) && !GameLogic.GameOver)
+        if ((Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Pause)) && 
+            !GameLogic.GameOver)
         {
             if (PauseManager.Instance.isPaused)
             {

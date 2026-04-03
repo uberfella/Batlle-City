@@ -1,6 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
+using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -95,6 +98,8 @@ public class DestroyedEnemiesDisplay : MonoBehaviour
                 startValue = targetValue;
 
             text.text = startValue.ToString();
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.scoreCountingSound);
+
 
             yield return new WaitForSeconds(0.2f);
         }

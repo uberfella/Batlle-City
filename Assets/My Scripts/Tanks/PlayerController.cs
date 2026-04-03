@@ -69,20 +69,19 @@ public class PlayerController2D : Tank
             {
                 ShootTheGun();
                 cooldownHasPassed = false;
+                betweenTwoShotsCooldownHasPassed = false;
                 StartCoroutine(SetShootingCooldownCoroutine());
+                StartCoroutine(SetbetweenTwoShotsCooldownCoroutine());
             }
             else
             {
-                if (PlayerProperties.playerLevel >= 2 && secondCooldownHasPassed)
+                if (PlayerProperties.playerLevel >= 2 && betweenTwoShotsCooldownHasPassed && secondCooldownHasPassed)
                 {
                     ShootTheGun();
                     secondCooldownHasPassed = false;
                     StartCoroutine(SetSecondShootingCooldownCoroutine());
                 }
             }
-
-            //if (Input.GetKeyDown(KeyCode.Space) /*&& spawnFreezeIsOver*/ && cooldownHasPassed && !GameLogic.GameOver)
-            //{
         }
 
         if (Input.GetKeyDown(KeyCode.Backspace))

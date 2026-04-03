@@ -34,7 +34,7 @@ public class PowerupLogic : MonoBehaviour
         {
             //Debug.Log("Backspace is pressed");
 
-            GameObject instance = Instantiate(powerupsToSpawn[3], new Vector2(-1.75f, -5.95f), Quaternion.identity);
+            GameObject instance = Instantiate(powerupsToSpawn[3], new Vector2(-1.5f, -4.45f), Quaternion.identity);
             //Debug.Log("Instantiating the powerup " + instance);
             instance.SetActive(true);
         }
