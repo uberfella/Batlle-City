@@ -9,10 +9,9 @@ public class Powerup_Fortify : Powerup_Superclass
     public List<bool> rotate90Z; //fortify powerup concrete rotations  
     public GameObject fortifyPowerupSprite;
     public SpriteRenderer spriteRenderer;
-
+    public bool wasActivated;
 
     private List<GameObject> spawnedObjects = new List<GameObject>();
-    private bool wasActivated;
     void Start()
     {
         wasActivated = false;
@@ -23,7 +22,6 @@ public class Powerup_Fortify : Powerup_Superclass
         spriteRenderer.color = new Color(1f, 1f, 1f, alpha);
     }
 
-    // Update is called once per frame
     public override void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player") && !wasActivated)
@@ -63,7 +61,7 @@ public class Powerup_Fortify : Powerup_Superclass
         Destroy(gameObject);
     }
 
-    void FortifySpawnConcrete()
+    public void FortifySpawnConcrete()
     {
         for (int i = 0; i < spawnPositions.Length; i++)
         {
@@ -74,7 +72,7 @@ public class Powerup_Fortify : Powerup_Superclass
         }
     }
 
-    void FortifyDespawnConcrete()
+    public void FortifyDespawnConcrete()
     {
         foreach (GameObject obj in spawnedObjects)
         {

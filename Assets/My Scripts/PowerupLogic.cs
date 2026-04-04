@@ -5,16 +5,11 @@ using UnityEngine.UIElements;
 
 public enum PowerupType { Fortify, Freeze, Invulnerability, KillAll, Levelup, Extralife }
 
-
-//public class DontDestroy : MonoBehaviour
-//{
-
-//}
-
 public class PowerupLogic : MonoBehaviour
 {
     public GameObject [] powerupsToSpawn;
     public static PowerupLogic Instance;
+    private Powerup_Fortify powerup_Fortify;
     //temporary way to make sure the powerup spawns inside squares nicely
     //-5.5 -5.5 
     //6.5 6.5
@@ -25,6 +20,7 @@ public class PowerupLogic : MonoBehaviour
     {
         Instance = this;
         DontDestroyOnLoad(gameObject);
+        powerup_Fortify = FindFirstObjectByType<Powerup_Fortify>();
     }
 
     private void Update()
@@ -69,7 +65,7 @@ public class PowerupLogic : MonoBehaviour
 
     }
 
-    public static void DestroyAllPowerUps()
+    public void DestroyAllPowerUps()
     {
         GameObject[] powerups = GameObject.FindGameObjectsWithTag("Powerup");
 
@@ -77,7 +73,13 @@ public class PowerupLogic : MonoBehaviour
         {
             if (obj == null) continue;
             if (obj != null)
+            {
+                if (obj.name == "Powerup_Fortify" && powerup_Fortify.wasActivated)
+                {
+                    continue;
+                }
                 UnityEngine.Object.Destroy(obj);
+            }
         }
     }
 }

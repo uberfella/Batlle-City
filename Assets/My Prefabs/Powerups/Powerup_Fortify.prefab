@@ -149,10 +149,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectToSpawn: {fileID: 1864882036422906146, guid: 8705d85ff3ea51d4faa886e344aab811, type: 3}
   spawnPositions:
-  - {x: -0.25, y: -5.5}
-  - {x: 0, y: -4.75}
-  - {x: 1, y: -4.75}
-  - {x: 1.25, y: -5.5}
+  - {x: -0.25, y: -5.75}
+  - {x: -0.25, y: -4.75}
+  - {x: 0.75, y: -4.75}
+  - {x: 1.25, y: -5.75}
   rotate90Z: 01000001
   fortifyPowerupSprite: {fileID: 3638255777565444822}
   spriteRenderer: {fileID: 4441940542718265275}
