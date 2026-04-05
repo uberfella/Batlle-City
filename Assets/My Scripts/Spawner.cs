@@ -21,7 +21,8 @@ public class Spawner : MonoBehaviour
     public EnemiesList enemiesList;
     public bool levelFinished = false;
 
-    private float cooldownToSpawn = 4f;
+    //TODO
+    private float cooldownToSpawn = 0.5f;
     private int iterateOverSpawnList = 0;
     private int enemyIdToSpawn = 0;
     private int enemyIndexToSpawn = 0;

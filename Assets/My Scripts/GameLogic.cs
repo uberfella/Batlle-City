@@ -44,7 +44,7 @@ remove physics from tanks so you can't bump into them and move their bodies ✓
 get rid of objectIsCurrentlyBeingBlocked bool ✓ (cant do that)
 if player has a save and chooses new game theres a confirmation window ✓
 double shoot cooldown on 2/3 (3/4) player level ✓
-counting score sound effects
+counting score sound effects ✓
 powerups shimmer ✓
 clean code
     Enemy update() unification?
@@ -58,7 +58,7 @@ QUESTIONS
 do enemies have different projectile speeds ? yes
 does player collider changes when leveling up? ✓ no
 does high score gets overriden in real time or it does only when player finishes the level ✓ only when finishing the level either by killing everyone or losing it
-does the game gets saved when finishing the game? ✓ why would it, erase the game when finishing
+does the game gets saved when finishing the game? ✓ it's erasing the game when finishing
 leveledup player can destroy steel wall? yes, on tier four levelup
  * 
  * 
@@ -100,7 +100,7 @@ public class GameLogic : MonoBehaviour
     public static bool GameOver;
     public static GameLogic Instance { get; private set; } = null;
     public static int levelNum = 0;
-    public static int finalLevelNum = 3; //finalLevel 3 == End scene
+    public static int finalLevelNum = 3; //finalLevel 3 = End scene
     public bool isEnemiesFrozen;
     public Dictionary<EnemyType, int> destroyedByType = new();
     private PlayerController2D playerController2D;
@@ -157,6 +157,5 @@ public class GameLogic : MonoBehaviour
     private bool IsScoreboardScene(Scene scene)
     {
         return scene.name.StartsWith("Score");
-        // or use build index, or a list, your choice
     }
 }

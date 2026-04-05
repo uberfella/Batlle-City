@@ -1,28 +1,24 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static Enemy;
 
 public class DestroyedEnemiesDisplay : MonoBehaviour
 {
     public GameObject[] rows;
-    public Text[] enemyCountTexts;   // Size 4 in Inspector
-    public Text[] enemyPointTexts;   // If needed
+    public Text[] enemyCountTexts;
+    public Text[] enemyPointTexts;
     public Text TotalCount;
     public GameObject totalRow;
     public GameObject buttonsRow;
     public GameObject iconSelector;
     public float delayBetweenRows = 0.4f;
     public bool scoreBoardHasFinishedDrawing = false;
-    //public float countDuration = 0.8f;
+
     private int totalCountValue = 0;
     private MenuSelectorScoreboard menuSelectorScoreboard;
+    private float scoreCountingSpeed = 0.15f;
+
     void Start()
     {
         menuSelectorScoreboard = FindFirstObjectByType<MenuSelectorScoreboard>();
@@ -47,8 +43,6 @@ public class DestroyedEnemiesDisplay : MonoBehaviour
 
     IEnumerator ShowScoreboard()
     {
-        //int grandTotal = 0;
-
         for (int i = 0; i < rows.Length; i++)
         {
             rows[i].SetActive(true);
@@ -58,23 +52,16 @@ public class DestroyedEnemiesDisplay : MonoBehaviour
             {
                 int count = GameLogic.Instance.destroyedByType[type];
                 int points = ((i + 1) * 100 * count);
-                yield return StartCoroutine(AnimateNumber(enemyCountTexts[i], count, 1));
+                StartCoroutine(AnimateNumber(enemyCountTexts[i], count, 1));
                 yield return StartCoroutine(AnimateNumber(enemyPointTexts[i], points, 100));
 
             }
-
-            //int points = count * GameLogic.Instance.pointsPerType[type];
-
-
-
-            //grandTotal += points;
 
             yield return new WaitForSeconds(delayBetweenRows);
         }
 
         // TOTAL
         totalRow.SetActive(true);
-        //yield return StartCoroutine(AnimateNumber(TotalCount, totalCountValue));
 
         yield return new WaitForSeconds(0.5f);
 
@@ -100,8 +87,8 @@ public class DestroyedEnemiesDisplay : MonoBehaviour
             text.text = startValue.ToString();
             AudioManager.Instance.PlaySFX(AudioManager.Instance.scoreCountingSound);
 
+            yield return new WaitForSeconds(scoreCountingSpeed);
 
-            yield return new WaitForSeconds(0.2f);
         }
 
         text.text = targetValue.ToString();
