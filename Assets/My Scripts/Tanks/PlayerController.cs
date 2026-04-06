@@ -43,7 +43,6 @@ public class PlayerController2D : Tank
         health = 1;
         //speed = 2.5f;
         speed = 5f;
-        PlayerProperties.playerLevel = 3;
 
         projectileSpeed = 10f;
         slideWallsDistance = 0.2f;
@@ -53,7 +52,8 @@ public class PlayerController2D : Tank
         shell = GetComponent<Shell>();
 
         playerIsAlive = true;
-        //spawnFreezeIsOver = true;
+
+        spriteRenderer.sprite = GetSpriteBasedOnPlayerLevel(PlayerProperties.playerLevel)[currentFrame];
 
         invincibilityAnim = transform.Find("InvincibilityAnim").gameObject;
         invincibilityAnimationRenderer = invincibilityAnim.GetComponent<Renderer>();

@@ -39,7 +39,6 @@ public class SaveManager : MonoBehaviour
             {
                 //delete the save — the games already beaten
                 EraseSave();
-                //load the end screen
                 SceneManager.LoadScene("End Scene");
             }
 

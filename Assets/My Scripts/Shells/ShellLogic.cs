@@ -46,11 +46,7 @@ public class Shell : MonoBehaviour
                 //destroy player's shell
                 Destroy(gameObject);
             }
-            else if (other.gameObject.CompareTag("Brick") ||
-                    other.gameObject.CompareTag("Wall") ||
-                    other.gameObject.CompareTag("Base") ||
-                    other.gameObject.CompareTag("Concrete") ||
-                    other.gameObject.CompareTag("Fortify_Concrete"))
+            else if (ThingsThatShellGetsExplodedOn(tag))
             {
                 if (!other.gameObject.CompareTag("Brick") && !other.gameObject.CompareTag("Base"))
                 {
@@ -113,6 +109,18 @@ public class Shell : MonoBehaviour
         //    //destroy shell
         //    Destroy(gameObject);
         //}
+    }
+
+    private bool ThingsThatShellGetsExplodedOn(string tag)
+    {
+        Debug.Log("checking tag "+tag);
+        if ((tag == "Wall") || (tag == "Brick") || (tag == "Concrete") || (tag == "Base") || (tag == "Fortify_Concrete"))
+        {
+            Debug.Log("destroy shell");
+            return true;
+        }
+        Debug.Log("dont destroy shell");
+        return false;
     }
 
     private void Explode()

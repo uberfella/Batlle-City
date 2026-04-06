@@ -46,7 +46,7 @@ public class MainMenuController : MonoBehaviour
         ScoreCount.currentScore = 0;
         ScoreCount.highScoreHasBeenBeaten = false;
         PlayerProperties.playerLives = 2;
-
+        PlayerProperties.playerLevel = 0;
         SceneManager.LoadScene("Level0");
     }
 }
