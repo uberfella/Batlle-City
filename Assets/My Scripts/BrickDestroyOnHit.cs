@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BrickDestroyOnHit : MonoBehaviour
+public class BrickDestroyOnHit : MonoBehaviour, IDamageable
 {
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -14,6 +14,13 @@ public class BrickDestroyOnHit : MonoBehaviour
             Destroy(gameObject);
             //Debug.Log("HIT");
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        Debug.Log("HIT");
+
+        Destroy(gameObject);
     }
 
 }

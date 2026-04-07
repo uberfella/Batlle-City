@@ -29,73 +29,61 @@ public class Shell : MonoBehaviour
 
     private void FlyForward()
     {
-        transform.position += transform.up * speed * Time.deltaTime;
+        transform.position += speed * Time.deltaTime * transform.up;
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         
-        //the shell is player's
-        if (gameObject.CompareTag("ShellPlayer"))
-        {
-            string tag = other.gameObject.tag;
-            if (IsEnemyTag(tag))
-            {
-                GetTagAndTakeDamage(tag, other.gameObject);
+        //if (gameObject.CompareTag("ShellPlayer"))
+        //{
+        //    if (IsEnemyTag(other.gameObject.tag))
+        //    {
+        //        GetTagAndTakeDamage(other.gameObject.tag, other.gameObject);
+        //    }
+        //    else if (ThingsThatShellExplodeOn(other.gameObject.tag))
+        //    {
+        //        if (!other.gameObject.CompareTag("Brick") && !other.gameObject.CompareTag("Base"))
+        //        {
+        //            AudioManager.Instance.PlaySFX(AudioManager.Instance.obstacleHitButNotDestroyedSound);
+        //        }
+        //        Explode();
+        //    }
+        //    else if (other.gameObject.CompareTag("ShellEnemy"))
+        //    {
+        //        Destroy(other.gameObject);
+        //    }
 
-                //destroy player's shell
-                Destroy(gameObject);
-            }
-            else if (ThingsThatShellGetsExplodedOn(tag))
-            {
-                if (!other.gameObject.CompareTag("Brick") && !other.gameObject.CompareTag("Base"))
-                {
-                    AudioManager.Instance.PlaySFX(AudioManager.Instance.obstacleHitButNotDestroyedSound);
-                }
-                //shell explodes forward and to the left and right
-                Explode();
-                //destroy shell
-                Destroy(gameObject);
-            }
-            //destroy both shells if they collide w each other in mid-air
-            //no sound 
-            else if (other.gameObject.CompareTag("ShellEnemy"))
-            {
-                Destroy(other.gameObject);
-            }
-        }
-        //the shell is enemy's
-        else if (gameObject.CompareTag("ShellEnemy"))
-        {
-            //the enemy shell hits a player
-            if (other.gameObject.CompareTag("Player"))
-            {
-                //if(other.gameObject.)
-                if (!playerController2D.playerIsInvincible)
-                {
-                    PlayerController2D playerController2D = other.gameObject.GetComponent<PlayerController2D>();
-                    playerController2D.TakeDamage(1);
+        //    if (!other.gameObject.CompareTag("Player"))
+        //    {
+        //        Destroy(gameObject);
+        //    }
+        //}
+        //else if (gameObject.CompareTag("ShellEnemy"))
+        //{
+        //    if (other.gameObject.CompareTag("Player"))
+        //    {
+        //        if (!playerController2D.playerIsInvincible)
+        //        {
+        //            PlayerController2D playerController2D = other.gameObject.GetComponent<PlayerController2D>();
+        //            playerController2D.TakeDamage(1);
+        //        }
+        //    }
+        //    else if (ThingsThatShellExplodeOn(tag))
+        //    {
+        //        Explode();
+        //    }
 
-                    //destroy enemy's shell
-                    Destroy(gameObject);
-                }
-                else
-                {
-                    Destroy(gameObject);
-                }
-            }
-            else if (other.gameObject.CompareTag("Brick") ||
-            other.gameObject.CompareTag("Wall") ||
-            other.gameObject.CompareTag("Base") ||
-            other.gameObject.CompareTag("Concrete") ||
-            other.gameObject.CompareTag("Fortify_Concrete"))
-            {
-                //shell explodes forward and to the left and right
-                Explode();
-                //destroy shell
-                Destroy(gameObject);
-            }
-        }
+        //    if (!IsEnemyTag(other.gameObject.tag))
+        //    {
+        //        if (!other.gameObject.CompareTag("Player")) 
+        //        {
+        //            Explode();
+        //        }
+        //        Destroy(gameObject);
+        //    }
+        //}
+
 
         //any shell hits an obstacle
         //if (other.gameObject.CompareTag("Brick") ||
@@ -111,7 +99,21 @@ public class Shell : MonoBehaviour
         //}
     }
 
-    private bool ThingsThatShellGetsExplodedOn(string tag)
+    void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("collision is detected");
+
+        IDamageable target = collision.gameObject.GetComponent<IDamageable>();
+
+        if (target != null)
+        {
+            target.TakeDamage(1);
+        }
+
+        Destroy(gameObject);
+    }
+
+    private bool ThingsThatShellExplodeOn(string tag)
     {
         Debug.Log("checking tag "+tag);
         if ((tag == "Wall") || (tag == "Brick") || (tag == "Concrete") || (tag == "Base") || (tag == "Fortify_Concrete"))
