@@ -7,6 +7,7 @@ public class Shell : MonoBehaviour
     public float speed = 10f;
     public PlayerController2D playerController2D;
     public GameObject explosionEffectPrefab;
+    public Rigidbody2D rb;
     //private ExplosionEffectScript explosionEffect;
     private EnemyLvl1 enemyLvl1;
     private EnemyLvl2 enemyLvl2;
@@ -20,6 +21,7 @@ public class Shell : MonoBehaviour
         enemyLvl3 = GetComponent<EnemyLvl3>();
         enemyLvl4 = GetComponent<EnemyLvl4>();
         playerController2D = FindFirstObjectByType<PlayerController2D>();
+        rb = GetComponent<Rigidbody2D>();
         //explosionEffect = GetComponent<ExplosionEffectScript>();
     }
     void Update()
@@ -29,12 +31,25 @@ public class Shell : MonoBehaviour
 
     private void FlyForward()
     {
-        transform.position += speed * Time.deltaTime * transform.up;
+        //transform.position += speed * Time.deltaTime * transform.up;
+        Debug.Log("speed " + speed);
+        Debug.Log("speed " + speed);
+        rb.linearVelocity = transform.forward * speed;
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        
+        Debug.Log("ontriggerenter " + other);
+
+        IDamageable target = other.GetComponent<IDamageable>();
+
+        if (target != null)
+        {
+            target.TakeDamage(1);
+        }
+
+        Destroy(gameObject);
+
         //if (gameObject.CompareTag("ShellPlayer"))
         //{
         //    if (IsEnemyTag(other.gameObject.tag))
@@ -97,20 +112,6 @@ public class Shell : MonoBehaviour
         //    //destroy shell
         //    Destroy(gameObject);
         //}
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("collision is detected");
-
-        IDamageable target = collision.gameObject.GetComponent<IDamageable>();
-
-        if (target != null)
-        {
-            target.TakeDamage(1);
-        }
-
-        Destroy(gameObject);
     }
 
     private bool ThingsThatShellExplodeOn(string tag)
