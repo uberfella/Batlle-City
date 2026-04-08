@@ -32,13 +32,16 @@ public class Shell : MonoBehaviour
     private void FlyForward()
     {
         //transform.position += speed * Time.deltaTime * transform.up;
-        Debug.Log("speed " + speed);
-        Debug.Log("speed " + speed);
-        rb.linearVelocity = transform.forward * speed;
+        //Debug.Log("speed " + speed);
+        //Debug.Log("speed " + speed);
+        rb.linearVelocity = transform.up * speed;
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.CompareTag("Player"))
+            return;
+
         Debug.Log("ontriggerenter " + other);
 
         IDamageable target = other.GetComponent<IDamageable>();
