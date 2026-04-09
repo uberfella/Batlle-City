@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ShellEnemy : MonoBehaviour
+public class ShellEnemy : Shell
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -12,5 +12,16 @@ public class ShellEnemy : MonoBehaviour
     void Update()
     {
         
+    }
+
+    protected override void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("EnemyLvl1") ||
+            other.CompareTag("EnemyLvl2") ||
+            other.CompareTag("EnemyLvl3") ||
+            other.CompareTag("EnemyLvl4"))
+            return;
+
+        base.OnTriggerEnter2D(other);
     }
 }

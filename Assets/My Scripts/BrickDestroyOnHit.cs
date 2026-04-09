@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BrickDestroyOnHit : MonoBehaviour, IDamageable
+public class BrickDestroyOnHit : MonoBehaviour, IDamageable, IExplodableTarget
 {
     void OnTriggerEnter2D(Collider2D other)
     {

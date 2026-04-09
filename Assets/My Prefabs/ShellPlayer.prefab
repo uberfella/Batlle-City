@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3113253422803577395}
   - component: {fileID: 4436021665238624481}
   - component: {fileID: 2034354482591408985}
-  - component: {fileID: 6379661522935159946}
+  - component: {fileID: 5554954042201668382}
   - component: {fileID: -8243031448967089219}
   m_Layer: 0
   m_Name: ShellPlayer
@@ -136,7 +136,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.06, y: 0.06}
   m_EdgeRadius: 0
---- !u!114 &6379661522935159946
+--- !u!114 &5554954042201668382
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,10 +145,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2980163820454248444}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88a31c47798dcec4489dea7eb63a3b6c, type: 3}
+  m_Script: {fileID: 11500000, guid: f27ba5c8f79e20847b50b57141772cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 60
+  speed: 10
   playerController2D: {fileID: 0}
   explosionEffectPrefab: {fileID: 7678845025099040012, guid: 10fa4a5c4d4b7f14894ef02b00d8c359, type: 3}
   rb: {fileID: -8243031448967089219}
@@ -175,7 +175,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0

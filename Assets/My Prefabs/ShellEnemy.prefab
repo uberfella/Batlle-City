@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3113253422803577395}
   - component: {fileID: 4436021665238624481}
   - component: {fileID: 2034354482591408985}
-  - component: {fileID: 6379661522935159946}
+  - component: {fileID: 4119716641828372648}
   - component: {fileID: 2300136920420368689}
   m_Layer: 0
   m_Name: ShellEnemy
@@ -136,7 +136,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.06, y: 0.06}
   m_EdgeRadius: 0
---- !u!114 &6379661522935159946
+--- !u!114 &4119716641828372648
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2980163820454248444}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88a31c47798dcec4489dea7eb63a3b6c, type: 3}
+  m_Script: {fileID: 11500000, guid: bcc29fa0418a04044865fff032a033a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10

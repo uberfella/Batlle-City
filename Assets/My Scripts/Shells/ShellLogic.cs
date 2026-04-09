@@ -24,7 +24,7 @@ public class Shell : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         //explosionEffect = GetComponent<ExplosionEffectScript>();
     }
-    void Update()
+    void FixedUpdate()
     {
         FlyForward();
     }
@@ -33,16 +33,17 @@ public class Shell : MonoBehaviour
     {
         //transform.position += speed * Time.deltaTime * transform.up;
         //Debug.Log("speed " + speed);
-        //Debug.Log("speed " + speed);
+        //Debug.Log("transform.up " + transform.up);
         rb.linearVelocity = transform.up * speed;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
-            return;
 
-        Debug.Log("ontriggerenter " + other);
+        //if (other.CompareTag("Player"))
+        //    return;
+
+        Debug.Log("ontriggerenter " + other.tag);
 
         IDamageable target = other.GetComponent<IDamageable>();
 
@@ -51,7 +52,15 @@ public class Shell : MonoBehaviour
             target.TakeDamage(1);
         }
 
+        if (other.GetComponent<IExplodableTarget>() != null) 
+        {
+            Explode();
+        }
+
+
         Destroy(gameObject);
+
+
 
         //if (gameObject.CompareTag("ShellPlayer"))
         //{
