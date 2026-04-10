@@ -14,6 +14,8 @@ public class Shell : MonoBehaviour
     private EnemyLvl3 enemyLvl3;
     private EnemyLvl4 enemyLvl4;
 
+    protected Collider2D[] objectsHit;
+
     void Start()
     {
         enemyLvl1 = GetComponent<EnemyLvl1>();
@@ -126,57 +128,47 @@ public class Shell : MonoBehaviour
         //}
     }
 
-    private bool ThingsThatShellExplodeOn(string tag)
-    {
-        Debug.Log("checking tag "+tag);
-        if ((tag == "Wall") || (tag == "Brick") || (tag == "Concrete") || (tag == "Base") || (tag == "Fortify_Concrete"))
-        {
-            Debug.Log("destroy shell");
-            return true;
-        }
-        Debug.Log("dont destroy shell");
-        return false;
-    }
-
-    private void Explode()
+    protected virtual void Explode()
     {
 
         Vector2 explosionCenter = transform.position;
         Vector2 explosionSize = new Vector2(1.0f, 0.25f); // 2.0f left, 2.0f right, 0.5f forward
-        Collider2D[] objectsHit = Physics2D.OverlapBoxAll(explosionCenter, explosionSize, transform.eulerAngles.z);
+        /*Collider2D[] */objectsHit = Physics2D.OverlapBoxAll(explosionCenter, explosionSize, transform.eulerAngles.z);
+
+        Instantiate(explosionEffectPrefab, transform.position, transform.rotation);
 
         //TODO optimize
-        foreach (Collider2D obj in objectsHit)
-        {
-            Instantiate(explosionEffectPrefab, transform.position, transform.rotation);
+        //foreach (Collider2D obj in objectsHit)
+        //{
+        //    Instantiate(explosionEffectPrefab, transform.position, transform.rotation);
 
-            //the shell is player's
-            if (gameObject.CompareTag("ShellPlayer"))
-            {
-                if (obj.CompareTag("Brick"))
-                {
-                    Destroy(obj.gameObject);
-                }
-                else if (IsEnemyTag(tag))
-                {
-                    GetTagAndTakeDamage(tag, obj.gameObject);
-                }
-            }
-            else
-            //the shell is enemy's
-            if (gameObject.CompareTag("ShellEnemy"))
-            {
-                if (obj.CompareTag("Brick"))
-                {
-                    Destroy(obj.gameObject);
-                }
-                if (obj.CompareTag("Player") && !playerController2D.playerIsInvincible)
-                {
-                    PlayerController2D playerController2D = obj.GetComponent<PlayerController2D>();
-                    playerController2D.TakeDamage(1);
-                }
-            }
-        }
+        //    //the shell is player's
+        //    if (gameObject.CompareTag("ShellPlayer"))
+        //    {
+        //        if (obj.CompareTag("Brick"))
+        //        {
+        //            Destroy(obj.gameObject);
+        //        }
+        //        else if (IsEnemyTag(tag))
+        //        {
+        //            GetTagAndTakeDamage(tag, obj.gameObject);
+        //        }
+        //    }
+        //    else
+        //    //the shell is enemy's
+        //    if (gameObject.CompareTag("ShellEnemy"))
+        //    {
+        //        if (obj.CompareTag("Brick"))
+        //        {
+        //            Destroy(obj.gameObject);
+        //        }
+        //        if (obj.CompareTag("Player") && !playerController2D.playerIsInvincible)
+        //        {
+        //            PlayerController2D playerController2D = obj.GetComponent<PlayerController2D>();
+        //            playerController2D.TakeDamage(1);
+        //        }
+        //    }
+        //}
     }
 
     void OnDrawGizmos()

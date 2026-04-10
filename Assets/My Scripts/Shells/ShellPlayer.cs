@@ -21,4 +21,14 @@ public class ShellPlayer : Shell
         base.OnTriggerEnter2D(other);
     }
 
+    protected override void Explode()
+    {
+        base.Explode();
+
+        foreach (Collider2D obj in objectsHit)
+        {
+
+        }
+    }
+
 }
