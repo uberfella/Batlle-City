@@ -2,13 +2,11 @@ using UnityEngine;
 
 public class ShellEnemy : Shell
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -23,5 +21,24 @@ public class ShellEnemy : Shell
             return;
 
         base.OnTriggerEnter2D(other);
+    }
+
+    protected override void Explode()
+    {
+        Vector2 explosionCenter = transform.position;
+        Vector2 explosionSize = new Vector2(3.0f, 3.25f); // 2.0f left, 2.0f right, 0.5f forward
+        Collider2D[] objectsHit = Physics2D.OverlapBoxAll(explosionCenter, explosionSize, transform.eulerAngles.z);
+
+        Instantiate(explosionEffectPrefab, transform.position, transform.rotation);
+
+        foreach (Collider2D obj in objectsHit)
+        {
+            Debug.Log("obj = " + obj);
+            if (obj.GetComponent<IDamageable>() != null)
+            {
+                IDamageable target = obj.GetComponent<IDamageable>();
+                target.TakeDamage(1);
+            }
+        }
     }
 }

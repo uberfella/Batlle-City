@@ -45,7 +45,7 @@ public class Shell : MonoBehaviour
         //if (other.CompareTag("Player"))
         //    return;
 
-        Debug.Log("ontriggerenter " + other.tag);
+        //Debug.Log("ontriggerenter " + other.tag);
 
         IDamageable target = other.GetComponent<IDamageable>();
 
@@ -131,11 +131,11 @@ public class Shell : MonoBehaviour
     protected virtual void Explode()
     {
 
-        Vector2 explosionCenter = transform.position;
-        Vector2 explosionSize = new Vector2(1.0f, 0.25f); // 2.0f left, 2.0f right, 0.5f forward
-        /*Collider2D[] */objectsHit = Physics2D.OverlapBoxAll(explosionCenter, explosionSize, transform.eulerAngles.z);
+        //Vector2 explosionCenter = transform.position;
+        //Vector2 explosionSize = new Vector2(1.0f, 0.25f); // 2.0f left, 2.0f right, 0.5f forward
+        //Collider2D[] objectsHit = Physics2D.OverlapBoxAll(explosionCenter, explosionSize, transform.eulerAngles.z);
 
-        Instantiate(explosionEffectPrefab, transform.position, transform.rotation);
+        //Instantiate(explosionEffectPrefab, transform.position, transform.rotation);
 
         //TODO optimize
         //foreach (Collider2D obj in objectsHit)
@@ -216,7 +216,7 @@ public class Shell : MonoBehaviour
         }
     }
 
-    bool IsEnemyTag(string tag)
+    protected bool IsEnemyTag(string tag)
     {
         return tag == "EnemyLvl1" || tag == "EnemyLvl2" || tag == "EnemyLvl3" || tag == "EnemyLvl4";
     }

@@ -2504,11 +2504,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6089627241691270642, guid: 0a5ea3429a81f9c44939519f83ab6d07, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: -3.53
       objectReference: {fileID: 0}
     - target: {fileID: 6089627241691270642, guid: 0a5ea3429a81f9c44939519f83ab6d07, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.98
+      value: 1.04
       objectReference: {fileID: 0}
     - target: {fileID: 6089627241691270642, guid: 0a5ea3429a81f9c44939519f83ab6d07, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6302,7 +6302,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1345443542
 Transform:
   m_ObjectHideFlags: 0
@@ -9829,7 +9829,7 @@ MonoBehaviour:
   - {fileID: 805236122}
   - {fileID: 950759007}
   - {fileID: 1387277190}
-  enemiesToSpawn: 1
+  enemiesToSpawn: 4
   enemiesToSpawnText: {fileID: 308609378}
   obstructionMask:
     serializedVersion: 2

@@ -15,9 +15,9 @@ public class EnemiesList : MonoBehaviour
     //private int[] level1 = { 2, 3, 2, 3, 0, 1, 3, 4, 6, 6, 7, 0, 1, 1, 1, 2, 3, 0, 1, 1 };
     private int[][] levels =
     {
-        new int[] { 0, 0, 0, 0, 3, 4, 7, 3, 6, 5, 4, 3, 2, 1, 0, 1, 2, 3, 4, 5 }, // level 0
-        new int[] { 0, 1, 1, 0, 0, 1, 1, 0, 1, 2, 3, 0, 1, 1, 1, 2, 3, 0, 1, 1 }, // level 1
-        new int[] { 0, 2, 2, 0, 0, 1, 1, 0, 1, 2, 3, 0, 1, 1, 1, 2, 3, 0, 1, 1 }  // level 2
+        new int[] { 7, 6, 7, 6, 3, 4, 7, 3, 6, 5, 4, 3, 2, 1, 0, 1, 2, 3, 4, 5 }, // level 0
+        new int[] { 7, 6, 7, 6, 0, 1, 1, 0, 1, 2, 3, 0, 1, 1, 1, 2, 3, 0, 1, 1 }, // level 1
+        new int[] { 0, 3, 4, 7, 0, 1, 1, 0, 1, 2, 3, 0, 1, 1, 1, 2, 3, 0, 1, 1 }  // level 2
     };
 
     public int[] GetEnemiesListForLevel(int level)
