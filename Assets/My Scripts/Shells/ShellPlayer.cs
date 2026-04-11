@@ -2,17 +2,6 @@ using UnityEngine;
 
 public class ShellPlayer : Shell
 {
-    
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-
-    }
-
     protected override void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -35,6 +24,11 @@ public class ShellPlayer : Shell
             if (obj.GetComponent<IDamageable>() != null)
             {
                 IDamageable target = obj.GetComponent<IDamageable>();
+                target.TakeDamage(1);
+            }
+            if (obj.GetComponent<IDamageableEnemy>() != null)
+            {
+                IDamageableEnemy target = obj.GetComponent<IDamageableEnemy>();
                 target.TakeDamage(1);
             }
         }

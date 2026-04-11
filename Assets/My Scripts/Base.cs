@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Base : MonoBehaviour
+public class Base : MonoBehaviour, IDamageable, IExplodableTarget
 {
     public GameObject surrenderFlagSprite;
     private PlayerController2D playerController2D;
@@ -12,10 +12,11 @@ public class Base : MonoBehaviour
         gameOverSequence = FindFirstObjectByType<GameOverSequence>();
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    //void OnTriggerEnter2D(Collider2D other)
+    public void TakeDamage(int damage)
     {
-        
-        if (other.gameObject.CompareTag("ShellPlayer") || other.gameObject.CompareTag("ShellEnemy"))
+        //if (other.gameObject.CompareTag("ShellPlayer") || other.gameObject.CompareTag("ShellEnemy"))
+        if (true)
         {
             //Debug.Log("trying to destroy base");
             if (playerController2D.godmode)

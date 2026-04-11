@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Enemy : Tank, IDamageable
+public class Enemy : Tank, IDamageableEnemy
 {
     public GameObject shellPrefab;
     public int scoreOnDestroy;

@@ -33,19 +33,11 @@ public class Shell : MonoBehaviour
 
     private void FlyForward()
     {
-        //transform.position += speed * Time.deltaTime * transform.up;
-        //Debug.Log("speed " + speed);
-        //Debug.Log("transform.up " + transform.up);
         rb.linearVelocity = transform.up * speed;
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
-
-        //if (other.CompareTag("Player"))
-        //    return;
-
-        //Debug.Log("ontriggerenter " + other.tag);
 
         IDamageable target = other.GetComponent<IDamageable>();
 
@@ -58,7 +50,6 @@ public class Shell : MonoBehaviour
         {
             Explode();
         }
-
 
         Destroy(gameObject);
 
@@ -78,98 +69,9 @@ public class Shell : MonoBehaviour
         //        }
         //        Explode();
         //    }
-        //    else if (other.gameObject.CompareTag("ShellEnemy"))
-        //    {
-        //        Destroy(other.gameObject);
-        //    }
-
-        //    if (!other.gameObject.CompareTag("Player"))
-        //    {
-        //        Destroy(gameObject);
-        //    }
-        //}
-        //else if (gameObject.CompareTag("ShellEnemy"))
-        //{
-        //    if (other.gameObject.CompareTag("Player"))
-        //    {
-        //        if (!playerController2D.playerIsInvincible)
-        //        {
-        //            PlayerController2D playerController2D = other.gameObject.GetComponent<PlayerController2D>();
-        //            playerController2D.TakeDamage(1);
-        //        }
-        //    }
-        //    else if (ThingsThatShellExplodeOn(tag))
-        //    {
-        //        Explode();
-        //    }
-
-        //    if (!IsEnemyTag(other.gameObject.tag))
-        //    {
-        //        if (!other.gameObject.CompareTag("Player")) 
-        //        {
-        //            Explode();
-        //        }
-        //        Destroy(gameObject);
-        //    }
-        //}
-
-
-        //any shell hits an obstacle
-        //if (other.gameObject.CompareTag("Brick") ||
-        //    other.gameObject.CompareTag("Wall") ||
-        //    other.gameObject.CompareTag("Base") ||
-        //    other.gameObject.CompareTag("Concrete") ||
-        //    other.gameObject.CompareTag("Fortify_Concrete"))
-        //{
-        //    //shell explodes forward and to the left and right
-        //    Explode();
-        //    //destroy shell
-        //    Destroy(gameObject);
-        //}
     }
 
-    protected virtual void Explode()
-    {
-
-        //Vector2 explosionCenter = transform.position;
-        //Vector2 explosionSize = new Vector2(1.0f, 0.25f); // 2.0f left, 2.0f right, 0.5f forward
-        //Collider2D[] objectsHit = Physics2D.OverlapBoxAll(explosionCenter, explosionSize, transform.eulerAngles.z);
-
-        //Instantiate(explosionEffectPrefab, transform.position, transform.rotation);
-
-        //TODO optimize
-        //foreach (Collider2D obj in objectsHit)
-        //{
-        //    Instantiate(explosionEffectPrefab, transform.position, transform.rotation);
-
-        //    //the shell is player's
-        //    if (gameObject.CompareTag("ShellPlayer"))
-        //    {
-        //        if (obj.CompareTag("Brick"))
-        //        {
-        //            Destroy(obj.gameObject);
-        //        }
-        //        else if (IsEnemyTag(tag))
-        //        {
-        //            GetTagAndTakeDamage(tag, obj.gameObject);
-        //        }
-        //    }
-        //    else
-        //    //the shell is enemy's
-        //    if (gameObject.CompareTag("ShellEnemy"))
-        //    {
-        //        if (obj.CompareTag("Brick"))
-        //        {
-        //            Destroy(obj.gameObject);
-        //        }
-        //        if (obj.CompareTag("Player") && !playerController2D.playerIsInvincible)
-        //        {
-        //            PlayerController2D playerController2D = obj.GetComponent<PlayerController2D>();
-        //            playerController2D.TakeDamage(1);
-        //        }
-        //    }
-        //}
-    }
+    protected virtual void Explode(){}
 
     void OnDrawGizmos()
     {
@@ -182,42 +84,5 @@ public class Shell : MonoBehaviour
     public void SetSpeed(float newSpeed) 
     {
         speed = newSpeed;
-    }
-
-    private void GetTagAndTakeDamage(string tag, GameObject other)
-    {
-        Enemy enemy = other.GetComponent<Enemy>();
-        switch (tag)
-        {
-            case "EnemyLvl1":
-                if (enemy != null)
-                {
-                    enemy.TakeDamage(1);
-                }
-                break;
-            case "EnemyLvl2":
-                if (enemy != null)
-                {
-                    enemy.TakeDamage(1);
-                }
-                break;
-            case "EnemyLvl3":
-                if (enemy != null)
-                {
-                    enemy.TakeDamage(1);
-                }
-                break;
-            case "EnemyLvl4":
-                if (enemy != null)
-                {
-                    enemy.TakeDamage(1);
-                }
-                break;
-        }
-    }
-
-    protected bool IsEnemyTag(string tag)
-    {
-        return tag == "EnemyLvl1" || tag == "EnemyLvl2" || tag == "EnemyLvl3" || tag == "EnemyLvl4";
     }
 }

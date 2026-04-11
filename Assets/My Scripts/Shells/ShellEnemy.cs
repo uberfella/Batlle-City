@@ -2,16 +2,6 @@ using UnityEngine;
 
 public class ShellEnemy : Shell
 {
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
     protected override void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("EnemyLvl1") ||
@@ -19,6 +9,13 @@ public class ShellEnemy : Shell
             other.CompareTag("EnemyLvl3") ||
             other.CompareTag("EnemyLvl4"))
             return;
+
+        IDamageablePlayer targetPlayer = other.GetComponent<IDamageablePlayer>();
+
+        if (targetPlayer != null)
+        {
+            targetPlayer.TakeDamage(1);
+        }
 
         base.OnTriggerEnter2D(other);
     }
@@ -37,6 +34,11 @@ public class ShellEnemy : Shell
             if (obj.GetComponent<IDamageable>() != null)
             {
                 IDamageable target = obj.GetComponent<IDamageable>();
+                target.TakeDamage(1);
+            }
+            if (obj.GetComponent<IDamageablePlayer>() != null)
+            {
+                IDamageablePlayer target = obj.GetComponent<IDamageablePlayer>();
                 target.TakeDamage(1);
             }
         }

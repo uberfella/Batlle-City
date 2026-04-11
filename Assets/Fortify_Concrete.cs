@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ConcreteDestroyOnHit : MonoBehaviour, IDamageable, IExplodableTarget
+public class Fortify_Concrete : MonoBehaviour, IDamageable, IExplodableTarget
 {
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -15,4 +15,4 @@ public class ConcreteDestroyOnHit : MonoBehaviour, IDamageable, IExplodableTarge
         //AudioManager.Instance.PlaySFX(AudioManager.Instance.brickDestroyedSound);
         Destroy(gameObject);
     }
-}   
+}
