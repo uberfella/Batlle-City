@@ -283,6 +283,7 @@ public class PlayerController2D : Tank, IDamageablePlayer
 
     private void ShootTheGun()
     {
+        Debug.Log("playerLevel = " + PlayerProperties.playerLevel);
 
         GameObject shell = Instantiate(shellPrefab, transform.position, transform.rotation);
         shell.GetComponent<Shell>().SetSpeed(projectileSpeed);

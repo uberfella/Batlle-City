@@ -4,15 +4,18 @@ public class Fortify_Concrete : MonoBehaviour, IDamageable, IExplodableTarget
 {
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (PlayerProperties.playerLevel >= 3 && other.gameObject.CompareTag("ShellPlayer"))
-        {
-            TakeDamage(1);
-        }
+        //if (other.gameObject.CompareTag("ShellPlayer"))
+        //{
+        //    AudioManager.Instance.PlaySFX(AudioManager.Instance.obstacleHitButNotDestroyedSound);
+        //    if (PlayerProperties.playerLevel >= 3)
+        //    {
+        //        TakeDamage(1);
+        //    }
+        //}
     }
 
     public void TakeDamage(int damage)
     {
-        //AudioManager.Instance.PlaySFX(AudioManager.Instance.brickDestroyedSound);
         Destroy(gameObject);
     }
 }
