@@ -13,7 +13,7 @@ public class Base : MonoBehaviour, IDamageable, IExplodableTarget
     }
 
     //void OnTriggerEnter2D(Collider2D other)
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, IDamageSource source)
     {
         //if (other.gameObject.CompareTag("ShellPlayer") || other.gameObject.CompareTag("ShellEnemy"))
         if (true)

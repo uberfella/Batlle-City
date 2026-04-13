@@ -14,7 +14,7 @@ public class Fortify_Concrete : MonoBehaviour, IDamageable, IExplodableTarget
         //}
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, IDamageSource source)
     {
         Destroy(gameObject);
     }

@@ -4,10 +4,10 @@ public class BrickDestroyOnHit : MonoBehaviour, IDamageable, IExplodableTarget
 {
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("ShellPlayer"))
-        {
-            AudioManager.Instance.PlaySFX(AudioManager.Instance.brickDestroyedSound);
-        }
+        //if (other.gameObject.CompareTag("ShellPlayer"))
+        //{
+        //    AudioManager.Instance.PlaySFX(AudioManager.Instance.brickDestroyedSound);
+        //}
         ////Debug.Log("OnTriggerEnter2D");
         //if (other.gameObject.CompareTag("ShellPlayer") || other.gameObject.CompareTag("ShellEnemy"))
         //{
@@ -17,9 +17,15 @@ public class BrickDestroyOnHit : MonoBehaviour, IDamageable, IExplodableTarget
 
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, IDamageSource source)
     {
-        //AudioManager.Instance.PlaySFX(AudioManager.Instance.brickDestroyedSound);
+        Debug.Log("source = "+source);
+        Debug.Log("source.Team = " + source.Team);
+        //if (source.Owner.CompareTag("Player"))
+        if (source.Team == Team.Player)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.brickDestroyedSound);
+        }
         Destroy(gameObject);
     }
 

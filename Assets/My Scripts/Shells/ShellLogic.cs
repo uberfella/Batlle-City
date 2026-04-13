@@ -1,9 +1,8 @@
 using System;
 using UnityEngine;
 
-public class Shell : MonoBehaviour
+public class Shell : MonoBehaviour, IDamageSource
 {
-
     public float speed = 10f;
     public PlayerController2D playerController2D;
     public GameObject explosionEffectPrefab;
@@ -15,6 +14,15 @@ public class Shell : MonoBehaviour
     private EnemyLvl4 enemyLvl4;
 
     protected Collider2D[] objectsHit;
+    public GameObject Owner { get; private set; }
+
+    public void Init(GameObject owner, Team team)
+    {
+        Owner = owner;
+        Team = team;
+    }
+
+    public Team Team { get; private set; }
 
     void Start()
     {
@@ -43,12 +51,12 @@ public class Shell : MonoBehaviour
 
         if (target != null)
         {
-            target.TakeDamage(1);
+            target.TakeDamage(1, this);
         }
 
         if (other.GetComponent<IExplodableTarget>() != null) 
         {
-            Explode();
+            //Explode();
         }
 
         Destroy(gameObject);

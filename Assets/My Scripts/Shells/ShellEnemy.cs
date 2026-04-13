@@ -38,7 +38,7 @@ public class ShellEnemy : Shell
             if (obj.GetComponent<IDamageable>() != null)
             {
                 IDamageable target = obj.GetComponent<IDamageable>();
-                target.TakeDamage(1);
+                target.TakeDamage(1, this);
             }
             if (obj.GetComponent<IDamageablePlayer>() != null)
             {
