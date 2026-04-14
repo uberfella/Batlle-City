@@ -58,8 +58,10 @@ public class Shell : MonoBehaviour, IDamageSource
         {
             //Explode();
         }
-
-        Destroy(gameObject);
+        else if (target != null)
+        {
+            Destroy(gameObject);
+        }
 
 
 

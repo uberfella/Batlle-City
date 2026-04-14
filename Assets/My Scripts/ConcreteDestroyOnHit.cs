@@ -12,7 +12,13 @@ public class ConcreteDestroyOnHit : MonoBehaviour, IDamageable, IExplodableTarge
 
     public void TakeDamage(int damage, IDamageSource source)
     {
-        //AudioManager.Instance.PlaySFX(AudioManager.Instance.brickDestroyedSound);
-        //Destroy(gameObject);
+        if (source.Team == Team.Player)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.obstacleHitButNotDestroyedSound);
+            if (PlayerProperties.playerLevel >= 3)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 }   

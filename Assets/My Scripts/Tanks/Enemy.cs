@@ -76,7 +76,9 @@ public class Enemy : Tank, IDamageableEnemy
     }
     protected void ShootTheGun()
     {
-        Instantiate(shellPrefab, transform.position, transform.rotation);
+        GameObject shellObject = Instantiate(shellPrefab, transform.position, transform.rotation);
+        Shell shell = shellObject.GetComponent<Shell>();
+        shell.Init(gameObject, Team.Enemy);
     }
 
     protected void EnemyMove(Vector2 moveDir)

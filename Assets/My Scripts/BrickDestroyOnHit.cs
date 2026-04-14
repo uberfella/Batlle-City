@@ -19,8 +19,8 @@ public class BrickDestroyOnHit : MonoBehaviour, IDamageable, IExplodableTarget
 
     public void TakeDamage(int damage, IDamageSource source)
     {
-        Debug.Log("source = "+source);
-        Debug.Log("source.Team = " + source.Team);
+        //Debug.Log("source = "+source);
+        //Debug.Log("source.Team = " + source.Team);
         //if (source.Owner.CompareTag("Player"))
         if (source.Team == Team.Player)
         {
