@@ -24,7 +24,12 @@ public class Powerup_Fortify : Powerup_Superclass
 
     public override void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player") && !wasActivated)
+        if (wasActivated)
+        {
+            return;
+        }
+
+        if (other.gameObject.CompareTag("Player"))
         {
             wasActivated = true;
             base.OnTriggerEnter2D(other);

@@ -1,7 +1,8 @@
 using System;
 using UnityEngine;
+using static Unity.VisualScripting.Member;
 
-public class Enemy : Tank, IDamageableEnemy
+public class Enemy : Tank, IDamageable
 {
     public GameObject shellPrefab;
     public int scoreOnDestroy;
@@ -51,7 +52,7 @@ public class Enemy : Tank, IDamageableEnemy
         
     }
 
-    public virtual void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage, IDamageSource source)
     {
         if (hasPowerup) 
         {
@@ -187,7 +188,7 @@ public class Enemy : Tank, IDamageableEnemy
                 if (script != null)
                 {
                     script.ChangeEnemyStatus();
-                    script.TakeDamage(5);
+                    //script.TakeDamage(5, IDamageSource player);
                 }
             }
         }

@@ -17,6 +17,7 @@ public class ConcreteDestroyOnHit : MonoBehaviour, IDamageable, IExplodableTarge
             AudioManager.Instance.PlaySFX(AudioManager.Instance.obstacleHitButNotDestroyedSound);
             if (PlayerProperties.playerLevel >= 3)
             {
+                Debug.Log("PlayerProperties.playerLevel == " + PlayerProperties.playerLevel);
                 Destroy(gameObject);
             }
         }

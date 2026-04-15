@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 
-public class PlayerController2D : Tank, IDamageablePlayer
+public class PlayerController2D : Tank, IDamageable
 {
     public static event Action<PlayerController2D> OnDestroyed;
 
@@ -125,7 +125,7 @@ public class PlayerController2D : Tank, IDamageablePlayer
         }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, IDamageSource source)
     {
         if (playerIsInvincible)
         {

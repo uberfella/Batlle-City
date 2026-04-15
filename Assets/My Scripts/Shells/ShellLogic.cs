@@ -52,18 +52,16 @@ public class Shell : MonoBehaviour, IDamageSource
         if (target != null)
         {
             target.TakeDamage(1, this);
+            Destroy(gameObject);
+
         }
 
         if (other.GetComponent<IExplodableTarget>() != null) 
         {
             //Explode();
-        }
-        else if (target != null)
-        {
             Destroy(gameObject);
+
         }
-
-
 
         //if (gameObject.CompareTag("ShellPlayer"))
         //{
