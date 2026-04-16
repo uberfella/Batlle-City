@@ -54,6 +54,10 @@ public class Enemy : Tank, IDamageable
 
     public virtual void TakeDamage(int damage, IDamageSource source)
     {
+        if (source.Team == Team.Enemy)
+        {
+            return;
+        }
         if (hasPowerup) 
         {
             PowerupLogic.Instance.SpawnRandomPowerupOnField();
@@ -173,24 +177,24 @@ public class Enemy : Tank, IDamageable
         }
     }
 
-    public static void DestroyAllInLayer()
-    {
-        GameObject[] allObjects = UnityEngine.Object.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
-        foreach (GameObject obj in allObjects)
-        {
-            if (obj.layer == 7 || 
-                obj.layer == 10 ||
-                obj.layer == 11 ||
-                obj.layer == 12)
-            {
-                //Debug.Log("Destroying: " + obj.name);
-                Enemy script = obj.GetComponent<Enemy>();
-                if (script != null)
-                {
-                    script.ChangeEnemyStatus();
-                    //script.TakeDamage(5, IDamageSource player);
-                }
-            }
-        }
-    }
+    //public static void DestroyAllInLayer()
+    //{
+    //    GameObject[] allObjects = UnityEngine.Object.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
+    //    foreach (GameObject obj in allObjects)
+    //    {
+    //        if (obj.layer == 7 || 
+    //            obj.layer == 10 ||
+    //            obj.layer == 11 ||
+    //            obj.layer == 12)
+    //        {
+    //            //Debug.Log("Destroying: " + obj.name);
+    //            Enemy script = obj.GetComponent<Enemy>();
+    //            if (script != null)
+    //            {
+    //                script.ChangeEnemyStatus();
+    //                //script.TakeDamage(5, IDamageSource player);
+    //            }
+    //        }
+    //    }
+    //}
 }

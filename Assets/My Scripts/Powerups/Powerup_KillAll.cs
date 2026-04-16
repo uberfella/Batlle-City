@@ -20,8 +20,31 @@ public class Powerup_KillAll : Powerup_Superclass
         if (other.gameObject.CompareTag("Player"))
         {
             base.OnTriggerEnter2D(other);
-            Enemy.DestroyAllInLayer();
+            //Enemy.DestroyAllInLayer();
+            DestroyAllInLayer();
             Destroy(gameObject);
+        }
+    }
+
+    public void DestroyAllInLayer()
+    {
+        GameObject[] allObjects = UnityEngine.Object.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
+        foreach (GameObject obj in allObjects)
+        {
+            if (obj.layer == 7 ||
+                obj.layer == 10 ||
+                obj.layer == 11 ||
+                obj.layer == 12)
+            {
+                //Debug.Log("Destroying: " + obj.name);
+                Enemy enemy = obj.GetComponent<Enemy>();
+                if (enemy != null)
+                {
+                    enemy.ChangeEnemyStatus();
+                    var source = new SimpleDamageSource(gameObject, Team.Player);
+                    enemy.TakeDamage(5, source);
+                }
+            }
         }
     }
 }

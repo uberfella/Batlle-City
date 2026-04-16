@@ -11,7 +11,6 @@ public class PlayerController2D : Tank, IDamageable
 
     public LayerMask obstacleLayer;
     public GameObject shellPrefab;
-    public bool playerIsAlive;
     public bool playerIsInvincible;
     public bool godmode;
     public Sprite[] tankLevelOneSprites;
@@ -50,8 +49,6 @@ public class PlayerController2D : Tank, IDamageable
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         shell = GetComponent<Shell>();
-
-        playerIsAlive = true;
 
         spriteRenderer.sprite = GetSpriteBasedOnPlayerLevel(PlayerProperties.playerLevel)[currentFrame];
 
@@ -127,6 +124,10 @@ public class PlayerController2D : Tank, IDamageable
 
     public void TakeDamage(int damage, IDamageSource source)
     {
+        if (source.Team == Team.Player)
+        {
+            return;
+        }
         if (playerIsInvincible)
         {
             return;
@@ -135,7 +136,6 @@ public class PlayerController2D : Tank, IDamageable
         health -= damage;
         if (health <= 0)
         {
-            playerIsAlive = false;
             AudioManager.Instance.PlaySFX(AudioManager.Instance.playerExplodeSound);
             Instantiate(tankExplosionEffectPrefab, transform.position, transform.rotation);
             Destroy(gameObject);

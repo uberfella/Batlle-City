@@ -3,19 +3,13 @@ using UnityEngine;
 
 public class Shell : MonoBehaviour, IDamageSource
 {
-    public float speed = 10f;
-    public PlayerController2D playerController2D;
+    private float speed = 10f;
     public GameObject explosionEffectPrefab;
     public Rigidbody2D rb;
-    //private ExplosionEffectScript explosionEffect;
-    private EnemyLvl1 enemyLvl1;
-    private EnemyLvl2 enemyLvl2;
-    private EnemyLvl3 enemyLvl3;
-    private EnemyLvl4 enemyLvl4;
 
-    protected Collider2D[] objectsHit;
     public GameObject Owner { get; private set; }
 
+    //TODO is owner not used?
     public void Init(GameObject owner, Team team)
     {
         Owner = owner;
@@ -26,13 +20,7 @@ public class Shell : MonoBehaviour, IDamageSource
 
     void Start()
     {
-        enemyLvl1 = GetComponent<EnemyLvl1>();
-        enemyLvl2 = GetComponent<EnemyLvl2>();
-        enemyLvl3 = GetComponent<EnemyLvl3>();
-        enemyLvl4 = GetComponent<EnemyLvl4>();
-        playerController2D = FindFirstObjectByType<PlayerController2D>();
         rb = GetComponent<Rigidbody2D>();
-        //explosionEffect = GetComponent<ExplosionEffectScript>();
     }
     void FixedUpdate()
     {
@@ -58,28 +46,29 @@ public class Shell : MonoBehaviour, IDamageSource
 
         if (other.GetComponent<IExplodableTarget>() != null) 
         {
-            //Explode();
+            Explode();
             Destroy(gameObject);
 
         }
-
-        //if (gameObject.CompareTag("ShellPlayer"))
-        //{
-        //    if (IsEnemyTag(other.gameObject.tag))
-        //    {
-        //        GetTagAndTakeDamage(other.gameObject.tag, other.gameObject);
-        //    }
-        //    else if (ThingsThatShellExplodeOn(other.gameObject.tag))
-        //    {
-        //        if (!other.gameObject.CompareTag("Brick") && !other.gameObject.CompareTag("Base"))
-        //        {
-        //            AudioManager.Instance.PlaySFX(AudioManager.Instance.obstacleHitButNotDestroyedSound);
-        //        }
-        //        Explode();
-        //    }
     }
 
-    protected virtual void Explode(){}
+    private void Explode()
+    {
+        Vector2 explosionCenter = transform.position;
+        Vector2 explosionSize = new Vector2(1.0f, 0.25f);
+        Collider2D[] objectsHit = Physics2D.OverlapBoxAll(explosionCenter, explosionSize, transform.eulerAngles.z);
+
+        Instantiate(explosionEffectPrefab, transform.position, transform.rotation);
+
+        foreach (Collider2D obj in objectsHit)
+        {
+            if (obj.GetComponent<IDamageable>() != null)
+            {
+                IDamageable target = obj.GetComponent<IDamageable>();
+                target.TakeDamage(1, this);
+            }
+        }
+    }
 
     void OnDrawGizmos()
     {

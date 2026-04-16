@@ -28,13 +28,16 @@ public class PlayerSpawner : MonoBehaviour
 
     private IEnumerator RespawnPlayer()
     {
+
         yield return new WaitForSeconds(1f);
 
-        if (!playerController2D.playerIsAlive)
+        if (GameLogic.GameOver)
         {
-            GameObject newPlayer = Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
-            playerController2D = newPlayer.GetComponent<PlayerController2D>();
+            yield break;
         }
+
+        GameObject newPlayer = Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
+        playerController2D = newPlayer.GetComponent<PlayerController2D>();
     }
 
     private void OnEnable()
@@ -49,20 +52,21 @@ public class PlayerSpawner : MonoBehaviour
 
     private void OnObjectDestroyed(PlayerController2D obj)
     {
+        if (PlayerProperties.playerLives < 0)
+        {
+            gameOverSequence.TriggerGameOver();
+            return;
+        }
         UpdatePlayerLivesUI();
-        if (PlayerProperties.playerLives > 0)
-        {
-            if(!playerController2D.playerIsAlive)
-            StartCoroutine(RespawnPlayer());
-        }
-        else
-        {
-           gameOverSequence.TriggerGameOver();
-        }
+        StartCoroutine(RespawnPlayer());
     }
 
-    private void UpdatePlayerLivesUI()
+    public void UpdatePlayerLivesUI()
     {
+        if (PlayerProperties.playerLives < 0)
+        {
+            return;
+        }
         playerLivesUI.text = PlayerProperties.playerLives.ToString();
     }
 }

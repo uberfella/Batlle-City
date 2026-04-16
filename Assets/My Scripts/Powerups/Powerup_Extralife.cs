@@ -4,6 +4,7 @@ using UnityEngine;
 public class Powerup_Extralife : Powerup_Superclass
 {
     public SpriteRenderer spriteRenderer;
+    private PlayerSpawner playerSpawner;
 
     public override void OnTriggerEnter2D(Collider2D other)
     {
@@ -11,6 +12,8 @@ public class Powerup_Extralife : Powerup_Superclass
         {
             base.OnTriggerEnter2D(other);
             PlayerProperties.playerLives++;
+            playerSpawner = FindFirstObjectByType<PlayerSpawner>();
+            playerSpawner.UpdatePlayerLivesUI();
             Destroy(gameObject);
         }
         
