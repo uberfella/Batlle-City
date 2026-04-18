@@ -20,7 +20,6 @@ public class Powerup_KillAll : Powerup_Superclass
         if (other.gameObject.CompareTag("Player"))
         {
             base.OnTriggerEnter2D(other);
-            //Enemy.DestroyAllInLayer();
             DestroyAllInLayer();
             Destroy(gameObject);
         }
@@ -36,7 +35,6 @@ public class Powerup_KillAll : Powerup_Superclass
                 obj.layer == 11 ||
                 obj.layer == 12)
             {
-                //Debug.Log("Destroying: " + obj.name);
                 Enemy enemy = obj.GetComponent<Enemy>();
                 if (enemy != null)
                 {

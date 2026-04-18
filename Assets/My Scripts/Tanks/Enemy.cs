@@ -83,16 +83,13 @@ public class Enemy : Tank, IDamageable
     {
         GameObject shellObject = Instantiate(shellPrefab, transform.position, transform.rotation);
         Shell shell = shellObject.GetComponent<Shell>();
-        shell.Init(gameObject, Team.Enemy);
+        shell.Init(Team.Enemy);
     }
 
     protected void EnemyMove(Vector2 moveDir)
     {
         //possible values for both inputs are -1, 0, 1
         Vector2 targetPosition = (Vector2)transform.position + moveDir * speed * Time.deltaTime;
-
-        //Debug.Log("horizontalInput = " + horizontalInput);
-        //Debug.Log("verticalInput = " + verticalInput);  
 
         if (!IsBlocked(targetPosition, moveDir))
         {
@@ -148,7 +145,6 @@ public class Enemy : Tank, IDamageable
 
         if (hit.collider != null)
         {
-            //Debug.Log("Blocked by: " + hit.collider.gameObject.name);
             return true;
         }
         return false;
@@ -176,25 +172,4 @@ public class Enemy : Tank, IDamageable
                 break;
         }
     }
-
-    //public static void DestroyAllInLayer()
-    //{
-    //    GameObject[] allObjects = UnityEngine.Object.FindObjectsByType<GameObject>(FindObjectsSortMode.None);
-    //    foreach (GameObject obj in allObjects)
-    //    {
-    //        if (obj.layer == 7 || 
-    //            obj.layer == 10 ||
-    //            obj.layer == 11 ||
-    //            obj.layer == 12)
-    //        {
-    //            //Debug.Log("Destroying: " + obj.name);
-    //            Enemy script = obj.GetComponent<Enemy>();
-    //            if (script != null)
-    //            {
-    //                script.ChangeEnemyStatus();
-    //                //script.TakeDamage(5, IDamageSource player);
-    //            }
-    //        }
-    //    }
-    //}
 }

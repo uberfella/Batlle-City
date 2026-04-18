@@ -13,11 +13,6 @@ public class MenuSelectorEndScene : MonoBehaviour
     private int currentIndex = 0;
     private int offsetForDifferentScenes = 5;
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return))

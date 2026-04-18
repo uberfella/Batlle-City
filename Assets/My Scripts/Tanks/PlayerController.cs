@@ -283,11 +283,10 @@ public class PlayerController2D : Tank, IDamageable
 
     private void ShootTheGun()
     {
-        Debug.Log("playerLevel = " + PlayerProperties.playerLevel);
 
         GameObject shellObject = Instantiate(shellPrefab, transform.position, transform.rotation);
         Shell shell = shellObject.GetComponent<Shell>();
-        shell.Init(gameObject, Team.Player);
+        shell.Init(Team.Player);
         shellObject.GetComponent<Shell>().SetSpeed(projectileSpeed);
         AudioManager.Instance.PlaySFX(AudioManager.Instance.shotFired);
 

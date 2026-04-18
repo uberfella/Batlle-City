@@ -140,34 +140,6 @@ public class EnemyLvl3 : Enemy
         currentMoveDirection = newDirection;
     }
 
-    private int GetEnemyIndex(string tag)
-    {
-        GameObject[] taggedObjects = GameObject.FindGameObjectsWithTag(tag);
-        switch (tag)
-        {
-            case "enemy0":
-                return 0;
-        }
-        return 1;
-    }
-
-    public int GetEnemyLayer()
-    {
-        switch (gameObject.layer)
-        {
-            case 7:
-                return 7;
-            case 10:
-                return 10;
-            case 11:
-                return 11;
-            case 12:
-                return 12;
-        }
-        return 0;
-    }
-
-    //neccessary for the score counting
     private void OnDestroy()
     {
         OnDestroyed?.Invoke(this);

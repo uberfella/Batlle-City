@@ -11,7 +11,6 @@ public class Tank : MonoBehaviour
     protected Vector2 maxBounds = new Vector2(6.5f, 6.5f);
     protected float horizontalInput;
     protected float verticalInput;
-    //protected bool spawnFreezeIsOver = false;
     public bool enemyIsAlive = false;
 
     //in the google play ripoff there is no diagonal movement just like in the NES original

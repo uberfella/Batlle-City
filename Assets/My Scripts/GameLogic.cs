@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using static Enemy;
 
-
-
 public static class PerformBootstrap
 {
     const string SceneName = "Bootstrapped Scene";
@@ -63,10 +61,6 @@ public class GameLogic : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-
-        }
 
     }
     public void RegisterEnemyKill(EnemyType type)
@@ -80,11 +74,15 @@ public class GameLogic : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (IsScoreboardScene(scene) && !GameOver)
+        if (GameOver)
         {
-            SaveManager.SaveGame();
+            return;
         }
-
+        if (!IsScoreboardScene(scene))
+        {
+            return;
+        }
+        SaveManager.SaveGame();
     }
 
     private bool IsScoreboardScene(Scene scene)

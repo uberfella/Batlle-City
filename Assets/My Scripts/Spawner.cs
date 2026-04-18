@@ -16,7 +16,7 @@ public class Spawner : MonoBehaviour
     public int enemiesToSpawn = 0;
     public Text enemiesToSpawnText;
     public static bool[] enemyAlive = new bool[4] { false, false, false, false }; //7, 10, 11, 12
-    public static List<Enemy> AliveEnemies = new List<Enemy>(); //needed for freeze powerup also might be useful later (not)
+    public static List<Enemy> AliveEnemies = new List<Enemy>();
     public LayerMask obstructionMask;
     public EnemiesList enemiesList;
     public bool levelFinished = false;
@@ -47,7 +47,7 @@ public class Spawner : MonoBehaviour
             spawnAnim[i] = GameObject.Find($"Spawn{i}");
             spawnAnimationRenderer[i] = spawnAnim[i].GetComponent<Renderer>();
         }
-        
+
         enemiesToSpawnText.text = enemiesToSpawn.ToString();
 
         spawnPoint = spawnPoints[currentSpawnPoint];
@@ -77,7 +77,6 @@ public class Spawner : MonoBehaviour
 
         GameObject newEnemy = Instantiate(GetPrefabTypeById(enemyIdToSpawn)[enemyIndexToSpawn], spawnPoint.position, Quaternion.identity);
 
-        //TODO
         if (newEnemy.CompareTag("EnemyLvl1"))
         {
             EnemyLvl1 scriptEnemyLvl1 = newEnemy.GetComponent<EnemyLvl1>();
@@ -154,19 +153,15 @@ public class Spawner : MonoBehaviour
 
     }
 
-    private bool EnemyHasPowerup(int enemyIdToSpawnLocal) 
+    private bool EnemyHasPowerup(int enemyIdToSpawnLocal)
     {
         if (enemyIdToSpawnLocal % 2 != 0)
         {
-            {
-                return true;
-            }
+            return true;
         }
         else if (enemyIdToSpawnLocal % 2 == 0)
         {
-            {
-                return false;
-            }
+            return false;
         }
         return false;
     }
@@ -180,15 +175,6 @@ public class Spawner : MonoBehaviour
         spawnAnimationRenderer[spawnPointIndex].enabled = false;
 
     }
-
-    //0 enemyLvl1 regular || even
-    //1 enemyLvl1 powerup || uneven
-    //2 enemyLvl2 regular || even
-    //3 enemyLvl2 powerup || uneven
-    //4 enemyLvl3 regular || even
-    //5 enemyLvl3 powerup || uneven
-    //6 enemyLvl4 regular || even
-    //7 enemyLvl4 powerup || uneven
     private GameObject[] GetPrefabTypeById(int id)
     {
         switch (id)
@@ -217,7 +203,7 @@ public class Spawner : MonoBehaviour
             if (alive) return false;
         }
         return true;
-        
+
     }
 
     private void OnEnable()
@@ -240,19 +226,22 @@ public class Spawner : MonoBehaviour
     {
         if (enemiesToSpawn > 0)
         {
-            if (!spawnEnemyProcessIsInProgress)
+            if (spawnEnemyProcessIsInProgress)
             {
-                StartCoroutine(SpawnEnemyProcessCoroutine());
+                return;
             }
+            StartCoroutine(SpawnEnemyProcessCoroutine());
         }
-        else if (!levelFinished && AllEnemiesDead())
+        else if (AllEnemiesDead())
         {
+            if (!levelFinished)
+            {
+                return;
+            }
             levelFinished = true;
             OnLevelFinished();
         }
     }
-
-
 
     void OnLevelFinished()
     {

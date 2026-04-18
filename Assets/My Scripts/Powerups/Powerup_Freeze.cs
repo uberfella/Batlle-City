@@ -41,9 +41,7 @@ public class Powerup_Freeze : Powerup_Superclass
             if (e != null)
                 e.SetFrozen(true);
         }
-        //GameLogic.Instance.isEnemiesFrozen = true;
         yield return new WaitForSeconds(10f);
-        //GameLogic.Instance.isEnemiesFrozen = false;
         foreach (Enemy e in frozenEnemies)
         {
             if (e != null)

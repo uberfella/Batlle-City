@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class EndScreenManager : MonoBehaviour
 {
-    //[SerializeField] private SpriteRenderer spriteRenderer;
     //hiscore beaten - play GameOverJingle, hide Game Over ImageText in 2 seconds, show HISCORE underneath and play Ending theme
     //hiscore not beaten - dont hide Game Over ImageText, keep static_ScoreHigh and ScoreHighVal inactive
     public GameObject gameOverImageText;

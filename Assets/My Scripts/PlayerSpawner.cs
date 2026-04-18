@@ -21,11 +21,6 @@ public class PlayerSpawner : MonoBehaviour
 
     }
 
-    void Update()
-    {
-
-    }
-
     private IEnumerator RespawnPlayer()
     {
 

@@ -41,23 +41,19 @@ public class EnemyLvl1 : Enemy
             {
                 if (y == 1)
                 {
-                    //Debug.Log("sprite up");
                     return tankSpritesFacingUp;
                 }
                 else
                 {
-                    //Debug.Log("sprite down");
                     return tankSpritesFacingDown;
                 }
             }
             else if (x == -1)
             {
-                //Debug.Log("sprite left");
                 return tankSpritesFacingLeft;
             }
             else
             {
-                //Debug.Log("sprite right");
                 return tankSpritesFacingRight;
             }
         }
@@ -67,30 +63,25 @@ public class EnemyLvl1 : Enemy
             {
                 if (y == 1)
                 {
-                    //Debug.Log("sprite up");
                     return tankSpritesFacingUpPowerup;
                 }
                 else
                 {
-                    //Debug.Log("sprite down");
                     return tankSpritesFacingDownPowerup;
                 }
             }
             else if (x == -1)
             {
-                //Debug.Log("sprite left");
                 return tankSpritesFacingLeftPowerup;
             }
             else
             {
-                //Debug.Log("sprite right");
                 return tankSpritesFacingRightPowerup;
             }
         }
 
     }
 
-    //neccessary for the score counting
     private void OnDestroy()
     {
         OnDestroyed?.Invoke(this);
@@ -202,8 +193,6 @@ public class EnemyLvl1 : Enemy
             case 1:
                 horizontalInput = -1;
                 verticalInput = 0;
-                //Debug.Log("go left");
-
                 break;
             case 2:
                 horizontalInput = 0;
@@ -221,25 +210,6 @@ public class EnemyLvl1 : Enemy
     private void SetMoveDirection(Vector2 newDirection)
     {
         currentMoveDirection = newDirection;
-        //Debug.Log("currentMoveDirection.x = " + currentMoveDirection.x);
-        //Debug.Log("currentMoveDirection.y = " + currentMoveDirection.y);
-
-    }
-
-    public int GetEnemyLayer() 
-    {
-        switch (gameObject.layer)
-        {
-            case 7:
-                return 7;
-            case 10:
-                return 10;
-            case 11:
-                return 11;
-            case 12:
-                return 12;
-        }
-        return 0;
     }
 
     void UpdateSpriteImmediate()

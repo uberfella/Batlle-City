@@ -23,10 +23,6 @@ public class MenuSelector : MonoBehaviour
 
     void Start()
     {
-        if (true)
-        {
-
-        }
         if (PlayerPrefs.HasKey("HasSaveData"))
         {
             currentIndex = 1;

@@ -9,10 +9,8 @@ public class Shell : MonoBehaviour, IDamageSource
 
     public GameObject Owner { get; private set; }
 
-    //TODO is owner not used?
-    public void Init(GameObject owner, Team team)
+    public void Init(Team team)
     {
-        Owner = owner;
         Team = team;
     }
 

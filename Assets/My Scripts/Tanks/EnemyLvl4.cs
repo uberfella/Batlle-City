@@ -169,7 +169,6 @@ public class EnemyLvl4 : Enemy
         }
     }
 
-    //neccessary for the score counting
     private void OnDestroy()
     {
         OnDestroyed?.Invoke(this);
