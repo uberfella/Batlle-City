@@ -10019,7 +10019,7 @@ MonoBehaviour:
   - {fileID: 805236122}
   - {fileID: 950759007}
   - {fileID: 1387277190}
-  enemiesToSpawn: 4
+  enemiesToSpawn: 20
   enemiesToSpawnText: {fileID: 308609378}
   obstructionMask:
     serializedVersion: 2

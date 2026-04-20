@@ -40,8 +40,8 @@ public class PlayerController2D : Tank, IDamageable
     void Start()
     {
         health = 1;
-        //speed = 2.5f;
-        speed = 5f;
+        speed = 2.5f;
+        //speed = 5f;
 
         projectileSpeed = 10f;
         slideWallsDistance = 0.2f;
@@ -60,8 +60,12 @@ public class PlayerController2D : Tank, IDamageable
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && !GameLogic.GameOver)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
+            if (GameLogic.GameOver)
+            {
+                return;
+            }
             if (cooldownHasPassed)
             {
                 ShootTheGun();
@@ -81,11 +85,11 @@ public class PlayerController2D : Tank, IDamageable
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Backspace))
-        {
-            godmode = false;
-            TriggerInvincibility();
-        }
+        //if (Input.GetKeyDown(KeyCode.Backspace))
+        //{
+        //    godmode = false;
+        //    TriggerInvincibility();
+        //}
         //when the scene gets switched = all sounds stop
         bool isMoving = horizontalInput != 0 || verticalInput != 0;
         AudioManager.Instance.SetEngineState(isMoving);

@@ -21,7 +21,6 @@ public class Spawner : MonoBehaviour
     public EnemiesList enemiesList;
     public bool levelFinished = false;
 
-    //TODO
     private float cooldownToSpawn = 0.5f;
     private int iterateOverSpawnList = 0;
     private int enemyIdToSpawn = 0;
@@ -72,6 +71,10 @@ public class Spawner : MonoBehaviour
         if (iterateOverSpawnList < enemiesList.GetEnemiesListForLevel(GameLogic.levelNum).Length)
         {
             enemyIdToSpawn = enemiesList.GetEnemiesListForLevel(GameLogic.levelNum)[iterateOverSpawnList];
+            if (enemyIdToSpawn < 0 || enemyIdToSpawn > 7)
+            {
+                enemyIdToSpawn = 0;
+            }
             iterateOverSpawnList++;
         }
 
@@ -224,8 +227,12 @@ public class Spawner : MonoBehaviour
 
     private void OnObjectDestroyed(Enemy obj)
     {
+        Debug.Log("OnObjectDestroyed is being called");
+        Debug.Log("block scheme is needed here");
         if (enemiesToSpawn > 0)
         {
+            Debug.Log("enemiesToSpawn > 0");
+
             if (spawnEnemyProcessIsInProgress)
             {
                 return;
@@ -234,7 +241,7 @@ public class Spawner : MonoBehaviour
         }
         else if (AllEnemiesDead())
         {
-            if (!levelFinished)
+            if (levelFinished)
             {
                 return;
             }

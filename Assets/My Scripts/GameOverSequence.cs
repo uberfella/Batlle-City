@@ -25,13 +25,18 @@ public class GameOverSequence : MonoBehaviour
 
     public void TriggerGameOver()
     {
-        if (!GameLogic.GameOver && !spawner.levelFinished)
+        if (GameLogic.GameOver)
         {
-            AudioManager.Instance.PlaySFX(AudioManager.Instance.gameOverJingle);
-            GameLogic.GameOver = true;
-            SaveManager.EraseSave();
-            StartCoroutine(ShowGameOver());
+            return;
         }
+        if (spawner.levelFinished)
+        {
+            return;
+        }
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.gameOverJingle);
+        GameLogic.GameOver = true;
+        SaveManager.EraseSave();
+        StartCoroutine(ShowGameOver());
     }
 
     IEnumerator ShowGameOver()

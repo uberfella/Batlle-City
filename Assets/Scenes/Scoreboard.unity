@@ -2865,6 +2865,7 @@ MonoBehaviour:
   buttons:
   - {fileID: 424156016}
   - {fileID: 689942246}
+  offsetForDifferentScenes: 2
 --- !u!1 &760261048
 GameObject:
   m_ObjectHideFlags: 0
