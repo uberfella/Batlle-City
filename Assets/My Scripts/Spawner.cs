@@ -241,11 +241,11 @@ public class Spawner : MonoBehaviour
         }
         else if (AllEnemiesDead())
         {
-            if (levelFinished)
-            {
-                return;
-            }
-            levelFinished = true;
+            //if (levelFinished)
+            //{
+            //    return;
+            //}
+            //levelFinished = true;
             OnLevelFinished();
         }
     }

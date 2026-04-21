@@ -281,11 +281,11 @@ RectTransform:
   - {fileID: 1155434714}
   m_Father: {fileID: 1409265387}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 185, y: -75}
-  m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -180, y: 80}
+  m_SizeDelta: {x: 72.741455, y: 36.776703}
+  m_Pivot: {x: 1, y: 0}
 --- !u!114 &570066286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1163,13 +1163,14 @@ GameObject:
   - component: {fileID: 1409265389}
   - component: {fileID: 1409265388}
   - component: {fileID: 1409265390}
+  - component: {fileID: 1409265391}
   m_Layer: 5
   m_Name: ConfirmStartPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1409265387
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1179,8 +1180,8 @@ RectTransform:
   m_GameObject: {fileID: 1409265386}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.66, y: 0.66, z: 0.66}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1591158944}
   - {fileID: 1576295601}
@@ -1189,8 +1190,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00013643273, y: -0.000030517578}
-  m_SizeDelta: {x: 3466.5518, y: 1656.43}
+  m_AnchoredPosition: {x: 0, y: 52}
+  m_SizeDelta: {x: 1242.3823, y: 515.6218}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1409265388
 MonoBehaviour:
@@ -1243,6 +1244,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   confirmPanel: {fileID: 1409265386}
+--- !u!114 &1409265391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409265386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 0
 --- !u!1 &1576295600
 GameObject:
   m_ObjectHideFlags: 0
@@ -1277,11 +1292,11 @@ RectTransform:
   - {fileID: 1600137405}
   m_Father: {fileID: 1409265387}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -173, y: -75}
-  m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 230, y: 14}
+  m_SizeDelta: {x: 72.7414, y: 36.776703}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &1576295602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1639,10 +1654,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1409265387}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6, y: 102}
-  m_SizeDelta: {x: 904.431, y: 254.141}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 595.431, y: -257.8109}
+  m_SizeDelta: {x: 1190.862, y: 144.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1591158945
 MonoBehaviour:
@@ -1665,6 +1680,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: 'YOUR CURRENT PROGRESS WILL BE LOST
+
 
     ARE YOU SURE?'
   m_isRightToLeft: 0
@@ -1731,7 +1747,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 203.69131, y: -16.165924, z: 122.86127, w: -96.99589}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
