@@ -17,7 +17,7 @@ public class MenuSelector : MonoBehaviour
     private KeyCode selectSecondKey = KeyCode.S;
     private KeyCode selectFirstKeyConfirmPanel = KeyCode.A;
     private KeyCode selectSecondKeyConfirmPanel = KeyCode.D;
-    private int offsetForDifferentScenes = 70;
+    [SerializeField] private int offsetForDifferentScenes = 70;
     private int lastUsedIndex = 0;
     private bool confirmPanelActive;
 
