@@ -59,7 +59,7 @@ public class MenuSelector : MonoBehaviour
                 buttons[currentIndex].onClick.Invoke();
             }
         }
-        else 
+        else
         {
             if (Input.GetKeyDown(selectFirstKeyConfirmPanel) && PlayerPrefs.HasKey("HasSaveData"))
             {
@@ -137,11 +137,23 @@ public class MenuSelector : MonoBehaviour
 
         RectTransform target = buttonsType[currentIndex].GetComponent<RectTransform>();
 
-        selectorIcon.position = new Vector3(
-            target.position.x - offsetForDifferentScenes,
-            target.position.y,
-            target.position.z
-        );
+        if (!confirmStartPanel.activeInHierarchy)
+        {
+            selectorIcon.position = new Vector3(
+                target.position.x - offsetForDifferentScenes,
+                target.position.y,
+                target.position.z
+            );
+        }
+        else
+        {
+            selectorIcon.anchoredPosition = new Vector3(
+                target.position.x/* - offsetForDifferentScenes*/,
+                target.position.y,
+                target.position.z
+            );
+        }
+
     }
 
     IEnumerator ExecuteMoveSelectorAfterOneFrame()
