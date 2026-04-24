@@ -16,7 +16,9 @@ public class MenuSelector : MonoBehaviour
     private KeyCode selectFirstKey = KeyCode.W;
     private KeyCode selectSecondKey = KeyCode.S;
     private KeyCode selectFirstKeyConfirmPanel = KeyCode.A;
+    //private KeyCode selectFirstKeyConfirmPanel = KeyCode.D;
     private KeyCode selectSecondKeyConfirmPanel = KeyCode.D;
+    //private KeyCode selectSecondKeyConfirmPanel = KeyCode.A;
     [SerializeField] private int offsetForDifferentScenes = 70;
     private int lastUsedIndex = 0;
     private bool confirmPanelActive;
@@ -107,6 +109,7 @@ public class MenuSelector : MonoBehaviour
     public void MoveRight()
     {
         //no 0 right
+        Debug.Log("no 0 right");
         //selectSecondKeyConfirmPanel = KeyCode.D
         currentIndex = 0;
         if (currentIndex != lastUsedIndex)
@@ -120,6 +123,7 @@ public class MenuSelector : MonoBehaviour
     public void MoveLeft()
     {
         //yes 1 left
+        Debug.Log("yes 1 left");
         //selectFirstKeyConfirmPanel = KeyCode.A;
         currentIndex = 1;
         if (currentIndex != lastUsedIndex)
@@ -132,27 +136,50 @@ public class MenuSelector : MonoBehaviour
 
     void MoveSelector(List<Button> buttonsType)
     {
-        if (buttons == null || buttons.Count == 0)
+        if (buttonsType  == null || buttonsType.Count == 0)
             return;
 
         RectTransform target = buttonsType[currentIndex].GetComponent<RectTransform>();
+        Debug.Log("target = " + target);
+        Debug.Log("target.anchoredPosition = " + target.anchoredPosition);
 
         if (!confirmStartPanel.activeInHierarchy)
         {
-            selectorIcon.position = new Vector3(
-                target.position.x - offsetForDifferentScenes,
-                target.position.y,
-                target.position.z
-            );
+            selectorIcon.SetParent(target.parent);
+            selectorIcon.localScale = Vector3.one;
+            selectorIcon.anchoredPosition = target.anchoredPosition;
+            //selectorIcon.position = new Vector3(
+            //    target.position.x - offsetForDifferentScenes,
+            //    target.position.y,
+            //    target.position.z
+            //);
+            selectorIcon.position = target.position;
+
         }
         else
         {
-            selectorIcon.anchoredPosition = new Vector3(
-                target.position.x/* - offsetForDifferentScenes*/,
-                target.position.y,
-                target.position.z
-            );
+            selectorIcon.SetParent(target.parent);
+            selectorIcon.localScale = Vector3.one;
+            selectorIcon.anchoredPosition = target.anchoredPosition;
+            //selectorIcon.anchoredPosition = target.anchoredPosition;
+            //Debug.Log("selectorIcon.anchoredPosition = " + selectorIcon.anchoredPosition);
+            //Vector2 localPoint;
+            //RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            //    selectorIcon.parent as RectTransform,
+            //    target.position,
+            //    null,
+            //    out localPoint
+            //);
+
+            //selectorIcon.anchoredPosition = localPoint;
+            //selectorIcon.anchoredPosition = new Vector2(
+            //    localPoint.x - 55,
+            //    localPoint.y
+            //);
+            selectorIcon.position = target.position;
         }
+
+
 
     }
 
