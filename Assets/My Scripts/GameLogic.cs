@@ -138,6 +138,7 @@ clean code
     rename sprites, variables, scripts like enemyLvl0-3 to one standard so it would make more sense ✓
     get rid of constant checking variables' values in Update() method, replace em with Coroutines ✓
     refactor enemy spawn anim ✓
+dont need FindFirstObjectByType if assign via Inspector
 
 
 

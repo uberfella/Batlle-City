@@ -11,6 +11,7 @@ public class MenuSelector : MonoBehaviour
     public List<Button> buttons;
     public List<Button> buttonsConfirmPanel;
     public GameObject confirmStartPanel;
+    public Canvas canvas;
 
     private int currentIndex = 0;
     private KeyCode selectFirstKey = KeyCode.W;
@@ -136,7 +137,7 @@ public class MenuSelector : MonoBehaviour
 
     void MoveSelector(List<Button> buttonsType)
     {
-        if (buttonsType  == null || buttonsType.Count == 0)
+        if (buttonsType == null || buttonsType.Count == 0)
             return;
 
         RectTransform target = buttonsType[currentIndex].GetComponent<RectTransform>();
@@ -145,23 +146,43 @@ public class MenuSelector : MonoBehaviour
 
         if (!confirmStartPanel.activeInHierarchy)
         {
-            selectorIcon.SetParent(target.parent);
-            selectorIcon.localScale = Vector3.one;
-            selectorIcon.anchoredPosition = target.anchoredPosition;
+            selectorIcon.SetParent(canvas.transform);
+            //selectorIcon.localScale = Vector3.one;
+            //selectorIcon.anchoredPosition = target.anchoredPosition;
+
             //selectorIcon.position = new Vector3(
             //    target.position.x - offsetForDifferentScenes,
             //    target.position.y,
             //    target.position.z
             //);
-            selectorIcon.position = target.position;
+            //selectorIcon.position = target.position;
 
+            RectTransform selectorRect = selectorIcon.GetComponent<RectTransform>();
+            RectTransform targetRect = target.GetComponent<RectTransform>();
+
+            Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(null, targetRect.position);
+
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                selectorRect.parent as RectTransform,
+                screenPoint,
+                null,
+                out Vector2 localPoint
+            );
+
+            selectorRect.anchoredPosition = localPoint + new Vector2(-offsetForDifferentScenes, 0);
         }
         else
         {
+            RectTransform selectorRect = selectorIcon.GetComponent<RectTransform>();
+            RectTransform targetRect = target.GetComponent<RectTransform>();
+
             selectorIcon.SetParent(target.parent);
-            selectorIcon.localScale = Vector3.one;
+            //selectorIcon.localScale = Vector3.one;
             selectorIcon.anchoredPosition = target.anchoredPosition;
-            //selectorIcon.anchoredPosition = target.anchoredPosition;
+
+            selectorRect.anchoredPosition = targetRect.anchoredPosition + new Vector2(-offsetForDifferentScenes, 0);
+
+            ////selectorIcon.anchoredPosition = target.anchoredPosition;
             //Debug.Log("selectorIcon.anchoredPosition = " + selectorIcon.anchoredPosition);
             //Vector2 localPoint;
             //RectTransformUtility.ScreenPointToLocalPointInRectangle(
@@ -176,7 +197,7 @@ public class MenuSelector : MonoBehaviour
             //    localPoint.x - 55,
             //    localPoint.y
             //);
-            selectorIcon.position = target.position;
+            //selectorIcon.position = target.position;
         }
 
 
