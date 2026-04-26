@@ -11,18 +11,17 @@ public class MenuSelector : MonoBehaviour
     public List<Button> buttons;
     public List<Button> buttonsConfirmPanel;
     public GameObject confirmStartPanel;
+    public GameObject menuGroup;
     public Canvas canvas;
 
     private int currentIndex = 0;
     private KeyCode selectFirstKey = KeyCode.W;
     private KeyCode selectSecondKey = KeyCode.S;
     private KeyCode selectFirstKeyConfirmPanel = KeyCode.A;
-    //private KeyCode selectFirstKeyConfirmPanel = KeyCode.D;
     private KeyCode selectSecondKeyConfirmPanel = KeyCode.D;
-    //private KeyCode selectSecondKeyConfirmPanel = KeyCode.A;
     [SerializeField] private int offsetForDifferentScenes = 70;
+    private string lastScene;
     private int lastUsedIndex = 0;
-    private bool confirmPanelActive;
 
     void Start()
     {
@@ -57,7 +56,6 @@ public class MenuSelector : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
             {
-                AudioManager.Instance.PlaySFX(AudioManager.Instance.enemyDecreasingLivesSound);
 
                 buttons[currentIndex].onClick.Invoke();
             }
@@ -76,7 +74,7 @@ public class MenuSelector : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
             {
-                AudioManager.Instance.PlaySFX(AudioManager.Instance.enemyDecreasingLivesSound);
+                selectorIcon.SetParent(canvas.transform);
 
                 buttonsConfirmPanel[currentIndex].onClick.Invoke();
             }
@@ -141,21 +139,10 @@ public class MenuSelector : MonoBehaviour
             return;
 
         RectTransform target = buttonsType[currentIndex].GetComponent<RectTransform>();
-        Debug.Log("target = " + target);
-        Debug.Log("target.anchoredPosition = " + target.anchoredPosition);
 
         if (!confirmStartPanel.activeInHierarchy)
         {
             selectorIcon.SetParent(canvas.transform);
-            //selectorIcon.localScale = Vector3.one;
-            //selectorIcon.anchoredPosition = target.anchoredPosition;
-
-            //selectorIcon.position = new Vector3(
-            //    target.position.x - offsetForDifferentScenes,
-            //    target.position.y,
-            //    target.position.z
-            //);
-            //selectorIcon.position = target.position;
 
             RectTransform selectorRect = selectorIcon.GetComponent<RectTransform>();
             RectTransform targetRect = target.GetComponent<RectTransform>();
@@ -173,40 +160,28 @@ public class MenuSelector : MonoBehaviour
         }
         else
         {
+
             RectTransform selectorRect = selectorIcon.GetComponent<RectTransform>();
             RectTransform targetRect = target.GetComponent<RectTransform>();
 
             selectorIcon.SetParent(target.parent);
-            //selectorIcon.localScale = Vector3.one;
             selectorIcon.anchoredPosition = target.anchoredPosition;
 
             selectorRect.anchoredPosition = targetRect.anchoredPosition + new Vector2(-offsetForDifferentScenes, 0);
 
-            ////selectorIcon.anchoredPosition = target.anchoredPosition;
-            //Debug.Log("selectorIcon.anchoredPosition = " + selectorIcon.anchoredPosition);
-            //Vector2 localPoint;
-            //RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            //    selectorIcon.parent as RectTransform,
-            //    target.position,
-            //    null,
-            //    out localPoint
-            //);
-
-            //selectorIcon.anchoredPosition = localPoint;
-            //selectorIcon.anchoredPosition = new Vector2(
-            //    localPoint.x - 55,
-            //    localPoint.y
-            //);
-            //selectorIcon.position = target.position;
         }
-
-
-
     }
 
     IEnumerator ExecuteMoveSelectorAfterOneFrame()
     {
         yield return null;
         MoveSelector(buttons);
+    }
+
+    public void ResetSelection()
+    {
+        currentIndex = 0;
+        lastUsedIndex = 0;
+        MoveSelector(buttons); // no sound
     }
 }

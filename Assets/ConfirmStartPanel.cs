@@ -16,7 +16,8 @@ public class ConfirmStartPanel : MonoBehaviour
 
     private void OnDisable()
     {
-        if (menuSelector != null)
-            menuSelector.MoveDown();
+        //if (menuSelector != null)
+        //    menuSelector.MoveDown();
+        menuSelector.ResetSelection();
     }
 }

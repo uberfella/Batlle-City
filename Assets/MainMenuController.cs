@@ -15,8 +15,12 @@ public class MainMenuController : MonoBehaviour
 
     public void TryStartGame()
     {
+
         if (PlayerPrefs.HasKey("HasSaveData"))
         {
+
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.enemyDecreasingLivesSound);
+
             confirmPanel.SetActive(true);
         }
         else
@@ -27,21 +31,29 @@ public class MainMenuController : MonoBehaviour
 
     public void ContinueGame()
     {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.enemyDecreasingLivesSound);
+
         SaveManager.LoadGame();
     }
 
     public void ConfirmYes()
     {
+
         StartGame();
     }
 
     public void ConfirmNo()
     {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.enemyDecreasingLivesSound);
+
         confirmPanel.SetActive(false);
     }
 
     private void StartGame()
     {
+
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.enemyDecreasingLivesSound);
+
         GameLogic.levelNum = 0;
         ScoreCount.currentScore = 0;
         ScoreCount.highScoreHasBeenBeaten = false;
