@@ -177,11 +177,4 @@ public class MenuSelector : MonoBehaviour
         yield return null;
         MoveSelector(buttons);
     }
-
-    public void ResetSelection()
-    {
-        currentIndex = 0;
-        lastUsedIndex = 0;
-        MoveSelector(buttons); // no sound
-    }
 }

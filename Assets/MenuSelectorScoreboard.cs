@@ -9,28 +9,27 @@ public class MenuSelectorScoreboard : MonoBehaviour
 {
     public RectTransform selectorIcon;
     public List<Button> buttons;
+    public DestroyedEnemiesDisplay destroyedEnemiesDisplay;
 
     private int currentIndex = 0;
     private int lastUsedIndex = 0;
     private KeyCode selectFirstKey = KeyCode.A;
     private KeyCode selectSecondKey = KeyCode.D;
     [SerializeField]private int offsetForDifferentScenes = 2;
-    private DestroyedEnemiesDisplay destroyedEnemiesDisplay;
 
 
     void Start()
     {
-        destroyedEnemiesDisplay = FindFirstObjectByType<DestroyedEnemiesDisplay>();
 
         if (!GameLogic.GameOver)
         {
             currentIndex = 1;
-            lastUsedIndex = 1;
+            lastUsedIndex = 0;
         }
         else
         {
             currentIndex = 0;
-            lastUsedIndex = 0;
+            lastUsedIndex = 1;
         }
         //MoveSelector is being executed in destroyedEnemiesDisplay script here
     }
@@ -84,6 +83,9 @@ public class MenuSelectorScoreboard : MonoBehaviour
             return;
 
         RectTransform target = buttons[currentIndex].GetComponent<RectTransform>();
+
+        RectTransform selectorRect = selectorIcon.GetComponent<RectTransform>();
+        RectTransform targetRect = target.GetComponent<RectTransform>();
 
         selectorIcon.position = new Vector3(
             target.position.x - offsetForDifferentScenes,

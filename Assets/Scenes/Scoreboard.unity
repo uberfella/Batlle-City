@@ -1575,7 +1575,6 @@ RectTransform:
   - {fileID: 1531551773}
   - {fileID: 2046318983}
   - {fileID: 654275071}
-  - {fileID: 724877762}
   - {fileID: 999374954}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1722,10 +1721,10 @@ RectTransform:
   - {fileID: 173124653}
   m_Father: {fileID: 654275071}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 2.7697334, y: -0.9116821}
-  m_SizeDelta: {x: 9.8919, y: 3.2561}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -10.23, y: 0}
+  m_SizeDelta: {x: 9.891899, y: 3.2561}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &424156015
 MonoBehaviour:
@@ -2352,6 +2351,7 @@ RectTransform:
   m_Children:
   - {fileID: 689942243}
   - {fileID: 424156013}
+  - {fileID: 724877762}
   m_Father: {fileID: 403838305}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2585,10 +2585,10 @@ RectTransform:
   - {fileID: 272478050}
   m_Father: {fileID: 654275071}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 23.319645, y: -0.9116821}
-  m_SizeDelta: {x: 9.8919, y: 3.2561}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 8.45, y: 0}
+  m_SizeDelta: {x: 9.891899, y: 3.2561}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &689942244
 MonoBehaviour:
@@ -2839,14 +2839,14 @@ RectTransform:
   m_GameObject: {fileID: 724877757}
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5.38, y: 4.522, z: 5.38}
+  m_LocalScale: {x: 5.3799996, y: 4.522, z: 5.38}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 403838305}
+  m_Father: {fileID: 654275071}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -800.05, y: -468.6029}
+  m_AnchoredPosition: {x: -0.95495605, y: -12.648041}
   m_SizeDelta: {x: 0.3, y: 0.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &724877763
@@ -2865,6 +2865,7 @@ MonoBehaviour:
   buttons:
   - {fileID: 424156016}
   - {fileID: 689942246}
+  destroyedEnemiesDisplay: {fileID: 2046318984}
   offsetForDifferentScenes: 2
 --- !u!1 &760261048
 GameObject:
@@ -4381,6 +4382,7 @@ MonoBehaviour:
   iconSelector: {fileID: 724877757}
   delayBetweenRows: 0.4
   scoreBoardHasFinishedDrawing: 0
+  menuSelectorScoreboard: {fileID: 724877763}
 --- !u!1 &2053036230
 GameObject:
   m_ObjectHideFlags: 0

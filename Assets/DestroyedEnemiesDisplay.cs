@@ -14,14 +14,13 @@ public class DestroyedEnemiesDisplay : MonoBehaviour
     public GameObject iconSelector;
     public float delayBetweenRows = 0.4f;
     public bool scoreBoardHasFinishedDrawing = false;
+    public MenuSelectorScoreboard menuSelectorScoreboard;
 
     private int totalCountValue = 0;
-    private MenuSelectorScoreboard menuSelectorScoreboard;
     private float scoreCountingSpeed = 0.15f;
 
     void Start()
     {
-        menuSelectorScoreboard = FindFirstObjectByType<MenuSelectorScoreboard>();
 
         for (int i = 0; i < 4; i++)
         {

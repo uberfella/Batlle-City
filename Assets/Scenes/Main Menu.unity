@@ -1321,6 +1321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   confirmPanel: {fileID: 1409265386}
+  menuSelector: {fileID: 1590473195}
 --- !u!114 &1409265391
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,20 +4,19 @@ using UnityEngine.SceneManagement;
 
 public class ConfirmStartPanel : MonoBehaviour
 {
-    public GameObject confirmPanel; 
-    private MenuSelector menuSelector;
+    public GameObject confirmPanel;
+    public MenuSelector menuSelector;
 
     private void OnEnable()
     {
-        menuSelector = FindFirstObjectByType<MenuSelector>();
         if (menuSelector != null)
             menuSelector.MoveRight();
+
     }
 
     private void OnDisable()
     {
-        //if (menuSelector != null)
-        //    menuSelector.MoveDown();
-        menuSelector.ResetSelection();
+        if (menuSelector != null)
+            menuSelector.MoveDown();
     }
 }
