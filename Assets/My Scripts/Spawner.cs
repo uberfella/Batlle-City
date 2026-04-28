@@ -227,12 +227,8 @@ public class Spawner : MonoBehaviour
 
     private void OnObjectDestroyed(Enemy obj)
     {
-        Debug.Log("OnObjectDestroyed is being called");
-        Debug.Log("block scheme is needed here");
         if (enemiesToSpawn > 0)
         {
-            Debug.Log("enemiesToSpawn > 0");
-
             if (spawnEnemyProcessIsInProgress)
             {
                 return;
@@ -241,11 +237,6 @@ public class Spawner : MonoBehaviour
         }
         else if (AllEnemiesDead())
         {
-            //if (levelFinished)
-            //{
-            //    return;
-            //}
-            //levelFinished = true;
             OnLevelFinished();
         }
     }
@@ -272,6 +263,6 @@ public class Spawner : MonoBehaviour
 3 static spawn points, but 4 enemies with unique indices
 if the enemy with corresponding index dies the new one gets to spawn
 
-there's an x second cooldown before the enemy spawns
+theres an x second cooldown before the enemy spawns
 this cooldown is shared between all the to-be-spawned enemies
  */

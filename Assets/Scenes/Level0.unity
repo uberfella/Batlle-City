@@ -1306,6 +1306,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 308609375}
   m_CullTransparentMesh: 1
+--- !u!114 &325987541 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8588389452971600557, guid: 0a5ea3429a81f9c44939519f83ab6d07, type: 3}
+  m_PrefabInstance: {fileID: 547419780}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 434ffc62d0620be41b8b210d04f33a4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &338207559
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2487,7 +2498,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8588389452971600557, guid: 0a5ea3429a81f9c44939519f83ab6d07, type: 3}
       propertyPath: godmode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4087,6 +4098,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4602420054611951011, guid: df0bd16ffb3e55f45ad0ed9c38e6d12d, type: 3}
+      propertyPath: gameOverSequence
+      value: 
+      objectReference: {fileID: 495956897}
+    - target: {fileID: 4602420054611951011, guid: df0bd16ffb3e55f45ad0ed9c38e6d12d, type: 3}
+      propertyPath: playerController2D
+      value: 
+      objectReference: {fileID: 325987541}
     - target: {fileID: 4602420054611951011, guid: df0bd16ffb3e55f45ad0ed9c38e6d12d, type: 3}
       propertyPath: surrenderFlagSprite
       value: 
