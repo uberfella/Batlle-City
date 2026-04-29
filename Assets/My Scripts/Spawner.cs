@@ -118,7 +118,7 @@ public class Spawner : MonoBehaviour
 
         while (!spawnPointHasEnoughRoom)
         {
-
+                
             spawnPoint = spawnPoints[currentSpawnPoint];
 
             StartCoroutine(ShowPreSpawnAnimation(currentSpawnPoint));
@@ -230,6 +230,10 @@ public class Spawner : MonoBehaviour
         if (enemiesToSpawn > 0)
         {
             if (spawnEnemyProcessIsInProgress)
+            {
+                return;
+            }
+            if (GameLogic.GameOver)
             {
                 return;
             }

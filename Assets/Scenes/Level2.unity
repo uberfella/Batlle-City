@@ -4074,6 +4074,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4602420054611951011, guid: df0bd16ffb3e55f45ad0ed9c38e6d12d, type: 3}
+      propertyPath: gameOverSequence
+      value: 
+      objectReference: {fileID: 419611467}
+    - target: {fileID: 4602420054611951011, guid: df0bd16ffb3e55f45ad0ed9c38e6d12d, type: 3}
+      propertyPath: playerController2D
+      value: 
+      objectReference: {fileID: 875044225}
+    - target: {fileID: 4602420054611951011, guid: df0bd16ffb3e55f45ad0ed9c38e6d12d, type: 3}
       propertyPath: surrenderFlagSprite
       value: 
       objectReference: {fileID: 1085376702}
@@ -4805,6 +4813,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a5ea3429a81f9c44939519f83ab6d07, type: 3}
+--- !u!114 &875044225 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8588389452971600557, guid: 0a5ea3429a81f9c44939519f83ab6d07, type: 3}
+  m_PrefabInstance: {fileID: 875044224}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 434ffc62d0620be41b8b210d04f33a4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &882742032
 PrefabInstance:
   m_ObjectHideFlags: 0

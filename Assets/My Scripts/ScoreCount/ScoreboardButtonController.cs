@@ -3,11 +3,6 @@ using UnityEngine.SceneManagement;
 
 public class ScoreboardButtonController : MonoBehaviour
 {
-    void Start()
-    {
-
-    }
-
     public void LoadNextLevel()
     {
         GameLogic.Instance.destroyedByType.Clear();
@@ -24,7 +19,8 @@ public class ScoreboardButtonController : MonoBehaviour
         }
     }
 
-    public void ReturnToMainMenu() 
+    //needed for onClick() -> Scoreboard scene -> HOME button
+    public void ReturnToMainMenu()
     {
         SceneManager.LoadScene("Main Menu");
     }

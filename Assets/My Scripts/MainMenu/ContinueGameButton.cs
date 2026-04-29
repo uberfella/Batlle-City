@@ -16,9 +16,5 @@ public class ContinueGameButton : MonoBehaviour
         {
             continueButton.SetActive(true);
         }
-
     }
-
-
-
 }

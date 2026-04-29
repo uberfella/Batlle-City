@@ -90,6 +90,7 @@ public class PlayerController2D : Tank, IDamageable
         //    godmode = false;
         //    TriggerInvincibility();
         //}
+
         //when the scene gets switched = all sounds stop
         bool isMoving = horizontalInput != 0 || verticalInput != 0;
         AudioManager.Instance.SetEngineState(isMoving);
@@ -98,10 +99,15 @@ public class PlayerController2D : Tank, IDamageable
     void FixedUpdate()
     {
 
+        if (GameLogic.GameOver)
+        {
+            return;
+        }
+
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
 
-        if ((horizontalInput != 0 || verticalInput != 0) && !GameLogic.GameOver)
+        if (horizontalInput != 0 || verticalInput != 0)
         {
             timer += Time.fixedDeltaTime;
             if (timer >= animationSpeed)
@@ -120,10 +126,8 @@ public class PlayerController2D : Tank, IDamageable
 
         Vector2 moveDirection = new Vector2(horizontalInput, verticalInput).normalized;
 
-        if (!GameLogic.GameOver /*&& spawnFreezeIsOver*/)
-        {
-            PlayerMove(moveDirection);
-        }
+        PlayerMove(moveDirection);
+        
     }
 
     public void TakeDamage(int damage, IDamageSource source)

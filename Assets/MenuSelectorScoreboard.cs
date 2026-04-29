@@ -36,17 +36,28 @@ public class MenuSelectorScoreboard : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(selectFirstKey) && destroyedEnemiesDisplay.scoreBoardHasFinishedDrawing)
+        if (!destroyedEnemiesDisplay.scoreBoardHasFinishedDrawing)
+        {
+            return;
+        }
+
+        if (Input.GetKeyDown(selectFirstKey))
         {
             MoveLeft();
         }
 
-        if (Input.GetKeyDown(selectSecondKey) && !GameLogic.GameOver && destroyedEnemiesDisplay.scoreBoardHasFinishedDrawing)
+        //gets called when
+        //gameover in scoreboard
+        if (Input.GetKeyDown(selectSecondKey))
         {
+            if (GameLogic.GameOver)
+            {
+                return;
+            }
             MoveRight();
         }
 
-        if ((Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)) && destroyedEnemiesDisplay.scoreBoardHasFinishedDrawing)
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
             AudioManager.Instance.PlaySFX(AudioManager.Instance.enemyDecreasingLivesSound);
 
