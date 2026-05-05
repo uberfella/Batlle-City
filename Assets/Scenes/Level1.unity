@@ -1426,11 +1426,11 @@ RectTransform:
   m_LocalScale: {x: 0.98, y: 0.98, z: 0.98}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 889500639}
+  m_Father: {fileID: 1562476875}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.49, y: 5.61}
+  m_AnchoredPosition: {x: 1.49, y: -13.489998}
   m_SizeDelta: {x: 6.207, y: 1.9724998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &450635336
@@ -1510,6 +1510,7 @@ GameObject:
   - component: {fileID: 473272349}
   - component: {fileID: 473272348}
   - component: {fileID: 473272347}
+  - component: {fileID: 473272351}
   m_Layer: 9
   m_Name: WallBottom
   m_TagString: Wall
@@ -1660,6 +1661,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 612844093}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &473272351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473272346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc28f01bc29a155429db9405cebe418a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &478270163
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2670,6 +2683,7 @@ GameObject:
   - component: {fileID: 573317324}
   - component: {fileID: 573317323}
   - component: {fileID: 573317322}
+  - component: {fileID: 573317326}
   m_Layer: 9
   m_Name: WallRight
   m_TagString: Wall
@@ -2820,6 +2834,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 612844093}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &573317326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573317321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc28f01bc29a155429db9405cebe418a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &595892388
 GameObject:
   m_ObjectHideFlags: 0
@@ -4404,9 +4430,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 450635335}
-  - {fileID: 1310903273}
+  m_Children: []
   m_Father: {fileID: 1562476875}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -6122,11 +6146,11 @@ RectTransform:
   m_LocalScale: {x: 0.01499371, y: 0.01499371, z: 0.01499371}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 889500639}
+  m_Father: {fileID: 1562476875}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.35, y: 1.59}
+  m_AnchoredPosition: {x: -0.48, y: -28.4}
   m_SizeDelta: {x: 816.1357, y: 177.5883}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1310903274
@@ -6142,8 +6166,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseText: {fileID: 1310903273}
-  pausedPosition: {x: 1.35, y: 18.35}
-  hiddenPosition: {x: 1.55, y: -1.173981}
+  pausedPosition: {x: -0.48, y: -1.7}
+  hiddenPosition: {x: -0.48, y: -28.4}
 --- !u!114 &1310903275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6742,6 +6766,7 @@ GameObject:
   - component: {fileID: 1424048819}
   - component: {fileID: 1424048818}
   - component: {fileID: 1424048817}
+  - component: {fileID: 1424048821}
   m_Layer: 9
   m_Name: WallTop
   m_TagString: Wall
@@ -6892,6 +6917,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 612844093}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &1424048821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1424048816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc28f01bc29a155429db9405cebe418a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1424114342
 GameObject:
   m_ObjectHideFlags: 0
@@ -7394,7 +7431,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8588389452971600557, guid: 0a5ea3429a81f9c44939519f83ab6d07, type: 3}
       propertyPath: godmode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7545,6 +7582,8 @@ RectTransform:
   m_LocalScale: {x: 0.695625, y: 0.695625, z: 0.695625}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 450635335}
+  - {fileID: 1310903273}
   - {fileID: 889500639}
   - {fileID: 69145719}
   - {fileID: 308609376}
@@ -8274,6 +8313,7 @@ GameObject:
   - component: {fileID: 1764738849}
   - component: {fileID: 1764738848}
   - component: {fileID: 1764738847}
+  - component: {fileID: 1764738851}
   m_Layer: 9
   m_Name: WallLeft
   m_TagString: Wall
@@ -8424,6 +8464,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 612844093}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1764738851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764738846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc28f01bc29a155429db9405cebe418a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1768808175
 PrefabInstance:
   m_ObjectHideFlags: 0

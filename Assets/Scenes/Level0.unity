@@ -5012,7 +5012,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -799.03, y: -467.91}
+  m_AnchoredPosition: {x: -799.03, y: -470.7}
   m_SizeDelta: {x: 1041.2661, y: 226.5759}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1008329937
@@ -5150,8 +5150,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseText: {fileID: 1008329936}
-  pausedPosition: {x: -799.31, y: -465.99}
-  hiddenPosition: {x: -799.11, y: -451.47}
+  pausedPosition: {x: -799.31, y: -450}
+  hiddenPosition: {x: -799.11, y: -470.7}
 --- !u!1001 &1026059185
 PrefabInstance:
   m_ObjectHideFlags: 0

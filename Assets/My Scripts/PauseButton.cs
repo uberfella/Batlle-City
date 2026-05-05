@@ -16,12 +16,16 @@ public class PauseButton : MonoBehaviour
             if (PauseManager.Instance.isPaused)
             {
                 PauseManager.Instance.Resume();
-                pauseText.anchoredPosition = pausedPosition;
+                //pauseText.anchoredPosition = pausedPosition;
+                pauseText.anchoredPosition = hiddenPosition;
             }
             else
             {
+                Debug.Log("Hi");
                 PauseManager.Instance.Pause();
-                pauseText.anchoredPosition = hiddenPosition;
+                //pauseText.anchoredPosition = hiddenPosition;
+                pauseText.anchoredPosition = pausedPosition;
+
             }
         }
     }
