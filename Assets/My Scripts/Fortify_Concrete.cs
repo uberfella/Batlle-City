@@ -6,11 +6,12 @@ public class Fortify_Concrete : MonoBehaviour, IDamageable, IExplodableTarget
     {
         if (source.Team == Team.Player)
         {
-            AudioManager.Instance.PlaySFX(AudioManager.Instance.obstacleHitButNotDestroyedSound);
-            if (PlayerProperties.playerLevel >= 3)
+            if (PlayerProperties.playerLevel < 3)
             {
-                Destroy(gameObject);
+                return;
             }
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.obstacleHitButNotDestroyedSound);
+            Destroy(gameObject);
         }
     }
 }
