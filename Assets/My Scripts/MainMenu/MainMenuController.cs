@@ -55,6 +55,8 @@ public class MainMenuController : MonoBehaviour
         AudioManager.Instance.PlaySFX(AudioManager.Instance.enemyDecreasingLivesSound);
 
         GameLogic.levelNum = 0;
+        Debug.Log("GameLogic.levelNum = " + GameLogic.levelNum);
+
         ScoreCount.currentScore = 0;
         ScoreCount.highScoreHasBeenBeaten = false;
         PlayerProperties.playerLives = 2;

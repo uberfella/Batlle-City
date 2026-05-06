@@ -31,7 +31,7 @@ public class Spawner : MonoBehaviour
     private bool spawnPointHasEnoughRoom = false;
     private bool spawnEnemyProcessIsInProgress = false;
     private Transform spawnPoint;
-
+    private bool loadingNextLevelIsInProgress = false;
     void Start()
     {
         for (int i = 0; i < 4; i++)
@@ -247,18 +247,26 @@ public class Spawner : MonoBehaviour
 
     void OnLevelFinished()
     {
+        if (loadingNextLevelIsInProgress)
+        {
+            return;
+        }
         StartCoroutine(LoadNextLevel());
     }
 
     private IEnumerator LoadNextLevel()
     {
+        loadingNextLevelIsInProgress = true; 
+
         yield return new WaitForSeconds(1f);
 
         if (GameLogic.levelNum <= GameLogic.finalLevelNum)
         {
             GameLogic.levelNum++;
+            Debug.Log("GameLogic.levelNum = " + GameLogic.levelNum);
             SceneManager.LoadScene("Scoreboard");
         }
+
     }
 
 }

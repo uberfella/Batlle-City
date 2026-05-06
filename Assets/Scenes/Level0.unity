@@ -2224,7 +2224,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 16.875
+  orthographic size: 15.8125
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -9791,7 +9791,7 @@ MonoBehaviour:
   - {fileID: 805236122}
   - {fileID: 950759007}
   - {fileID: 1387277190}
-  enemiesToSpawn: 20
+  enemiesToSpawn: 2
   enemiesToSpawnText: {fileID: 308609378}
   obstructionMask:
     serializedVersion: 2
