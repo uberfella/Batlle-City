@@ -263,7 +263,7 @@ public class Spawner : MonoBehaviour
         if (GameLogic.levelNum <= GameLogic.finalLevelNum)
         {
             GameLogic.levelNum++;
-            Debug.Log("GameLogic.levelNum = " + GameLogic.levelNum);
+            //Debug.Log("GameLogic.levelNum = " + GameLogic.levelNum);
             SceneManager.LoadScene("Scoreboard");
         }
 

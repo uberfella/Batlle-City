@@ -23,15 +23,17 @@ public class MenuSelectorScoreboard : MonoBehaviour
 
         if (!GameLogic.GameOver)
         {
-            currentIndex = 1;
+            //currentIndex = 1;
+            MoveRight();
             lastUsedIndex = 0;
         }
         else
         {
-            currentIndex = 0;
+            MoveLeft();
+            //currentIndex = 0;
             lastUsedIndex = 1;
         }
-        //MoveSelector is being executed in destroyedEnemiesDisplay script here
+        //MoveSelector is being moved in destroyedEnemiesDisplay script at this point
     }
 
     void Update()
@@ -60,7 +62,6 @@ public class MenuSelectorScoreboard : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter))
         {
             AudioManager.Instance.PlaySFX(AudioManager.Instance.enemyDecreasingLivesSound);
-
             buttons[currentIndex].onClick.Invoke();
         }
     }

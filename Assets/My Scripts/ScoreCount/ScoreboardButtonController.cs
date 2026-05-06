@@ -19,7 +19,7 @@ public class ScoreboardButtonController : MonoBehaviour
         }
     }
 
-    //needed for onClick() -> Scoreboard scene -> HOME button
+    //is referenced in onClick() -> Scoreboard scene -> HOME button
     public void ReturnToMainMenu()
     {
         SceneManager.LoadScene("Main Menu");
