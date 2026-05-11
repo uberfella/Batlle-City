@@ -26,11 +26,11 @@ public class PowerupLogic : MonoBehaviour
     private void Update()
     {
         ////cheat to kill all
-        //if (Input.GetKeyDown(KeyCode.Backspace))
-        //{
-        //    GameObject instance = Instantiate(powerupsToSpawn[3], new Vector2(-1.5f, -4.45f), Quaternion.identity);
-        //    instance.SetActive(true);
-        //}
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            GameObject instance = Instantiate(powerupsToSpawn[3], new Vector2(-1.5f, -4.45f), Quaternion.identity);
+            instance.SetActive(true);
+        }
         //if (Input.GetKeyDown(KeyCode.G))
         //{
         //    SpawnRandomPowerupOnField();

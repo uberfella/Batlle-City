@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ShellPlayer : Shell
+public class ShellPlayer : Shell, IDamageable
 {
     protected override void OnTriggerEnter2D(Collider2D other)
     {
@@ -10,4 +10,8 @@ public class ShellPlayer : Shell
         base.OnTriggerEnter2D(other);
     }
 
+    public void TakeDamage(int damage, IDamageSource source)
+    {
+        Destroy(gameObject);
+    }
 }

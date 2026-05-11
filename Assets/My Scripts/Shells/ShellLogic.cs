@@ -34,6 +34,7 @@ public class Shell : MonoBehaviour, IDamageSource
     {
 
         IDamageable target = other.GetComponent<IDamageable>();
+        Debug.Log("target = " + target);
 
         if (target != null)
         {

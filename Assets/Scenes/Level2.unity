@@ -1522,11 +1522,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1562476875}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14.180001, y: 5.0000134}
-  m_SizeDelta: {x: 2.4896, y: 2.6026}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -7.93, y: 5.09}
+  m_SizeDelta: {x: 3.5103, y: 3.6695}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!223 &308609377
 Canvas:
   m_ObjectHideFlags: 0
@@ -4832,7 +4832,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8588389452971600557, guid: 0a5ea3429a81f9c44939519f83ab6d07, type: 3}
       propertyPath: godmode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
