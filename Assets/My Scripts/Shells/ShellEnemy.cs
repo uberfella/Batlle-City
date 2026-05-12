@@ -15,6 +15,6 @@ public class ShellEnemy : Shell, IDamageable
 
     public void TakeDamage(int damage, IDamageSource source)
     {
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 }

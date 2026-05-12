@@ -23,7 +23,11 @@ public class Powerup_Freeze : Powerup_Superclass
 
     public override void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player") & !wasActivated)
+        if (wasActivated)
+        {
+            return;
+        }
+        if (other.gameObject.CompareTag("Player"))
         {
             base.OnTriggerEnter2D(other);
             wasActivated = true; //prevents multiple activations
@@ -41,7 +45,8 @@ public class Powerup_Freeze : Powerup_Superclass
             if (e != null)
                 e.SetFrozen(true);
         }
-        yield return new WaitForSeconds(10f);
+        //yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(3f);
         foreach (Enemy e in frozenEnemies)
         {
             if (e != null)

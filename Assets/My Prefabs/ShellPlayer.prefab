@@ -124,7 +124,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0016127229, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -134,7 +134,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.06, y: 0.06}
+  m_Size: {x: 0.12621725, y: 0.25}
   m_EdgeRadius: 0
 --- !u!114 &5554954042201668382
 MonoBehaviour:
@@ -148,8 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f27ba5c8f79e20847b50b57141772cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  playerController2D: {fileID: 0}
   explosionEffectPrefab: {fileID: 7678845025099040012, guid: 10fa4a5c4d4b7f14894ef02b00d8c359, type: 3}
   rb: {fileID: -8243031448967089219}
 --- !u!50 &-8243031448967089219

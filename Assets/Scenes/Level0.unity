@@ -1325,6 +1325,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2034354482591408985, guid: 6a67cec6e0e33094497926bcb66ea13f, type: 3}
+      propertyPath: m_Size.x
+      value: 0.14862072
+      objectReference: {fileID: 0}
+    - target: {fileID: 2034354482591408985, guid: 6a67cec6e0e33094497926bcb66ea13f, type: 3}
+      propertyPath: m_Size.y
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2034354482591408985, guid: 6a67cec6e0e33094497926bcb66ea13f, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.0016199946
+      objectReference: {fileID: 0}
+    - target: {fileID: 2034354482591408985, guid: 6a67cec6e0e33094497926bcb66ea13f, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2980163820454248444, guid: 6a67cec6e0e33094497926bcb66ea13f, type: 3}
       propertyPath: m_Name
       value: ShellEnemy
@@ -2447,6 +2463,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2034354482591408985, guid: 39024b584b2d6c64893fc21a1d676504, type: 3}
+      propertyPath: m_Size.x
+      value: 0.13254821
+      objectReference: {fileID: 0}
+    - target: {fileID: 2034354482591408985, guid: 39024b584b2d6c64893fc21a1d676504, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.00109905
+      objectReference: {fileID: 0}
     - target: {fileID: 2980163820454248444, guid: 39024b584b2d6c64893fc21a1d676504, type: 3}
       propertyPath: m_Name
       value: ShellPlayer

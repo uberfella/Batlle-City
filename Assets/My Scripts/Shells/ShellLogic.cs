@@ -34,11 +34,11 @@ public class Shell : MonoBehaviour, IDamageSource
     {
 
         IDamageable target = other.GetComponent<IDamageable>();
-        Debug.Log("target = " + target);
 
         if (target != null)
         {
             target.TakeDamage(1, this);
+
             Destroy(gameObject);
 
         }
