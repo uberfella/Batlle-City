@@ -6,9 +6,9 @@ public class Powerup_Freeze : Powerup_Superclass
 {
     public GameObject freezePowerupSprite;
     public SpriteRenderer spriteRenderer;
+    public bool wasActivated;
 
     private Spawner spawner;
-    private bool wasActivated;
 
     void Start()
     {
@@ -45,8 +45,7 @@ public class Powerup_Freeze : Powerup_Superclass
             if (e != null)
                 e.SetFrozen(true);
         }
-        //yield return new WaitForSeconds(10f);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(10f);
         foreach (Enemy e in frozenEnemies)
         {
             if (e != null)

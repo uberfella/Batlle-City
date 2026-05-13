@@ -32,22 +32,18 @@ public class Shell : MonoBehaviour, IDamageSource
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
-
         IDamageable target = other.GetComponent<IDamageable>();
 
         if (target != null)
         {
             target.TakeDamage(1, this);
-
             Destroy(gameObject);
-
         }
 
         if (other.GetComponent<IExplodableTarget>() != null) 
         {
             Explode();
             Destroy(gameObject);
-
         }
     }
 
