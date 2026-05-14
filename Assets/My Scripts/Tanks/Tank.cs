@@ -6,7 +6,7 @@ public class Tank : MonoBehaviour
     protected BoxCollider2D boxCollider;
     protected int health;
     protected float speed;
-    protected float projectileSpeed;
+    [SerializeField]protected float projectileSpeed;
     protected Vector2 minBounds = new Vector2(-6.5f, -7.5f);
     protected Vector2 maxBounds = new Vector2(6.5f, 6.5f);
     protected float horizontalInput;

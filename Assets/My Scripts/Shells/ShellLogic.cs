@@ -3,7 +3,10 @@ using UnityEngine;
 
 public class Shell : MonoBehaviour, IDamageSource
 {
-    private float speed = 10f;
+    //private float speed = 10f;
+    private float speed = 5f;
+    [SerializeField] private float explosionSizeX = 1f;
+    [SerializeField] private float explosionSizeY = 0.25f;
     public GameObject explosionEffectPrefab;
     public Rigidbody2D rb;
 
@@ -50,7 +53,8 @@ public class Shell : MonoBehaviour, IDamageSource
     private void Explode()
     {
         Vector2 explosionCenter = transform.position;
-        Vector2 explosionSize = new Vector2(1.0f, 0.25f);
+        //Vector2 explosionSize = new Vector2(1.0f, 0.25f);
+        Vector2 explosionSize = new Vector2(explosionSizeX, explosionSizeY);
         Collider2D[] objectsHit = Physics2D.OverlapBoxAll(explosionCenter, explosionSize, transform.eulerAngles.z);
 
         Instantiate(explosionEffectPrefab, transform.position, transform.rotation);
@@ -68,7 +72,8 @@ public class Shell : MonoBehaviour, IDamageSource
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Vector2 explosionSize = new Vector2(1.0f, 0.25f);
+        //Vector2 explosionSize = new Vector2(1.0f, 0.25f);
+        Vector2 explosionSize = new Vector2(explosionSizeX, explosionSizeY);
         Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
         Gizmos.DrawWireCube(Vector3.zero, explosionSize);
     }

@@ -9,6 +9,7 @@ public class PowerupLogic : MonoBehaviour
 {
     public GameObject [] powerupsToSpawn;
     public static PowerupLogic Instance;
+    public bool fortifyIsActive;    
     private Powerup_Fortify powerup_Fortify;
     private Powerup_Freeze powerup_Freeze;
     //temporary way to make sure the powerup spawns inside squares nicely

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Powerup_Fortify : Powerup_Superclass
@@ -43,7 +44,9 @@ public class Powerup_Fortify : Powerup_Superclass
     {
         // Spawn for 5 seconds
         FortifySpawnConcrete();
+        PowerupLogic.Instance.fortifyIsActive = true;
         yield return new WaitForSeconds(10f);
+
 
         // Despawn for 1 second
         FortifyDespawnConcrete();
