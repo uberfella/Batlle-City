@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class Powerup_Fortify : Powerup_Superclass
 {
-    public GameObject objectToSpawn; //fortify powerup concrete  
-    public Vector2[] spawnPositions; //fortify powerup spawnpositions  
+    public GameObject fortifyBlocksToSpawn; //fortify powerup concrete  
+    public GameObject brickBlocksToSpawn; //fortify powerup concrete  
+    public Vector2[] fortifySpawnPositions; //fortify powerup spawnpositions  
+    public Vector2[] brickSpawnPositions; //fortify powerup spawnpositions  
     public List<bool> rotate90Z; //fortify powerup concrete rotations  
     public GameObject fortifyPowerupSprite;
     public SpriteRenderer spriteRenderer;
@@ -71,14 +73,19 @@ public class Powerup_Fortify : Powerup_Superclass
 
     public void FortifySpawnConcrete()
     {
-        for (int i = 0; i < spawnPositions.Length; i++)
+        for (int i = 0; i < fortifySpawnPositions.Length; i++)
         {
             Quaternion rotation = rotate90Z[i] ? Quaternion.Euler(0, 0, 90) : Quaternion.identity;
-            GameObject instance = Instantiate(objectToSpawn, spawnPositions[i], rotation);
+            GameObject instance = Instantiate(fortifyBlocksToSpawn, fortifySpawnPositions[i], rotation);
             instance.SetActive(true);
             spawnedObjects.Add(instance);
         }
     }
+    public void SpawnBricks()
+    {
+
+    }
+
 
     public void FortifyDespawnConcrete()
     {
@@ -90,5 +97,10 @@ public class Powerup_Fortify : Powerup_Superclass
             }
         }
         spawnedObjects.Clear();
+    }
+
+    public void DespawnBricks()
+    {
+
     }
 }
