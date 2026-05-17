@@ -84,6 +84,7 @@ public class Enemy : Tank, IDamageable
         GameObject shellObject = Instantiate(shellPrefab, transform.position, transform.rotation);
         Shell shell = shellObject.GetComponent<Shell>();
         shell.Init(Team.Enemy);
+        shellObject.GetComponent<Shell>().SetSpeed(projectileSpeed);
     }
 
     protected void EnemyMove(Vector2 moveDir)

@@ -3,10 +3,9 @@ using UnityEngine;
 
 public class Shell : MonoBehaviour, IDamageSource
 {
-    //private float speed = 10f;
-    private float speed = 5f;
-    [SerializeField] private float explosionSizeX = 1f;
-    [SerializeField] private float explosionSizeY = 0.25f;
+    private float speed = 10f;
+    private float explosionSizeX = 0.75f;
+    private float explosionSizeY = 0.25f;
     public GameObject explosionEffectPrefab;
     public Rigidbody2D rb;
 

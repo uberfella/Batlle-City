@@ -148,10 +148,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fortifyBlocksToSpawn: {fileID: 1864882036422906146, guid: 8705d85ff3ea51d4faa886e344aab811, type: 3}
-  brickBlocksToSpawn: {fileID: 0}
+  brickBlocksToSpawn: {fileID: 6919442154195492897, guid: 07a65c0ae3da4a046a69698549f5d20b, type: 3}
   fortifySpawnPositions:
-  - {x: 0, y: 0}
-  brickSpawnPositions: []
+  - {x: -0.245, y: -5.75}
+  - {x: -0.245, y: -4.75}
+  - {x: 0.75, y: -4.75}
+  - {x: 1.245, y: -5.75}
+  brickSpawnPositions:
+  - {x: -0.5, y: -6}
+  - {x: -0.5, y: -5.5}
+  - {x: -0.5, y: -5}
+  - {x: 0, y: -5}
+  - {x: 0.5, y: -5}
+  - {x: 1, y: -5}
+  - {x: 1, y: -5.5}
+  - {x: 1, y: -6}
   rotate90Z: 01000001
   fortifyPowerupSprite: {fileID: 3638255777565444822}
   spriteRenderer: {fileID: 4441940542718265275}
