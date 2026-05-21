@@ -286,12 +286,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 434ffc62d0620be41b8b210d04f33a4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileSpeed: 0
   enemyIsAlive: 0
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 7872
   shellPrefab: {fileID: 2980163820454248444, guid: 39024b584b2d6c64893fc21a1d676504, type: 3}
-  playerIsAlive: 0
   playerIsInvincible: 0
   godmode: 0
   tankLevelOneSprites:
@@ -306,7 +306,7 @@ MonoBehaviour:
   tankLevelFourSprites:
   - {fileID: 274528827089458335, guid: 696c15469398c774387affd9be002b10, type: 3}
   - {fileID: -7819337433466014027, guid: 3d65e5df298c9b344a2969dfb8f2bef7, type: 3}
-  animationSpeed: 0.2
+  animationSpeed: 0.01
   spriteRenderer: {fileID: 6505327073920512807}
   tankExplosionEffectPrefab: {fileID: 7678845025099040012, guid: 2c982297192e5eb4d84b1f33c01df961, type: 3}
   drawGizmoDistance: 0

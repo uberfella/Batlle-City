@@ -82,6 +82,7 @@ public class PowerupLogic : MonoBehaviour
                 {
                     continue;
                 }
+                Debug.Log("destroying "+ obj);
                 UnityEngine.Object.Destroy(obj);
             }
         }
