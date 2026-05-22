@@ -9,10 +9,13 @@ public class Powerup_Freeze : Powerup_Superclass
     public bool wasActivated;
 
     private Spawner spawner;
+    private int id;
 
     void Start()
     {
         wasActivated = false;
+        id = gameObject.GetInstanceID();
+        Debug.Log("Instantiating " + id + " with wasActivated = "+wasActivated);
         spawner = FindFirstObjectByType<Spawner>();
     }
     void Update()
@@ -25,12 +28,14 @@ public class Powerup_Freeze : Powerup_Superclass
     {
         if (wasActivated)
         {
+            Debug.Log(id + " wasActivated is " + wasActivated + " returning");
             return;
         }
         if (other.gameObject.CompareTag("Player"))
         {
             base.OnTriggerEnter2D(other);
             wasActivated = true; //prevents multiple activations
+            Debug.Log(id + " wasActivated = " + wasActivated + " returning");
             StartCoroutine(FreezeEnemies());
             //we can't destroy powerup gameobject here, otherwise the coroutine won't operate properly. So we just make it invisible while the enemies are frozen and then we destroy it
             freezePowerupSprite.GetComponent<SpriteRenderer>().enabled = false;
@@ -39,18 +44,21 @@ public class Powerup_Freeze : Powerup_Superclass
 
     IEnumerator FreezeEnemies()
     {
+        Debug.Log(id + " Initiating FreezeEnemies()");
         List<Enemy> frozenEnemies = new List<Enemy>(Spawner.AliveEnemies);
         foreach (Enemy e in frozenEnemies)
         {
             if (e != null)
                 e.SetFrozen(true);
         }
+        Debug.Log(id + " setting alive enemies frozen, waiting 10f");
         yield return new WaitForSeconds(10f);
         foreach (Enemy e in frozenEnemies)
         {
             if (e != null)
                 e.SetFrozen(false);
         }
+        Debug.Log(id + " unfreezing enemies, destroying powerup");
         Destroy(gameObject);
     }
 }

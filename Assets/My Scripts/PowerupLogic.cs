@@ -34,10 +34,10 @@ public class PowerupLogic : MonoBehaviour
             GameObject instance = Instantiate(powerupsToSpawn[3], new Vector2(-1.5f, -4.45f), Quaternion.identity);
             instance.SetActive(true);
         }
-        //if (Input.GetKeyDown(KeyCode.G))
-        //{
-        //    SpawnRandomPowerupOnField();
-        //}
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            SpawnRandomPowerupOnField();
+        }
 
     }
 
@@ -57,7 +57,7 @@ public class PowerupLogic : MonoBehaviour
         }
 
         GameObject instance = Instantiate(powerupsToSpawn[randomPowerUp], new Vector2(randomPosX, randomPosY), Quaternion.identity);
-        instance.SetActive(true);
+        //instance.SetActive(true);
         AudioManager.Instance.PlaySFX(AudioManager.Instance.powerUpSpawn);
 
 
@@ -74,6 +74,8 @@ public class PowerupLogic : MonoBehaviour
             if (obj == null) continue;
             if (obj != null)
             {
+                //TODO remove reference to wasActivated
+                //make OOP call destroy on everything and then powerups decide what to do when destroy is called
                 if (obj.name == "Powerup_Fortify" && powerup_Fortify.wasActivated)
                 {
                     continue;
@@ -82,7 +84,7 @@ public class PowerupLogic : MonoBehaviour
                 {
                     continue;
                 }
-                Debug.Log("destroying "+ obj);
+                Debug.Log("DestroyAllPowerUps(): destroying " + obj);
                 UnityEngine.Object.Destroy(obj);
             }
         }

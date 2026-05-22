@@ -306,7 +306,7 @@ MonoBehaviour:
   tankLevelFourSprites:
   - {fileID: 274528827089458335, guid: 696c15469398c774387affd9be002b10, type: 3}
   - {fileID: -7819337433466014027, guid: 3d65e5df298c9b344a2969dfb8f2bef7, type: 3}
-  animationSpeed: 0.01
+  animationSpeed: 0.03
   spriteRenderer: {fileID: 6505327073920512807}
   tankExplosionEffectPrefab: {fileID: 7678845025099040012, guid: 2c982297192e5eb4d84b1f33c01df961, type: 3}
   drawGizmoDistance: 0
