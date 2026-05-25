@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEngine.GraphicsBuffer;
 
 public enum PowerupType { Fortify, Freeze, Invulnerability, KillAll, Levelup, Extralife }
 
@@ -12,6 +13,7 @@ public class PowerupLogic : MonoBehaviour
     public bool fortifyIsActive;    
     private Powerup_Fortify powerup_Fortify;
     private Powerup_Freeze powerup_Freeze;
+    private IDamageable target;
     //temporary way to make sure the powerup spawns inside squares nicely
     //-5.5 -5.5 
     //6.5 6.5
@@ -67,26 +69,39 @@ public class PowerupLogic : MonoBehaviour
 
     public void DestroyAllPowerUps()
     {
+        //GameObject[] powerups = GameObject.FindGameObjectsWithTag("Powerup");
+
+        //foreach (GameObject obj in powerups)
+        //{
+        //    if (obj == null) continue;
+        //    if (obj != null)
+        //    {
+        //        //TODO remove reference to wasActivated
+        //        //make OOP call destroy on everything and then powerups decide what to do when destroy is called
+        //        if (obj.name == "Powerup_Fortify" && powerup_Fortify.wasActivated)
+        //        {
+        //            continue;
+        //        }
+        //        if (obj.name == "Powerup_Freeze" && powerup_Freeze.wasActivated)
+        //        {
+        //            continue;
+        //        }
+        //        Debug.Log("DestroyAllPowerUps(): destroying " + obj);
+        //        UnityEngine.Object.Destroy(obj);
+        //    }
+        //}
         GameObject[] powerups = GameObject.FindGameObjectsWithTag("Powerup");
 
         foreach (GameObject obj in powerups)
         {
-            if (obj == null) continue;
-            if (obj != null)
-            {
-                //TODO remove reference to wasActivated
-                //make OOP call destroy on everything and then powerups decide what to do when destroy is called
-                if (obj.name == "Powerup_Fortify" && powerup_Fortify.wasActivated)
-                {
-                    continue;
-                }
-                if (obj.name == "Powerup_Freeze" && powerup_Freeze.wasActivated)
-                {
-                    continue;
-                }
-                Debug.Log("DestroyAllPowerUps(): destroying " + obj);
-                UnityEngine.Object.Destroy(obj);
-            }
+            target = obj.GetComponent<IDamageable>();
+        }
+
+        if (target != null)
+        {
+            var source = new SimpleDamageSource(gameObject, Team.Player);
+            target.TakeDamage(1, source);
+            Destroy(gameObject);
         }
     }
 }
