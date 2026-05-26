@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Powerup_Invul : Powerup_Superclass
+public class Powerup_Invul : Powerup_Superclass, IDamageable
 {
     public SpriteRenderer spriteRenderer;
 
@@ -23,6 +23,13 @@ public class Powerup_Invul : Powerup_Superclass
             playerController2D.TriggerInvincibility();
             Destroy(gameObject);
         }
+    }
+
+    public void TakeDamage(int damage, IDamageSource source)
+    {
+
+        Destroy(gameObject);
+
     }
 }
 

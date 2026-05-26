@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Powerup_Levelup : Powerup_Superclass
+public class Powerup_Levelup : Powerup_Superclass, IDamageable
 {
     private PlayerController2D playerController2D;
     public SpriteRenderer spriteRenderer;
@@ -24,5 +24,12 @@ public class Powerup_Levelup : Powerup_Superclass
             playerController2D.PlayerLevelUp();
             Destroy(gameObject);
         }
+    }
+
+    public void TakeDamage(int damage, IDamageSource source)
+    {
+
+        Destroy(gameObject);
+
     }
 }

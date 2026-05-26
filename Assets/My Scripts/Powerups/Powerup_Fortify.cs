@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Powerup_Fortify : Powerup_Superclass
+public class Powerup_Fortify : Powerup_Superclass, IDamageable
 {
     public GameObject fortifyBlocksToSpawn; //fortify powerup concrete  
     public GameObject brickBlocksToSpawn; //fortify powerup concrete  
@@ -12,11 +12,11 @@ public class Powerup_Fortify : Powerup_Superclass
     public List<bool> rotate90Z; //fortify powerup concrete rotations  
     public GameObject fortifyPowerupSprite;
     public SpriteRenderer spriteRenderer;
-    public bool wasActivated;
 
     private List<GameObject> fortifySpawnedObjects = new List<GameObject>();
     private List<GameObject> brickSpawnedObjects = new List<GameObject>();
     private GameObject[] bricksInBase;
+    private bool wasActivated;
 
     void Start()
     {
@@ -35,6 +35,15 @@ public class Powerup_Fortify : Powerup_Superclass
             return;
         }
 
+        if (PowerupLogic.Instance.fortifyPowerupCoroutineWasActivated)
+        {
+            base.OnTriggerEnter2D(other);
+
+            Destroy(gameObject);
+
+            return;
+        }
+
         if (other.gameObject.CompareTag("Player"))
         {
             wasActivated = true;
@@ -47,9 +56,10 @@ public class Powerup_Fortify : Powerup_Superclass
 
     IEnumerator FortifySpawnConcreteAndBricksOnBase()
     {
+        PowerupLogic.Instance.fortifyPowerupCoroutineWasActivated = true;
+        Debug.Log("PowerupLogic.Instance.fortifyPowerupCoroutineWasActivated = "+ PowerupLogic.Instance.fortifyPowerupCoroutineWasActivated);
         DespawnBricks();
         FortifySpawnConcrete();
-        PowerupLogic.Instance.fortifyIsActive = true;
         yield return new WaitForSeconds(10f);
 
         FortifyDespawnConcrete();
@@ -70,6 +80,7 @@ public class Powerup_Fortify : Powerup_Superclass
 
         FortifyDespawnConcrete();
         SpawnBricks();
+        PowerupLogic.Instance.fortifyPowerupCoroutineWasActivated = false;
         Destroy(gameObject);
     }
 
@@ -125,5 +136,14 @@ public class Powerup_Fortify : Powerup_Superclass
             }
         }
         brickSpawnedObjects.Clear();
+    }
+
+    public void TakeDamage(int damage, IDamageSource source)
+    {
+        if (wasActivated)
+        {
+            return;
+        }
+        Destroy(gameObject);
     }
 }

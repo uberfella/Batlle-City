@@ -10,9 +10,7 @@ public class PowerupLogic : MonoBehaviour
 {
     public GameObject [] powerupsToSpawn;
     public static PowerupLogic Instance;
-    public bool fortifyIsActive;    
-    private Powerup_Fortify powerup_Fortify;
-    private Powerup_Freeze powerup_Freeze;
+    public bool fortifyPowerupCoroutineWasActivated;    
     private IDamageable target;
     //temporary way to make sure the powerup spawns inside squares nicely
     //-5.5 -5.5 
@@ -24,8 +22,6 @@ public class PowerupLogic : MonoBehaviour
     {
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        powerup_Fortify = FindFirstObjectByType<Powerup_Fortify>();
-        powerup_Freeze = FindFirstObjectByType<Powerup_Freeze>();
     }
 
     private void Update()

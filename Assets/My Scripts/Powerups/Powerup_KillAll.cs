@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Powerup_KillAll : Powerup_Superclass
+public class Powerup_KillAll : Powerup_Superclass, IDamageable
 {
     private Enemy enemy;
     public SpriteRenderer spriteRenderer;
@@ -44,5 +44,12 @@ public class Powerup_KillAll : Powerup_Superclass
                 }
             }
         }
+    }
+
+    public void TakeDamage(int damage, IDamageSource source)
+    {
+
+        Destroy(gameObject);
+
     }
 }
