@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Powerup_Freeze : Powerup_Superclass, IDamageable
+public class Powerup_Freeze : Powerup_Superclass, IDestroyablePowerup
 {
     public GameObject freezePowerupSprite;
     public SpriteRenderer spriteRenderer;
@@ -62,7 +62,7 @@ public class Powerup_Freeze : Powerup_Superclass, IDamageable
         Destroy(gameObject);
     }
 
-    public void TakeDamage(int damage, IDamageSource source)
+    public void DestroyPowerup(int damage)
     {
         if (wasActivated)
         {

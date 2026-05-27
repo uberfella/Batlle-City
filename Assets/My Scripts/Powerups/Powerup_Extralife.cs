@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Powerup_Extralife : Powerup_Superclass, IDamageable
+public class Powerup_Extralife : Powerup_Superclass, IDestroyablePowerup
 {
     public SpriteRenderer spriteRenderer;
     private PlayerSpawner playerSpawner;
@@ -25,7 +25,7 @@ public class Powerup_Extralife : Powerup_Superclass, IDamageable
         spriteRenderer.color = new Color(1f, 1f, 1f, alpha);
     }
 
-    public void TakeDamage(int damage, IDamageSource source)
+    public void DestroyPowerup(int damage)
     {
 
         Destroy(gameObject);

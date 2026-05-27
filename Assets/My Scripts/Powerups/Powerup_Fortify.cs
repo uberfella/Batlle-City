@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Powerup_Fortify : Powerup_Superclass, IDamageable
+public class Powerup_Fortify : Powerup_Superclass, IDestroyablePowerup
 {
     public GameObject fortifyBlocksToSpawn; //fortify powerup concrete  
     public GameObject brickBlocksToSpawn; //fortify powerup concrete  
@@ -30,6 +30,11 @@ public class Powerup_Fortify : Powerup_Superclass, IDamageable
 
     public override void OnTriggerEnter2D(Collider2D other)
     {
+        if (!other.gameObject.CompareTag("Player"))
+        {
+            return;
+        }
+
         if (wasActivated)
         {
             return;
@@ -38,26 +43,22 @@ public class Powerup_Fortify : Powerup_Superclass, IDamageable
         if (PowerupLogic.Instance.fortifyPowerupCoroutineWasActivated)
         {
             base.OnTriggerEnter2D(other);
-
             Destroy(gameObject);
-
             return;
         }
 
-        if (other.gameObject.CompareTag("Player"))
-        {
-            wasActivated = true;
-            base.OnTriggerEnter2D(other);
-            StartCoroutine(FortifySpawnConcreteAndBricksOnBase());
-            //we can't destroy powerup gameobject here, otherwise the coroutine won't operate properly. So we just make it invisible while the base is fortified and then we destroy it
-            fortifyPowerupSprite.GetComponent<SpriteRenderer>().enabled = false;
-        }
+        base.OnTriggerEnter2D(other);
+        wasActivated = true;
+        StartCoroutine(FortifySpawnConcreteAndBricksOnBase());
+        //we can't destroy powerup gameobject here, otherwise the coroutine won't operate properly. So we just make it invisible while the base is fortified and then we destroy it
+        fortifyPowerupSprite.GetComponent<SpriteRenderer>().enabled = false;
+
     }
 
     IEnumerator FortifySpawnConcreteAndBricksOnBase()
     {
         PowerupLogic.Instance.fortifyPowerupCoroutineWasActivated = true;
-        Debug.Log("PowerupLogic.Instance.fortifyPowerupCoroutineWasActivated = "+ PowerupLogic.Instance.fortifyPowerupCoroutineWasActivated);
+        Debug.Log("PowerupLogic.Instance.fortifyPowerupCoroutineWasActivated = " + PowerupLogic.Instance.fortifyPowerupCoroutineWasActivated);
         DespawnBricks();
         FortifySpawnConcrete();
         yield return new WaitForSeconds(10f);
@@ -138,8 +139,9 @@ public class Powerup_Fortify : Powerup_Superclass, IDamageable
         brickSpawnedObjects.Clear();
     }
 
-    public void TakeDamage(int damage, IDamageSource source)
+    public void DestroyPowerup(int damage)
     {
+        Debug.Log("TakeDamage");
         if (wasActivated)
         {
             return;

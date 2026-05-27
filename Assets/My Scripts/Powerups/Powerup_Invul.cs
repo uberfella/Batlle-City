@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Powerup_Invul : Powerup_Superclass, IDamageable
+public class Powerup_Invul : Powerup_Superclass, IDestroyablePowerup
 {
     public SpriteRenderer spriteRenderer;
 
@@ -25,7 +25,7 @@ public class Powerup_Invul : Powerup_Superclass, IDamageable
         }
     }
 
-    public void TakeDamage(int damage, IDamageSource source)
+    public void DestroyPowerup(int damage)
     {
 
         Destroy(gameObject);
