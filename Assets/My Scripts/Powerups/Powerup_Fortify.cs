@@ -40,7 +40,7 @@ public class Powerup_Fortify : Powerup_Superclass, IDestroyablePowerup
             return;
         }
 
-        if (PowerupLogic.Instance.fortifyPowerupCoroutineWasActivated)
+        if (PowerupLogic.Instance.GetFortifyPowerupCoroutineWasActivated())
         {
             base.OnTriggerEnter2D(other);
             Destroy(gameObject);
@@ -57,8 +57,8 @@ public class Powerup_Fortify : Powerup_Superclass, IDestroyablePowerup
 
     IEnumerator FortifySpawnConcreteAndBricksOnBase()
     {
-        PowerupLogic.Instance.fortifyPowerupCoroutineWasActivated = true;
-        Debug.Log("PowerupLogic.Instance.fortifyPowerupCoroutineWasActivated = " + PowerupLogic.Instance.fortifyPowerupCoroutineWasActivated);
+        PowerupLogic.Instance.SetFortifyPowerupCoroutineWasActivated(true);
+        Debug.Log("PowerupLogic.Instance.fortifyPowerupCoroutineWasActivated = " + PowerupLogic.Instance.GetFortifyPowerupCoroutineWasActivated());
         DespawnBricks();
         FortifySpawnConcrete();
         yield return new WaitForSeconds(10f);
@@ -81,7 +81,7 @@ public class Powerup_Fortify : Powerup_Superclass, IDestroyablePowerup
 
         FortifyDespawnConcrete();
         SpawnBricks();
-        PowerupLogic.Instance.fortifyPowerupCoroutineWasActivated = false;
+        PowerupLogic.Instance.SetFortifyPowerupCoroutineWasActivated(false);
         Destroy(gameObject);
     }
 

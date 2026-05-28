@@ -10,8 +10,8 @@ public class PowerupLogic : MonoBehaviour
 {
     public GameObject [] powerupsToSpawn;
     public static PowerupLogic Instance;
-    public bool fortifyPowerupCoroutineWasActivated;    
-    private IDamageable target;
+    private bool fortifyPowerupCoroutineWasActivated;    
+    private IDestroyablePowerup target;
     //temporary way to make sure the powerup spawns inside squares nicely
     //-5.5 -5.5 
     //6.5 6.5
@@ -90,14 +90,23 @@ public class PowerupLogic : MonoBehaviour
 
         foreach (GameObject obj in powerups)
         {
-            target = obj.GetComponent<IDamageable>();
+            IDestroyablePowerup target = obj.GetComponent<IDestroyablePowerup>();
+
+            if (target != null)
+            {
+                target.DestroyPowerup(1);
+
+            }
         }
 
-        if (target != null)
-        {
-            var source = new SimpleDamageSource(gameObject, Team.Player);
-            target.TakeDamage(1, source);
-            Destroy(gameObject);
-        }
+    }
+
+    public bool GetFortifyPowerupCoroutineWasActivated()
+    {
+        return fortifyPowerupCoroutineWasActivated;
+    }
+    public void SetFortifyPowerupCoroutineWasActivated(bool var)
+    {
+        fortifyPowerupCoroutineWasActivated = var;
     }
 }
