@@ -42,6 +42,7 @@ public class Powerup_Fortify : Powerup_Superclass, IDestroyablePowerup
 
         if (PowerupLogic.Instance.GetFortifyPowerupCoroutineWasActivated())
         {
+            Debug.Log("GetFortifyPowerupCoroutineWasActivated() = "+ PowerupLogic.Instance.GetFortifyPowerupCoroutineWasActivated());
             base.OnTriggerEnter2D(other);
             Destroy(gameObject);
             return;

@@ -90,7 +90,10 @@ public class PowerupLogic : MonoBehaviour
 
         foreach (GameObject obj in powerups)
         {
-            IDestroyablePowerup target = obj.GetComponent<IDestroyablePowerup>();
+
+                IDestroyablePowerup target = obj.GetComponent<IDestroyablePowerup>();
+
+            
 
             if (target != null)
             {
