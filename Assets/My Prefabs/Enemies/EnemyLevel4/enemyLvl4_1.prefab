@@ -190,6 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec524e1ecb11404391f966ad068bb12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileSpeed: 0
   enemyIsAlive: 0
   shellPrefab: {fileID: 2980163820454248444, guid: 6a67cec6e0e33094497926bcb66ea13f, type: 3}
   scoreOnDestroy: 0
@@ -217,5 +218,5 @@ MonoBehaviour:
   trackSpritesHealth4Powerup:
   - {fileID: -1516807050466461731, guid: 8df62e9f18da9df4aaf69ee287ce9588, type: 3}
   - {fileID: 8000320383904206288, guid: 01741f1ba6bf3fb42aeffdcd39b6c2ea, type: 3}
-  animationSpeed: 0.2
+  animationSpeed: 0.1
   spriteRenderer: {fileID: 4052273824527208134}

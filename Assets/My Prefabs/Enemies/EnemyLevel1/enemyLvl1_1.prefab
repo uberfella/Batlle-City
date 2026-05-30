@@ -190,6 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 230d8a6ec76ee6f41ba244b0063dd0c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileSpeed: 0
   enemyIsAlive: 0
   shellPrefab: {fileID: 2980163820454248444, guid: 6a67cec6e0e33094497926bcb66ea13f, type: 3}
   scoreOnDestroy: 0
@@ -226,5 +227,5 @@ MonoBehaviour:
   tankSpritesFacingDownPowerup:
   - {fileID: -7260793549736080487, guid: a16df06235bae814e9800a76f67df0cb, type: 3}
   - {fileID: 8652693188593408822, guid: d85f7dd954926a74db3e0fca4ec1e6e9, type: 3}
-  animationSpeed: 0.2
+  animationSpeed: 0.1
   spriteRenderer: {fileID: 2137960719256042090}

@@ -9,6 +9,10 @@ public class Powerup_Invul : Powerup_Superclass, IDestroyablePowerup
     {
         playerController2D = FindFirstObjectByType<PlayerController2D>();
     }
+    void Start()
+    {
+        StartCoroutine(SelfDestroyInXSeconds(10f));
+    }
     void Update()
     {
         float alpha = Mathf.PingPong(Time.time, 1f);
@@ -23,13 +27,6 @@ public class Powerup_Invul : Powerup_Superclass, IDestroyablePowerup
             playerController2D.TriggerInvincibility();
             Destroy(gameObject);
         }
-    }
-
-    public void DestroyPowerup(int damage)
-    {
-
-        Destroy(gameObject);
-
     }
 }
 

@@ -19,16 +19,14 @@ public class Powerup_Extralife : Powerup_Superclass, IDestroyablePowerup
         
     }
 
+    void Start()
+    {
+        StartCoroutine(SelfDestroyInXSeconds(10f));
+    }
+
     void Update()
     {
         float alpha = Mathf.PingPong(Time.time, 1f);
         spriteRenderer.color = new Color(1f, 1f, 1f, alpha);
-    }
-
-    public void DestroyPowerup(int damage)
-    {
-
-        Destroy(gameObject);
-
     }
 }

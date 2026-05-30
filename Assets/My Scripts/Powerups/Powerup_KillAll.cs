@@ -9,6 +9,10 @@ public class Powerup_KillAll : Powerup_Superclass, IDestroyablePowerup
     {
         enemy = GetComponent<Enemy>();
     }
+    void Start()
+    {
+        StartCoroutine(SelfDestroyInXSeconds(10f));
+    }
     void Update()
     {
         float alpha = Mathf.PingPong(Time.time, 1f);
@@ -44,12 +48,5 @@ public class Powerup_KillAll : Powerup_Superclass, IDestroyablePowerup
                 }
             }
         }
-    }
-
-    public void DestroyPowerup(int damage)
-    {
-
-        Destroy(gameObject);
-
     }
 }

@@ -21,6 +21,7 @@ public class Powerup_Fortify : Powerup_Superclass, IDestroyablePowerup
     void Start()
     {
         wasActivated = false;
+        StartCoroutine(SelfDestroyInXSeconds(10f));
     }
     void Update()
     {
@@ -40,9 +41,10 @@ public class Powerup_Fortify : Powerup_Superclass, IDestroyablePowerup
             return;
         }
 
-        if (PowerupLogic.Instance.GetFortifyPowerupCoroutineWasActivated())
+        //temporary way to make sure multiple powerups won't interrupt each other
+        if (PowerupLogic.Instance.GetFortifyPowerupCoroutineWasActivated() && !wasActivated)
         {
-            Debug.Log("GetFortifyPowerupCoroutineWasActivated() = "+ PowerupLogic.Instance.GetFortifyPowerupCoroutineWasActivated());
+            Debug.Log("GetFortifyPowerupCoroutineWasActivated() = " + PowerupLogic.Instance.GetFortifyPowerupCoroutineWasActivated());
             base.OnTriggerEnter2D(other);
             Destroy(gameObject);
             return;
@@ -53,13 +55,11 @@ public class Powerup_Fortify : Powerup_Superclass, IDestroyablePowerup
         StartCoroutine(FortifySpawnConcreteAndBricksOnBase());
         //we can't destroy powerup gameobject here, otherwise the coroutine won't operate properly. So we just make it invisible while the base is fortified and then we destroy it
         fortifyPowerupSprite.GetComponent<SpriteRenderer>().enabled = false;
-
     }
 
     IEnumerator FortifySpawnConcreteAndBricksOnBase()
     {
         PowerupLogic.Instance.SetFortifyPowerupCoroutineWasActivated(true);
-        Debug.Log("PowerupLogic.Instance.fortifyPowerupCoroutineWasActivated = " + PowerupLogic.Instance.GetFortifyPowerupCoroutineWasActivated());
         DespawnBricks();
         FortifySpawnConcrete();
         yield return new WaitForSeconds(10f);
@@ -83,6 +83,7 @@ public class Powerup_Fortify : Powerup_Superclass, IDestroyablePowerup
         FortifyDespawnConcrete();
         SpawnBricks();
         PowerupLogic.Instance.SetFortifyPowerupCoroutineWasActivated(false);
+
         Destroy(gameObject);
     }
 
@@ -122,6 +123,7 @@ public class Powerup_Fortify : Powerup_Superclass, IDestroyablePowerup
     public void DespawnBricks()
     {
         bricksInBase = GameObject.FindGameObjectsWithTag("Brick_Base");
+
         foreach (GameObject obj in bricksInBase)
         {
             if (obj != null)
@@ -140,13 +142,14 @@ public class Powerup_Fortify : Powerup_Superclass, IDestroyablePowerup
         brickSpawnedObjects.Clear();
     }
 
-    public void DestroyPowerup(int damage)
+    public override void DestroyPowerup(int damage)
     {
-        Debug.Log("TakeDamage");
         if (wasActivated)
         {
             return;
         }
         Destroy(gameObject);
     }
+
+
 }

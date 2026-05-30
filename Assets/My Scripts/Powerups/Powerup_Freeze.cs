@@ -17,6 +17,8 @@ public class Powerup_Freeze : Powerup_Superclass, IDestroyablePowerup
         id = gameObject.GetInstanceID();
         //Debug.Log("Instantiating " + id + " with wasActivated = "+wasActivated);
         spawner = FindFirstObjectByType<Spawner>();
+        StartCoroutine(SelfDestroyInXSeconds(10f));
+
     }
     void Update()
     {
@@ -62,7 +64,7 @@ public class Powerup_Freeze : Powerup_Superclass, IDestroyablePowerup
         Destroy(gameObject);
     }
 
-    public void DestroyPowerup(int damage)
+    public override void DestroyPowerup(int damage)
     {
         if (wasActivated)
         {

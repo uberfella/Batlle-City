@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
 
@@ -10,8 +11,7 @@ public class PowerupLogic : MonoBehaviour
 {
     public GameObject [] powerupsToSpawn;
     public static PowerupLogic Instance;
-    private bool fortifyPowerupCoroutineWasActivated;    
-    private IDestroyablePowerup target;
+    private bool fortifyPowerupCoroutineWasActivated;   
     //temporary way to make sure the powerup spawns inside squares nicely
     //-5.5 -5.5 
     //6.5 6.5
@@ -22,6 +22,11 @@ public class PowerupLogic : MonoBehaviour
     {
         Instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void Update()
@@ -55,12 +60,11 @@ public class PowerupLogic : MonoBehaviour
         }
 
         GameObject instance = Instantiate(powerupsToSpawn[randomPowerUp], new Vector2(randomPosX, randomPosY), Quaternion.identity);
+        //instance = Instantiate(powerupsToSpawn[randomPowerUp], new Vector2(randomPosX, randomPosY), Quaternion.identity);
         //instance.SetActive(true);
         AudioManager.Instance.PlaySFX(AudioManager.Instance.powerUpSpawn);
 
-
-        Destroy(instance, 10f);
-
+        //Destroy(instance, 10f);
     }
 
     public void DestroyAllPowerUps()
@@ -90,15 +94,11 @@ public class PowerupLogic : MonoBehaviour
 
         foreach (GameObject obj in powerups)
         {
-
-                IDestroyablePowerup target = obj.GetComponent<IDestroyablePowerup>();
-
-            
+            IDestroyablePowerup target = obj.GetComponent<IDestroyablePowerup>();
 
             if (target != null)
             {
                 target.DestroyPowerup(1);
-
             }
         }
 
@@ -111,5 +111,10 @@ public class PowerupLogic : MonoBehaviour
     public void SetFortifyPowerupCoroutineWasActivated(bool var)
     {
         fortifyPowerupCoroutineWasActivated = var;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        fortifyPowerupCoroutineWasActivated = false;
     }
 }
